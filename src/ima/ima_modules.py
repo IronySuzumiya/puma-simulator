@@ -31,7 +31,7 @@ class dac (object):
         analog_max = constants.vdd
         frac = int(inp, 2) / float(int(inp_max, 2))
         return analog_max * frac
-    
+
     def propagate (self, inp):
         assert ((type(inp) == str) and (len(inp) == self.dac_res)), 'dac input type/size (bits) mismatch (string expected)'
         num_bits = self.dac_res
@@ -68,7 +68,7 @@ class adc (object):
         int_value = int(np.ceil((inp - constants.xbar_out_min) / float(step)))
         bin_value = bin(int_value - 1)[2:]
         return ('0'*(num_bits - len(bin_value)) + bin_value)
-        
+
     def propagate (self, inp):
         assert (type(inp) == float), 'adc input type mismatch (float expected)'
         num_bits = self.adc_res
@@ -96,7 +96,7 @@ class mux (object):
         assert (len(inp_list) == self.num_in), 'Mux input list size mismatch'
         assert ((type(sel) == int) & (-1 < sel < self.num_in)), 'Mux select input size/type error'
         return inp_list[sel]
- 
+
 
 #### Needs some change - add function op (for instance, shift bits for shift)
 class alu (object):
@@ -105,7 +105,7 @@ class alu (object):
         def sub (a, b): return (a - b)
         def shift_add (a, b): return (a + (b << 1))
         self.options = {'add' : add, 'sub' : sub, 'shift_add' : shift_add}
-    
+
     def propagate (self, a, b, aluop):
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
         out = self.options[aluop](a, b)

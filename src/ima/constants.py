@@ -15,9 +15,9 @@ mem_width = 16
     # Bit resolution of ADCs and DACs
     # Number of ADCs
     # Number of ALUs
-    # Input and Output Memory (Register) sizes
+    # Input memory, Output memory (Register) & Instruction memory sizes
 #################################################
-    
+
 # Enter parameters here:
 num_xbar = 2
 xbar_size = 4
@@ -27,5 +27,5 @@ num_adc = 1
 num_ALU = 1
 inMem_size = 8
 outMem_size = 8
-
+instrMem_size = 8
 
