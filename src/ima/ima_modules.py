@@ -82,7 +82,7 @@ class sampleNhold (object):
 
     def propagate (self, inp_list):
         assert (len(inp_list) == len(self.hold_latch)), 'sample&hold input size mismatch'
-        for i in xrange(len(inp_list)):
+        for i in xrange(len(inp_lisaddrt)):
             self.hold_latch[i] = inp_list[i]
         return self.hold_latch
 
@@ -117,16 +117,95 @@ class memory (object):
     def __init__ (self, size):
         # memfile will store half-word (16 bits digital data) length strings
         self.size = size
-        self.memfile = ['']*size
+        self.memfile = [''] * size
+        self.addr_start = constants.xbar_size + 1
+        self.addr_end = self.addr_start + self.size
 
     def read (self, addr):
-        assert (type(addr) == int), 'addr type shoudl be int'
-        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        assert (type(addr) == int), 'addr type should be int'
+        assert (self.addr_start < addr < self.addr_end), 'addr exceeds the memory bounds'
         return self.memfile[addr]
 
     def write (self, addr, data):
-        assert (type(addr) == int), 'addr type shoudl be int'
-        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
-        assert ((type(data) ==  str) and (len(data) == constants.mem_width)), 'data should be a string with less than or equal to mem_width bits'
+        assert (type(addr) == int), 'addr type should be int'
+        assert (self.addr_start < addr < self.addr_end), 'addr exceeds the memory bounds'
+        assert ((type(data) ==  str) and (len(data) == constants.data_width)), 'data should be a string with less than or equal to mem_width bits'
         self.memfile[addr] = data
         return 1
+
+    def reset (self):
+        self.memfile = [''] * self.size
+
+
+# xbar input memory reads differently than typical memory
+# Each read is a shift and read operation
+class xb_inMem (object):
+    def __init__ (self, xbar_size):
+        # size equals the xbar_size, each entry being to
+        self.xbar_size = xbar_size
+        self.memfile = [''] * self.xbar_size
+
+    # reads & shifts all entries in parallel
+    def read (self):
+        out_list = []
+        for i in xrange(self.xbar_size):
+            value = self.memfile[i]
+            self.memfile[i] = value[:start_idx]
+            out_list.append(value)
+        return out_list
+
+    def write (self, addr, data):
+        assert (type(addr) == int), 'addr type should be int'
+        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with less than or equal to mem_width bits'
+        self.memfile[addr] = data
+        return 1
+
+    def reset (self):
+        self.memfile = [''] * self.xbar_size
+
+
+# xbar output memory
+class xb_outMem (xb_inMem):
+    def __init__ (self, xbar_size):
+        # size equals the xbar_size, each entry being to
+        self.xbar_size = xbar_size
+        self.memfile = [''] * self.xbar_size
+        self.wr_pointer = 0
+
+    def read (self, addr):
+        assert (type(addr) == int), 'addr type should be int'
+        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        return self.memfile[addr]
+
+    def write (self, data):
+        self.memfile[self.wr_pointer] = data
+
+    def reset (self):
+        self.memfile = [''] * self.xbar_size
+        self.wr_pointer = 0
+
+
+# Instruction memory stores dict unlike memory (string)
+class instrn_memory (memory):
+    def write (self, addr, data):
+        assert (type(addr) == int), 'addr type should be int'
+        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        assert (type(data) == dict), 'instrn should of type dictionary'
+        self.memfile[addr] = data
+        return 1
+
+
+# Memory interface to interact with an external memory
+class mem_interface (object):
+    def __init__ (self):
+        self.wait = 0 # 0 represents wait state
+        self.addr = 0
+        self.data = 0
+
+    def request (self):
+        self.wait = 0
+
+    def ack (self):
+        self.wait = 1
+

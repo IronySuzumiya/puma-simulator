@@ -5,7 +5,7 @@ import ima_modules as imod
 
 class ima (object):
     #######################################################
-    ### Instantiate different (phycical + virtual) modules
+    ### Instantiate different modules
     #######################################################
     def __init__ (self):
 
@@ -18,8 +18,11 @@ class ima (object):
             temp_xbar = imod.xbar (param.xbar_size)
             self.xbar_list.append(temp_xbar)
 
-        # Instantiate dac array (misnomer - is a list)
-        self.dac_array = imod.dac_array (param.xbar_size, param.dac_res)
+        # Instantiate DACs
+        self.dacArray_list = []
+        for i in xrange(param.num_xbar):
+            temp_dacArray = imod.dac_array (param.xbar_size, param.dac_res)
+            self.dacArray_list.append(temp_dacArray)
 
         # Instatiate adcs
         self.adc_list = []
@@ -59,29 +62,56 @@ class ima (object):
             temp_alu = imod.alu ()
             self.alu_list.append(temp_alu)
 
-        # Instantiate input memory (stores data)
-        self.inmem = imod.memory (param.inMem_size)
+        # Instantiate  data memory (stores data)
+        self.dataMem = imod.memory (param.dataMem_size)
 
-        # Instantiate output memory (stores data)
-        self.outmem = imod.memory (param.outMem_size)
+        # Instantiate multiple xbar input memories (stores xbar input data)
+        self.xb_inMem_list = []
+        for i in xrange (param.num_xbar):
+            temp_xb_inMem = imod.xb_inMem (param.xbar_size)
+            self.xb_inMem_list.append(temp_xb_inMem)
+
+        # Instantiate multiple xbar output memories (stores xbar output data)
+        self.xb_outMem_list = []
+        for i in xrange (param.num_xbar):
+            temp_xb_outMem = imod.xb_outMem (param.xbar_size)
+            self.xb_outMem_list.append(temp_xb_outMem)
 
         # Instantiate instruction memory (stores instruction)
-        self.instrn_mem = imod.memory (param.instrMem_size)
+        self.instrnMem = imod.instrn_memory (param.instrnMem_size)
 
-        ##############################################################
-        ## Define virtual (just for software emulation purpose) parts
-        ##############################################################
-        # used in Fetch stage
+        #############################################################################################################
+        ## Define virtual (currently for software emulation purpose (doesn't have a corresponding hardware currenty)
+        #############################################################################################################
+
+        # List of supported opcodes
+        op_list = ['ld', 'st', 'alu', 'alui', 'mvm']
+        aluop_list = ['add', 'sub', 'shift_add']
+
+        # Instruction is a dictionary of several fields
+        temp_instrn = {'opcode' : op_list[0],       # instrn op
+                       'aluop'  : aluop_list[0],    # alu function
+                       'd1'     : 0,                # destination
+                       'r1'     : 0,                # operand1
+                       'r2'     : 0,                # opearnd2
+                       'addr'   : 0,                # ext_mem (edram) address
+                       'imm'    : 0,                # immediate (scalar) data
+                       'xb_nma' : 0 }               # xbar negative-mask, a xbar evaluates if neg-mask = 1
+
+        # Define stage-wise pipeline registers (f - before fetch, fd -fetch_decode, de - decode_execute)
         self.pc = 0 # holds the next program counter value
 
-        # used in Decode stage
-        self.instrn = {} # holds the currently fetched instruction
+        self.fd_instrn = temp_instrn
 
-        # used in Execute stage
-        self.
+        self.de_opcode = temp_instrn['opcode']
+        self.de_aluop = temp_instrn['aluop']
+        self.de_d1 = temp_instrn['d1'] # target register addr for alu/alui/ld
+        self.de_addr = temp_instrn['addr'] # edram addr for ld/st
+        self.de_imm = temp_instrn['imm'] # imm value for alui
+        self.de_xb_nma = temp_instrn['xb_nma'] # nma value for xbar execution
 
-        # used in Memory stage
-        self.edram_addr = 0
+        self.de_val1 = 0 # operand read from r1 address
+        self.de_val2 = 0 # operand read from r2 address
 
 
     ############################################################
@@ -89,68 +119,95 @@ class ima (object):
     ############################################################
     # "Fetch" stage (common to all instructions)
     def fetch (self):
-        self.instrn = self.instrnmem.read (self.pc)
+        self.fd_instrn = self.instrnMem.read (self.pc)
         self.pc = self.pc + 1
 
-    # "Decode" stage - instruction specifc
-    # Extracts operands and puts into the specific data structures
+    # "Decode" stage - Reads operands (if needed) and puts into the specific data structures
     def decode (self):
-        def ld_dec (): self.edram_addr = self.inst.op1
-        def st_dec (): self.edram-addr = self.inst.op1
-        def mvm_dec (): self.
+        # common to all instructions
+        dec_op = self.fd_instrn['opcode']
+        assert (dec_op in op_list), 'unsupported opcode'
+
+        self.de_opcode = dec_op
+
+        # instruction specific (for eg: ld_dec - load's decode stage)
+        if (dec_op == 'ld'):
+            self.de_addr = self.fd_instrn['addr']
+            self.de_d1 = self.fd_instrn['d1']
+
+        elif (dec_op == 'st'):
+            self.de_addr = self.fd_instrn['addr']
+            self.de_val1 = self.inMem.read (self.fd_instrn['r1'])
+
+        elif (dec_op == 'alu'):
+            self.de_aluop = self.fd_instrn['aluop']
+            self.de_d1 = self.fd_instrn['d1']
+            self.de_val1 = self.inMem.read (self.fd_instrn['r1'])
+            self.de_val2 = self.inMem.read (self.fd_instrn['r2'])
+
+        elif (dec_op == 'alui'):
+            self.de_aluop = self.fd_instrn['aluop']
+            self.de_d1 = self.fd_instrn['d1']
+            self.de_val1 = self.inMem.read (self.fd_instrn['r1'])
+            self.de_val2 = self.fd_instrn['imm']
+
+        else: # mvm instrn
+            xb_nma = self.fd_instrn['xb_nma']
+            assert (0 <= xb_nma <= param.num_xbar), 'unsupported xbar configuration'
+            self.de_xb_nma = xb_nma
+
+    # Execute stage - compute and store back to registers
+    def execute (self):
+        # common to all instructions
+        ex_op = self.de_opcode
+        assert (ex_op in op_list), 'unsupported opcode'
+
+        # instruction specific
+        if (ex_op == 'ld'):
+            self.outMem.read (self.de_addr)
+
+        elif (ex_op == 'st'):
+            self.outMem.write (self.de_addr, self.de_val1)
+
+        elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
+            # compute in ALU
+            out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+            # write to outMem
+            self.outMem.write (self.de_d1, out)
+
+        elif (ex_op == 'alui'):
+            # compute in ALU
+            out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+            # write to outMem
+            self.outMem.write (self.de_d1, out)
+
+        else: # mvm instrn
+            # traverse through the xbars - (nma is the number of crossbars which will evaluate)
+            for i in xrange (self.de_xb_nma):
+
+                ## Loop to cover all bits of inputs
+                    # read the values from the xbar's input register
+                    out_xb_inMem = self.xb_inMem_list[i].read ()
+
+                    # convert digital values to analog
+                    out_dac = self.dacArray_list[i].propagate (out_xb_inMem)
+                    out_dac = np.asarray (out_dac)
+
+                    # compute dot-product
+                    out_xbar = self.xbar_list[i].propagate (out_dac)
+
+                    # do sampling and hold
+                    out_snh = self.snh_list[i].propagate (out_xbar)
+
+                    # covert from analog to digital
+
+                    # shift and add
+
+                    # store back to xbar's output register
 
 
 
-    # Decode stage is common to all instructions
-    def instr_emulate (self, instrn, stage):
 
-        # Fetch & Decode stages are common to all instructions
-        def fetch (self, pc):
-            instrn = self.instrnmem.read (pc)
-
-        def dec (self,):
-
-
-        def ld_ex  (self,):
-
-
-        def ld_mem (self,):
-
-
-        def ld_wb  (self,):
-
-
-        # stages of LD (Load) instruction
-        ld = {'fetch'    : fetch,
-              'decode'   : ld_dec,
-              'execute'  : ld_ex,
-              'memory'   : ld_mem,
-              'writeback': ld_wb}
-
-
-
-
-
-
-        # stages of ST (Store) instruction
-        st = {'fetch'    : fetch,
-              'decode'   : st_dec,
-              'execute'  : st_ex,
-              'memory'   : st_mem,
-              'writeback': st_wb}
-
-        # stages of MVM (Matrix-Vector-Multiply) instruction
-        mvm = {'fetch'    : fetch,
-               'decode'   : mvm_dec,
-               'execute'  : mvm_ex,
-               'memory'   : mvm_mem,
-               'writeback': mvm_wb}
-
-
-        self.instrns = {'ld' : ld, 'st' : st, 'mvm' : mvm}
-
-    # Emulate a particular instruction on IMA
-    def emulate (instrn_list):
 
 
 

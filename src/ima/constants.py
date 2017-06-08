@@ -2,7 +2,8 @@
 vdd = 0.9
 xbar_out_min = 0
 xbar_out_max = 1 # think about this
-mem_width = 16
+data_width = 16 # (microarchitecture param)
+xbdata_width = 8 # (nn speciic for now)
 
 #################################################
 # DPE Hardware Configuration Parameters
@@ -15,7 +16,7 @@ mem_width = 16
     # Bit resolution of ADCs and DACs
     # Number of ADCs
     # Number of ALUs
-    # Input memory, Output memory (Register) & Instruction memory sizes
+    # Data memory, Xbar in/out memory (Register) & Instruction memory sizes
 #################################################
 
 # Enter parameters here:
@@ -25,7 +26,5 @@ dac_res = 2
 adc_res = 2
 num_adc = 1
 num_ALU = 1
-inMem_size = 8
-outMem_size = 8
-instrMem_size = 8
-
+dataMem_size = 16
+instrnMem_size = 8
