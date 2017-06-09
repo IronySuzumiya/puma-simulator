@@ -28,3 +28,16 @@ num_adc = 1
 num_ALU = 1
 dataMem_size = 16
 instrnMem_size = 8
+
+# Enter IMA component latency
+xbar_lat = 2
+dac_lat = 2
+adc_lat = 2
+snh_lat = 2
+mux_lat = 2
+alu_lat = 2
+mem_lat = 2
+xbInMem_lat = 2
+xbOutMem_lat = 2
+# Added here for simplicity now (***needs modification later***)
+memInterface_lat = 2

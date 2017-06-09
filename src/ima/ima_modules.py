@@ -8,12 +8,18 @@ import constants
 
 class xbar (object):
     def __init__ (self, xbar_size, xbar_value = 'nil'):
+        # define latency
+        self.latency = constants.xbar_lat
+
         # xbar_value is the weights meant for one crossbar
         self.xbar_size = xbar_size
         self.xbar_value = np.zeros((xbar_size, xbar_size), dtype=float)
         # unprogrammed xbar contains zeros
         if (xbar_value != 'nil'):
             self.xbar_value = xbar_value
+
+    def getLatency (self):
+        return self.latency
 
     def propagate (self, inp = 'nil'):
         assert (inp != 'nil'), 'propagate needs a non-nil input'
@@ -23,7 +29,13 @@ class xbar (object):
 
 class dac (object):
     def __init__ (self, dac_res):
-       self.dac_res = dac_res
+        # define latency
+        self.latency = constants.dac_lat
+
+        self.dac_res = dac_res
+
+    def getLatency (self):
+        return self.latency
 
     def bin2real (self, inp, num_bits):
         # gets a n-bit (n = dac_res) digital value & returns an analog voltage value
@@ -41,12 +53,18 @@ class dac (object):
 # A dac_array is an arrays of DACs private to a xbar
 class dac_array (object):
     def __init__ (self, xbar_size, dac_res):
+        # define latency
+        self.latency = constants.dac_lat
+
         # generate multiple dacs (one per xbar input)
         self.dac_list = []
         self.xbar_size = xbar_size
         for i in xrange(xbar_size):
             temp_dac = dac (dac_res)
             self.dac_list.append(temp_dac)
+
+    def getLatency (self):
+        return self.latency
 
     def propagate (self, inp_list):
         assert (len(inp_list) == self.xbar_size), 'dac_array input list size mismatch'
@@ -60,7 +78,13 @@ class dac_array (object):
 # Probably - also doing the sampling part of (sampel and hold) inside
 class adc (object):
     def __init__ (self, adc_res):
+        # define latency
+        self.latency = constants.adc_lat
+
         self.adc_res = adc_res
+
+    def getLatency (self):
+        return self.latency
 
     def real2bin (self, inp, num_bits):
         num_levels = 2**num_bits
@@ -78,7 +102,13 @@ class adc (object):
 # Doesn't replicate the exact (sample and hold) functionality (just does hold)
 class sampleNhold (object):
     def __init__ (self, xbar_size):
+        # define latency
+        self.latency = constants.snh_lat
+
         self.hold_latch = np.zeros(xbar_size)
+
+    def getLatency (self):
+        return self.latency
 
     def propagate (self, inp_list):
         assert (len(inp_list) == len(self.hold_latch)), 'sample&hold input size mismatch'
@@ -89,8 +119,14 @@ class sampleNhold (object):
 
 class mux (object):
     def __init__ (self, num_in):
+        # define latency
+        self.latency = constants.mux_lat
+
         # num_in is the inputs for the multiplexer
         self.num_in = num_in
+
+    def getLatency (self):
+        return self.latency
 
     def propagate (self, inp_list, sel):
         assert (len(inp_list) == self.num_in), 'Mux input list size mismatch'
@@ -101,10 +137,16 @@ class mux (object):
 #### Needs some change - add function op (for instance, shift bits for shift)
 class alu (object):
     def __init__ (self):
+        # define latency
+        self.latency = constants.alu_lat
+
         def add (a, b): return (a + b)
         def sub (a, b): return (a - b)
         def shift_add (a, b): return (a + (b << 1))
         self.options = {'add' : add, 'sub' : sub, 'shift_add' : shift_add}
+
+    def getLatency (self):
+        return self.latency
 
     def propagate (self, a, b, aluop):
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
@@ -115,11 +157,17 @@ class alu (object):
 # Assumes a half-word oriented memory (each entry - 16 bits)
 class memory (object):
     def __init__ (self, size):
+        # define latency
+        self.latency = constants.mem_lat
+
         # memfile will store half-word (16 bits digital data) length strings
         self.size = size
         self.memfile = [''] * size
         self.addr_start = constants.xbar_size + 1
         self.addr_end = self.addr_start + self.size
+
+    def getLatency (self):
+        return self.latency
 
     def read (self, addr):
         assert (type(addr) == int), 'addr type should be int'
@@ -141,9 +189,15 @@ class memory (object):
 # Each read is a shift and read operation
 class xb_inMem (object):
     def __init__ (self, xbar_size):
+        # define latency
+        self.latency = constants.xbInMem_lat
+
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size
         self.memfile = [''] * self.xbar_size
+
+    def getLatency (self):
+        return self.latency
 
     # reads & shifts all entries in parallel
     def read (self):
@@ -168,10 +222,16 @@ class xb_inMem (object):
 # xbar output memory
 class xb_outMem (xb_inMem):
     def __init__ (self, xbar_size):
+        # define latency
+        self.latency = constants.xbOutMem_lat
+
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size
         self.memfile = [''] * self.xbar_size
         self.wr_pointer = 0
+
+    def getLatency (self):
+        return self.latency
 
     def read (self, addr):
         assert (type(addr) == int), 'addr type should be int'
@@ -199,13 +259,42 @@ class instrn_memory (memory):
 # Memory interface to interact with an external memory
 class mem_interface (object):
     def __init__ (self):
-        self.wait = 0 # 0 represents wait state
-        self.addr = 0
-        self.data = 0
+        # define latency
+        self.latency = constants.memInterface_lat
 
-    def request (self):
-        self.wait = 0
+        # input port
+        self.wait_in = 0  # wait signal from (EDRAM) controller to ima
+        self.data_in = 0  # data (from EDRAM) to ima
 
-    def ack (self):
-        self.wait = 1
+        # output port
+        self.req_out = 0  # req sent by ima to mem controller
+        self.ren_out = 0  # ren = 1 (Load), ren = 0 (Store)
+        self.addr_out = 0 # add sent by ima to mem controller
+        self.data_out = 0 # data (for ST) sent by ima to men controller
+
+    def getLatency (self):
+        return self.latency
+
+    def request (self, ren, addr, data = ''):
+        assert (type(data) = str), 'data type expected string'
+        self.req_out = 1
+        self.wait_in = 1
+        if (ren):
+            self.ren_out = 1
+            self.addr_out = addr
+        else:
+            self.ren_out = 0
+            self.addr_out = addr
+            self.data_out = data
+
+    # deassert the previously asserted request
+    def reset (self):
+        self.req_out = 0
+
+    def ack (self, data = ''):
+        assert (type(data) = str), 'data type expected string'
+        self.wait_in = 0
+        # update data if it was a load request
+        if (self.ren_out):
+            self.data_in = data
 

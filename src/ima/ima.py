@@ -80,11 +80,14 @@ class ima (object):
         # Instantiate instruction memory (stores instruction)
         self.instrnMem = imod.instrn_memory (param.instrnMem_size)
 
+        # Instantiate the memory interface (interface to edram controller)
+        self.mem_interface = imod.mem_interface ()
+
         #############################################################################################################
         ## Define virtual (currently for software emulation purpose (doesn't have a corresponding hardware currenty)
         #############################################################################################################
 
-        # List of supported opcodes
+        # List of supported opcodes/aluos
         op_list = ['ld', 'st', 'alu', 'alui', 'mvm']
         aluop_list = ['add', 'sub', 'shift_add']
 
@@ -113,17 +116,58 @@ class ima (object):
         self.de_val1 = 0 # operand read from r1 address
         self.de_val2 = 0 # operand read from r2 address
 
+        ########################################################
+        ## Define book-keeping variables for pipeline execution
+        ########################################################
+
+        # List the pipeline stages
+        self.stage_list = ['fet', 'dec', 'ex']
+        self.num_stages = len (self.stage_list)
+
+        # Define the book-keeping variables - stage-specific
+        self.stage_empty = [0] * self.num_stage
+        self.stage_cycle = [0] * self.num_stage
+        self.stage_latency = [0] * self.num_stage # tells how many cycles will the current method running in a stage will require
+        self.stage_done = [0] * self.num_stage
+
+        # Define global pipeline variables
+        self.cycles = 0
+
+        # Define a halt signal - think about the logic later
+        self.halt = 0
+
 
     ############################################################
     ### Define what a pipeline stage does for each instruction
     ############################################################
+    # Increment stage cycles but update pipeline registers at end only
+
     # "Fetch" stage (common to all instructions)
     def fetch (self):
-        self.fd_instrn = self.instrnMem.read (self.pc)
-        self.pc = self.pc + 1
+        sId = 0 # sId - stageId
+
+        # First cycle - update the target latency
+        if (self.stage_cycle[sId] == 0):
+            self.stage_latency[sId] = self.instrnMem.getLatency ()
+            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+        # Other than first cycles (Note first and last cycle may be same)
+        # Last cycle - update pipeline registers & done flag
+        if (self.stage_latency[sId]-1 <= self.stage_cycle[sId] <= self.stage_latency[sId]):
+            self.fd_instrn = self.instrnMem.read (self.pc)
+            self.pc = self.pc + 1
+
+            self.stage_done[stage_id] = 1
+            self.stage_cycle[stage_id] = 0
+
+        # For cycles other than first and last cycles
+        elif (self.stage_cycle[sId] != 0):
+            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
     # "Decode" stage - Reads operands (if needed) and puts into the specific data structures
     def decode (self):
+        sId = 1
+
         # common to all instructions
         dec_op = self.fd_instrn['opcode']
         assert (dec_op in op_list), 'unsupported opcode'
@@ -158,16 +202,25 @@ class ima (object):
 
     # Execute stage - compute and store back to registers
     def execute (self):
+        sId = 2
+
         # common to all instructions
         ex_op = self.de_opcode
         assert (ex_op in op_list), 'unsupported opcode'
 
         # instruction specific
         if (ex_op == 'ld'):
-            self.outMem.read (self.de_addr)
+            ren = 1
+            self.mem_interface.request (ren, self.de_addr,)
+            # waits until data is brought from edram
+            if (self.mem_interface.wait_in == 0):
+                data = self.mem_interface.data_in
+                self.outMem.write (self.de_d1, data)
 
         elif (ex_op == 'st'):
-            self.outMem.write (self.de_addr, self.de_val1)
+            self.mem_interface.request (ren, self.de_addr, self.de_val1)
+            # waits until store finishes
+            ## Incomplete
 
         elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
             # compute in ALU
@@ -199,15 +252,60 @@ class ima (object):
                     # do sampling and hold
                     out_snh = self.snh_list[i].propagate (out_xbar)
 
-                    # covert from analog to digital
+                    # convert from analog to digital
 
                     # shift and add
 
                     # store back to xbar's output register
 
+    #####################################################
+    ## Define how pipeline executes
+    #####################################################
+    def pipe_init (self):
+        self.cycles = 0
 
+        zero_list = [0] * self.num_stages
+        self.stage_empty = zero_list
+        self.stage_cycle = zero_list
+        self.stage_done = zero_list
 
+    def run (self):
+        # define a list for individual stage executions
+        run_stage = [self.fetch, self.decode, self.execute]
 
+        # Initialize the pipeline
+        self.pipe_init ()
 
+        # Run the pipeline
+        while (!self.halt):
+            # Each iteration of while loop is a cycle of ima pipeline execution
+            # Simulate each stage - start from the last stage - except the fetch stage
+            for i in range (self.num_stages, 0, -1):
+                # Check if the instruction in stage 'i-1' can be moved to stage 'i'
+                if (self.stage_done[i] & self.stage_done[i-1]):
+                    self.stage_empty[i] = self.stage_empty[i-1]
+                    self.stage_done[i] = 0
 
+                # Simulate one cycle of execution of stage 'i'
+                run_stage[i]
+
+            # Simulate 'Fetch' stage
+            if (self.pc <= param.instrnMem_size):
+                # Check if the previous stage finished
+                if (self.stage_done[0]):
+                    self.stage_done[0] = 0
+
+                # Simulate a cycle of fetch stage
+                run_stage[0]
+            else:
+                self.stage_empty[0] = 1
+
+            # Check for halt condition - halt when all stages are empty
+            if (self.cycles != 0 and self.stage_empty == zero_list):
+                self.halt = 1
+            else:
+                self.cycles = self.cycles + 1
+
+        print ('IMA ran for' + self.cycles + 'cycles')
+        return
 
