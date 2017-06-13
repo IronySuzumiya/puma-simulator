@@ -75,7 +75,7 @@ class dac_array (object):
         return out_list
 
 
-# Probably - also doing the sampling part of (sampel and hold) inside
+# Probably - also doing the sampling part of (sample and hold) inside
 class adc (object):
     def __init__ (self, adc_res):
         # define latency
@@ -190,7 +190,7 @@ class memory (object):
 class xb_inMem (object):
     def __init__ (self, xbar_size):
         # define latency
-        self.latency = constants.xbInMem_lat
+        self.latency = constants.mem_lat
 
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size
@@ -223,7 +223,7 @@ class xb_inMem (object):
 class xb_outMem (xb_inMem):
     def __init__ (self, xbar_size):
         # define latency
-        self.latency = constants.xbOutMem_lat
+        self.latency = constants.mem_lat
 
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size

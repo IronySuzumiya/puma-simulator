@@ -41,19 +41,20 @@ class ima (object):
         # For 2 xbars with 1 ADC : Two 64-1 mux and One 2-1 mux
         # For 2 xbars with 2 ADCs: Two 64-1 mux
         # Similarly, 8 xbars & 1 ADC: Eight 64-1 mux and One 8-1 mux
-        # *** Number of "xbar_size-1" muxes = num_xbar ***
-        # *** Number of "(num_xbar/num_adc)-1" muxes = num_adcs ***
+        # *** Number of "xbar_size" muxes = num_xbar ***
+        # *** Number of "(num_xbar/num_adc)" muxes = num_adcs ***
+        # A mux with inp_size = 1 is basically a dammy mux (wire)
 
         self.mux1_list = [] # from xbar
         inp1_size = param.xbar_size
         for i in xrange(param.num_xbar):
-            temp_mux = imod.mux (imp1_size)
-            self.mux1_list.append(temp-mux)
+            temp_mux = imod.mux (inp1_size)
+            self.mux1_list.append(temp_mux)
 
         self.mux2_list = [] # to adc
-        inp2_size = param.num-xbar / param.num_adc
-        for i in xrange(inp2_size):
-            temp_mux = imod.mux(imp1_size)
+        inp2_size = param.num_xbar / param.num_adc
+        for i in xrange(param.num_adc):
+            temp_mux = imod.mux (inp2_size)
             self.mux2_list.append(temp_mux)
 
         # Instantiate ALUs
@@ -146,117 +147,215 @@ class ima (object):
     def fetch (self):
         sId = 0 # sId - stageId
 
-        # First cycle - update the target latency
-        if (self.stage_cycle[sId] == 0):
-            self.stage_latency[sId] = self.instrnMem.getLatency ()
-            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
-
-        # Other than first cycles (Note first and last cycle may be same)
-        # Last cycle - update pipeline registers & done flag
-        if (self.stage_latency[sId]-1 <= self.stage_cycle[sId] <= self.stage_latency[sId]):
+        # Define what to do in fetch
+        def do_fetch (self):
+            # commmon to all instructions
             self.fd_instrn = self.instrnMem.read (self.pc)
             self.pc = self.pc + 1
 
+        # Describe the functionality on a cycle basis
+        # First cycle - update the target latency
+        if (self.stage_cycle[sId] == 0):
+            self.stage_latency[sId] = self.instrnMem.getLatency()
+
+            # Check if first = last cycle
+            if (self.stage_latency[sId] == 1):
+                do_fetch (self)
+                self.stage_done[stage_id] = 1
+            else:
+                self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+        # Last cycle - update pipeline registers & done flag
+        elif (self.stage_cycle[sId] == self.stage_latency[sId]-1):
+            do_fetch (self)
             self.stage_done[stage_id] = 1
             self.stage_cycle[stage_id] = 0
 
-        # For cycles other than first and last cycles
-        elif (self.stage_cycle[sId] != 0):
+        # For all other cycles
+        else:
             self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
 
     # "Decode" stage - Reads operands (if needed) and puts into the specific data structures
     def decode (self):
         sId = 1
 
-        # common to all instructions
-        dec_op = self.fd_instrn['opcode']
-        assert (dec_op in op_list), 'unsupported opcode'
+        # Define what to do in decode (done for conciseness)
+        def do_decode (self, dec_op):
+            # common to all instructions
+            self.de_opcode = dec_op
 
-        self.de_opcode = dec_op
+            # instruction specific (for eg: ld_dec - load's decode stage)
+            if (dec_op == 'ld'):
+                self.de_addr = self.fd_instrn['addr']
+                self.de_d1 = self.fd_instrn['d1']
 
-        # instruction specific (for eg: ld_dec - load's decode stage)
-        if (dec_op == 'ld'):
-            self.de_addr = self.fd_instrn['addr']
-            self.de_d1 = self.fd_instrn['d1']
+            elif (dec_op == 'st'):
+                self.de_addr = self.fd_instrn['addr']
+                self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
 
-        elif (dec_op == 'st'):
-            self.de_addr = self.fd_instrn['addr']
-            self.de_val1 = self.inMem.read (self.fd_instrn['r1'])
+            elif (dec_op == 'alu'):
+                self.de_aluop = self.fd_instrn['aluop']
+                self.de_d1 = self.fd_instrn['d1']
+                self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                self.de_val2 = self.dataMem.read (self.fd_instrn['r2'])
 
-        elif (dec_op == 'alu'):
-            self.de_aluop = self.fd_instrn['aluop']
-            self.de_d1 = self.fd_instrn['d1']
-            self.de_val1 = self.inMem.read (self.fd_instrn['r1'])
-            self.de_val2 = self.inMem.read (self.fd_instrn['r2'])
+            elif (dec_op == 'alui'):
+                self.de_aluop = self.fd_instrn['aluop']
+                self.de_d1 = self.fd_instrn['d1']
+                self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                self.de_val2 = self.fd_instrn['imm']
 
-        elif (dec_op == 'alui'):
-            self.de_aluop = self.fd_instrn['aluop']
-            self.de_d1 = self.fd_instrn['d1']
-            self.de_val1 = self.inMem.read (self.fd_instrn['r1'])
-            self.de_val2 = self.fd_instrn['imm']
+            else: # mvm instrn
+                xb_nma = self.fd_instrn['xb_nma']
+                assert (0 <= xb_nma <= param.num_xbar), 'unsupported xbar configuration'
+                self.de_xb_nma = xb_nma
 
-        else: # mvm instrn
-            xb_nma = self.fd_instrn['xb_nma']
-            assert (0 <= xb_nma <= param.num_xbar), 'unsupported xbar configuration'
-            self.de_xb_nma = xb_nma
+        # Describe the functionality on a cycle basis
+        # First cycle - update the target latency
+        if (self.stage_cycle[sId] == 0):
+            # Check for assertion pass
+            dec_op = self.fd_instrn['opcode']
+            assert (dec_op in op_list), 'unsupported opcode'
+
+            self.stage_latency[sId] = self.dataMem.getLatency()
+
+            # Check if first = last cycle
+            if (self.stage_latency[sId] == 1):
+                do_decode (self, dec_op)
+                self.stage_done[stage_id] = 1
+            else:
+                self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+        # Last cycle - update pipeline registers (if ??) & done flag
+        elif (self.stage_cycle[sId] == self.stage_latency[sId]-1):
+            dec_op = self.fd_instrn['opcode']
+            do_decode (self, dec_op)
+            self.stage_done[stage_id] = 1
+
+        # For all other cycles
+        else:
+            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
 
     # Execute stage - compute and store back to registers
     def execute (self):
         sId = 2
 
-        # common to all instructions
-        ex_op = self.de_opcode
-        assert (ex_op in op_list), 'unsupported opcode'
+        # Define what to do in execute (done for conciseness)
+        def do_execute (self, ex_op):
+            if (ex_op == 'ld'):
+                ren = 1
+                self.mem_interface.request (ren, self.de_addr,)
+                # waits until data is brought from edram
+                #if (self.mem_interface.wait_in == 0):
+                #    data = self.mem_interface.data_in
+                #    self.outMem.write (self.de_d1, data)
+                data = self.mem_interface.data_in  # temporary
+                self.outMem.write (self.de_d1, data) # temporary
 
-        # instruction specific
-        if (ex_op == 'ld'):
-            ren = 1
-            self.mem_interface.request (ren, self.de_addr,)
-            # waits until data is brought from edram
-            if (self.mem_interface.wait_in == 0):
-                data = self.mem_interface.data_in
-                self.outMem.write (self.de_d1, data)
+            elif (ex_op == 'st'):
+                ren = 0
+                self.mem_interface.request (ren, self.de_addr, self.de_val1)
+                # waits until store finishes
+                ## Incomplete
 
-        elif (ex_op == 'st'):
-            self.mem_interface.request (ren, self.de_addr, self.de_val1)
-            # waits until store finishes
-            ## Incomplete
+            elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
+                # compute in ALU
+                out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+                # write to outMem
+                self.dataMem.write (self.de_d1, out)
 
-        elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
-            # compute in ALU
-            out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-            # write to outMem
-            self.outMem.write (self.de_d1, out)
+            elif (ex_op == 'alui'):
+                # compute in ALU
+                out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+                # write to outMem
+                self.dataMem.write (self.de_d1, out)
 
-        elif (ex_op == 'alui'):
-            # compute in ALU
-            out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-            # write to outMem
-            self.outMem.write (self.de_d1, out)
+            else: # mvm instrn
+                # traverse through the xbars - (nma is the number of crossbars which will evaluate)
+                for i in xrange (self.de_xb_nma):
 
-        else: # mvm instrn
-            # traverse through the xbars - (nma is the number of crossbars which will evaluate)
-            for i in xrange (self.de_xb_nma):
+                    ## Loop to cover all bits of inputs
+                        # read the values from the xbar's input register
+                        out_xb_inMem = self.xb_inMem_list[i].read ()
+                        # convert digital values to analog
+                        out_dac = self.dacArray_list[i].propagate (out_xb_inMem)
+                        out_dac = np.asarray (out_dac)
+                        # compute dot-product
+                        out_xbar = self.xbar_list[i].propagate (out_dac)
+                        # do sampling and hold
+                        out_snh = self.snh_list[i].propagate (out_xbar)
 
-                ## Loop to cover all bits of inputs
-                    # read the values from the xbar's input register
-                    out_xb_inMem = self.xb_inMem_list[i].read ()
+                        for j in xrange (param.xbar_size):
+                            # convert from analog to digital
+                            out_adc = self.adc_list[].propagate (out_snh)
+                            # read from xbar's output register
+                            out_xb_outMem = self.xb_outMem_list[i].read (j)
+                            # shift and add - make a dedicated sna unit -- PENDING
+                            out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc)
+                            # store back to xbar's output register
+                            self.outMem_list[i].write (out_sna)
 
-                    # convert digital values to analog
-                    out_dac = self.dacArray_list[i].propagate (out_xb_inMem)
-                    out_dac = np.asarray (out_dac)
 
-                    # compute dot-product
-                    out_xbar = self.xbar_list[i].propagate (out_dac)
+        # Computes the latency for mvm instruction based on DPE configuration
+        def xbComputeLatency (self):
+            # assumption1: num_adc = num_s&a = num_outReg_Ports
+            # assumption2: an adc connects to only one xbar
+            # assumption3: shift&add unit is seen as an alu for now
+            # assumption4: two stage pipeline - unit1 & unit2 as shown below
 
-                    # do sampling and hold
-                    out_snh = self.snh_list[i].propagate (out_xbar)
+            latency_unit1 =  self.xb_inMem_list[0].getLatency() +
+                            self.dacArray_list[0].getLatency() +
+                            self.xbar_list[0].getLatency() +
+                            self.snh_list[0].getLatency()
 
-                    # convert from analog to digital
+            latency_unit2 = param.xbar_size * (self.mux1_list[0] +
+                                               self.mux2_list[0] +
+                                               self.adc_list[0] +
+                                               self.alu_list[0] +
+                                               self.xb_outMem_list[0]) *
+                            param.num_xbar/param.num_adc
 
-                    # shift and add
+            latency_unit = max (latency_unit1, latency_unit2)
 
-                    # store back to xbar's output register
+            return (param.xbdata_width / param.dac_res) * latency_unit
+
+
+        # Describe the functionality on a cycle basis
+        # First cycle - update the target latency
+        if (self.stage_cycle[sId] == 0):
+            # Check for assertion pass
+            ex_op = self.de_opcode
+            assert (ex_op in op_list), 'unsupported opcode'
+
+            # assign execution unit based stage latency
+            if (ex_op == ('ld' or 'st')):
+                self.stage_latency[sId] = self.mem_interface.getLatency()
+            elif (exop == 'alu' or exop == 'alui'):
+                # ALU instructions access ALU and write to memory
+                self.stage_latency[sId] = self.alu_list[0].getLatency() +
+                                          self.dataMem.getLatency()
+            else: # for xbar operation
+                self.stage_latency[sId] = xbComputeLatency (self)
+
+            # Check if first = last cycle
+            if (self.stage_latency[sId] == 1):
+                do_execute (self, ex_op)
+                self.stage_done[stage_id] = 1
+            else:
+                self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+        # Last cycle - update pipeline registers (if ??) & done flag
+        elif (self.stage_cycle[sId] == self.stage_latency[sId]-1):
+            ex_op = self.de_opcode
+            do_execute (self, ex_op)
+            self.stage_done[stage_id] = 1
+
+        # For all other cycles
+        else:
+            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
 
     #####################################################
     ## Define how pipeline executes
