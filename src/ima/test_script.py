@@ -57,9 +57,21 @@ import constants
 ##print (alu.propagate(2,3,'shift_add'))
 
 
-# Check the memory class methods
-in_mem = ima.memory(constants.inMem_size)
-print ('initial', in_mem.memfile)
-in_mem.write(2, '1001'*4)
-print('post-write', in_mem.memfile)
-print('read', in_mem.read(2))
+### Check the memory class methods
+##mem = ima.memory(constants.dataMem_size)
+##print ('initial', mem.memfile)
+##addr = constants.xbar_size
+##mem.write(addr, '1001'*4)
+##print('post-write', mem.memfile)
+##print('read', mem.read(addr))
+##print (mem.getLatency())
+
+# Check the instruction memory class methods
+mem = ima.instrn_memory(constants.instrnMem_size)
+print ('initial', mem.memfile)
+addr = 64
+data = {'a':1, 'b':2}
+mem.write(addr, data)
+print('post-write', mem.memfile)
+print('read', mem.read(addr))
+print (mem.getLatency())

@@ -163,22 +163,22 @@ class memory (object):
         # memfile will store half-word (16 bits digital data) length strings
         self.size = size
         self.memfile = [''] * size
-        self.addr_start = constants.xbar_size + 1
-        self.addr_end = self.addr_start + self.size
+        self.addr_start = constants.xbar_size
+        self.addr_end = self.addr_start + self.size -1
 
     def getLatency (self):
         return self.latency
 
     def read (self, addr):
         assert (type(addr) == int), 'addr type should be int'
-        assert (self.addr_start < addr < self.addr_end), 'addr exceeds the memory bounds'
-        return self.memfile[addr]
+        assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
+        return self.memfile[addr - self.addr_start]
 
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
-        assert (self.addr_start < addr < self.addr_end), 'addr exceeds the memory bounds'
+        assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         assert ((type(data) ==  str) and (len(data) == constants.data_width)), 'data should be a string with less than or equal to mem_width bits'
-        self.memfile[addr] = data
+        self.memfile[addr - self.addr_start] = data
         return 1
 
     def reset (self):
@@ -210,7 +210,7 @@ class xb_inMem (object):
 
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
-        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
         assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with less than or equal to mem_width bits'
         self.memfile[addr] = data
         return 1
@@ -235,7 +235,7 @@ class xb_outMem (xb_inMem):
 
     def read (self, addr):
         assert (type(addr) == int), 'addr type should be int'
-        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
         return self.memfile[addr]
 
     def write (self, data):
@@ -248,6 +248,11 @@ class xb_outMem (xb_inMem):
 
 # Instruction memory stores dict unlike memory (string)
 class instrn_memory (memory):
+    def read (self, addr):
+        assert (type(addr) == int), 'addr type should be int'
+        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        return self.memfile[addr]
+    
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
@@ -276,7 +281,7 @@ class mem_interface (object):
         return self.latency
 
     def request (self, ren, addr, data = ''):
-        assert (type(data) = str), 'data type expected string'
+        assert (type(data) == str), 'data type expected string'
         self.req_out = 1
         self.wait_in = 1
         if (ren):
@@ -292,7 +297,7 @@ class mem_interface (object):
         self.req_out = 0
 
     def ack (self, data = ''):
-        assert (type(data) = str), 'data type expected string'
+        assert (type(data) == str), 'data type expected string'
         self.wait_in = 0
         # update data if it was a load request
         if (self.ren_out):
