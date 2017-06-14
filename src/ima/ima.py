@@ -1,4 +1,10 @@
 # Defines a configurable IMA module with its methods
+
+# add the folder location for include files
+import sys
+sys.path.insert (0, '/home/ankitaay/dpe/include')
+
+# import dependancy files
 import numpy as np
 import constants as param
 import ima_modules as imod
