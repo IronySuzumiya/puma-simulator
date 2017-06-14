@@ -66,12 +66,99 @@ import constants
 ##print('read', mem.read(addr))
 ##print (mem.getLatency())
 
-# Check the instruction memory class methods
-mem = ima.instrn_memory(constants.instrnMem_size)
-print ('initial', mem.memfile)
-addr = 64
-data = {'a':1, 'b':2}
-mem.write(addr, data)
-print('post-write', mem.memfile)
-print('read', mem.read(addr))
-print (mem.getLatency())
+### Check the instruction memory class methods
+##mem = ima.instrn_memory(constants.instrnMem_size)
+##print ('initial', mem.memfile)
+##addr = 64
+##data = {'a':1, 'b':2}
+##mem.write(addr, data)
+##print('post-write', mem.memfile)
+##print('read', mem.read(addr))
+##print (mem.getLatency())
+
+### Check the xbar input memory and methods
+##xb_inMem = ima.xb_inMem (constants.xbar_size)
+##print (xb_inMem.getLatency ())
+##addr = 2
+##data = 4*'10'
+##dac_res = 2
+##print (xb_inMem.memfile)
+##xb_inMem.write (addr, data)
+##print (xb_inMem.memfile)
+##print (xb_inMem.read(dac_res))
+##print (xb_inMem.memfile)
+##xb_inMem.reset ()
+##print (xb_inMem.memfile)
+
+### Check the xbar input memory and methods
+##xb_outMem = ima.xb_outMem (constants.xbar_size)
+##print ('latency', xb_outMem.getLatency ())
+##data = 4*'10'
+##dac_res = 2
+##print ('initial', xb_outMem.memfile)
+##xb_outMem.write (data)
+##print ('post-write', xb_outMem.memfile)
+##print ('write pointer', xb_outMem.wr_pointer)
+##
+##data = 4*'11'
+##xb_outMem.write (data)
+##print ('post-write', xb_outMem.memfile)
+##print ('write pointer', xb_outMem.wr_pointer)
+##
+##addr = 1
+##print ('read',xb_outMem.read(addr))
+##xb_outMem.reset ()
+##print (xb_outMem.memfile)
+
+# memory interface
+# function to probe the interface signals
+def probe (interface):
+    print (interface.wait_in)
+    print (interface.data_in)
+    print (interface.req_out)
+    print (interface.ren_out)
+    print (interface.addr_out)
+    print (interface.data_out)
+    
+mem_interface = ima.mem_interface()
+print ('latency\n', mem_interface.getLatency ())
+
+print ('ld')
+addr = 2
+ren = 1
+mem_interface.request (ren, addr)
+print ('probe all the in/out signals')
+probe(mem_interface)
+print ('\n')
+
+print ('Acknowledge ld')
+data = '10'
+mem_interface.ack (data)
+print ('probe all the in/out signals')
+probe(mem_interface)
+print ('\n')
+
+print ('st')
+addr = 2
+ren = 1
+data = '1010'
+mem_interface.request (ren, addr, data)
+print ('probe all the in/out signals')
+probe(mem_interface)
+print ('\n')
+
+print ('Acknowledge st')
+mem_interface.ack ()
+print ('probe all the in/out signals')
+probe(mem_interface)
+print ('\n')
+
+print ('check reset')
+mem_interface.reset ()
+print ('probe all the in/out signals')
+probe(mem_interface)
+print ('\n')
+
+
+
+

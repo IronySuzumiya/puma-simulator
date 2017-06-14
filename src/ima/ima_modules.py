@@ -156,14 +156,14 @@ class alu (object):
 
 # Assumes a half-word oriented memory (each entry - 16 bits)
 class memory (object):
-    def __init__ (self, size):
+    def __init__ (self, size, addr_offset = 0):
         # define latency
         self.latency = constants.mem_lat
 
         # memfile will store half-word (16 bits digital data) length strings
         self.size = size
         self.memfile = [''] * size
-        self.addr_start = constants.xbar_size
+        self.addr_start = addr_offset
         self.addr_end = self.addr_start + self.size -1
 
     def getLatency (self):
@@ -200,12 +200,12 @@ class xb_inMem (object):
         return self.latency
 
     # reads & shifts all entries in parallel
-    def read (self):
+    def read (self, num_bits):
         out_list = []
         for i in xrange(self.xbar_size):
             value = self.memfile[i]
-            self.memfile[i] = value[:start_idx]
-            out_list.append(value)
+            self.memfile[i] = '0'*num_bits + value[:-1*num_bits]
+            out_list.append(value[-1*num_bits:])
         return out_list
 
     def write (self, addr, data):
@@ -240,6 +240,7 @@ class xb_outMem (xb_inMem):
 
     def write (self, data):
         self.memfile[self.wr_pointer] = data
+        self.wr_pointer = self.wr_pointer + 1
 
     def reset (self):
         self.memfile = [''] * self.xbar_size
@@ -252,7 +253,7 @@ class instrn_memory (memory):
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
         return self.memfile[addr]
-    
+
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
