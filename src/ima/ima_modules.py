@@ -249,6 +249,12 @@ class xb_outMem (xb_inMem):
 
 # Instruction memory stores dict unlike memory (string)
 class instrn_memory (memory):
+    # To initilzie the memory with instructions
+    def load (self, dict_list):
+        assert (len(dict_list) <= self.size), 'instructions exceed the instruction memory size'
+        for i in xrange(len(dict_list)):
+            self.memfile[i] = dict_list[i]
+
     def read (self, addr):
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.size), 'addr exceeds the memory bounds'

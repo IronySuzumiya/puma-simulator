@@ -386,13 +386,17 @@ class ima (object):
         self.cycles = 0
         self.halt = 0
 
-        zero_list = [0] * self.num_stages
-        one_list = [1] * self.num_stages
+        zero_list = [0] * self.num_stage
+        one_list = [1] * self.num_stage
         self.stage_empty = zero_list
         self.stage_cycle = zero_list
         self.stage_done = one_list
 
-    def run (self):
+        #Initialize the instruction memory
+        dict_list = np.load('imem.npy')
+        self.instrnMem.load(dict_list)
+
+    def pipe_run (self):
         # define a list for individual stage executions
         run_stage = [self.fetch, self.decode, self.execute]
 
