@@ -1,7 +1,7 @@
 # Defines a configurable IMA module with its methods
 
 # add the folder location for include files
-import sys
+import sys, json
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 # import dependancy files
@@ -94,31 +94,19 @@ class ima (object):
         ## Define virtual (currently for software emulation purpose (doesn't have a corresponding hardware currenty)
         #############################################################################################################
 
-        # List of supported opcodes/aluos
-        self.op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
-        self.aluop_list = ['add', 'sub', 'shift_add']
-
-        # Instruction is a dictionary of several fields
-        temp_instrn = {'opcode' : self.op_list[0],      # instrn op
-                       'aluop'  : self.aluop_list[0],   # alu function
-                       'd1'     : 0,                    # destination
-                       'r1'     : 0,                    # operand1
-                       'r2'     : 0,                    # opearnd2
-                       'addr'   : 0,                    # ext_mem (edram) address
-                       'imm'    : 0,                    # immediate (scalar) data
-                       'xb_nma' : 0 }                   # xbar negative-mask, a xbar evaluates if neg-mask = 1
-
         # Define stage-wise pipeline registers (f - before fetch, fd -fetch_decode, de - decode_execute)
         self.pc = 0 # holds the next program counter value
 
-        self.fd_instrn = temp_instrn
+        self.fd_instrn = param.dummy_instrn
 
-        self.de_opcode = temp_instrn['opcode']
-        self.de_aluop = temp_instrn['aluop']
-        self.de_d1 = temp_instrn['d1'] # target register addr for alu/alui/ld
-        self.de_addr = temp_instrn['addr'] # edram addr for ld/st
-        self.de_imm = temp_instrn['imm'] # imm value for alui
-        self.de_xb_nma = temp_instrn['xb_nma'] # nma value for xbar execution
+        self.de_instrn = param.dummy_instrn # For Debug Only
+
+        self.de_opcode = param.dummy_instrn['opcode']
+        self.de_aluop = param.dummy_instrn['aluop']
+        self.de_d1 = param.dummy_instrn['d1'] # target register addr for alu/alui/ld
+        self.de_addr = param.dummy_instrn['addr'] # edram addr for ld/st
+        self.de_imm = param.dummy_instrn['imm'] # imm value for alui
+        self.de_xb_nma = param.dummy_instrn['xb_nma'] # nma value for xbar execution
 
         self.de_val1 = 0 # operand read from r1 address
         self.de_val2 = 0 # operand read from r2 address
@@ -126,10 +114,7 @@ class ima (object):
         ########################################################
         ## Define book-keeping variables for pipeline execution
         ########################################################
-
-        # List the pipeline stages
-        self.stage_list = ['fet', 'dec', 'ex']
-        self.num_stage = len (self.stage_list)
+        self.num_stage = len (param.stage_list)
 
         # Define the book-keeping variables - stage-specific
         self.stage_empty = [0] * self.num_stage
@@ -157,36 +142,47 @@ class ima (object):
         def do_fetch (self):
             # commmon to all instructions
             self.fd_instrn = self.instrnMem.read (self.pc) # update pipeline register (fetch/decode)
-            self.stage_empty[sId+1] = 0
 
-            self.pc = self.pc + 1 # update pipeline register before fetch stage
-            self.stage_empty[sId] = 0
+            # A blan instruction signifies program end
+            if (self.fd_instrn != ''):
+                self.stage_empty[sId+1] = 0
+                self.stage_done[sId+1] = 0
+
+                self.pc = self.pc + 1 # update pipeline register before fetch stage
+                # self.stage_empty[sId] = 1
 
 
         # Describe the functionality on a cycle basis
-        # First cycle - update the target latency
-        if (self.stage_cycle[sId] == 0 and self.stage_empty[sId] != 1):
-            self.stage_latency[sId] = self.instrnMem.getLatency()
+        # Start a fetch stage - if fetch stage is empty and succedding stage is done (update_ready)
+        # Succeding stages back-propagate update_ready when they are done
+        # For all other stages (except fetch) - start when stage is non-empty
 
-            # Check if first = last cycle
-            if (self.stage_latency[sId] == 1 and update_ready):
+        # State machine (lil different than other stages)
+        # Describe the functionality on a cycle basis
+        if (self.stage_empty[sId] != 1):
+            # First cycle - update the target latency
+            if (self.stage_cycle[sId] == 0):
+                self.stage_latency[sId] = self.instrnMem.getLatency()
+
+                # Check if first = last cycle
+                if (self.stage_latency[sId] == 1 and update_ready):
+                    do_fetch (self)
+                    self.stage_done[sId] = 1
+                    self.stage_cycle[sId] = 0
+                    #self.stage_empty[sId] = 1
+                else:
+                    self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+            # Last cycle - update pipeline registers & done flag
+            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
                 do_fetch (self)
-                self.stage_done[stage_id] = 1
+                self.stage_done[sId] = 1
                 self.stage_cycle[sId] = 0
-                self.stage_empty[sId] = 1
+                #self.stage_empty[sId] = 1
+
+            # For all other cycles
             else:
                 self.stage_cycle[sId] = self.stage_cycle[sId] + 1
-
-        # Last cycle - update pipeline registers & done flag
-        elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
-            do_fetch (self)
-            self.stage_done[sId] = 1
-            self.stage_cycle[sId] = 0
-            self.stage_empty[sId] = 1
-
-        # For all other cycles
-        else:
-            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
 
     # "Decode" stage - Reads operands (if needed) and puts into the specific data structures
@@ -198,6 +194,9 @@ class ima (object):
             # common to all instructions
             self.de_opcode = dec_op
             self.stage_empty[sId+1] = 0
+            self.stage_done[sId+1] = 0
+
+            self.de_instrn = self.fd_instrn # for DEBUG only
 
             # instruction specific (for eg: ld_dec - load's decode stage)
             if (dec_op == 'ld'):
@@ -206,7 +205,15 @@ class ima (object):
 
             elif (dec_op == 'st'):
                 self.de_addr = self.fd_instrn['addr']
-                self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+
+                # read the data from dataMem or xb_outMem depending on address
+                st_data_addr =  self.fd_instrn['r1'] # address of data in register
+                if (st_data_addr >= param.num_xbar * param.xbar_size):
+                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                else:
+                    xb_id = st_data_addr / param.num_xbar
+                    addr = st_data_addr % param.xbar_size
+                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
 
             elif (dec_op == 'alu'):
                 self.de_aluop = self.fd_instrn['aluop']
@@ -226,39 +233,41 @@ class ima (object):
                 self.de_xb_nma = xb_nma
 
 
+        # State machine runs only if the stage is non-empty
         # Describe the functionality on a cycle basis
-        # First cycle - update the target latency
-        if (self.stage_cycle[sId] == 0 and self.stage_empty[sId] != 1):
-            # Check for assertion pass
-            dec_op = self.fd_instrn['opcode']
-            assert (dec_op in self.op_list), 'unsupported opcode'
+        if (self.stage_empty[sId] != 1):
+            # First cycle - update the target latency
+            if (self.stage_cycle[sId] == 0):
+                # Check for assertion pass
+                dec_op = self.fd_instrn['opcode']
+                assert (dec_op in param.op_list), 'unsupported opcode'
 
-            self.stage_latency[sId] = self.dataMem.getLatency()
+                self.stage_latency[sId] = self.dataMem.getLatency()
 
-            # Check if first = last cycle
-            if (self.stage_latency[sId] == 1 and update_ready):
+                # Check if first = last cycle
+                if (self.stage_latency[sId] == 1 and update_ready):
+                    do_decode (self, dec_op)
+                    self.stage_done[sId] = 1
+                    self.stage_cycle[sId] = 0
+                    self.stage_empty[sId] = 1
+                else:
+                    self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+            # Last cycle - update pipeline registers (if ??) & done flag
+            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
+                dec_op = self.fd_instrn['opcode']
                 do_decode (self, dec_op)
                 self.stage_done[sId] = 1
                 self.stage_cycle[sId] = 0
                 self.stage_empty[sId] = 1
+
+            # For all other cycles (non-first, non-last, non-update ready)
             else:
                 self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
-        # Last cycle - update pipeline registers (if ??) & done flag
-        elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
-            dec_op = self.fd_instrn['opcode']
-            do_decode (self, dec_op)
-            self.stage_done[sId] = 1
-            self.stage_cycle[sId] = 0
-            self.stage_empty[sId] = 1
-
-        # For all other cycles
-        else:
-            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
-
 
     # Execute stage - compute and store back to registers
-    def execute (self):
+    def execute (self, update_ready):
         sId = 2
 
         # Define what to do in execute (done for conciseness)
@@ -271,7 +280,14 @@ class ima (object):
                 #    data = self.mem_interface.data_in
                 #    self.outMem.write (self.de_d1, data)
                 data = self.mem_interface.data_in  # temporary
-                self.outMem.write (self.de_d1, data) # temporary
+
+                # based on the address write to dataMem or xb_inMem
+                if (self.de_d1 >= param.num_xbar * param.xbar_size):
+                    self.dataMem.write (self.de_d1, data)
+                else:
+                    xb_id = self.de_d1 / param.num_xbar
+                    addr = self.de_d1 % param.num_xbar
+                    self.xb_inMem_list[xb_id].write (addr, data)
 
             elif (ex_op == 'st'):
                 ren = 0
@@ -282,13 +298,13 @@ class ima (object):
             elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
                 # compute in ALU
                 out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-                # write to outMem
+                # write to dataMem
                 self.dataMem.write (self.de_d1, out)
 
             elif (ex_op == 'alui'):
                 # compute in ALU
                 out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-                # write to outMem
+                # write to dataMem
                 self.dataMem.write (self.de_d1, out)
 
             elif (ex_op == 'mvm'):
@@ -314,7 +330,7 @@ class ima (object):
                             # shift and add - make a dedicated sna unit -- PENDING
                             out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc)
                             # store back to xbar's output register
-                            self.outMem_list[i].write (out_sna)
+                            self.xb_outMem_list[i].write (out_sna)
 
             else: # for halt instruction
                 self.halt = 1
@@ -337,52 +353,55 @@ class ima (object):
                                                self.mux2_list[0] +\
                                                self.adc_list[0] +\
                                                self.alu_list[0] +\
-                                               self.xb_outMem_list[0]) *\
-                            param.num_xbar/param.num_adc
+                                               self.xb_outMem_list[0])
+            latency_unit2 = latency_unit2 * np.ceil(self.de_xb_nma/param.num_adc)
 
             latency_unit = max (latency_unit1, latency_unit2)
 
             return (param.xbdata_width / param.dac_res) * latency_unit
 
 
+        # State machine runs only if the stage is non-empty
         # Describe the functionality on a cycle basis
-        # First cycle - update the target latency
-        if (self.stage_cycle[sId] == 0 and self.stage_empty[sId] != 1):
-            # Check for assertion pass
-            ex_op = self.de_opcode
-            assert (ex_op in self.op_list), 'unsupported opcode'
+        if (self.stage_empty[sId] != 1):
+            # First cycle - update the target latency
+            if (self.stage_cycle[sId] == 0):
+                # Check for assertion pass
+                ex_op = self.de_opcode
+                assert (ex_op in param.op_list), 'unsupported opcode'
 
-            # assign execution unit based stage latency
-            if (ex_op == ('ld' or 'st')):
-                self.stage_latency[sId] = self.mem_interface.getLatency()
-            elif (exop == 'alu' or exop == 'alui'):
-                # ALU instructions access ALU and write to memory
-                self.stage_latency[sId] = self.alu_list[0].getLatency() +\
-                                          self.dataMem.getLatency()
-            else: # for xbar operation
-                self.stage_latency[sId] = xbComputeLatency (self)
+                # assign execution unit based stage latency
+                if (ex_op == ('ld' or 'st')):
+                    self.stage_latency[sId] = self.mem_interface.getLatency()
+                elif (ex_op == 'alu' or ex_op == 'alui'):
+                    # ALU instructions access ALU and write to memory
+                    self.stage_latency[sId] = self.alu_list[0].getLatency() +\
+                                              self.dataMem.getLatency()
+                elif (ex_op == 'mvm'):
+                    self.stage_latency[sId] = xbComputeLatency (self)
+                else: # halt instruction
+                    self.stage_latency[sId] = 1
 
-            # Check if first = last cycle
-            if (self.stage_latency[sId] == 1 and update_ready):
+                # Check if first = last cycle
+                if (self.stage_latency[sId] == 1 and update_ready):
+                    do_execute (self, ex_op)
+                    self.stage_done[sId] = 1
+                    self.stage_cycle[sId] = 0
+                    self.stage_empty[sId] = 1
+                else:
+                    self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+            # Last cycle - update pipeline registers (if ??) & done flag
+            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
+                ex_op = self.de_opcode
                 do_execute (self, ex_op)
                 self.stage_done[sId] = 1
                 self.stage_cycle[sId] = 0
                 self.stage_empty[sId] = 1
 
+            # For all other cycles
             else:
                 self.stage_cycle[sId] = self.stage_cycle[sId] + 1
-
-        # Last cycle - update pipeline registers (if ??) & done flag
-        elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
-            ex_op = self.de_opcode
-            do_execute (self, ex_op)
-            self.stage_done[sId] = 1
-            self.stage_cycle[sId] = 0
-            self.stage_empty[sId] = 1
-
-        # For all other cycles
-        else:
-            self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
 
     #####################################################
@@ -394,39 +413,77 @@ class ima (object):
 
         zero_list = [0] * self.num_stage
         one_list = [1] * self.num_stage
-        self.stage_empty = zero_list
-        self.stage_cycle = zero_list
-        self.stage_done = one_list
+
+        self.stage_empty = one_list[:]
+        self.stage_empty[0] = 0 # fetch doesn't begin with empty
+        self.stage_cycle = zero_list[:]
+        self.stage_done = one_list[:]
 
         #Initialize the instruction memory
         dict_list = np.load('imem.npy')
         self.instrnMem.load(dict_list)
 
-    def pipe_run (self):
+    def pipe_run (self, tracefile = ''):
+
+        # tracefile stores the debug trace if specified
+        if (tracefile != ''):
+            fid = open(tracefile, 'w')
+            debug = 1
+        else: debug = 0
+
         # define a list for individual stage executions
         run_stage = [self.fetch, self.decode, self.execute]
 
         # Run the pipeline
+        # Each iteration of while loop is a cycle of ima pipeline execution
         while (self.halt != 1):
-            # Each iteration of while loop is a cycle of ima pipeline execution
 
-            # Traverse the pipeline to update the update_ready flag
-            update_ready = [0] * self.num_stages
-            for i in range (self.num_stages-1,-1,-1):
-                if (i == 2): #Execute stage
-                    update_ready[i] == 1
+            # Define a stage function
+            stage_function = {0 : self.fetch,
+                              1 : self.decode,
+                              2 : self.execute}
+
+            # Traverse the pipeline to update the update_ready flag & execute the stages in backward order
+            for i in range (self.num_stage-1, -1, -1):
+                # set update_ready flag
+                if (i == self.num_stage-1):
+                    update_ready = 1
                 else:
-                    if (self.stage_done[i+1] == 1):
-                        update_ready[i] = 1
+                    update_ready = self.stage_done[i+1]
 
-            # Run the pipeline stages based on the update_ready flags
-            self.execute (update_read[2])
-            self.decode (update_read[1])
-            self.fetch (update_read[0])
+                # run the stage based on its update_ready argument
+                stage_function[i] (update_ready)
+
+            # If specified, print thetrace (pipeline stage information)
+            if (debug):
+                fid.write('Cycle ' + str(self.cycles) + '\n')
+
+                sId = 0 # Fetch
+                fid.write('Fet | PC ' + str(self.pc))
+                fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
+                        + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
+
+                sId = 1 # Decode
+                fid.write ('Dec | Inst: ')
+                json.dump (self.fd_instrn, fid)
+                fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
+                        + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
+
+                sId = 2 # Execute
+                fid.write('Exe | Inst: ')
+                json.dump(self.de_instrn, fid)
+                fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
+                        + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
+                fid.write('\n')
 
             # Check for halt condition
-            if (self.halt != 1):
+            if (self.halt == 1 or self.cycles >= param.cycles_max):
+                break
+            else:
                 self.cycles = self.cycles + 1
 
-        print ('IMA ran for' + self.cycles + 'cycles')
+        print ('IMA ran for cycles: ' + str(self.cycles))
+        if (debug):
+            fid.write ('IMA ran for cycles: ' + str(self.cycles))
+        fid.close ()
 

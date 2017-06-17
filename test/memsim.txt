@@ -1,0 +1,17 @@
+EDRAM contents
+00000000
+00000001
+00000010
+00000011
+00000100
+00000101
+00000110
+00000111
+DataMemory contents
+00000001
+00000010
+00000011
+Xbar Input Memory contents
+Xbar Output Memory contents
+Xbar Input Memory contents
+Xbar Output Memory contents

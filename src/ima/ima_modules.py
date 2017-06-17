@@ -1,9 +1,16 @@
 # Defining all modules within an ima and its methods (Propagate and or Update)
+# Also define sime support functions (commonly used)
 # 'Propagate' is the combinational part evaluation
 # 'Update' - (NOT BEING USED CURRENTLY!) is the flip fop evaluation (for clocked elements of the circuit only)
 
 import numpy as np
 import constants
+
+
+# Convert int to binary of specified bits
+def int2bin (inp, bits):
+    out = bin(inp)[2:]
+    return ((bits-len(out))*'0' + out)
 
 
 class xbar (object):
@@ -150,8 +157,11 @@ class alu (object):
 
     def propagate (self, a, b, aluop):
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
+        a = int (a, 2)
+        b = int (b, 2)
         out = self.options[aluop](a, b)
-        return out
+        out = bin(out)[2:]
+        return ((constants.data_width - len(out))*'0' + out)
 
 
 # Assumes a half-word oriented memory (each entry - 16 bits)
@@ -177,9 +187,9 @@ class memory (object):
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
-        assert ((type(data) ==  str) and (len(data) == constants.data_width)), 'data should be a string with less than or equal to mem_width bits'
+        #print 'length of data ' + str(len(data))
+        assert ((type(data) ==  str) and (len(data) == constants.data_width)), 'data should be a string with mem_width bits'
         self.memfile[addr - self.addr_start] = data
-        return 1
 
     def reset (self):
         self.memfile = [''] * self.size
@@ -211,7 +221,7 @@ class xb_inMem (object):
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
-        assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with less than or equal to mem_width bits'
+        assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[addr] = data
         return 1
 
@@ -257,8 +267,11 @@ class instrn_memory (memory):
 
     def read (self, addr):
         assert (type(addr) == int), 'addr type should be int'
-        assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
-        return self.memfile[addr]
+        # assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
+        if (-1 < addr < self.size):
+            return self.memfile[addr]
+        else:
+            return self.memfile[len(memfile)]
 
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
@@ -276,13 +289,21 @@ class mem_interface (object):
 
         # input port
         self.wait_in = 0  # wait signal from (EDRAM) controller to ima
-        self.data_in = 0  # data (from EDRAM) to ima
+        # self.data_in = '10'  # data (from EDRAM) to ima
+        self.data_in = '01' * (constants.data_width) # for debug only
 
         # output port
         self.req_out = 0  # req sent by ima to mem controller
         self.ren_out = 0  # ren = 1 (Load), ren = 0 (Store)
         self.addr_out = 0 # add sent by ima to mem controller
         self.data_out = 0 # data (for ST) sent by ima to men controller
+
+        # For DEBUG of IMA only - define a memory element and preload some values
+        self.edram = memory (constants.dataMem_size, 0)
+        for i in range (len(self.edram.memfile)/2):
+            val = int2bin (i, constants.data_width)
+            self.edram.memfile[i] = val
+
 
     def getLatency (self):
         return self.latency
@@ -294,10 +315,16 @@ class mem_interface (object):
         if (ren):
             self.ren_out = 1
             self.addr_out = addr
+
+            # For DEBUG of IMA only
+            self.data_in = self.edram.memfile[addr]
         else:
             self.ren_out = 0
             self.addr_out = addr
             self.data_out = data
+
+            # For DEBUG of IMA only
+            self.edram.memfile[addr] = data
 
     # deassert the previously asserted request
     def reset (self):

@@ -1,0 +1,31 @@
+Cycle 0
+Fet | PC 1 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 9} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 2, "opcode": "hlt", "r1": 9, "r2": 10, "xb_nma": 0, "imm": 0, "d1": 11} | Flags: empty 1 done 1 cycles 0
+
+Cycle 1
+Fet | PC 2 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 10} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 9} | Flags: empty 0 done 0 cycles 0
+
+Cycle 2
+Fet | PC 3 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 2, "r2": 10, "imm": 0, "r1": 9, "opcode": "alu", "xb_nma": 0, "d1": 11} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 10} | Flags: empty 0 done 0 cycles 0
+
+Cycle 3
+Fet | PC 4 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 2, "r2": 10, "imm": 0, "r1": 9, "opcode": "hlt", "xb_nma": 0, "d1": 11} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 10, "imm": 0, "r1": 9, "opcode": "alu", "xb_nma": 0, "d1": 11} | Flags: empty 0 done 0 cycles 0
+
+Cycle 4
+Fet | PC 4 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 10, "imm": 0, "r1": 9, "opcode": "hlt", "xb_nma": 0, "d1": 11} | Flags: empty 0 done 0 cycles 0
+
+Cycle 5
+Fet | PC 4 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 10, "imm": 0, "r1": 9, "opcode": "hlt", "xb_nma": 0, "d1": 11} | Flags: empty 1 done 1 cycles 0
+
+IMA ran for cycles: 5
