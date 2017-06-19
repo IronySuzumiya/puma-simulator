@@ -20,7 +20,7 @@ class xbar (object):
 
         # xbar_value is the weights meant for one crossbar
         self.xbar_size = xbar_size
-        self.xbar_value = np.zeros((xbar_size, xbar_size), dtype=float)
+        self.xbar_value = np.ones((xbar_size, xbar_size), dtype=float)
         # unprogrammed xbar contains zeros
         if (xbar_value != 'nil'):
             self.xbar_value = xbar_value
@@ -101,7 +101,7 @@ class adc (object):
         return ('0'*(num_bits - len(bin_value)) + bin_value)
 
     def propagate (self, inp):
-        assert (type(inp) == float), 'adc input type mismatch (float expected)'
+        assert (type(inp) in [float, np.float32, np.float64]), 'adc input type mismatch (float, np.float32, np.float64 expected)'
         num_bits = self.adc_res
         return self.real2bin (inp, num_bits)
 
@@ -119,7 +119,7 @@ class sampleNhold (object):
 
     def propagate (self, inp_list):
         assert (len(inp_list) == len(self.hold_latch)), 'sample&hold input size mismatch'
-        for i in xrange(len(inp_lisaddrt)):
+        for i in xrange(len(inp_list)):
             self.hold_latch[i] = inp_list[i]
         return self.hold_latch
 
@@ -147,19 +147,19 @@ class alu (object):
         # define latency
         self.latency = constants.alu_lat
 
-        def add (a, b): return (a + b)
-        def sub (a, b): return (a - b)
-        def shift_add (a, b): return (a + (b << 1))
-        self.options = {'add' : add, 'sub' : sub, 'shift_add' : shift_add}
+        def add (a, b, c): return (a + b)
+        def sub (a, b, c): return (a - b)
+        def shift_add (a, b, c): return (a + (b << c))
+        self.options = {'add' : add, 'sub' : sub, 'sna' : shift_add}
 
     def getLatency (self):
         return self.latency
 
-    def propagate (self, a, b, aluop):
+    def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
         a = int (a, 2)
         b = int (b, 2)
-        out = self.options[aluop](a, b)
+        out = self.options[aluop] (a, b, c)
         out = bin(out)[2:]
         return ((constants.data_width - len(out))*'0' + out)
 
@@ -223,7 +223,6 @@ class xb_inMem (object):
         assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
         assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[addr] = data
-        return 1
 
     def reset (self):
         self.memfile = [''] * self.xbar_size
@@ -237,7 +236,7 @@ class xb_outMem (xb_inMem):
 
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size
-        self.memfile = [''] * self.xbar_size
+        self.memfile = ['0' * constants.xbdata_width] * self.xbar_size
         self.wr_pointer = 0
 
     def getLatency (self):
@@ -249,11 +248,15 @@ class xb_outMem (xb_inMem):
         return self.memfile[addr]
 
     def write (self, data):
+        assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[self.wr_pointer] = data
         self.wr_pointer = self.wr_pointer + 1
 
+    def restart (self):
+        self.wr_pointer = 0
+
     def reset (self):
-        self.memfile = [''] * self.xbar_size
+        self.memfile = ['0' * constants.xbdata_width] * self.xbar_size
         self.wr_pointer = 0
 
 

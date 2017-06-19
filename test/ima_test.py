@@ -11,8 +11,10 @@ import ima_modules
 import generate_inst
 
 # Define a dump function which dums the all memory components into a file
-def dump (ima):
-    filename = 'memsim.txt'
+def dump (ima, filename = ''):
+    if (filename == ''):
+        filename = 'memsim.txt'
+
     fid = open (filename, 'w')
 
     def mem_dump (memfile, name): # for conciseness
@@ -46,14 +48,17 @@ ima.pipe_init ()
 
 # Run the pipeline on the loaded instructions & store the trace (if applicable)
 tracefile = ''
+dumpfile = ''
 try:
-    opts, args = getopt.getopt (sys.argv[1:], 't:')
+    opts, args = getopt.getopt (sys.argv[1:], 't:d:')
 except getopt.GetoptError:
-    print ('ima_test.py -t <tracefile>')
+    print ('ima_test.py -t <tracefile> -d <dumpfile>')
     sys.exit(2)
 for opt, arg in opts:
     if (opt == '-t'):
         tracefile = arg
+    if (opt == '-d'):
+        dumpfile = arg
 
 ima.pipe_run (tracefile)
-dump (ima)
+dump (ima, dumpfile)

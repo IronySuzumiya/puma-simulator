@@ -7,11 +7,24 @@ EDRAM contents
 00000101
 00000110
 00000111
+00000000
+00000000
+00000000
+00000000
 DataMemory contents
 00000001
 00000010
 00000011
+00010000
 Xbar Input Memory contents
+00000000
+00000000
 Xbar Output Memory contents
+00000000
+00000000
 Xbar Input Memory contents
+00000000
+00000000
 Xbar Output Memory contents
+00000000
+00000000

@@ -3,20 +3,20 @@
 ###################################################################
 
 vdd = 0.9
-xbar_out_min = 0
-xbar_out_max = 1 # think about this
+xbar_out_min = -10e-10
+xbar_out_max = 1 # think about this - ???
 data_width = 8 # (microarchitecture param)
 xbdata_width = 8 # (nn speciic for now)
-
 ###################################
 ## Define commonly used structures
 ###################################
 
-cycles_max = 20
+# Limits teyh number of cycles an IMA runs in case it doesn't halt
+cycles_max = 60
 
 # List of supported opcodes/aluops
 op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
-aluop_list = ['add', 'sub', 'shift_add']
+aluop_list = ['add', 'sub', 'sna'] # sna is also used by mvm isntruction
 
 # Instruction format
 dummy_instrn = {'opcode' : op_list[0],      # instrn op
@@ -47,21 +47,21 @@ last_stage = 'ex'
 
 # Enter parameters here:
 num_xbar = 2
-xbar_size = 4
+xbar_size = 2
 dac_res = 2
 adc_res = 2
-num_adc = 1
+num_adc = 2
 num_ALU = 1
 dataMem_size = 16
-instrnMem_size = 8
+instrnMem_size = 20
 
 # Enter IMA component latency
-xbar_lat = 2
-dac_lat = 2
-adc_lat = 2
-snh_lat = 2
-mux_lat = 2
-alu_lat = 0
+xbar_lat = 6
+dac_lat = 1
+adc_lat = 1
+snh_lat = 1
+mux_lat = 1
+alu_lat = 1
 mem_lat = 1
 # Added here for simplicity now (***needs modification later***)
 memInterface_lat = 1

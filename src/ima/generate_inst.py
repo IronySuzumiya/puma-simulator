@@ -23,14 +23,15 @@ def i_store (r1, addr):
     i_temp['addr'] = addr
     return i_temp
 
-# generate alu prototype
-def i_alu (aluop, d1, r1, r2 = ''):
+# generate alu/alui prototype
+def i_alu (aluop, d1, r1, r2 = '', imm = ''):
     i_temp = param.dummy_instrn
-    i_temp['opcode'] = 'alu'if (r2 != '') else 'alui'
+    i_temp['opcode'] = 'alu' if (r2 != '') else 'alui'
     i_temp['aluop'] = aluop
     i_temp['d1'] = d1
     i_temp['r1'] = r1
-    i_temp['r2'] = r2
+    i_temp['r2'] = r2 # will be used in alu
+    i_temp['imm'] = imm # will be used in alui
     return i_temp
 
 # generate mvm prototype
@@ -45,6 +46,7 @@ def i_halt ():
     i_temp = param.dummy_instrn
     i_temp['opcode'] = 'hlt'
     return i_temp
+
 
 # Generate actual instructions
 def generate_inst ():
@@ -63,6 +65,40 @@ def generate_inst ():
 
     # Add a alu instruction
     i_temp = i_alu ('add', datamem_off + 3, datamem_off + 1, datamem_off + 2)
+    dict_list.append (i_temp.copy())
+
+    # Add a alui instruction
+    imm = '00001111'
+    i_temp = i_alu ('add', datamem_off + 4, datamem_off + 1, '', imm)
+    dict_list.append (i_temp.copy())
+
+    # Add a st instruction
+    i_temp = i_store (datamem_off + 3, 8)
+    dict_list.append (i_temp.copy())
+
+    ## Checking an mvm instruction
+    # Load data to xb_inMem (4 loads)
+    i_temp = i_load (0, 0)
+    dict_list.append (i_temp.copy())
+    i_temp = i_load (1, 1)
+    dict_list.append (i_temp.copy())
+    i_temp = i_load (2, 2)
+    dict_list.append (i_temp.copy())
+    i_temp = i_load (3, 3)
+    dict_list.append (i_temp.copy())
+
+    # mvm instrn
+    i_temp = i_mvm (2)
+    dict_list.append (i_temp.copy())
+
+    # store data back from xbout_mem
+    i_temp = i_store (0, 8)
+    dict_list.append (i_temp.copy())
+    i_temp = i_store (1, 9)
+    dict_list.append (i_temp.copy())
+    i_temp = i_store (2, 10)
+    dict_list.append (i_temp.copy())
+    i_temp = i_store (3, 11)
     dict_list.append (i_temp.copy())
 
     # Add a halt instruction

@@ -310,10 +310,13 @@ class ima (object):
             elif (ex_op == 'mvm'):
                 # traverse through the xbars - (nma is the number of crossbars which will evaluate)
                 for i in xrange (self.de_xb_nma):
+                    # reset the xb out memory before starting to accumulate
+                    self.xb_outMem_list[i].reset ()
 
                     ## Loop to cover all bits of inputs
+                    for k in xrange (param.xbdata_width / param.dac_res):
                         # read the values from the xbar's input register
-                        out_xb_inMem = self.xb_inMem_list[i].read ()
+                        out_xb_inMem = self.xb_inMem_list[i].read (param.dac_res)
                         # convert digital values to analog
                         out_dac = self.dacArray_list[i].propagate (out_xb_inMem)
                         out_dac = np.asarray (out_dac)
@@ -324,13 +327,17 @@ class ima (object):
 
                         for j in xrange (param.xbar_size):
                             # convert from analog to digital
-                            out_adc = self.adc_list[i].propagate (out_snh)
+                            adc_id = i % param.num_adc
+                            out_adc = self.adc_list[adc_id].propagate (out_snh[j])
                             # read from xbar's output register
                             out_xb_outMem = self.xb_outMem_list[i].read (j)
                             # shift and add - make a dedicated sna unit -- PENDING
-                            out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc)
-                            # store back to xbar's output register
+                            alu_op = 'sna'
+                            out_adc = '0'*(param.xbdata_width - param.adc_res) + out_adc
+                            out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, param.dac_res)
+                            # store back to xbar's output register & restart it
                             self.xb_outMem_list[i].write (out_sna)
+                            self.xb_outMem_list[i].restart()
 
             else: # for halt instruction
                 self.halt = 1
@@ -349,22 +356,23 @@ class ima (object):
                             self.xbar_list[0].getLatency() +\
                             self.snh_list[0].getLatency()
 
-            latency_unit2 = param.xbar_size * (self.mux1_list[0] +\
-                                               self.mux2_list[0] +\
-                                               self.adc_list[0] +\
-                                               self.alu_list[0] +\
-                                               self.xb_outMem_list[0])
-            latency_unit2 = latency_unit2 * np.ceil(self.de_xb_nma/param.num_adc)
+            latency_unit2 = param.xbar_size * (self.mux1_list[0].getLatency() +\
+                                               self.mux2_list[0].getLatency() +\
+                                               self.adc_list[0].getLatency() +\
+                                               self.alu_list[0].getLatency() +\
+                                               self.xb_outMem_list[0].getLatency())
+
+            latency_unit2 = latency_unit2 * np.ceil(float(self.de_xb_nma)/param.num_adc)
 
             latency_unit = max (latency_unit1, latency_unit2)
-
-            return (param.xbdata_width / param.dac_res) * latency_unit
+            latency_out = (param.xbdata_width / param.dac_res) * latency_unit
+            return latency_out
 
 
         # State machine runs only if the stage is non-empty
-        # Describe the functionality on a cycle basis
+        # Describe the functionality on# a cycle basis
         if (self.stage_empty[sId] != 1):
-            # First cycle - update the target latency
+            # First cycle - update the itarget latency
             if (self.stage_cycle[sId] == 0):
                 # Check for assertion pass
                 ex_op = self.de_opcode
@@ -429,6 +437,8 @@ class ima (object):
         if (tracefile != ''):
             fid = open(tracefile, 'w')
             debug = 1
+            fid.write ('Cycle information is printed is at the end of the clock cycle\n')
+            fid.write ('Assumption: A clock cycle ends at the positive edge\n')
         else: debug = 0
 
         # define a list for individual stage executions
