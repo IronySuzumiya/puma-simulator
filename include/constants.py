@@ -1,17 +1,17 @@
-###################################################################
-## Technology constants for all the modules (components in an IMA)
-###################################################################
+############################################
+## Technology constants for all the modules
+############################################
 
+# IMA
 vdd = 0.9
 xbar_out_min = -10e-10
 xbar_out_max = 1 # think about this - ???
-data_width = 8 # (microarchitecture param)
-xbdata_width = 8 # (nn speciic for now)
-###################################
-## Define commonly used structures
-###################################
 
-# Limits teyh number of cycles an IMA runs in case it doesn't halt
+########################################
+## Define commonly used data structures
+########################################
+
+# Limits the number of cycles an IMA runs in case it doesn't halt
 cycles_max = 60
 
 # List of supported opcodes/aluops
@@ -31,6 +31,7 @@ dummy_instrn = {'opcode' : op_list[0],      # instrn op
 # List of pipeline stages - in order
 stage_list = ['fet', 'dec', 'ex']
 last_stage = 'ex'
+
 #################################################
 # DPE Hardware Configuration Parameters
 #################################################
@@ -54,6 +55,8 @@ num_adc = 2
 num_ALU = 1
 dataMem_size = 16
 instrnMem_size = 20
+data_width = 8 # (microarchitecture param)
+xbdata_width = 8 # (nn speciic for now)
 
 # Enter IMA component latency
 xbar_lat = 6
@@ -65,3 +68,20 @@ alu_lat = 1
 mem_lat = 1
 # Added here for simplicity now (***needs modification later***)
 memInterface_lat = 1
+
+#################################################
+# Tile Hierarchy
+    # Number of IMAs
+    # EDRAM size
+    # Shared Bus width
+#################################################
+
+# Enter parameters here:
+num_ima = 2
+edram_buswidth = 16
+edram_size = 32
+
+# Enter component latency
+edram_lat = 2
+
+
