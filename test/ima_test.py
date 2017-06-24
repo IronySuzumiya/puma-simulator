@@ -2,7 +2,7 @@
 # add the folder location for include files
 import sys, getopt
 sys.path.insert (0, '/home/ankitaay/dpe/include')
-sys.path.insert (0, '/home/ankitaay/dpe/src/ima')
+sys.path.insert (0, '/home/ankitaay/dpe/src/')
 
 import numpy as np
 import constants as param
@@ -60,5 +60,17 @@ for opt, arg in opts:
     if (opt == '-d'):
         dumpfile = arg
 
-ima.pipe_run (tracefile)
+# Simulate the IMA
+if (tracefile != ''):
+    fid = open(tracefile, 'w')
+
+cycle = 0
+while (ima.halt != 1 and cycle < param.cycles_max):
+    ima.pipe_run (cycle, fid) # fid is the id for tracefile
+    cycle = cycle + 1
+
+# Close the tracefile if applicable
+if (tracefile != ''):
+    fid.close ()
+
 dump (ima, dumpfile)

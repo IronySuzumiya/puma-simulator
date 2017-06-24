@@ -4,7 +4,7 @@
 import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 sys.path.insert (0, '/home/ankitaay/dpe/src/ima')
-import constants
+import constants as param
 import ima_modules
 
 class edram (ima_modules.memory):
@@ -47,7 +47,7 @@ class edram_controller (object):
         idx = self.find_next (ren_list, wen_list)
 
         # based on ren and wen perfrom the required action
-        assert ((ren_list[idx] ^ wen_list[idx]) == 1), 'Ram Access Error: both ren and wen cannot be same
+        assert ((ren_list[idx] ^ wen_list[idx]) == 1), 'Ram Access Error: both ren and wen cannot be same'
 
         wait_list = [1] * param.num_ima
         wait_list[idx] = 0

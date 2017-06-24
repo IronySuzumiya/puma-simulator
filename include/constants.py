@@ -77,7 +77,7 @@ memInterface_lat = 1
 #################################################
 
 # Enter parameters here:
-num_ima = 2
+num_ima = 4
 edram_buswidth = 16
 edram_size = 32
 

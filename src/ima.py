@@ -123,7 +123,7 @@ class ima (object):
         self.stage_done = [0] * self.num_stage
 
         # Define global pipeline variables
-        self.cycles = 0
+        self.debug = 0
 
         # Define a halt signal - think about the logic later
         self.halt = 0
@@ -370,7 +370,7 @@ class ima (object):
 
 
         # State machine runs only if the stage is non-empty
-        # Describe the functionality on# a cycle basis
+        # Describe the functionality on a cycle basis
         if (self.stage_empty[sId] != 1):
             # First cycle - update the itarget latency
             if (self.stage_cycle[sId] == 0):
@@ -416,7 +416,7 @@ class ima (object):
     ## Define how pipeline executes
     #####################################################
     def pipe_init (self):
-        self.cycles = 0
+        self.debug = 0
         self.halt = 0
 
         zero_list = [0] * self.num_stage
@@ -431,69 +431,54 @@ class ima (object):
         dict_list = np.load('imem.npy')
         self.instrnMem.load(dict_list)
 
-    def pipe_run (self, tracefile = ''):
+    # Mimics one cycle of ima pipeline execution
+    def pipe_run (self, cycle, fid = ''): # fid is tracefile's id
 
-        # tracefile stores the debug trace if specified
-        if (tracefile != ''):
-            fid = open(tracefile, 'w')
-            debug = 1
+        # tracefile stores the debug trace in debug mode
+        if (cycle == 0 and fid != ''):
+            self.debug = 1
             fid.write ('Cycle information is printed is at the end of the clock cycle\n')
             fid.write ('Assumption: A clock cycle ends at the positive edge\n')
-        else: debug = 0
 
-        # define a list for individual stage executions
-        run_stage = [self.fetch, self.decode, self.execute]
+        # Run the pipeline for once cycle
+        # Define a stage function
+        stage_function = {0 : self.fetch,
+                          1 : self.decode,
+                          2 : self.execute}
 
-        # Run the pipeline
-        # Each iteration of while loop is a cycle of ima pipeline execution
-        while (self.halt != 1):
-
-            # Define a stage function
-            stage_function = {0 : self.fetch,
-                              1 : self.decode,
-                              2 : self.execute}
-
-            # Traverse the pipeline to update the update_ready flag & execute the stages in backward order
-            for i in range (self.num_stage-1, -1, -1):
-                # set update_ready flag
-                if (i == self.num_stage-1):
-                    update_ready = 1
-                else:
-                    update_ready = self.stage_done[i+1]
-
-                # run the stage based on its update_ready argument
-                stage_function[i] (update_ready)
-
-            # If specified, print thetrace (pipeline stage information)
-            if (debug):
-                fid.write('Cycle ' + str(self.cycles) + '\n')
-
-                sId = 0 # Fetch
-                fid.write('Fet | PC ' + str(self.pc))
-                fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
-                        + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
-
-                sId = 1 # Decode
-                fid.write ('Dec | Inst: ')
-                json.dump (self.fd_instrn, fid)
-                fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
-                        + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
-
-                sId = 2 # Execute
-                fid.write('Exe | Inst: ')
-                json.dump(self.de_instrn, fid)
-                fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
-                        + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
-                fid.write('\n')
-
-            # Check for halt condition
-            if (self.halt == 1 or self.cycles >= param.cycles_max):
-                break
+        # Traverse the pipeline to update the update_ready flag & execute the stages in backward order
+        for i in range (self.num_stage-1, -1, -1):
+            # set update_ready flag
+            if (i == self.num_stage-1):
+                update_ready = 1
             else:
-                self.cycles = self.cycles + 1
+                update_ready = self.stage_done[i+1]
 
-        print ('IMA ran for cycles: ' + str(self.cycles))
-        if (debug):
-            fid.write ('IMA ran for cycles: ' + str(self.cycles))
-        fid.close ()
+            # run the stage based on its update_ready argument
+            stage_function[i] (update_ready)
+
+        # If specified, print thetrace (pipeline stage information)
+        if (self.debug):
+            fid.write('Cycle ' + str(cycle) + '\n')
+
+            sId = 0 # Fetch
+            fid.write('Fet | PC ' + str(self.pc))
+            fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
+                    + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
+
+            sId = 1 # Decode
+            fid.write ('Dec | Inst: ')
+            json.dump (self.fd_instrn, fid)
+            fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
+                    + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
+
+            sId = 2 # Execute
+            fid.write('Exe | Inst: ')
+            json.dump(self.de_instrn, fid)
+            fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
+                    + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
+            fid.write('\n')
+
+            if (self.halt == 1):
+                fid.write ('IMA ran for cycles: ' + str(cycle))
 
