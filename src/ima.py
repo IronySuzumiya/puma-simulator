@@ -273,14 +273,7 @@ class ima (object):
         # Define what to do in execute (done for conciseness)
         def do_execute (self, ex_op):
             if (ex_op == 'ld'):
-                ren = 1
-                self.mem_interface.request (ren, self.de_addr)
-                # waits until data is brought from edram
-                #if (self.mem_interface.wait_in == 0):
-                #    data = self.mem_interface.data_in
-                #    self.outMem.write (self.de_d1, data)
-                data = self.mem_interface.data_in  # temporary
-
+                data = self.mem_interface.ramload
                 # based on the address write to dataMem or xb_inMem
                 if (self.de_d1 >= param.num_xbar * param.xbar_size):
                     self.dataMem.write (self.de_d1, data)
@@ -289,11 +282,8 @@ class ima (object):
                     addr = self.de_d1 % param.num_xbar
                     self.xb_inMem_list[xb_id].write (addr, data)
 
-            elif (ex_op == 'st'):
-                ren = 0
-                self.mem_interface.request (ren, self.de_addr, self.de_val1)
-                # waits until store finishes
-                ## Incomplete
+            elif (ex_op == 'st'): #nothing to be done by ima for st here
+                return 1
 
             elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
                 # compute in ALU
@@ -372,15 +362,20 @@ class ima (object):
         # State machine runs only if the stage is non-empty
         # Describe the functionality on a cycle basis
         if (self.stage_empty[sId] != 1):
-            # First cycle - update the itarget latency
+            # First cycle - update the target latency
             if (self.stage_cycle[sId] == 0):
                 # Check for assertion pass
                 ex_op = self.de_opcode
                 assert (ex_op in param.op_list), 'unsupported opcode'
 
                 # assign execution unit based stage latency
-                if (ex_op == ('ld' or 'st')):
-                    self.stage_latency[sId] = self.mem_interface.getLatency()
+                if (ex_op in ['ld', 'st']):
+                    self.stage_latency[sId] = self.mem_interface.getLatency() #mem_interface has infinite latency
+                    if (ex_op == 'ld'):
+                        self.mem_interface.rdRequest (self.de_addr)
+                    elif (ex_op == 'st'):
+                        self.mem_interface.wrRequest (self.de_addr, self.de_val1)
+
                 elif (ex_op == 'alu' or ex_op == 'alui'):
                     # ALU instructions access ALU and write to memory
                     self.stage_latency[sId] = self.alu_list[0].getLatency() +\
@@ -390,17 +385,18 @@ class ima (object):
                 else: # halt instruction
                     self.stage_latency[sId] = 1
 
-                # Check if first = last cycle
+                # Check if first = last cycle - NA for LD/ST
                 if (self.stage_latency[sId] == 1 and update_ready):
                     do_execute (self, ex_op)
                     self.stage_done[sId] = 1
                     self.stage_cycle[sId] = 0
                     self.stage_empty[sId] = 1
-                else:
+                else: # NA for LD/ST
                     self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
-            # Last cycle - update pipeline registers (if ??) & done flag
-            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
+            # Last cycle - update pipeline registers (if ??) & done flag - or condition is for LD/ST
+            elif ((self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready) or \
+                  (self.de_opcode == 'st' and self.mem_interface.wait == 0 and update_ready)): # ST finishes when mem access is done
                 ex_op = self.de_opcode
                 do_execute (self, ex_op)
                 self.stage_done[sId] = 1
@@ -409,7 +405,11 @@ class ima (object):
 
             # For all other cycles
             else:
-                self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+                # Assumption - DataMemory cannot be done in the last access cycle
+                if (self.de_opcode == 'ld' and self.mem_interface.wait == 0): # LD finishes after mem_access + reg_write is done
+                    self.stage_cycle[sId] = self.stage_latency[sId] - self.dataMem.getLatency () # can be data_mem too
+                else:
+                    self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
 
     #####################################################

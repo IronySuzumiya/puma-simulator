@@ -67,7 +67,7 @@ mux_lat = 1
 alu_lat = 1
 mem_lat = 1
 # Added here for simplicity now (***needs modification later***)
-memInterface_lat = 1
+memInterface_lat = 1000 # infinite latency
 
 #################################################
 # Tile Hierarchy
@@ -77,11 +77,12 @@ memInterface_lat = 1
 #################################################
 
 # Enter parameters here:
-num_ima = 4
-edram_buswidth = 16
+num_ima = 1
+#edram_buswidth = 16
+edram_buswidth = data_width
 edram_size = 32
 
 # Enter component latency
-edram_lat = 2
+edram_lat = 4
 
 

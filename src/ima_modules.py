@@ -3,9 +3,11 @@
 # 'Propagate' is the combinational part evaluation
 # 'Update' - (NOT BEING USED CURRENTLY!) is the flip fop evaluation (for clocked elements of the circuit only)
 
+import sys
+sys.path.insert (0, '/home/ankitaay/dpe/include')
+
 import numpy as np
 import constants
-
 
 # Convert int to binary of specified bits
 def int2bin (inp, bits):
@@ -290,53 +292,41 @@ class mem_interface (object):
         # define latency
         self.latency = constants.memInterface_lat
 
-        # input port
-        self.wait_in = 0  # wait signal from (EDRAM) controller to ima
-        # self.data_in = '10'  # data (from EDRAM) to ima
-        self.data_in = '01' * (constants.data_width) # for debug only
+        # in/out ports
+        self.wait = 0  # wait signal from (EDRAM) controller to ima
+        self.ren = 0  # ren = 1, for LD
+        self.wen = 0  # wen = 1, for ST
+        self.addr = 0 # add sent by ima to mem controller
+        self.ramload = 0 # data (for LD) sent by edram to ima
+        self.ramstore = 0 # data (for ST) sent by ima to men controller
 
-        # output port
-        self.req_out = 0  # req sent by ima to mem controller
-        self.ren_out = 0  # ren = 1 (Load), ren = 0 (Store)
-        self.addr_out = 0 # add sent by ima to mem controller
-        self.data_out = 0 # data (for ST) sent by ima to men controller
-
-        # For DEBUG of IMA only - define a memory element and preload some values
-        self.edram = memory (constants.dataMem_size, 0)
-        for i in range (len(self.edram.memfile)/2):
-            val = int2bin (i, constants.data_width)
-            self.edram.memfile[i] = val
-
+        ## For DEBUG of IMA only - define a memory element and preload some values
+        #self.edram = memory (constants.dataMem_size, 0)
+        #for i in range (len(self.edram.memfile)/2):
+        #    val = int2bin (i, constants.data_width)
+        #    self.edram.memfile[i] = val
 
     def getLatency (self):
         return self.latency
 
-    def request (self, ren, addr, data = ''):
-        assert (type(data) == str), 'data type expected string'
-        self.req_out = 1
-        self.wait_in = 1
-        if (ren):
-            self.ren_out = 1
-            self.addr_out = addr
+    def wrRequest (self, addr, ramstore):
+        assert (type(ramstore) == str), 'data type expected string'
+        self.wen = 1
+        self.ren = 0
+        self.addr = addr
+        self.ramstore = ramstore
+        self.wait = 1
 
-            # For DEBUG of IMA only
-            self.data_in = self.edram.memfile[addr]
-        else:
-            self.ren_out = 0
-            self.addr_out = addr
-            self.data_out = data
+        ## For DEBUG of IMA only
+        #self.edram.memfile[addr] = ramstore
 
-            # For DEBUG of IMA only
-            self.edram.memfile[addr] = data
+    def rdRequest (self, addr):
+        self.ren = 1
+        self.wen = 0
+        self.addr = addr
+        self.wait = 1
 
-    # deassert the previously asserted request
-    def reset (self):
-        self.req_out = 0
+        ## For DEBUG of IMA only
+        #self.ramload = self.edram.memfile[addr]
 
-    def ack (self, data = ''):
-        assert (type(data) == str), 'data type expected string'
-        self.wait_in = 0
-        # update data if it was a load request
-        if (self.ren_out):
-            self.data_in = data
 
