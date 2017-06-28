@@ -19,7 +19,6 @@ class edram (ima_modules.memory):
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
-        print ('EDRAM data width', len(data))
         assert ((type(data) ==  str) and (len(data) == param.edram_buswidth)), 'data should be a string with edram_datawidth bits'
         self.memfile[addr - self.addr_start] = data
 
@@ -47,12 +46,12 @@ class edram_controller (object):
     def find_next (self, ren_list, wen_list):
         if (len(ren_list) > 1):
             if ((1 in ren_list[self.lastIdx+1:]) or (1 in wen_list[self.lastIdx+1:])):
-                idx1 = ren_list[self.lastIdx+1:].index(1)
-                idx2 = wen_list[self.lastIdx+1:].index(1)
-                return min (idx1, idx2)
+                idx1 = ren_list[self.lastIdx+1:].index(1) if any(ren_list[self.lastIdx+1:]) else param.infinity
+                idx2 = wen_list[self.lastIdx+1:].index(1) if any(wen_list[self.lastIdx+1:]) else param.infinity
+                return (self.lastIdx+1) + min (idx1, idx2)
             else:
-                idx1 = ren_list[0:lastIdx+1].index(1)
-                idx2 = wen_list[0:lastIdx+1].index(1)
+                idx1 = ren_list[0:self.lastIdx+1].index(1) if any(ren_list[0:self.lastIdx+1]) else param.infinity
+                idx2 = wen_list[0:self.lastIdx+1].index(1) if any(wen_list[0:self.lastIdx+1]) else param.infinity
                 return min (idx1, idx2)
         else: # for one IMA case only
             return 0
@@ -63,6 +62,7 @@ class edram_controller (object):
 
         # choose the ima to be served
         idx = self.find_next (ren_list, wen_list)
+        assert (idx < param.num_ima), 'Find Error: IMA Index not possible'
         self.lastIdx = idx # update last index
 
         # based on ren and wen perfrom the required action

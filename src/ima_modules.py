@@ -216,7 +216,8 @@ class xb_inMem (object):
         out_list = []
         for i in xrange(self.xbar_size):
             value = self.memfile[i]
-            self.memfile[i] = '0'*num_bits + value[:-1*num_bits]
+            #self.memfile[i] = '0'*num_bits + value[:-1*num_bits]
+            self.memfile[i] = value[-1*num_bits:] + value[:-1*num_bits]
             out_list.append(value[-1*num_bits:])
         return out_list
 

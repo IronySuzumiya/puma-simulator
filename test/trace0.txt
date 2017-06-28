@@ -2,457 +2,367 @@ Cycle information is printed is at the end of the clock cycle
 Assumption: A clock cycle ends at the positive edge
 Cycle 0
 Fet | PC 1 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 5} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 11, "opcode": "hlt", "r1": 3, "r2": "", "xb_nma": 2, "imm": "00001111", "d1": 3} | Flags: empty 1 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 12, "opcode": "hlt", "r1": 3, "r2": 0, "xb_nma": 2, "imm": 0, "d1": 3} | Flags: empty 1 done 1 cycles 0
 
 Cycle 1
 Fet | PC 2 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 5} | Flags: empty 0 done 0 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 0
 
 Cycle 2
 Fet | PC 2 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 5} | Flags: empty 0 done 0 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 1
 
 Cycle 3
 Fet | PC 2 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 5} | Flags: empty 0 done 0 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 999
 
 Cycle 4
-Fet | PC 2 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 5} | Flags: empty 0 done 0 cycles 3
+Fet | PC 3 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 0
 
 Cycle 5
-Fet | PC 2 | Flags: empty 0 done 1 cycles 4
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 4
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 5} | Flags: empty 0 done 0 cycles 999
+Fet | PC 3 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 1
 
 Cycle 6
-Fet | PC 3 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 6, "imm": "", "r1": 5, "opcode": "alu", "xb_nma": 0, "d1": 7} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 0
+Fet | PC 3 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 2
 
 Cycle 7
-Fet | PC 3 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 6, "imm": "", "r1": 5, "opcode": "alu", "xb_nma": 0, "d1": 7} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 1
+Fet | PC 3 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 999
 
 Cycle 8
-Fet | PC 3 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 6, "imm": "", "r1": 5, "opcode": "alu", "xb_nma": 0, "d1": 7} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 2
+Fet | PC 4 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 0
 
 Cycle 9
-Fet | PC 3 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": 6, "imm": "", "r1": 5, "opcode": "alu", "xb_nma": 0, "d1": 7} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 6} | Flags: empty 0 done 0 cycles 999
+Fet | PC 4 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 1
 
 Cycle 10
-Fet | PC 4 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 5, "opcode": "alui", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": 6, "imm": "", "r1": 5, "opcode": "alu", "xb_nma": 0, "d1": 7} | Flags: empty 0 done 0 cycles 0
+Fet | PC 4 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 2
 
 Cycle 11
-Fet | PC 4 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 5, "opcode": "alui", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": 6, "imm": "", "r1": 5, "opcode": "alu", "xb_nma": 0, "d1": 7} | Flags: empty 0 done 0 cycles 1
+Fet | PC 4 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 3, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 999
 
 Cycle 12
 Fet | PC 5 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 7, "opcode": "st", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 5, "opcode": "alui", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 13
 Fet | PC 5 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 7, "opcode": "st", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 5, "opcode": "alui", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 1
 
 Cycle 14
-Fet | PC 6 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 7, "opcode": "st", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 0
+Fet | PC 5 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 2
 
 Cycle 15
-Fet | PC 6 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 7, "opcode": "st", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 1
+Fet | PC 5 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 999
 
 Cycle 16
-Fet | PC 6 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 7, "opcode": "st", "xb_nma": 0, "d1": 8} | Flags: empty 0 done 0 cycles 2
+Fet | PC 6 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 17
-Fet | PC 7 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 0
+Fet | PC 6 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
 
 Cycle 18
-Fet | PC 7 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 1
+Fet | PC 6 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
 
 Cycle 19
-Fet | PC 7 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 2
+Fet | PC 6 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
 
 Cycle 20
-Fet | PC 7 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 3
+Fet | PC 6 | Flags: empty 0 done 1 cycles 4
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 4
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 4
 
 Cycle 21
-Fet | PC 7 | Flags: empty 0 done 1 cycles 4
-Dec | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 4
-Exe | Inst: {"aluop": "add", "addr": 0, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 0} | Flags: empty 0 done 0 cycles 999
+Fet | PC 6 | Flags: empty 0 done 1 cycles 5
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 5
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 5
 
 Cycle 22
-Fet | PC 8 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 0
+Fet | PC 6 | Flags: empty 0 done 1 cycles 6
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 6
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 6
 
 Cycle 23
-Fet | PC 8 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 1
+Fet | PC 6 | Flags: empty 0 done 1 cycles 7
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 7
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 7
 
 Cycle 24
-Fet | PC 8 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 2
+Fet | PC 6 | Flags: empty 0 done 1 cycles 8
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 8
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 8
 
 Cycle 25
-Fet | PC 8 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 1, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 1} | Flags: empty 0 done 0 cycles 999
+Fet | PC 6 | Flags: empty 0 done 1 cycles 9
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 9
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 9
 
 Cycle 26
-Fet | PC 9 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 0
+Fet | PC 6 | Flags: empty 0 done 1 cycles 10
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 10
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 10
 
 Cycle 27
-Fet | PC 9 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 1
+Fet | PC 6 | Flags: empty 0 done 1 cycles 11
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 11
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 11
 
 Cycle 28
-Fet | PC 9 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 2
+Fet | PC 6 | Flags: empty 0 done 1 cycles 12
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 12
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 12
 
 Cycle 29
-Fet | PC 9 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 2, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 2} | Flags: empty 0 done 0 cycles 999
+Fet | PC 6 | Flags: empty 0 done 1 cycles 13
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 13
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 13
 
 Cycle 30
-Fet | PC 10 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Fet | PC 6 | Flags: empty 0 done 1 cycles 14
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 14
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 14
 
 Cycle 31
-Fet | PC 10 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Fet | PC 6 | Flags: empty 0 done 1 cycles 15
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 15
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 15
 
 Cycle 32
-Fet | PC 10 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Fet | PC 6 | Flags: empty 0 done 1 cycles 16
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 16
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 16
 
 Cycle 33
-Fet | PC 10 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "ld", "xb_nma": 0, "d1": 3} | Flags: empty 0 done 0 cycles 999
+Fet | PC 6 | Flags: empty 0 done 1 cycles 17
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 17
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 17
 
 Cycle 34
-Fet | PC 11 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Fet | PC 6 | Flags: empty 0 done 1 cycles 18
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 18
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 18
 
 Cycle 35
-Fet | PC 11 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Fet | PC 6 | Flags: empty 0 done 1 cycles 19
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 19
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 19
 
 Cycle 36
-Fet | PC 11 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Fet | PC 6 | Flags: empty 0 done 1 cycles 20
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 20
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 20
 
 Cycle 37
-Fet | PC 11 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Fet | PC 6 | Flags: empty 0 done 1 cycles 21
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 21
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 21
 
 Cycle 38
-Fet | PC 11 | Flags: empty 0 done 1 cycles 4
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 4
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 4
+Fet | PC 6 | Flags: empty 0 done 1 cycles 22
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 22
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 22
 
 Cycle 39
-Fet | PC 11 | Flags: empty 0 done 1 cycles 5
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 5
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 5
+Fet | PC 6 | Flags: empty 0 done 1 cycles 23
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 23
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 23
 
 Cycle 40
-Fet | PC 11 | Flags: empty 0 done 1 cycles 6
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 6
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 6
+Fet | PC 6 | Flags: empty 0 done 1 cycles 24
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 24
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 24
 
 Cycle 41
-Fet | PC 11 | Flags: empty 0 done 1 cycles 7
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 7
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 7
+Fet | PC 6 | Flags: empty 0 done 1 cycles 25
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 25
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 25
 
 Cycle 42
-Fet | PC 11 | Flags: empty 0 done 1 cycles 8
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 8
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 8
+Fet | PC 6 | Flags: empty 0 done 1 cycles 26
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 26
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 26
 
 Cycle 43
-Fet | PC 11 | Flags: empty 0 done 1 cycles 9
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 9
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 9
+Fet | PC 6 | Flags: empty 0 done 1 cycles 27
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 27
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 27
 
 Cycle 44
-Fet | PC 11 | Flags: empty 0 done 1 cycles 10
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 10
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 10
+Fet | PC 6 | Flags: empty 0 done 1 cycles 28
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 28
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 28
 
 Cycle 45
-Fet | PC 11 | Flags: empty 0 done 1 cycles 11
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 11
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 11
+Fet | PC 6 | Flags: empty 0 done 1 cycles 29
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 29
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 29
 
 Cycle 46
-Fet | PC 11 | Flags: empty 0 done 1 cycles 12
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 12
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 12
+Fet | PC 6 | Flags: empty 0 done 1 cycles 30
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 30
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 30
 
 Cycle 47
-Fet | PC 11 | Flags: empty 0 done 1 cycles 13
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 13
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 13
+Fet | PC 6 | Flags: empty 0 done 1 cycles 31
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 31
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 31
 
 Cycle 48
-Fet | PC 11 | Flags: empty 0 done 1 cycles 14
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 14
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 14
+Fet | PC 6 | Flags: empty 0 done 1 cycles 32
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 32
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 32
 
 Cycle 49
-Fet | PC 11 | Flags: empty 0 done 1 cycles 15
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 15
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 15
+Fet | PC 6 | Flags: empty 0 done 1 cycles 33
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 33
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 33
 
 Cycle 50
-Fet | PC 11 | Flags: empty 0 done 1 cycles 16
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 16
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 16
+Fet | PC 6 | Flags: empty 0 done 1 cycles 34
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 34
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 34
 
 Cycle 51
-Fet | PC 11 | Flags: empty 0 done 1 cycles 17
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 17
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 17
+Fet | PC 6 | Flags: empty 0 done 1 cycles 35
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 35
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 35
 
 Cycle 52
-Fet | PC 11 | Flags: empty 0 done 1 cycles 18
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 18
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 18
+Fet | PC 6 | Flags: empty 0 done 1 cycles 36
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 36
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 36
 
 Cycle 53
-Fet | PC 11 | Flags: empty 0 done 1 cycles 19
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 19
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 19
+Fet | PC 6 | Flags: empty 0 done 1 cycles 37
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 37
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 37
 
 Cycle 54
-Fet | PC 11 | Flags: empty 0 done 1 cycles 20
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 20
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 20
+Fet | PC 6 | Flags: empty 0 done 1 cycles 38
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 38
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 38
 
 Cycle 55
-Fet | PC 11 | Flags: empty 0 done 1 cycles 21
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 21
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 21
+Fet | PC 6 | Flags: empty 0 done 1 cycles 39
+Dec | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 39
+Exe | Inst: {"aluop": "add", "addr": 4, "r2": 0, "imm": 0, "r1": 0, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 39
 
 Cycle 56
-Fet | PC 11 | Flags: empty 0 done 1 cycles 22
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 22
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 22
+Fet | PC 7 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 57
-Fet | PC 11 | Flags: empty 0 done 1 cycles 23
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 23
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 23
+Fet | PC 7 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
 
 Cycle 58
-Fet | PC 11 | Flags: empty 0 done 1 cycles 24
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 24
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 24
+Fet | PC 7 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 9, "r2": 0, "imm": 0, "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
 
 Cycle 59
-Fet | PC 11 | Flags: empty 0 done 1 cycles 25
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 25
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 25
+Fet | PC 8 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 60
-Fet | PC 11 | Flags: empty 0 done 1 cycles 26
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 26
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 26
+Fet | PC 8 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
 
 Cycle 61
-Fet | PC 11 | Flags: empty 0 done 1 cycles 27
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 27
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 27
+Fet | PC 8 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
 
 Cycle 62
-Fet | PC 11 | Flags: empty 0 done 1 cycles 28
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 28
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 28
+Fet | PC 8 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 10, "r2": 0, "imm": 0, "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
 
 Cycle 63
-Fet | PC 11 | Flags: empty 0 done 1 cycles 29
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 29
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 29
+Fet | PC 9 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 64
-Fet | PC 11 | Flags: empty 0 done 1 cycles 30
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 30
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 30
+Fet | PC 9 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
 
 Cycle 65
-Fet | PC 11 | Flags: empty 0 done 1 cycles 31
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 31
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 31
+Fet | PC 9 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
 
 Cycle 66
-Fet | PC 11 | Flags: empty 0 done 1 cycles 32
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 32
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 32
+Fet | PC 9 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 11, "r2": 0, "imm": 0, "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
 
 Cycle 67
-Fet | PC 11 | Flags: empty 0 done 1 cycles 33
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 33
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 33
+Fet | PC 10 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 68
-Fet | PC 11 | Flags: empty 0 done 1 cycles 34
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 34
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 34
+Fet | PC 10 | Flags: empty 0 done 1 cycles 1
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
+Exe | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
 
 Cycle 69
-Fet | PC 11 | Flags: empty 0 done 1 cycles 35
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 35
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 35
+Fet | PC 10 | Flags: empty 0 done 1 cycles 2
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
+Exe | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
 
 Cycle 70
-Fet | PC 11 | Flags: empty 0 done 1 cycles 36
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 36
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 36
+Fet | PC 10 | Flags: empty 0 done 1 cycles 3
+Dec | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
+Exe | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
 
 Cycle 71
-Fet | PC 11 | Flags: empty 0 done 1 cycles 37
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 37
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 37
+Fet | PC 10 | Flags: empty 0 done 1 cycles 0
+Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
 
 Cycle 72
-Fet | PC 11 | Flags: empty 0 done 1 cycles 38
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 38
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 38
-
-Cycle 73
-Fet | PC 11 | Flags: empty 0 done 1 cycles 39
-Dec | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 39
-Exe | Inst: {"aluop": "add", "addr": 3, "r2": "", "imm": "00001111", "r1": 7, "opcode": "mvm", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 39
-
-Cycle 74
-Fet | PC 12 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-
-Cycle 75
-Fet | PC 12 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-
-Cycle 76
-Fet | PC 12 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 8, "r2": "", "imm": "00001111", "r1": 0, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-
-Cycle 77
-Fet | PC 13 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-
-Cycle 78
-Fet | PC 13 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-
-Cycle 79
-Fet | PC 13 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-
-Cycle 80
-Fet | PC 13 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 9, "r2": "", "imm": "00001111", "r1": 1, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-
-Cycle 81
-Fet | PC 14 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-
-Cycle 82
-Fet | PC 14 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-
-Cycle 83
-Fet | PC 14 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-
-Cycle 84
-Fet | PC 14 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 10, "r2": "", "imm": "00001111", "r1": 2, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-
-Cycle 85
-Fet | PC 15 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
-
-Cycle 86
-Fet | PC 15 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-Exe | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 1
-
-Cycle 87
-Fet | PC 15 | Flags: empty 0 done 1 cycles 2
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-Exe | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 2
-
-Cycle 88
-Fet | PC 15 | Flags: empty 0 done 1 cycles 3
-Dec | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-Exe | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "st", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 3
-
-Cycle 89
-Fet | PC 15 | Flags: empty 0 done 1 cycles 0
+Fet | PC 10 | Flags: empty 0 done 1 cycles 0
 Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 0 done 0 cycles 0
+Exe | Inst: {"aluop": "add", "addr": 12, "r2": 0, "imm": 0, "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 1 done 1 cycles 0
 
-Cycle 90
-Fet | PC 15 | Flags: empty 0 done 1 cycles 0
-Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
-Exe | Inst: {"aluop": "add", "addr": 11, "r2": "", "imm": "00001111", "r1": 3, "opcode": "hlt", "xb_nma": 2, "d1": 3} | Flags: empty 1 done 1 cycles 0
-
-IMA ran for cycles: 90
+IMA ran for cycles: 72

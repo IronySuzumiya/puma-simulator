@@ -30,7 +30,7 @@ class tile (object):
         # File list for IMA tracefiles
         self.fid_list = []
 
-        # Book-keepingvariables for edram controller
+        # Book-keeping variables for edram controller
         self.memstate = 'free' # can be free/busy
         self.latency = 0 # holds latency for memory access
         self.stage_cycle = 0 # holds current cycle invested in memory access
@@ -121,6 +121,8 @@ class tile (object):
                         wen_list, ramstore_list, addr_list)
 
                 self.ima_list[idx].mem_interface.wait = 0
+                self.ima_list[idx].mem_interface.ren = 0
+                self.ima_list[idx].mem_interface.wen = 0
                 self.ima_list[idx].mem_interface.ramload = ramload
 
             # Finish the access and free up controller from previous access

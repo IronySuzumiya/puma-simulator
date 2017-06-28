@@ -55,36 +55,40 @@ def generate_inst ():
     datamem_off = param.num_xbar * param.xbar_size
     dict_list = []
 
-    # Add a load instruction
-    i_temp = i_load (datamem_off + 1, 1)
-    dict_list.append (i_temp.copy())
+    ## Add a load instruction
+    #i_temp = i_load (datamem_off + 1, 1)
+    #dict_list.append (i_temp.copy())
 
-    # Add a load instruction
-    i_temp = i_load (datamem_off + 2, 2)
-    dict_list.append (i_temp.copy())
+    ## Add a load instruction
+    #i_temp = i_load (datamem_off + 2, 2)
+    #dict_list.append (i_temp.copy())
 
-    # Add a alu instruction
-    i_temp = i_alu ('add', datamem_off + 3, datamem_off + 1, datamem_off + 2)
-    dict_list.append (i_temp.copy())
+    ## Add a alu instruction
+    #i_temp = i_alu ('add', datamem_off + 3, datamem_off + 1, datamem_off + 2)
+    #dict_list.append (i_temp.copy())
 
-    # Add a alui instruction
-    imm = '00001111'
-    i_temp = i_alu ('add', datamem_off + 4, datamem_off + 1, '', imm)
-    dict_list.append (i_temp.copy())
+    ## Add a alui instruction
+    #imm = '00001111'
+    #i_temp = i_alu ('add', datamem_off + 4, datamem_off + 1, '', imm)
+    #dict_list.append (i_temp.copy())
 
-    # Add a st instruction
-    i_temp = i_store (datamem_off + 3, 8)
-    dict_list.append (i_temp.copy())
+    ## Add a st instruction
+    #i_temp = i_store (datamem_off + 3, 8)
+    #dict_list.append (i_temp.copy())
+
+    ## Add a st instruction
+    #i_temp = i_store (datamem_off + 4, 9)
+    #dict_list.append (i_temp.copy())
 
     ## Checking an mvm instruction
     # Load data to xb_inMem (4 loads)
-    i_temp = i_load (0, 0)
+    i_temp = i_load (0, 1)
     dict_list.append (i_temp.copy())
-    i_temp = i_load (1, 1)
+    i_temp = i_load (1, 2)
     dict_list.append (i_temp.copy())
-    i_temp = i_load (2, 2)
+    i_temp = i_load (2, 3)
     dict_list.append (i_temp.copy())
-    i_temp = i_load (3, 3)
+    i_temp = i_load (3, 4)
     dict_list.append (i_temp.copy())
 
     # mvm instrn
@@ -92,13 +96,13 @@ def generate_inst ():
     dict_list.append (i_temp.copy())
 
     # store data back from xbout_mem
-    i_temp = i_store (0, 8)
+    i_temp = i_store (0, 9)
     dict_list.append (i_temp.copy())
-    i_temp = i_store (1, 9)
+    i_temp = i_store (1, 10)
     dict_list.append (i_temp.copy())
-    i_temp = i_store (2, 10)
+    i_temp = i_store (2, 11)
     dict_list.append (i_temp.copy())
-    i_temp = i_store (3, 11)
+    i_temp = i_store (3, 12)
     dict_list.append (i_temp.copy())
 
     # Add a halt instruction

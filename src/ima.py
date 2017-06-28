@@ -116,6 +116,9 @@ class ima (object):
         ########################################################
         self.num_stage = len (param.stage_list)
 
+        # Tells when EDRAM access for ld instruction is done
+        self.ldAccess_done = 0
+
         # Define the book-keeping variables - stage-specific
         self.stage_empty = [0] * self.num_stage
         self.stage_cycle = [0] * self.num_stage
@@ -273,6 +276,7 @@ class ima (object):
         # Define what to do in execute (done for conciseness)
         def do_execute (self, ex_op):
             if (ex_op == 'ld'):
+                self.ldAccess_done = 0
                 data = self.mem_interface.ramload
                 # based on the address write to dataMem or xb_inMem
                 if (self.de_d1 >= param.num_xbar * param.xbar_size):
@@ -324,10 +328,11 @@ class ima (object):
                             # shift and add - make a dedicated sna unit -- PENDING
                             alu_op = 'sna'
                             out_adc = '0'*(param.xbdata_width - param.adc_res) + out_adc
-                            out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, param.dac_res)
+                            out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
                             # store back to xbar's output register & restart it
                             self.xb_outMem_list[i].write (out_sna)
-                            self.xb_outMem_list[i].restart()
+
+                        self.xb_outMem_list[i].restart()
 
             else: # for halt instruction
                 self.halt = 1
@@ -356,6 +361,7 @@ class ima (object):
 
             latency_unit = max (latency_unit1, latency_unit2)
             latency_out = (param.xbdata_width / param.dac_res) * latency_unit
+            print (latency_out)
             return latency_out
 
 
@@ -405,8 +411,9 @@ class ima (object):
 
             # For all other cycles
             else:
-                # Assumption - DataMemory cannot be done in the last access cycle
-                if (self.de_opcode == 'ld' and self.mem_interface.wait == 0): # LD finishes after mem_access + reg_write is done
+                # Assumption - DataMemory cannot be done in the last edram access cycle
+                if (self.de_opcode == 'ld' and self.mem_interface.wait == 0 and self.ldAccess_done == 0): # LD finishes after mem_access + reg_write is done
+                    self.ldAccess_done = 1
                     self.stage_cycle[sId] = self.stage_latency[sId] - self.dataMem.getLatency () # can be data_mem too
                 else:
                     self.stage_cycle[sId] = self.stage_cycle[sId] + 1
@@ -430,6 +437,8 @@ class ima (object):
         #Initialize the instruction memory
         dict_list = np.load('imem.npy')
         self.instrnMem.load(dict_list)
+
+        self.ldAccess_done = 0
 
     # Mimics one cycle of ima pipeline execution
     def pipe_run (self, cycle, fid = ''): # fid is tracefile's id

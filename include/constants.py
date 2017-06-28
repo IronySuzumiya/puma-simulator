@@ -12,7 +12,8 @@ xbar_out_max = 1 # think about this - ???
 ########################################
 
 # Limits the number of cycles an IMA runs in case it doesn't halt
-cycles_max = 60
+cycles_max = 180
+infinity = 1000
 
 # List of supported opcodes/aluops
 op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
@@ -23,7 +24,7 @@ dummy_instrn = {'opcode' : op_list[0],      # instrn op
                'aluop'  : aluop_list[0],   # alu function
                'd1'     : 0,               # destination
                'r1'     : 0,               # operand1
-               'r2'     : 0,               # opearnd2
+               'r2'     : 0,               # operand2
                'addr'   : 0,               # ext_mem (edram) address
                'imm'    : 0,               # immediate (scalar) data
                'xb_nma' : 0 }              # xbar negative-mask, a xbar evaluates if neg-mask = 1
@@ -59,7 +60,7 @@ data_width = 8 # (microarchitecture param)
 xbdata_width = 8 # (nn speciic for now)
 
 # Enter IMA component latency
-xbar_lat = 6
+xbar_lat = 4
 dac_lat = 1
 adc_lat = 1
 snh_lat = 1
@@ -67,7 +68,7 @@ mux_lat = 1
 alu_lat = 1
 mem_lat = 1
 # Added here for simplicity now (***needs modification later***)
-memInterface_lat = 1000 # infinite latency
+memInterface_lat = infinity # infinite latency
 
 #################################################
 # Tile Hierarchy
@@ -77,12 +78,12 @@ memInterface_lat = 1000 # infinite latency
 #################################################
 
 # Enter parameters here:
-num_ima = 1
+num_ima = 2
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
 
 # Enter component latency
-edram_lat = 4
+edram_lat = 2
 
 
