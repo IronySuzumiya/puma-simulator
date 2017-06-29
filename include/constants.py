@@ -12,12 +12,12 @@ xbar_out_max = 1 # think about this - ???
 ########################################
 
 # Limits the number of cycles an IMA runs in case it doesn't halt
-cycles_max = 180
+cycles_max = 1800
 infinity = 1000
 
 # List of supported opcodes/aluops
 op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
-aluop_list = ['add', 'sub', 'sna'] # sna is also used by mvm isntruction
+aluop_list = ['add', 'sub', 'sna', 'mul', 'sigmoid'] # sna is also used by mvm isntruction
 
 # Instruction format
 dummy_instrn = {'opcode' : op_list[0],      # instrn op
@@ -48,14 +48,14 @@ last_stage = 'ex'
 #################################################
 
 # Enter parameters here:
-num_xbar = 2
-xbar_size = 2
+num_xbar = 6
+xbar_size = 4
 dac_res = 2
 adc_res = 2
-num_adc = 2
+num_adc = 6
 num_ALU = 1
 dataMem_size = 16
-instrnMem_size = 20
+instrnMem_size = 80
 data_width = 8 # (microarchitecture param)
 xbdata_width = 8 # (nn speciic for now)
 
@@ -78,7 +78,7 @@ memInterface_lat = infinity # infinite latency
 #################################################
 
 # Enter parameters here:
-num_ima = 2
+num_ima = 1
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32

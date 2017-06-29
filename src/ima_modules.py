@@ -8,6 +8,7 @@ sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 import numpy as np
 import constants
+import math
 
 # Convert int to binary of specified bits
 def int2bin (inp, bits):
@@ -54,6 +55,8 @@ class dac (object):
         return analog_max * frac
 
     def propagate (self, inp):
+        if (inp == ''):
+            inp = '0' * constants.dac_res
         assert ((type(inp) == str) and (len(inp) == self.dac_res)), 'dac input type/size (bits) mismatch (string expected)'
         num_bits = self.dac_res
         return self.bin2real (inp, num_bits)
@@ -152,7 +155,9 @@ class alu (object):
         def add (a, b, c): return (a + b)
         def sub (a, b, c): return (a - b)
         def shift_add (a, b, c): return (a + (b << c))
-        self.options = {'add' : add, 'sub' : sub, 'sna' : shift_add}
+        def multiply (a, b, c): return (a * b)
+        def sigmoid (a, b, c): return a # A pass through unti for now
+        self.options = {'add' : add, 'sub' : sub, 'sna' : shift_add, 'mul': multiply, 'sig': sigmoid}
 
     def getLatency (self):
         return self.latency
@@ -160,9 +165,13 @@ class alu (object):
     def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
         a = int (a, 2)
-        b = int (b, 2)
+        b = int (b, 2) if (b != '') else 0
         out = self.options[aluop] (a, b, c)
         out = bin(out)[2:]
+        #assert (len(out) <= constants.data_width), 'ALU Overflow error'
+        if (len(out) > constants.data_width):
+            out = '1'*constants.data_width
+            print ('ALU Overflow Exception, allowed to run')
         return ((constants.data_width - len(out))*'0' + out)
 
 

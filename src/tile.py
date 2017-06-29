@@ -10,7 +10,6 @@ import tile_modules as tmod
 
 # IMA specific modules (should not be needed)
 import ima_modules
-import generate_inst
 
 class tile (object):
 
@@ -37,10 +36,12 @@ class tile (object):
 
 
     # Initialize the tile (all IMAs in the tile)
-    def tile_init (self):
+    def tile_init (self, instrnpath):
         # Initialize the IMAs
         for i in range (param.num_ima):
-            self.ima_list[i].pipe_init ()
+            # instrn_file provides the instrn_list that the IMA will execute
+            instrnfile = instrnpath + 'imem.npy'
+            self.ima_list[i].pipe_init (instrnfile)
 
         self.halt_list = [0] * param.num_ima
 

@@ -221,13 +221,38 @@ class ima (object):
             elif (dec_op == 'alu'):
                 self.de_aluop = self.fd_instrn['aluop']
                 self.de_d1 = self.fd_instrn['d1']
-                self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
-                self.de_val2 = self.dataMem.read (self.fd_instrn['r2'])
+                val1_addr = self.fd_instrn['r1']
+                val2_addr = self.fd_instrn['r2']
+
+                # read val 1 either from data memory or xbar_outmem
+                if (val1_addr >= param.num_xbar * param.xbar_size):
+                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                else:
+                    xb_id = val1_addr / param.num_xbar
+                    addr = val1_addr % param.xbar_size
+                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
+
+                # read val 2 either from data memory or xbar_outmem
+                if (val2_addr >= param.num_xbar * param.xbar_size):
+                    self.de_val2 = self.dataMem.read (self.fd_instrn['r2'])
+                else:
+                    xb_id = val2_addr / param.num_xbar
+                    addr = val2_addr % param.xbar_size
+                    self.de_val2 = self.xb_outMem_list[xb_id].read (addr)
 
             elif (dec_op == 'alui'):
                 self.de_aluop = self.fd_instrn['aluop']
                 self.de_d1 = self.fd_instrn['d1']
-                self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                val1_addr = self.fd_instrn['r1']
+
+                # read val 1 either from data memory or xbar_outmem
+                if (val1_addr >= param.num_xbar * param.xbar_size):
+                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                else:
+                    xb_id = val1_addr / param.num_xbar
+                    addr = val1_addr % param.xbar_size
+                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
+
                 self.de_val2 = self.fd_instrn['imm']
 
             elif (dec_op == 'mvm'):
@@ -282,8 +307,8 @@ class ima (object):
                 if (self.de_d1 >= param.num_xbar * param.xbar_size):
                     self.dataMem.write (self.de_d1, data)
                 else:
-                    xb_id = self.de_d1 / param.num_xbar
-                    addr = self.de_d1 % param.num_xbar
+                    xb_id = self.de_d1 / param.xbar_size
+                    addr = self.de_d1 % param.xbar_size
                     self.xb_inMem_list[xb_id].write (addr, data)
 
             elif (ex_op == 'st'): #nothing to be done by ima for st here
@@ -292,13 +317,15 @@ class ima (object):
             elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
                 # compute in ALU
                 out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-                # write to dataMem
+                # write to dataMem - check if addr is a valid datamem address
+                assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
 
             elif (ex_op == 'alui'):
                 # compute in ALU
                 out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
                 # write to dataMem
+                assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALUi instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
 
             elif (ex_op == 'mvm'):
@@ -361,7 +388,6 @@ class ima (object):
 
             latency_unit = max (latency_unit1, latency_unit2)
             latency_out = (param.xbdata_width / param.dac_res) * latency_unit
-            print (latency_out)
             return latency_out
 
 
@@ -422,7 +448,7 @@ class ima (object):
     #####################################################
     ## Define how pipeline executes
     #####################################################
-    def pipe_init (self):
+    def pipe_init (self, instrn_filepath):
         self.debug = 0
         self.halt = 0
 
@@ -435,7 +461,7 @@ class ima (object):
         self.stage_done = one_list[:]
 
         #Initialize the instruction memory
-        dict_list = np.load('imem.npy')
+        dict_list = np.load(instrn_filepath)
         self.instrnMem.load(dict_list)
 
         self.ldAccess_done = 0

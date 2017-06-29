@@ -1,13 +1,13 @@
 # Test script for tile simulations
-tarcepath = '/home/ankitaay/dpe/test/'
+tracepath = '/home/ankitaay/dpe/test/traces/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM/'
 
 import sys, getopt
-sys.path.insert (0, '/home/ankitaay/dpe/include')
+sys.path.insert (0, '/home/ankitaay/dpe/include/')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
 
 import numpy as np
 import constants as param
-import generate_inst
 import ima_modules
 import ima
 import tile_modules
@@ -49,16 +49,20 @@ def dump (tile, filename = ''):
 tile = tile.tile ()
 
 # Generate the instruction file(s) for ima(s)
-generate_inst.generate_inst ()
+# generate_inst.generate_inst ()
 
 # Initialize the tile
-tile.tile_init ()
+tile.tile_init (instrnpath)
 
 # Run the tile
 cycle = 0
 while (all(tile.halt_list) != 1 and cycle < param.cycles_max):
-    tile.tile_run (cycle)
+    tile.tile_run (cycle, tracepath)
     cycle = cycle + 1
+
+# Close all the trace files
+for tr_fid in tile.fid_list:
+    tr_fid.close ()
 
 print 'Finally tile halted'
 
