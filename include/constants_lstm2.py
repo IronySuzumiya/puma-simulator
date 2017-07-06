@@ -78,12 +78,12 @@ memInterface_lat = infinity # infinite latency
 #################################################
 
 # Enter parameters here:
-num_ima = 2
+num_ima = 1
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
 
 # Enter component latency
-edram_lat = 4
+edram_lat = 2
 
 

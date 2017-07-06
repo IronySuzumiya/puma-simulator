@@ -218,6 +218,9 @@ class ima (object):
                     addr = st_data_addr % param.xbar_size
                     self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
 
+                # NEW - added store counter (comes from r2 and stored in val2)
+                self.de_val2 = self.fd_instrn['r2']
+
             elif (dec_op == 'alu'):
                 self.de_aluop = self.fd_instrn['aluop']
                 self.de_d1 = self.fd_instrn['d1']
@@ -226,6 +229,7 @@ class ima (object):
 
                 # read val 1 either from data memory or xbar_outmem
                 if (val1_addr >= param.num_xbar * param.xbar_size):
+                    print (self.fd_instrn)
                     self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
                 else:
                     xb_id = val1_addr / param.num_xbar
@@ -406,7 +410,8 @@ class ima (object):
                     if (ex_op == 'ld'):
                         self.mem_interface.rdRequest (self.de_addr)
                     elif (ex_op == 'st'):
-                        self.mem_interface.wrRequest (self.de_addr, self.de_val1)
+                        ramstore = str(self.de_val2) + self.de_val1
+                        self.mem_interface.wrRequest (self.de_addr, ramstore)
 
                 elif (ex_op == 'alu' or ex_op == 'alui'):
                     # ALU instructions access ALU and write to memory

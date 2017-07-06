@@ -1,6 +1,6 @@
 # Test script for tile simulations
 tracepath = '/home/ankitaay/dpe/test/traces/'
-instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/ima_sync/'
 
 import sys, getopt
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
