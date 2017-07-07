@@ -60,7 +60,7 @@ data_width = 8 # (microarchitecture param)
 xbdata_width = 8 # (nn speciic for now)
 
 # Enter IMA component latency
-xbar_lat = 4
+xbar_lat = 17
 dac_lat = 1
 adc_lat = 1
 snh_lat = 1

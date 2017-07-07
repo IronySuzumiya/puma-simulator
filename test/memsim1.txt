@@ -68,6 +68,24 @@ Xbar Output Memory contents
 00000111
 00000111
 00000111
+Xbar Input Memory contents
+Xbar Output Memory contents
+00000000
+00000000
+00000000
+00000000
+Xbar Input Memory contents
+Xbar Output Memory contents
+00000000
+00000000
+00000000
+00000000
+Xbar Input Memory contents
+Xbar Output Memory contents
+00000000
+00000000
+00000000
+00000000
 IMA id: 1
 DataMemory contents
 Xbar Input Memory contents
@@ -97,3 +115,21 @@ Xbar Output Memory contents
 00001111
 00001111
 00001111
+Xbar Input Memory contents
+Xbar Output Memory contents
+00000000
+00000000
+00000000
+00000000
+Xbar Input Memory contents
+Xbar Output Memory contents
+00000000
+00000000
+00000000
+00000000
+Xbar Input Memory contents
+Xbar Output Memory contents
+00000000
+00000000
+00000000
+00000000

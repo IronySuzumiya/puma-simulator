@@ -1,6 +1,6 @@
 # Test script for tile simulations
-tracepath = '/home/ankitaay/dpe/test/traces/'
-instrnpath = '/home/ankitaay/dpe/test/testasm/ima_sync/'
+tracepath = '/home/ankitaay/dpe/test/traces/LSTM2/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2/'
 
 import sys, getopt
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
@@ -17,7 +17,7 @@ import tile
 # Define a dump function which dums the all memory components into a file
 def dump (tile, filename = ''):
     if (filename == ''):
-        filename = 'memsim.txt'
+        filename = 'memsim1.txt'
 
     fid = open (filename, 'w')
 

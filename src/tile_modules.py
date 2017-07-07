@@ -77,15 +77,10 @@ class edram_controller (object):
             # based on ren and wen perfrom the required action
             assert ((ren_list[idx] ^ wen_list[idx]) == 1), 'Ram Access Error: both ren and wen cannot be same'
 
-            print ('idx selected', idx)
-            print ('addr', addr_list[idx], 'ren', ren_list[idx], 'wen', wen_list[idx])
             # Check for valid (invalid) for LD (ST)
             if ((self.valid[addr_list[idx]] and ren_list[idx]) or \
                     ((not self.valid[addr_list[idx]]) and wen_list[idx])):
-                print ('Validity checked')
                 found = 1
-            else:
-                print ('invalid, move to next idx')
 
         # Once idx found complete ren/wen operation
         addr = addr_list[idx]

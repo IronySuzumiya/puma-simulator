@@ -10,10 +10,17 @@ import constants as param
 import ima_modules as imod
 
 class ima (object):
+
+    instances_created = 0
+
     #######################################################
     ### Instantiate different modules
     #######################################################
     def __init__ (self):
+
+        # Assign a ima_id for identification purposed in debug trace
+        self.ima_id = ima.instances_created
+        ima.instances_created += 1
 
         ######################################################################
         ## Parametrically instantiate different physical IMA hardware modules
@@ -214,7 +221,7 @@ class ima (object):
                 if (st_data_addr >= param.num_xbar * param.xbar_size):
                     self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
                 else:
-                    xb_id = st_data_addr / param.num_xbar
+                    xb_id = st_data_addr / param.xbar_size
                     addr = st_data_addr % param.xbar_size
                     self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
 
@@ -229,10 +236,9 @@ class ima (object):
 
                 # read val 1 either from data memory or xbar_outmem
                 if (val1_addr >= param.num_xbar * param.xbar_size):
-                    print (self.fd_instrn)
                     self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
                 else:
-                    xb_id = val1_addr / param.num_xbar
+                    xb_id = val1_addr / param.xbar_size
                     addr = val1_addr % param.xbar_size
                     self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
 
@@ -320,14 +326,18 @@ class ima (object):
 
             elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
                 # compute in ALU
-                out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+                [out, ovf] = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+                if (ovf):
+                    print ('IMA: ', self.ima_id, 'ALU Overflow Exception', self.de_aluop, 'allowed to run')
                 # write to dataMem - check if addr is a valid datamem address
                 assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
 
             elif (ex_op == 'alui'):
                 # compute in ALU
-                out = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+                [out, ovf] = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
+                if (ovf):
+                    print ('IMA: ', self.ima_id, 'ALU Overflow Exception', self.de_aluop, 'allowed to run')
                 # write to dataMem
                 assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALUi instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
@@ -359,7 +369,9 @@ class ima (object):
                             # shift and add - make a dedicated sna unit -- PENDING
                             alu_op = 'sna'
                             out_adc = '0'*(param.xbdata_width - param.adc_res) + out_adc
-                            out_sna = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
+                            [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
+                            if (ovf):
+                                print ('IMA: ', self.ima_id, 'ALU Overflow Exception', alu_op, 'allowed to run')
                             # store back to xbar's output register & restart it
                             self.xb_outMem_list[i].write (out_sna)
 
@@ -391,7 +403,8 @@ class ima (object):
             latency_unit2 = latency_unit2 * np.ceil(float(self.de_xb_nma)/param.num_adc)
 
             latency_unit = max (latency_unit1, latency_unit2)
-            latency_out = (param.xbdata_width / param.dac_res) * latency_unit
+            latency_out = (param.xbdata_width / param.dac_res + 1) * latency_unit #might need correction !!
+
             return latency_out
 
 

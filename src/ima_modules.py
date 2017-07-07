@@ -169,10 +169,11 @@ class alu (object):
         out = self.options[aluop] (a, b, c)
         out = bin(out)[2:]
         #assert (len(out) <= constants.data_width), 'ALU Overflow error'
+        ovf = 0 # oveflow fag
         if (len(out) > constants.data_width):
             out = '1'*constants.data_width
-            print ('ALU Overflow Exception, allowed to run')
-        return ((constants.data_width - len(out))*'0' + out)
+            ovf = 1
+        return [((constants.data_width - len(out))*'0' + out), ovf]
 
 
 # Assumes a half-word oriented memory (each entry - 16 bits)
