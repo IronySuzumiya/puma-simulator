@@ -8,6 +8,61 @@ import constants as param
 import ima_modules
 from ima_modules import int2bin
 
+# function to check keys match between two dictionaries
+def dict_match (dict1, dict2):
+    for keyone in dict1.keys():
+        if keyone not in dict2.keys():
+            return 0
+    return 1
+
+# an instruction memory to store the tile instructions
+class instrn_memory (ima_modules.memory):
+    def write (self, addr, data):
+        assert (type(addr) == int), 'addr type should be int'
+        assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
+        assert ((dict_match(data, param.dummy_instrn_tile) == 1) and (len(data) == constants.data_width)), 'data should be a string with mem_width bits'
+        self.memfile[addr - self.addr_start] = data
+
+# adding a receive buffer (full-assoc cache (tag = neuron_id)) to enable non-blocking receives
+class receive_buffer (object):
+    def __init__ (self):
+         # Consists of a list of dictionaries (data, neuron_id)
+         temp_dict = {'data': '', 'neuron_id': 0, 'valid': 0}
+         self.buffer = [temp_dict] * param.buff_size
+         self.rd_ptr = 0
+         self.wr_ptr = 0
+
+    def isempty (self):
+        for idx in range(len(self.buffer)):
+            temp_dict = self.buffer[idx]
+            if (temp_dict['valid']):
+                return 0
+        return 1
+
+    def isfull (self):
+        for idx in range(len(self.buffer)):
+            temp_dict = self.buffer[idx]
+            if (not temp_dict['valid']):
+                return [0, idx]
+        return [1, idx]
+
+    # write the data coming from router to buffer if non-full
+    def write (self, dict_entry):
+        [valid, idx] = self.isfull ()
+        assert (not valid), 'Receive buffer full - fails to receive data'
+        self.buffer[idx]['data'] = dict_entry['data']
+        self.buffer[idx]['neuron_id'] = dict_entry['neuron_id']
+        self.buffer[idx]['valid'] = 1
+
+    # read the value from buffer if tag matches - else stall receive instruction
+    def read (self, neuron_id):
+        if (not self.isempty()):
+            for idx in range(len(self.buffer)):
+                temp_dict = self.buffer[idx]
+                if (temp_dict['neuron_id'] == neuron_id):
+                    temp_dict['valid'] = 0
+                    return [idx, temp_dict['data']]
+        return [0, 0] # tag-hit, data
 
 # a memory instance for edram
 class edram (ima_modules.memory):
@@ -102,11 +157,4 @@ class edram_controller (object):
                 self.valid[addr] = 1
                 self.counter[addr] = int(counter)
             return [found, idx, '']
-
-
-
-
-
-
-
 

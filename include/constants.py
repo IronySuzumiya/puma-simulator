@@ -1,3 +1,7 @@
+# Limits the number of cycles an IMA runs in case it doesn't halt
+cycles_max = 1800
+infinity = 1000
+
 ############################################
 ## Technology constants for all the modules
 ############################################
@@ -10,16 +14,22 @@ xbar_out_max = 1 # think about this - ???
 ########################################
 ## Define commonly used data structures
 ########################################
+# List of supported opcodes for tile
+op_list_tile = ['send', 'receive', 'compute']
 
-# Limits the number of cycles an IMA runs in case it doesn't halt
-cycles_max = 1800
-infinity = 1000
+# Instruction format for Tile
+dummy_instrn_tile = {'opcode' : op_list_tile[0],
+                     'addr_src': 0,     # for send/receive
+                     'addr_dst': 0,     # for send,
+                     'neuron_id' :0,    # for receive
+                     'data' : 0,        # for receive
+                     'nma': 0 }         # for compute
 
-# List of supported opcodes/aluops
+# List of supported opcodes/aluops for IMA
 op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
 aluop_list = ['add', 'sub', 'sna', 'mul', 'sigmoid'] # sna is also used by mvm isntruction
 
-# Instruction format
+# Instruction format for IMA
 dummy_instrn = {'opcode' : op_list[0],      # instrn op
                'aluop'  : aluop_list[0],   # alu function
                'd1'     : 0,               # destination
@@ -29,7 +39,7 @@ dummy_instrn = {'opcode' : op_list[0],      # instrn op
                'imm'    : 0,               # immediate (scalar) data
                'xb_nma' : 0 }              # xbar negative-mask, a xbar evaluates if neg-mask = 1
 
-# List of pipeline stages - in order
+# List of pipeline stages - in order for IMA
 stage_list = ['fet', 'dec', 'ex']
 last_stage = 'ex'
 
@@ -82,6 +92,7 @@ num_ima = 2
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
+buff_size = 4 # size of receive buffer
 
 # Enter component latency
 edram_lat = 4
