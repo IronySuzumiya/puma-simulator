@@ -25,13 +25,19 @@ class instrn_memory (ima_modules.memory):
 
 # adding a receive buffer (full-assoc cache (tag = neuron_id)) to enable non-blocking receives
 class receive_buffer (object):
-    def __init__ (self):
+    def __init__ (self, buff_size):
          # Consists of a list of dictionaries (data, neuron_id)
          temp_dict = {'data': '', 'neuron_id': 0, 'valid': 0}
-         self.buffer = [temp_dict] * param.buff_size
+         self.buffer = [temp_dict] * buff_size
          self.rd_ptr = 0
          self.wr_ptr = 0
 
+    # invalidates all entries
+    def inv (self):
+        for temp_dict in self.buffer:
+            temp_dict['valid'] = 0
+
+    # checks if buffer is empty
     def isempty (self):
         for idx in range(len(self.buffer)):
             temp_dict = self.buffer[idx]
@@ -39,6 +45,7 @@ class receive_buffer (object):
                 return 0
         return 1
 
+    # checks if buffer is full
     def isfull (self):
         for idx in range(len(self.buffer)):
             temp_dict = self.buffer[idx]
@@ -61,7 +68,7 @@ class receive_buffer (object):
                 temp_dict = self.buffer[idx]
                 if (temp_dict['neuron_id'] == neuron_id):
                     temp_dict['valid'] = 0
-                    return [idx, temp_dict['data']]
+                    return [1, temp_dict['data']]
         return [0, 0] # tag-hit, data
 
 # a memory instance for edram

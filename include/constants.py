@@ -19,11 +19,10 @@ op_list_tile = ['send', 'receive', 'compute']
 
 # Instruction format for Tile
 dummy_instrn_tile = {'opcode' : op_list_tile[0],
-                     'addr_src': 0,     # for send/receive
-                     'addr_dst': 0,     # for send,
-                     'neuron_id' :0,    # for receive
-                     'data' : 0,        # for receive
-                     'nma': 0 }         # for compute
+                     'mem_addr': 0,     # send/receive - edram_addr
+                     'r2': 0,     # send-target_addr, receive-null
+                     'neuron_id': 0, # send/receive-neuron_id
+                     'ima_nma': 0 }      # compute - a bit for each ima
 
 # List of supported opcodes/aluops for IMA
 op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
@@ -92,9 +91,10 @@ num_ima = 2
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
-buff_size = 4 # size of receive buffer
+receivebuff_size = 4 # size of receive buffer
 
 # Enter component latency
+tile_instrnMem_size = 20
 edram_lat = 4
 
 
