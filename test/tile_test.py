@@ -19,7 +19,7 @@ from ima_modules import int2bin
 # Define a dump function which dums the all memory components into a file
 def dump (tile, filename = ''):
     if (filename == ''):
-        filename = 'memsim2.txt'
+        filename = 'memsim1.txt'
 
     fid = open (filename, 'w')
 
