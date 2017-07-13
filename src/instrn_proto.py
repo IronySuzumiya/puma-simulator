@@ -5,8 +5,6 @@ sys.path.insert (0, '/home/ankitaay/dpe/include')
 import numpy as np
 import constants as param
 
-num_inst = 0 # global variable keeps track of num instructions generated
-
 # Define nstruction prototypes
 # generate load protype
 def i_load (d1, addr):

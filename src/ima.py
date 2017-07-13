@@ -135,7 +135,7 @@ class ima (object):
         # Define global pipeline variables
         self.debug = 0
 
-        # Define a halt signal - think about the logic later
+        # Define a halt signal
         self.halt = 0
 
 
@@ -145,7 +145,7 @@ class ima (object):
     # Increment stage cycles but update pipeline registers at end only when update_ready flag is set
 
     # "Fetch" stage (common to all instructions)
-    def fetch (self, update_ready):
+    def fetch (self, update_ready, fid):
         sId = 0 # sId - stageId
 
         # Define what to do in fetch
@@ -196,7 +196,7 @@ class ima (object):
 
 
     # "Decode" stage - Reads operands (if needed) and puts into the specific data structures
-    def decode (self, update_ready):
+    def decode (self, update_ready, fid):
         sId = 1
 
         # Define what to do in decode (done for conciseness)
@@ -305,11 +305,11 @@ class ima (object):
 
 
     # Execute stage - compute and store back to registers
-    def execute (self, update_ready):
+    def execute (self, update_ready, fid):
         sId = 2
 
         # Define what to do in execute (done for conciseness)
-        def do_execute (self, ex_op):
+        def do_execute (self, ex_op, fid):
             if (ex_op == 'ld'):
                 self.ldAccess_done = 0
                 data = self.mem_interface.ramload
@@ -328,7 +328,8 @@ class ima (object):
                 # compute in ALU
                 [out, ovf] = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
                 if (ovf):
-                    print ('IMA: ', self.ima_id, 'ALU Overflow Exception', self.de_aluop, 'allowed to run')
+                    fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
+                            self.de_aluop + ' allowed to run')
                 # write to dataMem - check if addr is a valid datamem address
                 assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
@@ -337,7 +338,8 @@ class ima (object):
                 # compute in ALU
                 [out, ovf] = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
                 if (ovf):
-                    print ('IMA: ', self.ima_id, 'ALU Overflow Exception', self.de_aluop, 'allowed to run')
+                    fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
+                            self.de_aluop + ' allowed to run')
                 # write to dataMem
                 assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALUi instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
@@ -371,7 +373,8 @@ class ima (object):
                             out_adc = '0'*(param.xbdata_width - param.adc_res) + out_adc
                             [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
                             if (ovf):
-                                print ('IMA: ', self.ima_id, 'ALU Overflow Exception', alu_op, 'allowed to run')
+                                fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
+                                        self.de_aluop + ' allowed to run')
                             # store back to xbar's output register & restart it
                             self.xb_outMem_list[i].write (out_sna)
 
@@ -437,7 +440,7 @@ class ima (object):
 
                 # Check if first = last cycle - NA for LD/ST
                 if (self.stage_latency[sId] == 1 and update_ready):
-                    do_execute (self, ex_op)
+                    do_execute (self, ex_op, fid)
                     self.stage_done[sId] = 1
                     self.stage_cycle[sId] = 0
                     self.stage_empty[sId] = 1
@@ -448,7 +451,7 @@ class ima (object):
             elif ((self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready) or \
                   (self.de_opcode == 'st' and self.mem_interface.wait == 0 and update_ready)): # ST finishes when mem access is done
                 ex_op = self.de_opcode
-                do_execute (self, ex_op)
+                do_execute (self, ex_op, fid)
                 self.stage_done[sId] = 1
                 self.stage_cycle[sId] = 0
                 self.stage_empty[sId] = 1
@@ -466,8 +469,14 @@ class ima (object):
     #####################################################
     ## Define how pipeline executes
     #####################################################
-    def pipe_init (self, instrn_filepath):
+    def pipe_init (self, instrn_filepath, fid = ''):
         self.debug = 0
+        # tracefile stores the debug trace in debug mode
+        if (fid != ''):
+            self.debug = 1
+            fid.write ('Cycle information is printed is at the end of the clock cycle\n')
+            fid.write ('Assumption: A clock cycle ends at the positive edge\n')
+
         self.halt = 0
 
         zero_list = [0] * self.num_stage
@@ -486,13 +495,6 @@ class ima (object):
 
     # Mimics one cycle of ima pipeline execution
     def pipe_run (self, cycle, fid = ''): # fid is tracefile's id
-
-        # tracefile stores the debug trace in debug mode
-        if (cycle == 0 and fid != ''):
-            self.debug = 1
-            fid.write ('Cycle information is printed is at the end of the clock cycle\n')
-            fid.write ('Assumption: A clock cycle ends at the positive edge\n')
-
         # Run the pipeline for once cycle
         # Define a stage function
         stage_function = {0 : self.fetch,
@@ -508,7 +510,7 @@ class ima (object):
                 update_ready = self.stage_done[i+1]
 
             # run the stage based on its update_ready argument
-            stage_function[i] (update_ready)
+            stage_function[i] (update_ready, fid)
 
         # If specified, print thetrace (pipeline stage information)
         if (self.debug):
@@ -533,5 +535,5 @@ class ima (object):
             fid.write('\n')
 
             if (self.halt == 1):
-                fid.write ('IMA ran for cycles: ' + str(cycle))
+                fid.write ('IMA halted at ' + str(cycle) + ' cycles')
 

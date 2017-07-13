@@ -176,24 +176,24 @@ i_temp = i_alu ('mul', datamem_off + 5, datamem_off + 5, datamem_off + 11)
 dict_list.append (i_temp.copy())
 
 # 6 Stores - Vector store to store back the output to EDRAM
-i_temp = i_store (datamem_off + 0, 10)
+i_temp = i_store (datamem_off + 0, 22)
 dict_list.append (i_temp.copy())
-i_temp = i_store (datamem_off + 1, 11)
+i_temp = i_store (datamem_off + 1, 23)
 dict_list.append (i_temp.copy())
-i_temp = i_store (datamem_off + 2, 12)
+i_temp = i_store (datamem_off + 2, 24)
 dict_list.append (i_temp.copy())
-i_temp = i_store (datamem_off + 3, 13)
+i_temp = i_store (datamem_off + 3, 25)
 dict_list.append (i_temp.copy())
-i_temp = i_store (datamem_off + 4, 14)
+i_temp = i_store (datamem_off + 4, 26)
 dict_list.append (i_temp.copy())
-i_temp = i_store (datamem_off + 5, 15)
+i_temp = i_store (datamem_off + 5, 27)
 dict_list.append (i_temp.copy())
 
 # Add a halt instruction
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
 
-filename = instrnpath + 'imem1.npy'
+filename = instrnpath + 'ima_imem1.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))
@@ -255,7 +255,7 @@ dict_list.append (i_temp.copy())
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
 
-filename = instrnpath + 'imem2.npy'
+filename = instrnpath + 'ima_imem2.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))

@@ -15,14 +15,14 @@ xbar_out_max = 1 # think about this - ???
 ## Define commonly used data structures
 ########################################
 # List of supported opcodes for tile
-op_list_tile = ['send', 'receive', 'compute']
+op_list_tile = ['send', 'receive', 'compute', 'halt']
 
 # Instruction format for Tile
 dummy_instrn_tile = {'opcode' : op_list_tile[0],
                      'mem_addr': 0,     # send/receive - edram_addr
-                     'r2': 0,     # send-target_addr, receive-null
+                     'r2': 0,     # send-target_addr, receive-counter
                      'neuron_id': 0, # send/receive-neuron_id
-                     'ima_nma': 0 }      # compute - a bit for each ima
+                     'ima_nma': ''}      # compute - a bit for each ima
 
 # List of supported opcodes/aluops for IMA
 op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
@@ -91,7 +91,7 @@ num_ima = 2
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
-receivebuff_size = 4 # size of receive buffer
+receive_buffer_size = 7 # size of receive buffer
 
 # Enter component latency
 tile_instrnMem_size = 20

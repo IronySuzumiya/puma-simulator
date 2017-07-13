@@ -13,11 +13,13 @@ import ima
 import tile_modules
 import tile
 
+from ima_modules import int2bin
+
 # Define the tile dump function
 # Define a dump function which dums the all memory components into a file
 def dump (tile, filename = ''):
     if (filename == ''):
-        filename = 'memsim1.txt'
+        filename = 'memsim2.txt'
 
     fid = open (filename, 'w')
 
@@ -46,25 +48,28 @@ def dump (tile, filename = ''):
     fid.close()
 
 # Instantiate the tile under test
-tile = tile.tile ()
+tile_dut = tile.tile ()
 
 # Generate the instruction file(s) for ima(s)
 # generate_inst.generate_inst ()
 
-# Initialize the tile
-tile.tile_init (instrnpath)
+# Initialize the tile - instrnpath provides instrns for tile as well as resident imas
+tile_dut.tile_init (instrnpath, tracepath)
 
 # Run the tile
 cycle = 0
-while (all(tile.halt_list) != 1 and cycle < param.cycles_max):
-    tile.tile_run (cycle, tracepath)
+while (not tile_dut.tile_halt and cycle < param.cycles_max):
+    tile_dut.tile_run (cycle)
     cycle = cycle + 1
 
-# Close all the trace files
-for tr_fid in tile.fid_list:
-    tr_fid.close ()
+    # Add things to receive buffer at cycle x
+    if (cycle == 10):
+        for i in range (7):
+            data = int2bin (i, param.data_width)
+            temp_dict = {'data':data, 'neuron_id':i}
+            tile_dut.receive_buffer.write (temp_dict)
 
-print 'Finally tile halted'
+print 'Finally tile halted' + ' | PS: max_cycles ' + str (param.cycles_max)
 
 dumpfile = ''
-dump (tile, dumpfile)
+dump (tile_dut, dumpfile)

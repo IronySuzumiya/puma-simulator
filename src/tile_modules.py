@@ -3,7 +3,7 @@
 
 import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
-sys.path.insert (0, '/home/ankitaay/dpe/src/ima')
+sys.path.insert (0, '/home/ankitaay/dpe/src/')
 import constants as param
 import ima_modules
 from ima_modules import int2bin
@@ -16,11 +16,12 @@ def dict_match (dict1, dict2):
     return 1
 
 # an instruction memory to store the tile instructions
-class instrn_memory (ima_modules.memory):
+class instrn_memory (ima_modules.instrn_memory):
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
-        assert ((dict_match(data, param.dummy_instrn_tile) == 1) and (len(data) == constants.data_width)), 'data should be a string with mem_width bits'
+        assert ((dict_match(data, param.dummy_instrn_tile) == 1) and \
+                (len(data) == constants.data_width)), 'data should be a dict if tile_instrn_dummy type'
         self.memfile[addr - self.addr_start] = data
 
 # adding a receive buffer (full-assoc cache (tag = neuron_id)) to enable non-blocking receives
@@ -28,7 +29,9 @@ class receive_buffer (object):
     def __init__ (self, buff_size):
          # Consists of a list of dictionaries (data, neuron_id)
          temp_dict = {'data': '', 'neuron_id': 0, 'valid': 0}
-         self.buffer = [temp_dict] * buff_size
+         self.buffer = []
+         for i in range (buff_size):
+             self.buffer.append (temp_dict.copy())
          self.rd_ptr = 0
          self.wr_ptr = 0
 
@@ -55,8 +58,8 @@ class receive_buffer (object):
 
     # write the data coming from router to buffer if non-full
     def write (self, dict_entry):
-        [valid, idx] = self.isfull ()
-        assert (not valid), 'Receive buffer full - fails to receive data'
+        [full, idx] = self.isfull ()
+        assert (not full), 'Receive buffer full - fails to receive data'
         self.buffer[idx]['data'] = dict_entry['data']
         self.buffer[idx]['neuron_id'] = dict_entry['neuron_id']
         self.buffer[idx]['valid'] = 1
@@ -66,7 +69,7 @@ class receive_buffer (object):
         if (not self.isempty()):
             for idx in range(len(self.buffer)):
                 temp_dict = self.buffer[idx]
-                if (temp_dict['neuron_id'] == neuron_id):
+                if (temp_dict['neuron_id'] == neuron_id and temp_dict['valid'] == 1):
                     temp_dict['valid'] = 0
                     return [1, temp_dict['data']]
         return [0, 0] # tag-hit, data
@@ -81,7 +84,8 @@ class edram (ima_modules.memory):
     def write (self, addr, data):
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
-        assert ((type(data) ==  str) and (len(data) == param.edram_buswidth)), 'data should be a string with edram_datawidth bits'
+        assert ((type(data) ==  str) and (len(data) == param.edram_buswidth)), \
+                'data should be a string with edram_datawidth bits'
         self.memfile[addr - self.addr_start] = data
 
 
@@ -112,12 +116,16 @@ class edram_controller (object):
     def find_next (self, ren_list, wen_list):
         if (len(ren_list) > 1):
             if ((1 in ren_list[self.lastIdx+1:]) or (1 in wen_list[self.lastIdx+1:])):
-                idx1 = ren_list[self.lastIdx+1:].index(1) if any(ren_list[self.lastIdx+1:]) else param.infinity
-                idx2 = wen_list[self.lastIdx+1:].index(1) if any(wen_list[self.lastIdx+1:]) else param.infinity
+                idx1 = ren_list[self.lastIdx+1:].index(1) if any(ren_list[self.lastIdx+1:]) \
+                        else param.infinity
+                idx2 = wen_list[self.lastIdx+1:].index(1) if any(wen_list[self.lastIdx+1:]) \
+                        else param.infinity
                 return (self.lastIdx+1) + min (idx1, idx2)
             else:
-                idx1 = ren_list[0:self.lastIdx+1].index(1) if any(ren_list[0:self.lastIdx+1]) else param.infinity
-                idx2 = wen_list[0:self.lastIdx+1].index(1) if any(wen_list[0:self.lastIdx+1]) else param.infinity
+                idx1 = ren_list[0:self.lastIdx+1].index(1) if any(ren_list[0:self.lastIdx+1]) \
+                        else param.infinity
+                idx2 = wen_list[0:self.lastIdx+1].index(1) if any(wen_list[0:self.lastIdx+1]) \
+                        else param.infinity
                 return min (idx1, idx2)
         else: # for one IMA case only
             return 0
@@ -137,7 +145,8 @@ class edram_controller (object):
             self.lastIdx = idx # update last index
 
             # based on ren and wen perfrom the required action
-            assert ((ren_list[idx] ^ wen_list[idx]) == 1), 'Ram Access Error: both ren and wen cannot be same'
+            assert ((ren_list[idx] ^ wen_list[idx]) == 1), \
+                    'Ram Access Error: both ren and wen cannot be same'
 
             # Check for valid (invalid) for LD (ST)
             if ((self.valid[addr_list[idx]] and ren_list[idx]) or \
@@ -150,7 +159,7 @@ class edram_controller (object):
             if (found): # change state only if an idx was found
                 # update the counter & valid flags accordingly
                 self.counter[addr] = self.counter[addr] - 1
-                if (self.counter[addr] == 0):
+                if (self.counter[addr] <= 0): #modified
                     self.valid[addr] = 0
             # read the data and send to ima - if found is 0, ramload is junk
             ramload = self.mem.read (addr_list[idx])
