@@ -58,8 +58,11 @@ tile_dut.tile_init (instrnpath, tracepath)
 
 # Run the tile
 cycle = 0
+tracefile = tracepath + 'tile_trace1.txt'
+tile_fid = open (tracefile, 'w')
+
 while (not tile_dut.tile_halt and cycle < param.cycles_max):
-    tile_dut.tile_run (cycle)
+    tile_dut.tile_run (cycle, tile_fid)
     cycle = cycle + 1
 
     # Add things to receive buffer at cycle x
@@ -68,7 +71,9 @@ while (not tile_dut.tile_halt and cycle < param.cycles_max):
             data = int2bin (i, param.data_width)
             temp_dict = {'data':data, 'neuron_id':i}
             tile_dut.receive_buffer.write (temp_dict)
+            # print (tile_dut.receive_buffer.buffer)
 
+tile_fid.close()
 print 'Finally tile halted' + ' | PS: max_cycles ' + str (param.cycles_max)
 
 dumpfile = ''

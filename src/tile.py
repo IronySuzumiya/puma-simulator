@@ -1,6 +1,6 @@
 # Defines a configurable tile with its methods
 
-import sys
+import sys, json
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 import Queue
@@ -15,8 +15,15 @@ import ima_modules
 
 class tile (object):
 
+    instances_created = 0
+
     ### Instantiate different modules in a tile
     def __init__ (self):
+
+        # Assign a tile_id for identification purpose in debug trace
+        self.tile_id = tile.instances_created
+        tile.instances_created += 1
+
         ## Objects which correspond to a hardware component (at least NOW!)
         # ima_list
         self.ima_list = []
@@ -69,7 +76,7 @@ class tile (object):
         # Initialize the IMAs and their trace file ids
         for i in range (param.num_ima):
             # tracefile is where stats are dumped
-            tracefile = tracepath + 'trace' + str(i+1) + '.txt'
+            tracefile = tracepath + 'ima_trace' + str(i+1) + '.txt'
             fid_temp = open (tracefile, 'w')
             self.fid_list.append (fid_temp)
             # instrn_file provides the instrn_list that the IMA will execute
@@ -191,14 +198,15 @@ class tile (object):
     ### tile_run - simulate a cycle of execution of the tile
     # data addition to receive buffer happens by the higher level hierarchy
     # ?? - All memory access parts will be modified (based on changes in edram_controller)
-    def tile_run (self, cycle):
+    def tile_run (self, cycle, fid):
         ## execute the current instruction in tile's instruction memory
         # Fetch a new instrn only after the previous instrn completes
-        if (not self.stall):
+        if (not self.stall and not self.tile_halt):
             self.instrn = self.instrn_memory.read (self.pc)
             self.pc = self.pc + 1
 
         # Check if the current fetched instrn can  be completed
+        # For DEBUG only
         assert (self.instrn['opcode'] in param.op_list_tile), 'Tile: unsupported opcode'
         if (self.instrn['opcode'] == 'send'):
             # check if the mem_addr is valid
@@ -216,8 +224,8 @@ class tile (object):
                     # add the entry to send list (send_list is physically part of NOC and not tile)
                     data = self.edram_controller.mem.read(mem_addr)
                     target_addr = self.instrn['r2']
-                    neu_id = self.instrn['neuron_id']
-                    temp_dict = {'data':data, 'target_addr':target_addr, 'cycle':cycle, 'neu_id':neu_id}
+                    neuron_id = self.instrn['neuron_id']
+                    temp_dict = {'data':data, 'target_addr':target_addr, 'cycle':cycle, 'neuron_id':neuron_id}
                     self.send_queue.put (temp_dict)
                     # update the counter and valid flag (if req.) for edram
                     self.edram_controller.counter[mem_addr] -= 1
@@ -234,8 +242,8 @@ class tile (object):
         elif (self.instrn['opcode'] == 'receive'):
             # check tag if only if not checked previously
             if (self.tag_matched == 0):
-                neu_id = self.instrn['neuron_id']
-                [tag_hit, data] = self.receive_buffer.read (neu_id)
+                neuron_id = self.instrn['neuron_id']
+                [tag_hit, data] = self.receive_buffer.read (neuron_id)
                 self.tag_matched = tag_hit
                 self.received_data = data
 
@@ -282,7 +290,15 @@ class tile (object):
             # check if all imas halted
             if (all(self.halt_list)):
                 self.tile_halt = 1
-                self.stall = 0 # Doesn't matter as this was the last cycle
+
+                # Close all ima the trace files
+                for tr_fid in self.fid_list:
+                    tr_fid.close ()
+                    self.stall = 0 # Doesn't matter as this was the last cycle
+
+                # Update the tile trace
+                print (self.instrn['opcode'])
+                fid.write ('Tile ran for ' + str(cycle) + ' cycles')
             else:
                 # prevent new instructions to befetched
                 self.stall = 1
@@ -291,10 +307,7 @@ class tile (object):
         self.tile_compute (cycle)
 
         ## for DEBUG only
-        print 'cycle: ' + str(cycle) + ' halt_list:', self.halt_list
-        if (self.tile_halt):
-            print ('send_list', self.send_queue.queue)
-            print ('Tile ran for ' + str(cycle) + ' cycles')
-            # Close all the trace files
-            for tr_fid in self.fid_list:
-                tr_fid.close ()
+        if (not self.tile_halt):
+            fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   ima_halt_list: ')
+            json.dump (self.halt_list, fid)
+            fid.write ('\n')

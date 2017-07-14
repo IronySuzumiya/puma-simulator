@@ -7,7 +7,7 @@ import numpy as np
 import constants as param
 from tile_instrn_proto import *
 
-instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2/tile1/'
 num_inst = 0 # global variable keeps track of num instructions generated
 
 ## Instruction for Tile
@@ -39,11 +39,14 @@ dict_list.append (i_temp.copy())
 i_temp = i_compute ('1'*param.num_ima)
 dict_list.append (i_temp.copy())
 
-# Add 2 sends
-i_temp = i_send (26, 32, 100)
+# Add 3 sends - tile 0 sends to til1
+i_temp = i_send (25, 4, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_send (27, 33, 200)
+i_temp = i_send (26, 5, '001')
+dict_list.append (i_temp.copy())
+
+i_temp = i_send (27, 6, '001')
 dict_list.append (i_temp.copy())
 
 # Add a halt instruction

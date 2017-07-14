@@ -35,6 +35,10 @@ class receive_buffer (object):
          self.rd_ptr = 0
          self.wr_ptr = 0
 
+    # access (read/write) latency for receive_buffer
+    def getLatency (self):
+        return param.receive_buffer_lat
+
     # invalidates all entries
     def inv (self):
         for temp_dict in self.buffer:
