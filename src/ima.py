@@ -18,7 +18,7 @@ class ima (object):
     #######################################################
     def __init__ (self):
 
-        # Assign a ima_id for identification purposed in debug trace
+        # Assign a ima_id for identification purpose in debug trace
         self.ima_id = ima.instances_created
         ima.instances_created += 1
 

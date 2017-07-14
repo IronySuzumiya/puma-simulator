@@ -84,6 +84,8 @@ memInterface_lat = infinity # infinite latency
     # Number of IMAs
     # EDRAM size
     # Shared Bus width
+    # Instruction memory size
+    # Receive Buffer size
 #################################################
 
 # Enter parameters here:
@@ -96,5 +98,30 @@ receive_buffer_size = 7 # size of receive buffer
 # Enter component latency
 tile_instrnMem_size = 20
 edram_lat = 4
+receive_buffer_lat = 1
 
+################################################
+# Node Hierarchy
+    # Number of Tiles
+    # NOC - Topology (Currently assumes a cmesh (c=4, same as ISSAC))
+        # n = number of dimension\
+        # k = number of tiles in each dimension
+        # c = concentartion (tiles/router)
+        # average injection rate (0.25 - a tile injects a new packet for each destination in every four cycles)
+################################################
+
+# Enter parameters here:
+num_tile = 2
+# cmesh topology
+n = 2
+k = 4
+c = 4
+inj_rate = 0.01
+# addressing tiles (in and outside node)
+num_bits_nodeId = 1 # can have upto 2 nodes
+num_bits_tileId = 2 # can have upto 4 tiles in a node
+
+# Enter component latency (Based on teh above NOC topological parameters)
+noc_latency_intranode = 10
+noc_latency_internode = 25
 

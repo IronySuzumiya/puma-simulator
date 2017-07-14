@@ -7,7 +7,7 @@ import numpy as np
 import constants as param
 from instrn_proto import *
 
-instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2/tile2/'
 num_inst = 0 # global variable keeps track of num instructions generated
 
 # Generate actual instructions
