@@ -1,0 +1,315 @@
+# //  Questa Sim-64
+# //  Version 10.4c_3 linux_x86_64 Oct 21 2015
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# vsim -novopt scalar_fu_test 
+# Start time: 22:19:16 on Jul 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.scalar_fu_test_sv_unit
+# Loading work.scalar_fu_test
+# Loading work.scalar_fu_if
+# Loading work.scalar_fu_sv_unit
+# Loading work.scalar_fu
+# Loading work.test
+add wave -position insertpoint sim/:scalar_fu_test:scif:*
+restart; run -all
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# ** Note: $finish    : scalar_fu_test.sv(23)
+#    Time: 60 ns  Iteration: 0  Instance: :scalar_fu_test:PROG
+# 1
+# Break in Module test at scalar_fu_test.sv line 23
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:21:42 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu
+# 
+# Top level modules:
+# 	scalar_fu
+# End time: 22:21:42 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog scalar_fu_test.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:21:49 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu_test.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_test_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu_test
+# -- Compiling program test
+# 
+# Top level modules:
+# 	scalar_fu_test
+# End time: 22:21:49 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -novopt scalar_fu_test
+# End time: 22:22:07 on Jul 17,2017, Elapsed time: 0:02:51
+# Errors: 0, Warnings: 2
+# vsim -novopt scalar_fu_test 
+# Start time: 22:22:07 on Jul 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.scalar_fu_test_sv_unit
+# Loading work.scalar_fu_test
+# Loading work.scalar_fu_if
+# Loading work.scalar_fu_sv_unit
+# Loading work.scalar_fu
+# Loading work.test
+# ** Error (suppressible): (vsim-8386) scalar_fu_test.sv(18): Illegal assignment to type 'scalar_fu_test_sv_unit.enum reg[2:0] ' from type 'bit signed[31:0]': An enum variable may only be assigned the same enum typed variable or one of its values.
+#    Time: 0 ns  Iteration: 0  Instance: :scalar_fu_test:PROG File: scalar_fu_test.sv
+# Error loading design
+# End time: 22:22:07 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+clear
+# [H[J
+clc
+# invalid command name "clc"
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:23:31 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu
+# 
+# Top level modules:
+# 	scalar_fu
+# End time: 22:23:31 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog scalar_fu_test.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:23:35 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu_test.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_test_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu_test
+# -- Compiling program test
+# 
+# Top level modules:
+# 	scalar_fu_test
+# End time: 22:23:35 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -novopt scalar_fu_test
+# vsim -novopt scalar_fu_test 
+# Start time: 22:23:39 on Jul 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.scalar_fu_test_sv_unit
+# Loading work.scalar_fu_test
+# Loading work.scalar_fu_if
+# Loading work.scalar_fu_sv_unit
+# Loading work.scalar_fu
+# Loading work.test
+add wave -position insertpoint sim/:scalar_fu_test:scif:*
+restart; run -all
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# ** Note: $finish    : scalar_fu_test.sv(23)
+#    Time: 60 ns  Iteration: 0  Instance: :scalar_fu_test:PROG
+# 1
+# Break in Module test at scalar_fu_test.sv line 23
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:38:24 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu
+# 
+# Top level modules:
+# 	scalar_fu
+# End time: 22:38:24 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog scalar_fu_test.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:38:30 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu_test.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_test_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu_test
+# -- Compiling program test
+# 
+# Top level modules:
+# 	scalar_fu_test
+# End time: 22:38:31 on Jul 17,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -novopt scalar_fu_test
+# End time: 22:38:36 on Jul 17,2017, Elapsed time: 0:14:57
+# Errors: 0, Warnings: 2
+# vsim -novopt scalar_fu_test 
+# Start time: 22:38:36 on Jul 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.scalar_fu_test_sv_unit
+# Loading work.scalar_fu_test
+# Loading work.scalar_fu_if
+# Loading work.scalar_fu_sv_unit
+# Loading work.scalar_fu
+# Loading work.test
+add wave -position insertpoint sim/:scalar_fu_test:scif:*
+restart; run -all
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# ** Note: $finish    : scalar_fu_test.sv(23)
+#    Time: 60 ns  Iteration: 0  Instance: :scalar_fu_test:PROG
+# 1
+# Break in Module test at scalar_fu_test.sv line 23
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:44:38 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# ** Error: (vlog-13069) scalar_fu.sv(9): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(10): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(11): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(12): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(13): near "(": syntax error, unexpected '(', expecting '\''.
+# End time: 22:44:38 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+# /package/eda/mg/ams15_4/questasim/v10.4c_3/linux_x86_64/vlog failed.
+clear
+# [H[J
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:45:28 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# ** Error: (vlog-13069) scalar_fu.sv(9): near "scif": syntax error, unexpected IDENTIFIER, expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(10): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(11): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(12): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(13): near "(": syntax error, unexpected '(', expecting '\''.
+# End time: 22:45:28 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+# /package/eda/mg/ams15_4/questasim/v10.4c_3/linux_x86_64/vlog failed.
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:45:50 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# ** Error: (vlog-13069) scalar_fu.sv(9): near ")": syntax error, unexpected ')', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(10): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(11): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(12): near "(": syntax error, unexpected '(', expecting '\''.
+# ** Error: (vlog-13069) scalar_fu.sv(13): near "(": syntax error, unexpected '(', expecting '\''.
+# End time: 22:45:51 on Jul 17,2017, Elapsed time: 0:00:01
+# Errors: 5, Warnings: 0
+# /package/eda/mg/ams15_4/questasim/v10.4c_3/linux_x86_64/vlog failed.
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:48:57 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu
+# 
+# Top level modules:
+# 	scalar_fu
+# End time: 22:48:57 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog scalar_fu_test.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:49:01 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu_test.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_test_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu_test
+# -- Compiling program test
+# 
+# Top level modules:
+# 	scalar_fu_test
+# End time: 22:49:01 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -novopt scalar_fu_test
+# End time: 22:49:07 on Jul 17,2017, Elapsed time: 0:10:31
+# Errors: 18, Warnings: 2
+# vsim -novopt scalar_fu_test 
+# Start time: 22:49:07 on Jul 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.scalar_fu_test_sv_unit
+# Loading work.scalar_fu_test
+# Loading work.scalar_fu_if
+# Loading work.scalar_fu_sv_unit
+# Loading work.scalar_fu
+# Loading work.test
+add wave -position insertpoint sim/:scalar_fu_test:scif:*
+restart; run -all
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# ** Note: $finish    : scalar_fu_test.sv(23)
+#    Time: 60 ns  Iteration: 0  Instance: :scalar_fu_test:PROG
+# 1
+# Break in Module test at scalar_fu_test.sv line 23
+clear
+# [H[J
+vlog scalar_fu.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:54:15 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu
+# 
+# Top level modules:
+# 	scalar_fu
+# End time: 22:54:15 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog scalar_fu_test.sv
+# QuestaSim-64 vlog 10.4c_3 Compiler 2015.10 Oct 21 2015
+# Start time: 22:54:18 on Jul 17,2017
+# vlog -reportprogress 300 scalar_fu_test.sv 
+# -- Compiling interface scalar_fu_if
+# -- Compiling package scalar_fu_test_sv_unit
+# -- Compiling interface scalar_fu_if
+# -- Compiling module scalar_fu_test
+# -- Compiling program test
+# 
+# Top level modules:
+# 	scalar_fu_test
+# End time: 22:54:18 on Jul 17,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /home/min/a/aankit/AA/hpe_dpe/verilog/scalarFU/wave.do
+vsim -novopt scalar_fu_test
+# End time: 22:54:36 on Jul 17,2017, Elapsed time: 0:05:29
+# Errors: 0, Warnings: 2
+# vsim -novopt scalar_fu_test 
+# Start time: 22:54:36 on Jul 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.scalar_fu_test_sv_unit
+# Loading work.scalar_fu_test
+# Loading work.scalar_fu_if
+# Loading work.scalar_fu_sv_unit
+# Loading work.scalar_fu
+# Loading work.test
+do /home/min/a/aankit/AA/hpe_dpe/verilog/scalarFU/wave.do
+restart; run -all
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# ** Note: $finish    : scalar_fu_test.sv(23)
+#    Time: 60 ns  Iteration: 0  Instance: :scalar_fu_test:PROG
+# 1
+# Break in Module test at scalar_fu_test.sv line 23
+# Break key hit
+# Break key hit
+# End time: 22:55:16 on Jul 17,2017, Elapsed time: 0:00:40
+# Errors: 0, Warnings: 2
