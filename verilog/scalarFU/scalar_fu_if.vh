@@ -1,4 +1,4 @@
-// Scalar Function Unit (DPE) Interface
+// Scalar Function Unit (IMA) Interface
 
 `ifndef SCALAR_FU_IF_VH
 `define SCALAR_FU_IF_VH

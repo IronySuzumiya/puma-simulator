@@ -1,4 +1,4 @@
-// Scalar Function Unit (Parameteric - 4,8,12,16) for DPE
+// Scalar Function Unit (Parameteric: #bits (4,8,12,16)) for DPE
 
 `include "scalar_fu_if.vh"
 
