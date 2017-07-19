@@ -1,11 +1,11 @@
 # Top module name
-set TOP fifo
+set TOP edram_controller
 #set TOP qcc
 # verilog source files
-set sverilog_files [list /home/min/a/aankit/AA/CMOS_SNN/hardware/source/fifo.sv]
+set sverilog_files [list edram_controller.sv]
 #set verilog_files [list Ann_ver.v mActFn.v mDotProduct.v SelectShiftAddv6.v controlSigNew.v AlphabetSet.v]
 #set verilog_files [list qcc.v oneddct_orig.sv oneddct_approx.sv]
-#set verilog_files [list "qcc_syn_flat_before_gtech.sv"] 
+#set verilog_files [list "qcc_syn_flat_before_gtech.sv"]
 # timing constaints for pure combinational logic
 #set my_max_delay 1
 
@@ -50,15 +50,15 @@ uniquify
 # create clock
 create_clock -period $my_period_ns $clk_name
 set_clock_uncertainty $my_clock_uncertainty [get_clocks $clk_name]
-#set_switching_activity -toggle_rate 0.5 -base_clock clk -static_probability 1.0 [all_inputs]
+# set_switching_activity -toggle_rate 0.5 -base_clock clk -static_probability 0.5 [all_inputs]
 
 # enable power calculation
 #saif_map -start
 #set_power_prediction
-#set_dont_touch [sub_designs_of $TOP] 
+#set_dont_touch [sub_designs_of $TOP]
 
 #compile -map_effort high  -boundary_optimization
-compile -map_effort high  
+compile -map_effort high
 #compile_ultra
 #compile_ultra -no_autoungroup
 #compile_ultra -no_boundary_optimization
@@ -79,19 +79,16 @@ write -f verilog -hierarchy -o $synthesized_verilog_file
 
 # for combinational logic
 # write_saif  -output ./${TOP}_switching.saif -propagated
-#report_timing > ./${TOP}_timing_${my_max_delay}ns.txt
-#report_area > ./${TOP}_area_${my_max_delay}ns.txt
-#report_power -hier > ./${TOP}_power_${my_max_delay}ns.txt
+report_timing > ./${TOP}_timing_${my_period_ns}ns.txt
+report_area > ./${TOP}_area_${my_period_ns}ns.txt
+report_power -hier > ./${TOP}_power_${my_period_ns}ns.txt
 
-report_timing
-report_area
+#report_timing
+#report_area
 
 #read_saif -input ann_saif -instance_name mAnnTb/iAnn
-report_power -hier
+#report_power -hier
 
-report_power > ./fifo_power.txt
-report_area > ./fifo_area.txt
-report_timing > ./fifo_timing.txt
 #report_power -hier -hier_level 3 > ./${TOP}_power_${my_max_delay}ns.txt
 
 # write_sdc ./${TOP}_${my_max_delay}ns.sdc
