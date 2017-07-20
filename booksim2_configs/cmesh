@@ -1,0 +1,26 @@
+// Single Node
+in_ports = 1;
+out_ports = 1;
+
+// Topology
+topology = cmesh;
+
+k = 4;
+n = 2;
+c = 4;
+xr = 2;
+yr = 2;
+
+x = 4;
+y = 4;
+
+// Routing
+routing_function = dor_no_express;
+
+// Traffic
+traffic = uniform;
+injection_rate=0.1;
+
+// Simulation
+sim_type = throughput;
+
