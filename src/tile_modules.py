@@ -102,11 +102,6 @@ class edram_controller (object):
         self.valid = [0] * param.edram_size
         self.counter = [0] * param.edram_size
 
-        # Intialize EDRAM & other fields
-        for i in range (len(self.mem.memfile)/2):
-            val = int2bin (i, param.data_width)
-            self.mem.memfile[i] = val
-
         # Define latency
         self.latency = param.edram_lat
 

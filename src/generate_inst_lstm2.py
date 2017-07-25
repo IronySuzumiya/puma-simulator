@@ -135,7 +135,7 @@ dict_list.append (i_temp.copy())
 i_temp = i_alu ('sig', datamem_off + 14, datamem_off + 14, '', '')
 dict_list.append (i_temp.copy())
 
-# 3 ALU instructions for ALU multiply - foget .* c_prev
+# 3 ALU instructions for ALU multiply - c_prev .* forget
 i_temp = i_alu ('mul', datamem_off + 0, datamem_off + 0, datamem_off + 6)
 dict_list.append (i_temp.copy())
 i_temp = i_alu ('mul', datamem_off + 1, datamem_off + 1, datamem_off + 7)
@@ -152,11 +152,11 @@ i_temp = i_alu ('mul', datamem_off + 5, datamem_off + 5, datamem_off + 14)
 dict_list.append (i_temp.copy())
 
 # ALU instructions for ALU add - vector ADD - c_next (one of the outputs)
-i_temp = i_alu ('mul', datamem_off + 0, datamem_off + 0, datamem_off + 3)
+i_temp = i_alu ('add', datamem_off + 0, datamem_off + 0, datamem_off + 3)
 dict_list.append (i_temp.copy())
-i_temp = i_alu ('mul', datamem_off + 1, datamem_off + 1, datamem_off + 4)
+i_temp = i_alu ('add', datamem_off + 1, datamem_off + 1, datamem_off + 4)
 dict_list.append (i_temp.copy())
-i_temp = i_alu ('mul', datamem_off + 2, datamem_off + 2, datamem_off + 5)
+i_temp = i_alu ('add', datamem_off + 2, datamem_off + 2, datamem_off + 5)
 dict_list.append (i_temp.copy())
 
 # ALU instructins for non-linearity

@@ -9,11 +9,7 @@ sys.path.insert (0, '/home/ankitaay/dpe/include')
 import numpy as np
 import constants
 import math
-
-# Convert int to binary of specified bits
-def int2bin (inp, bits):
-    out = bin(inp)[2:]
-    return ((bits-len(out))*'0' + out)
+from data_convert import *
 
 
 class xbar (object):
@@ -28,6 +24,14 @@ class xbar (object):
         if (xbar_value != 'nil'):
             self.xbar_value = xbar_value
 
+    def program (self, xbar_value = ''):
+        # programs the crossbar with given matrix values
+        val_size = np.shape (xbar_value)
+        size_max = constants.xbar_size
+        assert (val_size[0] <= size_max and val_size[1] <= size_max), \
+                    'Xbar values format should be a numpy array of the xbar dimensions'
+        self.xbar_value[0:val_size[0], 0:val_size[1]] = xbar_value.copy ()
+
     def getLatency (self):
         return self.latency
 
@@ -35,6 +39,25 @@ class xbar (object):
         assert (inp != 'nil'), 'propagate needs a non-nil input'
         assert (len(inp) == self.xbar_size), 'xbar input size mismatch'
         return np.dot(inp, self.xbar_value)
+
+    # HACK - until propagate doesn't have correct analog functionality
+    def propagate_dummy (self, inp = 'nil'):
+        # data input is list of bit strings (of length dac_res) - fixed point binary
+        assert (inp != 'nil'), 'propagate needs a non-nil input'
+        assert (len(inp) == self.xbar_size), 'xbar input size mismatch'
+        # convert input from fixed point binary (string) to float
+        inp_float = [0.0] * self.xbar_size
+        for i in range(len(inp)):
+            # extend data to num_bits for computation (sign extended)
+            temp_inp = (constants.num_bits - constants.dac_res) * '0' + inp[i]
+            inp_float[i] = fixed2float(temp_inp, constants.int_bits, constants.frac_bits)
+        inp_float = np.asarray (inp_float)
+        out_float = np.dot(inp_float, self.xbar_value)
+        # convert float back to fixed point binary
+        out_fixed  = [''] * self.xbar_size
+        for i in range(len(out_fixed)):
+            out_fixed[i] = float2fixed(out_float[i], constants.int_bits, constants.frac_bits)
+        return out_fixed
 
 
 class dac (object):
@@ -86,6 +109,12 @@ class dac_array (object):
             out_list.append(temp_out)
         return out_list
 
+    # HACK - until propagate doesn't have correct analog functionality
+    def propagate_dummy (self, inp_list):
+        assert (len(inp_list) == self.xbar_size), 'dac_array input list size mismatch'
+        out_list = inp_list [:]
+        return out_list
+
 
 # Probably - also doing the sampling part of (sample and hold) inside
 class adc (object):
@@ -110,6 +139,9 @@ class adc (object):
         num_bits = self.adc_res
         return self.real2bin (inp, num_bits)
 
+    # HACK - until propagate doesn't have correct analog functionality
+    def propagate_dummy (self, inp):
+        return inp
 
 # Doesn't replicate the exact (sample and hold) functionality (just does hold)
 class sampleNhold (object):
@@ -122,11 +154,17 @@ class sampleNhold (object):
     def getLatency (self):
         return self.latency
 
+    # propagate needs to be updated withe xact analog functionaloty if any
     def propagate (self, inp_list):
         assert (len(inp_list) == len(self.hold_latch)), 'sample&hold input size mismatch'
         for i in xrange(len(inp_list)):
             self.hold_latch[i] = inp_list[i]
         return self.hold_latch
+
+    def propagate_dummy (self, inp_list):
+        assert (len(inp_list) == constants.xbar_size), 'sample&hold input size mismatch'
+        out_list = inp_list[:]
+        return out_list
 
 
 class mux (object):
@@ -147,33 +185,49 @@ class mux (object):
 
 
 #### Needs some change - add function op (for instance, shift bits for shift)
+## Needs to add ALU overflow check/mitigation
 class alu (object):
     def __init__ (self):
         # define latency
         self.latency = constants.alu_lat
 
-        def add (a, b, c): return (a + b)
-        def sub (a, b, c): return (a - b)
-        def shift_add (a, b, c): return (a + (b << c))
-        def multiply (a, b, c): return (a * b)
-        def sigmoid (a, b, c): return a # A pass through unti for now
-        self.options = {'add' : add, 'sub' : sub, 'sna' : shift_add, 'mul': multiply, 'sig': sigmoid}
+        # Arithmetic operations
+        def add (a, b): return (a + b)
+        def sub (a, b): return (a - b)
+        def shift_add (a, b): return (a + b) # does add, b is already shifted
+        def multiply (a, b): return (a * b)
+
+        # Neuronal operations - put here for simplicity (can be made a separate unit)
+        # Using aluop (arith./neuronal) dependent power numbers (they will be separate units in harwdare)
+        def sigmoid (a, b): # b is unused
+            return 1 / (1 + math.exp(-a))
+        def tanh (a, b): # b is unused
+            return np.tanh(a)
+        def relu (a, b): # b is unused
+            out = a if (a > 0) else 0
+            return out
+
+        self.options = {'add':add, 'sub':sub, 'sna':shift_add, 'mul':multiply,\
+                        'sig':sigmoid, 'tanh':tanh, 'relu':relu}
 
     def getLatency (self):
         return self.latency
 
     def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
-        a = int (a, 2)
-        b = int (b, 2) if (b != '') else 0
-        out = self.options[aluop] (a, b, c)
-        out = bin(out)[2:]
-        #assert (len(out) <= constants.data_width), 'ALU Overflow error'
-        ovf = 0 # oveflow fag
-        if (len(out) > constants.data_width):
-            out = '1'*constants.data_width
-            ovf = 1
-        return [((constants.data_width - len(out))*'0' + out), ovf]
+        assert (type(c) == int), 'ALU sna: only integral shifts allowed'
+        a = fixed2float (a, constants.int_bits, constants.frac_bits)
+        if (b == ''):
+            b = 0
+        else:
+            if (aluop == 'sna'): # shift left in fixed point binary
+                b = b[c:] + '0' * c
+            b = fixed2float (b, constants.int_bits, constants.frac_bits)
+        out = self.options[aluop] (a, b)
+        # overflow needs to be detected while conversion
+        ovf = 0
+        out = float2fixed (out, constants.int_bits, constants.frac_bits)
+        return [out, ovf]
 
 
 # Assumes a half-word oriented memory (each entry - 16 bits)
@@ -339,5 +393,4 @@ class mem_interface (object):
 
         ## For DEBUG of IMA only
         #self.ramload = self.edram.memfile[addr]
-
 

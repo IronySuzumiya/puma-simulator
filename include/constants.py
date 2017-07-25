@@ -2,9 +2,13 @@
 cycles_max = 1800
 infinity = 1000
 
-############################################
-## Technology constants for all the modules
-############################################
+##################################################
+## Technology/Other constants for all the modules
+##################################################
+# using fixed point binary (n bits, m (<= n) for integral part)
+num_bits = 16
+int_bits = 4
+frac_bits = num_bits - int_bits
 
 # IMA
 vdd = 0.9
@@ -65,8 +69,8 @@ num_adc = 6
 num_ALU = 1
 dataMem_size = 16
 instrnMem_size = 80
-data_width = 8 # (microarchitecture param)
-xbdata_width = 8 # (nn speciic for now)
+data_width = num_bits # (microarchitecture param)
+xbdata_width = data_width # (nn speciic for now)
 
 # Enter IMA component latency
 xbar_lat = 17
@@ -93,7 +97,7 @@ num_ima = 2
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
-receive_buffer_size = 7 # size of receive buffer
+receive_buffer_size = 12 # size of receive buffer
 
 # Enter component latency
 tile_instrnMem_size = 20

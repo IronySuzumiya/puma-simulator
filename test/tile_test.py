@@ -13,7 +13,7 @@ import ima
 import tile_modules
 import tile
 
-from ima_modules import int2bin
+from data_convert import int2bin
 
 # Define the tile dump function
 # Define a dump function which dums the all memory components into a file

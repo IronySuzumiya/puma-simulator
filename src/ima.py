@@ -354,23 +354,29 @@ class ima (object):
                     for k in xrange (param.xbdata_width / param.dac_res):
                         # read the values from the xbar's input register
                         out_xb_inMem = self.xb_inMem_list[i].read (param.dac_res)
+
+                        #*************************************** HACK *********************************************
+                        ###### CAUTION: Not replicated exact "functional" circuit behaviour for analog parts
+                        ###### Use propagate (not propagate_hack) for DAC, Xbar, TIA, SNH, ADC when above is done
+                        #*************************************** HACK *********************************************
+
                         # convert digital values to analog
-                        out_dac = self.dacArray_list[i].propagate (out_xb_inMem)
-                        out_dac = np.asarray (out_dac)
+                        out_dac = self.dacArray_list[i].propagate_dummy (out_xb_inMem) #pass through
                         # compute dot-product
-                        out_xbar = self.xbar_list[i].propagate (out_dac)
+                        out_xbar = self.xbar_list[i].propagate_dummy (out_dac)
                         # do sampling and hold
-                        out_snh = self.snh_list[i].propagate (out_xbar)
+                        out_snh = self.snh_list[i].propagate_dummy (out_xbar)
 
                         for j in xrange (param.xbar_size):
                             # convert from analog to digital
                             adc_id = i % param.num_adc
-                            out_adc = self.adc_list[adc_id].propagate (out_snh[j])
+                            out_adc = self.adc_list[adc_id].propagate_dummy (out_snh[j])
                             # read from xbar's output register
                             out_xb_outMem = self.xb_outMem_list[i].read (j)
                             # shift and add - make a dedicated sna unit -- PENDING
                             alu_op = 'sna'
-                            out_adc = '0'*(param.xbdata_width - param.adc_res) + out_adc
+                            # modify (len(out_adc) to adc_res) when ADC functionality is implemented
+                            out_adc = '0'*(param.xbdata_width - len(out_adc)) + out_adc
                             [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
                             if (ovf):
                                 fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\

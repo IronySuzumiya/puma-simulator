@@ -85,9 +85,6 @@ class tile (object):
 
         # Initialize the EDRAM - invalidate all entries (valid_list)
         self.edram_controller.valid = [0] * param.edram_size
-        for i in range(3):
-            self.edram_controller.valid[i+7] = 1
-            self.edram_controller.counter[i+7] = 1
 
         # Intiialize the receive buffer - invalidate
         self.receive_buffer.inv ()
@@ -297,7 +294,6 @@ class tile (object):
                     self.stall = 0 # Doesn't matter as this was the last cycle
 
                 # Update the tile trace
-                print (self.instrn['opcode'])
                 fid.write ('Tile ran for ' + str(cycle) + ' cycles')
             else:
                 # prevent new instructions to befetched
