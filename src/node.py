@@ -23,7 +23,7 @@ class node (object):
 
         # Instantiate the tile list
         self.tile_list = []
-        for i in range (param.num_tile):
+        for i in range (param.num_tile): #first & last tiles - dummy, others - compute
             temp_tile = tile.tile ()
             self.tile_list.append (temp_tile)
 
@@ -40,13 +40,13 @@ class node (object):
     def node_init (self, instrnpath, tracepath):
         for i in range (param.num_tile):
             # open tracefile for tile - place where stats are dumped
-            tracefile = tracepath + 'tile' + str(i+1) + '/tile_trace.txt'
+            tracefile = tracepath + 'tile' + str(i) + '/tile_trace.txt'
             fid_temp = open (tracefile, 'w')
             self.tile_fid_list.append (fid_temp)
 
             # initialize the tile
-            temp_instrnpath = instrnpath + 'tile' + str(i+1) + '/'
-            temp_tracepath = tracepath + 'tile' + str(i+1) + '/'
+            temp_instrnpath = instrnpath + 'tile' + str(i) + '/'
+            temp_tracepath = tracepath + 'tile' + str(i) + '/'
             self.tile_list[i].tile_init (temp_instrnpath, temp_tracepath)
 
         # intialize the tile_halt_list and node_halt
@@ -84,6 +84,7 @@ class node (object):
                     temp_data = temp_queue_head['data']
                     temp_neuron_id = temp_queue_head['neuron_id']
                     temp_dict = {'data':temp_data, 'neuron_id':temp_neuron_id}
+                    #print (tile_addr)
                     self.tile_list[tile_addr].receive_buffer.write (temp_dict)
 
         # For DEBUG

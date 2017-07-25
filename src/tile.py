@@ -69,18 +69,18 @@ class tile (object):
     ### Initialize the tile (all IMAs in the tile)
     def tile_init (self, instrnpath, tracepath):
         # Initialize the tile instruction memory
-        instrn_filepath = instrnpath + 'tile_imem1' + '.npy'
+        instrn_filepath = instrnpath + 'tile_imem' + '.npy'
         dict_list = np.load(instrn_filepath)
         self.instrn_memory.load (dict_list)
 
         # Initialize the IMAs and their trace file ids
         for i in range (param.num_ima):
             # tracefile is where stats are dumped
-            tracefile = tracepath + 'ima_trace' + str(i+1) + '.txt'
+            tracefile = tracepath + 'ima_trace' + str(i) + '.txt'
             fid_temp = open (tracefile, 'w')
             self.fid_list.append (fid_temp)
             # instrn_file provides the instrn_list that the IMA will execute
-            instrnfile = instrnpath + 'ima_imem' + str(i+1) + '.npy'
+            instrnfile = instrnpath + 'ima_imem' + str(i) + '.npy'
             self.ima_list[i].pipe_init (instrnfile, self.fid_list[i])
 
         # Initialize the EDRAM - invalidate all entries (valid_list)
@@ -294,7 +294,8 @@ class tile (object):
                     self.stall = 0 # Doesn't matter as this was the last cycle
 
                 # Update the tile trace
-                fid.write ('Tile ran for ' + str(cycle) + ' cycles')
+                if (param.debug):
+                    fid.write ('Tile ran for ' + str(cycle) + ' cycles')
             else:
                 # prevent new instructions to befetched
                 self.stall = 1
@@ -303,7 +304,7 @@ class tile (object):
         self.tile_compute (cycle)
 
         ## for DEBUG only
-        if (not self.tile_halt):
+        if (param.debug and (not self.tile_halt)):
             fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   ima_halt_list: ')
             json.dump (self.halt_list, fid)
             fid.write ('\n')

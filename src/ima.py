@@ -378,7 +378,7 @@ class ima (object):
                             # modify (len(out_adc) to adc_res) when ADC functionality is implemented
                             out_adc = '0'*(param.xbdata_width - len(out_adc)) + out_adc
                             [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
-                            if (ovf):
+                            if (param.debug and ovf):
                                 fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
                                         self.de_aluop + ' allowed to run')
                             # store back to xbar's output register & restart it
@@ -478,7 +478,7 @@ class ima (object):
     def pipe_init (self, instrn_filepath, fid = ''):
         self.debug = 0
         # tracefile stores the debug trace in debug mode
-        if (fid != ''):
+        if (param.debug and (fid != '')):
             self.debug = 1
             fid.write ('Cycle information is printed is at the end of the clock cycle\n')
             fid.write ('Assumption: A clock cycle ends at the positive edge\n')

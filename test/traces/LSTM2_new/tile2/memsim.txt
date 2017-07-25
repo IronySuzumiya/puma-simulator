@@ -1,0 +1,189 @@
+EDRAM contents
+valid: 0 | counter: 0 | 0.293701171875
+valid: 0 | counter: 0 | 0.9033203125
+valid: 0 | counter: 0 | 0.287841796875
+valid: 0 | counter: 0 | 0.119384765625
+valid: 0 | counter: 0 | 0.582763671875
+valid: 0 | counter: 0 | 0.6806640625
+valid: 0 | counter: 0 | 0.5078125
+valid: 0 | counter: 0 | 0.852783203125
+valid: 0 | counter: 0 | 1.19384765625
+valid: 0 | counter: 0 | 0.677490234375
+valid: 0 | counter: 0 | 0.836669921875
+valid: 0 | counter: 0 | 1.18920898438
+valid: 0 | counter: 0 | 1.16870117188
+valid: 0 | counter: 0 | 1.18505859375
+valid: 0 | counter: 0 | 0.6806640625
+valid: 0 | counter: 0 | 0.91455078125
+valid: 0 | counter: 0 | 0.8564453125
+valid: 0 | counter: 0 | 0.586181640625
+valid: 0 | counter: 0 | 1.17309570312
+valid: 0 | counter: 0 | 0.5859375
+valid: 0 | counter: 0 | 1.16870117188
+valid: 0 | counter: 0 | 0.58642578125
+valid: 0 | counter: 0 | 1.35302734375
+valid: 0 | counter: 0 | 1.70239257812
+valid: 0 | counter: 0 | 1.2880859375
+valid: 0 | counter: 0 | 0.685302734375
+valid: 0 | counter: 0 | 0.731689453125
+valid: 0 | counter: 0 | 0.6708984375
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+IMA id: 2
+DataMemory contents
+1.35302734375
+1.70239257812
+1.2880859375
+0.685302734375
+0.731689453125
+0.6708984375
+0.8974609375
+0.75341796875
+0.8740234375
+0.8623046875
+0.864990234375
+0.855712890625
+0.7666015625
+0.893310546875
+0.784423828125
+0.0
+Xbar Input Memory contents
+0.293701171875
+0.9033203125
+0.287841796875
+0.119384765625
+Xbar Output Memory contents
+0.35302734375
+0.996337890625
+0.893798828125
+0.984375
+Xbar Input Memory contents
+0.293701171875
+0.9033203125
+0.287841796875
+0.119384765625
+Xbar Output Memory contents
+0.435791015625
+1.02319335938
+0.9775390625
+1.27124023438
+Xbar Input Memory contents
+0.293701171875
+0.9033203125
+0.287841796875
+0.119384765625
+Xbar Output Memory contents
+0.60791015625
+0.60302734375
+0.956787109375
+0.705810546875
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+IMA id: 2
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.582763671875
+0.6806640625
+0.5078125
+0.0
+Xbar Output Memory contents
+0.836669921875
+1.18920898438
+1.16870117188
+1.18505859375
+Xbar Input Memory contents
+0.582763671875
+0.6806640625
+0.5078125
+0.0
+Xbar Output Memory contents
+0.6806640625
+0.91455078125
+0.8564453125
+0.586181640625
+Xbar Input Memory contents
+0.582763671875
+0.6806640625
+0.5078125
+0.0
+Xbar Output Memory contents
+1.17309570312
+0.5859375
+1.16870117188
+0.58642578125
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0

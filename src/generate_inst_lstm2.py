@@ -7,7 +7,7 @@ import numpy as np
 import constants as param
 from instrn_proto import *
 
-instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2/tile2/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2_new/tile3/'
 num_inst = 0 # global variable keeps track of num instructions generated
 
 # Generate actual instructions
@@ -193,7 +193,7 @@ dict_list.append (i_temp.copy())
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
 
-filename = instrnpath + 'ima_imem1.npy'
+filename = instrnpath + 'ima_imem0.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))
@@ -255,7 +255,7 @@ dict_list.append (i_temp.copy())
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
 
-filename = instrnpath + 'ima_imem2.npy'
+filename = instrnpath + 'ima_imem1.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))

@@ -1,0 +1,189 @@
+EDRAM contents
+valid: 0 | counter: 0 | 0.280517578125
+valid: 0 | counter: 0 | 0.446044921875
+valid: 0 | counter: 0 | 0.789306640625
+valid: 0 | counter: 0 | 0.22216796875
+valid: 0 | counter: 0 | 0.103271484375
+valid: 0 | counter: 0 | 0.0732421875
+valid: 0 | counter: 0 | 0.447998046875
+valid: 0 | counter: 0 | 0.46923828125
+valid: 0 | counter: 0 | 0.90869140625
+valid: 0 | counter: 0 | 0.09619140625
+valid: 0 | counter: 0 | 0.293701171875
+valid: 0 | counter: 0 | 0.9033203125
+valid: 0 | counter: 0 | 0.287841796875
+valid: 0 | counter: 0 | 0.119384765625
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+IMA id: 0
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+IMA id: 0
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0

@@ -1,6 +1,7 @@
 # Limits the number of cycles an IMA runs in case it doesn't halt
 cycles_max = 1800
 infinity = 1000
+debug = 1 #if 0, no traces or memsim will be generated for compute tiles
 
 ##################################################
 ## Technology/Other constants for all the modules
@@ -115,7 +116,7 @@ receive_buffer_lat = 1
 ################################################
 
 # Enter parameters here:
-num_tile = 2
+num_tile_compute = 2
 # cmesh topology
 n = 2
 k = 4
@@ -123,9 +124,11 @@ c = 4
 inj_rate = 0.01
 # addressing tiles (in and outside node)
 num_bits_nodeId = 1 # can have upto 2 nodes
-num_bits_tileId = 2 # can have upto 4 tiles in a node
+num_bits_tileId = 2 # can have upto 4 num_tile (**see bottom of this file**) in a node
 
 # Enter component latency (Based on teh above NOC topological parameters)
 noc_latency_intranode = 10
 noc_latency_internode = 25
 
+# Do not change this
+num_tile = num_tile_compute + 2 # +2 for first & last tiles - dummy, others - compute

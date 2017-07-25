@@ -20,6 +20,7 @@ import node
 
 from data_convert import *
 
+
 # Define the node dump function
 # Define a dump function which dums the all memory components into a file
 def dump (node, filepath = ''):

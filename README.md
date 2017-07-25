@@ -9,3 +9,5 @@
 
 ## master (everything until before - All previous branches merged to master)
 ### dpe_energyarea - dpe functionality verification with lstm2
+### dpe_energyarea - dpe.py wrapper to run DPE on instructions with input data and dump output data
+

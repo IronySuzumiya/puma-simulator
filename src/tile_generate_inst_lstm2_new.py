@@ -7,66 +7,75 @@ import numpy as np
 import constants as param
 from tile_instrn_proto import *
 
-instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2_new/tile2/'
+instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2_new/tile3/'
 num_inst = 0 # global variable keeps track of num instructions generated
 
 ## Instruction for Tile
 dict_list = []
-# 4 receive instructions (i_t)
-i_temp = i_receive (0, 0, 3)
+'''# Add 4 sends (inp1) - tile 0 sends to tile1
+i_temp = i_send (0, 0, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (1, 1, 3)
+i_temp = i_send (1, 1, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (2, 2, 3)
+i_temp = i_send (2, 2, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (3, 3, 3)
+i_temp = i_send (3, 3, '001')
 dict_list.append (i_temp.copy())
 
-# 3 receive instructions (h_t)
-i_temp = i_receive (4, 4, 3)
+# Add 3 sends (h0) - tile 0 sends to tile1
+i_temp = i_send (4, 4, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (5, 5, 3)
+i_temp = i_send (5, 5, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (6, 6, 3)
+i_temp = i_send (6, 6, '001')
 dict_list.append (i_temp.copy())
 
-# 3 receive instructions (c_t)
-i_temp = i_receive (7, 7, 1)
+# Add 3 sends (c0) - tile 0 sends to tile1
+i_temp = i_send (7, 7, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (8, 8, 1)
+i_temp = i_send (8, 8, '001')
 dict_list.append (i_temp.copy())
 
-i_temp = i_receive (9, 9, 1)
+i_temp = i_send (9, 9, '001')
 dict_list.append (i_temp.copy())
 
-# Add a tile_compute instruction
-i_temp = i_compute ('1'*param.num_ima)
+# Add 4 sends (inp2) - tile 0 sends to tile2
+i_temp = i_send (10, 0, '010')
 dict_list.append (i_temp.copy())
 
-# Add 3 sends (ct) - tile 0 sends to tile1
-i_temp = i_send (22, 7, '011')
+i_temp = i_send (11, 1, '010')
 dict_list.append (i_temp.copy())
 
-i_temp = i_send (23, 8, '011')
+i_temp = i_send (12, 2, '010')
 dict_list.append (i_temp.copy())
 
-i_temp = i_send (24, 9, '011')
+i_temp = i_send (13, 3, '010')
+dict_list.append (i_temp.copy())'''
+
+# Add 3 receives (h2) - Tile 3 receievs from Tile 2
+i_temp = i_receive (0, 7, 1)
 dict_list.append (i_temp.copy())
 
-# Add 3 sends (ht) - tile 0 sends to til1
-i_temp = i_send (25, 4, '011')
+i_temp = i_receive (1, 8, 1)
 dict_list.append (i_temp.copy())
 
-i_temp = i_send (26, 5, '011')
+i_temp = i_receive (2, 9, 1)
 dict_list.append (i_temp.copy())
 
-i_temp = i_send (27, 6, '011')
+# Add 3 receives (c2) - Tile 3 receievs from Tile 2
+i_temp = i_receive (3, 4, 1)
+dict_list.append (i_temp.copy())
+
+i_temp = i_receive (4, 5, 1)
+dict_list.append (i_temp.copy())
+
+i_temp = i_receive (5, 6, 1)
 dict_list.append (i_temp.copy())
 
 # Add a halt instruction

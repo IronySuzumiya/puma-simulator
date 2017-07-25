@@ -1,10 +1,11 @@
 -- API to implement an LSTM cell
 torch.setdefaulttensortype('torch.FloatTensor')
 require 'nn'
+require 'paths'
 
 -- path where all traces (inputs, internal states and weights are dumped from
 -- torch for testing with harwdare purposes)
-tracepath = '/home/ankitaay/dpe/test/testasm/LSTM2/'
+tracepath = '/home/ankitaay/dpe/test/testasm/LSTM2_new/'
 
 -- fix seed (for experiment reproducibility)
 torch.manualSeed(1)
@@ -84,7 +85,7 @@ h_2 = torch.cmul (o_gate, nl2:forward(c_2))
 print ('Time t+1: ' .. 'Cell state', c_2, 'Hidden state', h_2)
 
 -- save input data, weights and outputs to table
-lstm2 = {}
+--[[ lstm2 = {}
 lstm2['i2h'] = i2h_mat
 lstm2['h2h'] = h2h_mat
 lstm2['inp1'] = inp_1
@@ -96,9 +97,48 @@ lstm2['c0']   = c_0
 lstm2['c1']   = c_1
 lstm2['c2']   = c_2
 
--- print (lstm2)
+print (lstm2) --]]
 
 -- save table to file
 filename = tracepath .. 'lstm.t7'
 torch.save (filename, lstm2)
+
+-- save inputs to the input.t7 file for input tile in DPE
+inp_path = tracepath .. 'input.t7'
+inp = {}
+data = torch.ones(2*in_size + 2*h_size)
+data[{{1,4}}] = inp_1
+data[{{5,7}}] = h_0
+data[{{8,10}}] = c_0
+data[{{11,14}}] = inp_2
+inp['data'] = data
+counter = torch.ones(2*in_size + 2*h_size)
+inp['counter'] = counter
+valid = torch.ones(2*in_size + 2*h_size)
+inp['valid'] = valid
+print (inp)
+torch.save (inp_path, inp)
+
+-- save the weights in the xbar format (tile1 and tile2) for dpe simulations
+num_ima = 2
+num_xbar = 3
+xbar_size = 4
+
+wt_path = tracepath .. 'tile2/weights/'
+paths.mkdir (wt_path)
+
+for i = 0,(num_ima-1) do
+   for j = 0,(num_xbar-1) do
+      temp_path = wt_path .. 'ima' .. i  .. '_xbar' .. j .. '.t7'
+      xb_val = torch.zeros(xbar_size, xbar_size)
+      if (i == 0) then
+         xb_val[{{1,in_size}, {}}] = i2h_mat[{{}, {j*xbar_size+1, (j+1)*xbar_size}}]
+      else
+         xb_val[{{1,h_size}, {}}] =  h2h_mat[{{}, {j*xbar_size+1, (j+1)*xbar_size}}]
+      end
+      --print ('xbar_wt_path', temp_path)
+      --print ('xbar_wt', xb_val)
+      torch.save (temp_path, xb_val)
+   end
+end
 
