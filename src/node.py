@@ -57,9 +57,9 @@ class node (object):
     ### Simulate a cycle of execution of a node
     def node_run (self, cycle):
 
-        # data transfer latency includes noc latency and receive bufefr latency
-        transfer_latency = self.noc.getLatency() + \
-                self.tile_list[0].receive_buffer.getLatency()
+        # data transfer latency includes noc latency and receive buffer latency
+        #transfer_latency = self.noc.getLatency() + \
+        #        self.tile_list[0].receive_buffer.getLatency()
 
         # A cyle execution of each tile and probe each tile's halt
         for i in range (param.num_tile):
@@ -74,11 +74,13 @@ class node (object):
             # check entry at head of queue (if non-empty) for all tiles for noc latency
             if (not self.tile_list[i].send_queue.empty()):
                 temp_queue_head = self.tile_list[i].send_queue.queue[0]
+                target_addr = temp_queue_head['target_addr']
+                transfer_latency = self.noc.getLatency (target_addr) + \
+                        self.tile_list[0].receive_buffer.getLatency()
                 if ((cycle - temp_queue_head['cycle']) >= transfer_latency-1):
                     # remove from queue
                     self.tile_list[i].send_queue.get()
                     # write to destination's receive buffer
-                    target_addr = temp_queue_head['target_addr']
                     [node_addr, tile_addr] = self.noc.propagate (target_addr)
                     # ignoring node_addr for now -- NEED TO FIX!!!
                     temp_data = temp_queue_head['data']

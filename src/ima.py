@@ -346,7 +346,7 @@ class ima (object):
 
             elif (ex_op == 'mvm'):
                 # traverse through the xbars - (nma is the number of crossbars which will evaluate)
-                for i in xrange (self.de_xb_nma):
+                for i in xrange (self.de_xb_nma): # this 'for' across xbar outs to next mux can happen via mux
                     # reset the xb out memory before starting to accumulate
                     self.xb_outMem_list[i].reset ()
 
@@ -367,10 +367,12 @@ class ima (object):
                         # do sampling and hold
                         out_snh = self.snh_list[i].propagate_dummy (out_xbar)
 
-                        for j in xrange (param.xbar_size):
+                        for j in xrange (param.xbar_size): # this 'for' across xbar outs to adc happens via mux
                             # convert from analog to digital
                             adc_id = i % param.num_adc
-                            out_adc = self.adc_list[adc_id].propagate_dummy (out_snh[j])
+                            out_mux1 = self.mux1_list[i].propagate_dummy (out_snh[j]) # i is the ith xbar
+                            out_mux2 = self.mux2_list[i % param.num_adc].propagate_dummy (out_mux1)
+                            out_adc = self.adc_list[adc_id].propagate_dummy (out_mux2)
                             # read from xbar's output register
                             out_xb_outMem = self.xb_outMem_list[i].read (j)
                             # shift and add - make a dedicated sna unit -- PENDING

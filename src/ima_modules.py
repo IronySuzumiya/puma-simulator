@@ -14,6 +14,9 @@ from data_convert import *
 
 class xbar (object):
     def __init__ (self, xbar_size, xbar_value = 'nil'):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.xbar_lat
 
@@ -36,12 +39,14 @@ class xbar (object):
         return self.latency
 
     def propagate (self, inp = 'nil'):
+        self.num_access += 1
         assert (inp != 'nil'), 'propagate needs a non-nil input'
         assert (len(inp) == self.xbar_size), 'xbar input size mismatch'
         return np.dot(inp, self.xbar_value)
 
     # HACK - until propagate doesn't have correct analog functionality
     def propagate_dummy (self, inp = 'nil'):
+        self.num_access += 1
         # data input is list of bit strings (of length dac_res) - fixed point binary
         assert (inp != 'nil'), 'propagate needs a non-nil input'
         assert (len(inp) == self.xbar_size), 'xbar input size mismatch'
@@ -62,6 +67,9 @@ class xbar (object):
 
 class dac (object):
     def __init__ (self, dac_res):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.dac_lat
 
@@ -78,6 +86,7 @@ class dac (object):
         return analog_max * frac
 
     def propagate (self, inp):
+        self.num_access += 1
         if (inp == ''):
             inp = '0' * constants.dac_res
         assert ((type(inp) == str) and (len(inp) == self.dac_res)), 'dac input type/size (bits) mismatch (string expected)'
@@ -112,6 +121,14 @@ class dac_array (object):
     # HACK - until propagate doesn't have correct analog functionality
     def propagate_dummy (self, inp_list):
         assert (len(inp_list) == self.xbar_size), 'dac_array input list size mismatch'
+
+        # just to keep track of individual dacs
+        junk_list = []
+        for i in xrange(self.xbar_size):
+            temp_out = self.dac_list[i].propagate(inp_list[i])
+            junk_list.append(temp_out)
+        # just to keep track of individual dacs
+
         out_list = inp_list [:]
         return out_list
 
@@ -119,6 +136,9 @@ class dac_array (object):
 # Probably - also doing the sampling part of (sample and hold) inside
 class adc (object):
     def __init__ (self, adc_res):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.adc_lat
 
@@ -135,17 +155,22 @@ class adc (object):
         return ('0'*(num_bits - len(bin_value)) + bin_value)
 
     def propagate (self, inp):
+        self.num_access += 1
         assert (type(inp) in [float, np.float32, np.float64]), 'adc input type mismatch (float, np.float32, np.float64 expected)'
         num_bits = self.adc_res
         return self.real2bin (inp, num_bits)
 
     # HACK - until propagate doesn't have correct analog functionality
     def propagate_dummy (self, inp):
+        self.num_access += 1
         return inp
 
 # Doesn't replicate the exact (sample and hold) functionality (just does hold)
 class sampleNhold (object):
     def __init__ (self, xbar_size):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.snh_lat
 
@@ -156,19 +181,24 @@ class sampleNhold (object):
 
     # propagate needs to be updated withe xact analog functionaloty if any
     def propagate (self, inp_list):
+        self.num_access += 1
         assert (len(inp_list) == len(self.hold_latch)), 'sample&hold input size mismatch'
         for i in xrange(len(inp_list)):
             self.hold_latch[i] = inp_list[i]
         return self.hold_latch
 
     def propagate_dummy (self, inp_list):
+        self.num_access += 1
         assert (len(inp_list) == constants.xbar_size), 'sample&hold input size mismatch'
         out_list = inp_list[:]
         return out_list
 
-
+# Note the mux instantiations will be analog mux
 class mux (object):
     def __init__ (self, num_in):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.mux_lat
 
@@ -179,15 +209,24 @@ class mux (object):
         return self.latency
 
     def propagate (self, inp_list, sel):
+        self.num_access += 1
         assert (len(inp_list) == self.num_in), 'Mux input list size mismatch'
         assert ((type(sel) == int) & (-1 < sel < self.num_in)), 'Mux select input size/type error'
         return inp_list[sel]
+
+    # Note for all practical purpose we will use prop_dummy (mux funtinality is taken care of in code)
+    def propagate_dummy (self, inp):
+        self.num_access += 1
+        return inp
 
 
 #### Needs some change - add function op (for instance, shift bits for shift)
 ## Needs to add ALU overflow check/mitigation
 class alu (object):
     def __init__ (self):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.alu_lat
 
@@ -214,6 +253,7 @@ class alu (object):
         return self.latency
 
     def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
+        self.num_access += 1
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
         assert (type(c) == int), 'ALU sna: only integral shifts allowed'
         a = fixed2float (a, constants.int_bits, constants.frac_bits)
@@ -233,6 +273,9 @@ class alu (object):
 # Assumes a half-word oriented memory (each entry - 16 bits)
 class memory (object):
     def __init__ (self, size, addr_offset = 0):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.mem_lat
 
@@ -246,11 +289,13 @@ class memory (object):
         return self.latency
 
     def read (self, addr):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         return self.memfile[addr - self.addr_start]
 
     def write (self, addr, data):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         #print 'length of data ' + str(len(data))
@@ -258,6 +303,7 @@ class memory (object):
         self.memfile[addr - self.addr_start] = data
 
     def reset (self):
+        self.num_access += 1
         self.memfile = [''] * self.size
 
 
@@ -265,6 +311,9 @@ class memory (object):
 # Each read is a shift and read operation
 class xb_inMem (object):
     def __init__ (self, xbar_size):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.mem_lat
 
@@ -277,6 +326,7 @@ class xb_inMem (object):
 
     # reads & shifts all entries in parallel
     def read (self, num_bits):
+        self.num_access += 1
         out_list = []
         for i in xrange(self.xbar_size):
             value = self.memfile[i]
@@ -286,18 +336,23 @@ class xb_inMem (object):
         return out_list
 
     def write (self, addr, data):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
         assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[addr] = data
 
     def reset (self):
+        self.num_access += 1
         self.memfile = [''] * self.xbar_size
 
 
 # xbar output memory
 class xb_outMem (xb_inMem):
     def __init__ (self, xbar_size):
+        # define num_access
+        self.num_access = 0
+
         # define latency
         self.latency = constants.mem_lat
 
@@ -310,19 +365,23 @@ class xb_outMem (xb_inMem):
         return self.latency
 
     def read (self, addr):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
         return self.memfile[addr]
 
     def write (self, data):
+        self.num_access += 1
         assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[self.wr_pointer] = data
         self.wr_pointer = self.wr_pointer + 1
 
     def restart (self):
+        self.num_access += 1
         self.wr_pointer = 0
 
     def reset (self):
+        self.num_access += 1
         self.memfile = ['0' * constants.xbdata_width] * self.xbar_size
         self.wr_pointer = 0
 
@@ -336,6 +395,7 @@ class instrn_memory (memory):
             self.memfile[i] = dict_list[i]
 
     def read (self, addr):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         # assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
         if (-1 < addr < self.size):
@@ -344,6 +404,7 @@ class instrn_memory (memory):
             return self.memfile[len(memfile)]
 
     def write (self, addr, data):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
         assert (type(data) == dict), 'instrn should of type dictionary'

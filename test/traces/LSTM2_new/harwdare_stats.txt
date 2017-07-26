@@ -1,0 +1,17 @@
+edram: 140
+dmem: 222
+edctrl: 108
+dac: 384
+noc_intra: 26
+imem: 202
+imem_t: 36
+xbar: 96
+xbOutmem: 924
+snh: 384
+rbuff: 559
+adc: 384
+xbInmem: 138
+alu: 462
+mux2: 128
+noc_inter: 0
+mux1: 384

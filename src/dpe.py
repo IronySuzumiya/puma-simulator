@@ -111,11 +111,72 @@ if (param.debug):
     node_dump (node_dut, tracepath)
 
 
-## Dump the contents of output tile to output file (output.txt)
+## Dump the contents of output tile (DNN output) to output file (output.txt)
 output_file = tracepath + 'output.txt'
 fid = open (output_file, 'w')
 tile_id  = param.num_tile - 1
 mem_dump (fid, node_dut.tile_list[tile_id].edram_controller.mem.memfile, 'EDRAM')
 fid.close ()
-print 'Success: Output Tile dump finished!!'
+print 'Output Tile dump finished'
+
+
+## Dump the harwdare access traces (For now - later upgrade to actual energy numbers)
+hwtrace_file = tracepath + 'harwdare_stats.txt'
+hw_comp = {'xbar':0,    'dac':0,    'snh':0,        'mux1':0,       'mux2':0,    'adc':0, \
+           'alu':0,     'imem':0,   'dmem':0,       'xbInmem':0,    'xbOutmem':0, \
+           'imem_t':0,  'rbuff':0,  'edram':0,      'edctrl':0, \
+           'noc_intra':0,           'noc_inter':0
+           }
+fid = open (hwtrace_file, 'w')
+
+# traverse components to populate dict (hw_comp)
+hw_comp['noc_intra'] += node_dut.noc.num_access_intra
+hw_comp['noc_inter'] += node_dut.noc.num_access_inter
+
+for i in range (1, param.num_tile-1): # ignore dummy (input & output) tiles
+    hw_comp['imem_t'] += node_dut.tile_list[i].instrn_memory.num_access
+    hw_comp['rbuff'] += node_dut.tile_list[i].receive_buffer.num_access
+    hw_comp['edram'] += node_dut.tile_list[i].edram_controller.mem.num_access
+    hw_comp['edctrl'] += node_dut.tile_list[i].edram_controller.num_access
+
+    for j in range (param.num_ima):
+        for k in range (param.num_xbar):
+            hw_comp['xbar'] += node_dut.tile_list[i].ima_list[j].xbar_list[k].num_access
+
+        for k in range (param.num_xbar):
+            for l in range (param.xbar_size):
+                hw_comp['dac'] += node_dut.tile_list[i].ima_list[j].dacArray_list[k].dac_list[l].num_access
+
+        for k in range (param.num_xbar):
+            hw_comp['snh'] += (node_dut.tile_list[i].ima_list[j].snh_list[k].num_access * param.xbar_size) # each snh is
+            # basically an array of multiple snhs (individual power in constants file must be for one discerete snh)
+
+        for k in range (param.num_xbar):
+            hw_comp['mux1'] += node_dut.tile_list[i].ima_list[j].mux1_list[k].num_access
+
+        for k in range (param.num_xbar / param.num_adc):
+            hw_comp['mux2'] += node_dut.tile_list[i].ima_list[j].mux1_list[k].num_access
+
+        for k in range (param.num_adc):
+            hw_comp['adc'] += node_dut.tile_list[i].ima_list[j].adc_list[k].num_access
+
+        for k in range (param.num_ALU):
+            hw_comp['alu'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access
+
+        hw_comp['imem'] += node_dut.tile_list[i].ima_list[j].instrnMem.num_access
+
+        hw_comp['dmem'] += node_dut.tile_list[i].ima_list[j].dataMem.num_access
+
+        for k in range (param.num_xbar):
+            hw_comp['xbInmem'] += node_dut.tile_list[i].ima_list[j].xb_inMem_list[k].num_access
+
+        for k in range (param.num_xbar):
+            hw_comp['xbOutmem'] += node_dut.tile_list[i].ima_list[j].xb_outMem_list[k].num_access
+
+# Write the dict components to a file for visualization
+for key, value in hw_comp.items():
+    fid.write (key + ': ')
+    fid.write (str(value) + '\n')
+fid.close ()
+print 'Success: Hadrware results compiled!!'
 

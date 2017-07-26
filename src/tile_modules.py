@@ -18,6 +18,7 @@ def dict_match (dict1, dict2):
 # an instruction memory to store the tile instructions
 class instrn_memory (ima_modules.instrn_memory):
     def write (self, addr, data):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         assert ((dict_match(data, param.dummy_instrn_tile) == 1) and \
@@ -27,20 +28,27 @@ class instrn_memory (ima_modules.instrn_memory):
 # adding a receive buffer (full-assoc cache (tag = neuron_id)) to enable non-blocking receives
 class receive_buffer (object):
     def __init__ (self, buff_size):
-         # Consists of a list of dictionaries (data, neuron_id)
-         temp_dict = {'data': '', 'neuron_id': 0, 'valid': 0}
-         self.buffer = []
-         for i in range (buff_size):
-             self.buffer.append (temp_dict.copy())
-         self.rd_ptr = 0
-         self.wr_ptr = 0
+        # define num_access
+        self.num_access = 0
+
+        # define latency
+        self.latency = param.receive_buffer_lat
+
+        # Consists of a list of dictionaries (data, neuron_id)
+        temp_dict = {'data': '', 'neuron_id': 0, 'valid': 0}
+        self.buffer = []
+        for i in range (buff_size):
+            self.buffer.append (temp_dict.copy())
+        self.rd_ptr = 0
+        self.wr_ptr = 0
 
     # access (read/write) latency for receive_buffer
     def getLatency (self):
-        return param.receive_buffer_lat
+        return self.latency
 
     # invalidates all entries
     def inv (self):
+        self.num_access += 1
         for temp_dict in self.buffer:
             temp_dict['valid'] = 0
 
@@ -62,6 +70,7 @@ class receive_buffer (object):
 
     # write the data coming from router to buffer if non-full
     def write (self, dict_entry):
+        self.num_access += 1
         [full, idx] = self.isfull ()
         assert (not full), 'Receive buffer full - fails to receive data'
         self.buffer[idx]['data'] = dict_entry['data']
@@ -70,6 +79,7 @@ class receive_buffer (object):
 
     # read the value from buffer if tag matches - else stall receive instruction
     def read (self, neuron_id):
+        self.num_access += 1
         if (not self.isempty()):
             for idx in range(len(self.buffer)):
                 temp_dict = self.buffer[idx]
@@ -86,6 +96,7 @@ class edram (ima_modules.memory):
 
     # redefine the write assertion
     def write (self, addr, data):
+        self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         assert ((type(data) ==  str) and (len(data) == param.edram_buswidth)), \
@@ -96,6 +107,8 @@ class edram (ima_modules.memory):
 # edram controller includes edram too
 class edram_controller (object):
     def __init__ (self):
+        # define num_access
+        self.num_access = 0
 
         # Instantiate EDRAM, valid and counter fields
         self.mem  = edram (param.edram_size)
@@ -130,6 +143,7 @@ class edram_controller (object):
             return 0
 
     def propagate (self, ren_list, wen_list, ramstore_list, addr_list):
+        self.num_access += 1
         # check if any wen or ren siganl is active
         assert (any(ren_list) or any(wen_list)), 'atleast one memory access should be present'
 
