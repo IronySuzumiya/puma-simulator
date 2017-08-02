@@ -3,6 +3,7 @@
 # 2. fixed point binary (2s complement) to float [bit-string to float]
 # 3. integer to binary (2s complement) [int to bit-string]
 # 4. binary (2s complement) to inetger [bit-string to int]
+import numpy as np
 
 def bin2int (binary_string, bits):
     val = int (binary_string,2)
@@ -22,6 +23,39 @@ def float2fixed (float_data, int_bits, frac_bits):
 def fixed2float (binary_string, int_bits, frac_bits):
     temp = bin2int (binary_string, (int_bits + frac_bits))
     return float(temp) / (2**frac_bits)
+
+# defining float (2d numpy float array) <-> fixed (2d list of strings) conversion
+def float2fixed_2d (float_data_arr, int_bits, frac_bits):
+    (num_row, num_col) = np.shape(float_data_arr)
+    # input type - array, outpt type = 2d list
+    out_list = [['']*num_col] * num_row
+    for i in range (num_row):
+        for j in range (num_col):
+            float_data = float_data_arr[i,j]
+            out_list[i][j] = float2fixed (float_data, int_bits, frac_bits)
+    return out_list
+
+# defining fixed (2d list of string) <-> float (2d numpy float array) conversion
+def fixed2float_2d (binary_string_list, int_bits, frac_bits):
+    (num_row, num_col) = np.shape(binary_string_list)
+    # input type - 2d list, outpt type = array
+    out_arr = np.zeros((num_row, num_col), dtype=float)
+    for i in range (num_row):
+        for j in range (num_col):
+            binary_string = binary_string_list[i][j]
+            out_arr[i, j] = fixed2float (binary_string, int_bits, frac_bits)
+    return out_arr
+
+# defiing a fuction to extract a given num of bits from each element of a 2d binary_string_list
+def getBitsFromList (binary_string_list, start_bit, num_bit):
+    (num_row, num_col) = np.shape(binary_string_list)
+    # input type - 2d list, outpt type = 2d list
+    out_list = [['']*num_col] * num_row
+    for i in range (num_row):
+        for j in range (num_col):
+            out_list[i][j] = binary_string_list[i][j][start_bit:start_bit + num_bit]
+    return out_list
+
 
 ## Obsolete - because they were long and less readable
 '''def bin2frac (binary_string):

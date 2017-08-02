@@ -68,14 +68,14 @@ xbar_size = 128
 dac_res = 1
 adc_res = 16
 num_adc = 8
-num_ALU = 1
+num_ALU = num_xbar / 2
 dataMem_size = 16
 instrnMem_size = 80
 data_width = num_bits # (microarchitecture param)
 xbdata_width = data_width # (nn speciic for now)
 
-# Enter IMA component latency
-xbar_lat = 17
+# Enter IMA component latency - 1 cycle - 1GHz
+xbar_lat = 100
 dac_lat = 1
 adc_lat = 1
 snh_lat = 1
@@ -95,7 +95,7 @@ memInterface_lat = infinity # infinite latency
 #################################################
 
 # Enter parameters here:
-num_ima = 2
+num_ima = 12
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
@@ -103,7 +103,7 @@ receive_buffer_size = 12 # size of receive buffer
 
 # Enter component latency
 tile_instrnMem_size = 20
-edram_lat = 4
+edram_lat = 1
 receive_buffer_lat = 1
 
 ################################################
@@ -117,7 +117,7 @@ receive_buffer_lat = 1
 ################################################
 
 # Enter parameters here:
-num_tile_compute = 2
+num_tile_compute = 1
 # cmesh topology
 n = 2
 k = 4
