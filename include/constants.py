@@ -29,15 +29,15 @@ dummy_instrn_tile = {'opcode' : op_list_tile[0],
                      'neuron_id': 0, # send/receive-neuron_id
                      'ima_nma': ''}      # compute - a bit for each ima
 
-# List of supported opcodes/aluops for IMA
-op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
+# List of supported opcodes/aluops for IMA - cp will copy data (from data memory of ima to xbarInmem)
+op_list = ['ld', 'cp', 'st', 'alu', 'alui', 'mvm', 'hlt']
 aluop_list = ['add', 'sub', 'sna', 'mul', 'sigmoid'] # sna is also used by mvm isntruction
 
 # Instruction format for IMA
 dummy_instrn = {'opcode' : op_list[0],      # instrn op
                'aluop'  : aluop_list[0],   # alu function
                'd1'     : 0,               # destination
-               'r1'     : 0,               # operand1
+               'r1'     : 0,               # operand1 (stride for mvm)
                'r2'     : 0,               # operand2
                'addr'   : 0,               # ext_mem (edram) address
                'imm'    : 0,               # immediate (scalar) data
@@ -95,7 +95,7 @@ memInterface_lat = infinity # infinite latency
 #################################################
 
 # Enter parameters here:
-num_ima = 2
+num_ima = 12
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
@@ -117,7 +117,7 @@ receive_buffer_lat = 1
 ################################################
 
 # Enter parameters here:
-num_tile_compute = 2
+num_tile_compute = 1
 # cmesh topology
 n = 2
 k = 4

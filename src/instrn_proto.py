@@ -6,7 +6,7 @@ import numpy as np
 import constants as param
 
 # Define nstruction prototypes
-# generate load protype
+# generate load prototype
 def i_load (d1, addr):
     i_temp = param.dummy_instrn.copy ()
     i_temp['opcode'] = 'ld'
@@ -14,13 +14,21 @@ def i_load (d1, addr):
     i_temp['addr'] = addr
     return i_temp
 
-# generate store protype
+# generate store protoyype
 def i_store (r1, addr, counter = 1):
     i_temp = param.dummy_instrn.copy ()
     i_temp['opcode'] = 'st'
     i_temp['r1'] = r1
     i_temp['r2'] = counter
     i_temp['addr'] = addr
+    return i_temp
+
+# generate cp prototype
+def i_copy (d1, r1):
+    i_temp = param.dummy_instrn.copy ()
+    i_temp['opcode'] = 'cp'
+    i_temp['d1'] = d1
+    i_temp['r1'] = r1
     return i_temp
 
 # generate alu/alui prototype

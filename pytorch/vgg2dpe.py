@@ -108,122 +108,35 @@ temp_dir = instrnpath + '/tile0'
 if not os.path.exists(instrnpath):
     os.makedirs(instrnpath)
 
-# Generate all ima_imem.npy with halts for Tile 0
-dict_temp = {}
-i_temp = i_halt ()
-dict_list.append (i_temp.copy())
-for i in range (param.num_ima):
-    filename = instrnpath + '/ima_imem' + str(i) '.npy'
-    print (filename + ' generated')
-    np.save(filename, dict_list)
-    print ('Total no of instructions: ', len(dict_list))
-
 # Generate tile.imem.npy
-# 16 sends per in_channel (4*4 kernel)
-i_temp = i_send (0, 0, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (1, 1, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (2, 2, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (3, 3, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (4, 4, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (5, 5, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (6, 6, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (7, 7, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (8, 8, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (9, 9, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (10, 10, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (11, 11, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (12, 12, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (13, 13, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (14, 14, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (15, 15, '001')
-dict_list.append (i_temp.copy())
-
-# 16 sends per in_channel (4*4 kernel)
-i_temp = i_send (16, 16, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (17, 17, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (18, 18, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (19, 19, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (20, 20, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (21, 21, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (22, 22, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (23, 23, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (24, 24, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (25, 25, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (26, 26, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (27, 27, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (28, 28, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (29, 29, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (30, 30, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (31, 31, '001')
-dict_list.append (i_temp.copy())
-
-# 16 sends per in_channel (4*4 kernel)
-i_temp = i_send (32, 0, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send 33, 1, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (34, 2, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (35, 3, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (36, 4, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (37, 5, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (38, 6, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (39, 7, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (40, 8, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (41, 9, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (10, 10, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (11, 11, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (12, 12, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (13, 13, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (14, 14, '001')
-dict_list.append (i_temp.copy())
-i_temp = i_send (15, 15, '001')
-dict_list.append (i_temp.copy())
+dict_temp = {}
+dict_list = []
+num_in = 224
+# Send 3*4*224 input data - 3 channel, 4 rows, each row width 224
+for i in range (3*4*224):
+    target_tileId = '001'
+    i_temp = i_send (i, i, target_tileId)
+    dict_list.append (i_temp.copy())
 
 # Halt instruction in the end
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
+
+filename = temp_dir + 'tile_imem.npy'
+print (filename + ' generated')
+np.save(filename, dict_list)
+print ('Total no of instructions: ', len(dict_list))
+
+# Generate all ima_imem.npy with halts for Tile 0
+dict_temp = {}
+dict_list = []
+i_temp = i_halt ()
+dict_list.append (i_temp.copy())
+for i in range (param.num_ima):
+    filename = temp_dir + '/ima_imem' + str(i) '.npy'
+    print (filename + ' generated')
+    np.save(filename, dict_list)
+    print ('Total no of instructions: ', len(dict_list))
 
 
 ## Generate instruction for Tile 1 (compute tile)
@@ -231,7 +144,119 @@ temp_dir = instrnpath + '/tile1'
 if not os.path.exists(instrnpath):
     os.makedirs(instrnpath)
 
-# Use 8 xbars - 1 IMA
+# Generate tile.imem.npy - way how data read from edram is buffered into IMA and provided to xbar may enhance input
+# sharing  and lead to energy/performance improvements
+# Process convolution layer
+dict_temp = {}
+dict_list = []
+num_in = 224
+num_out = 112 # after max-pool
+in_channel = 3
+out_channel = 64
+kernel = 3
+stride = 1
+padding = 1
+mp = 2
 
+#Receive 3 intermediate rows (ignoring the first row - padding)
+num_rows = 4
+# Receive 3*2*226 (3 channels, 2 rows, 224 row size + 2 for padding (1,1)
+nId = 0 # neuronId
+counter = 3
+for i in range (in_channel * num_rows * (num_in + 2*padding)):
+    if ((i % num_in) == 0 or (i % num_in) == num_in-1):
+        neuron_id = -1 # for padding pixels
+        i_temp = i_receive (i, neuron_id, counter)
+    else:
+        i_temp = i_receive (i, nId, counter)
+        nId += 1
+    dict_list.append (i_temp.copy())
 
+# initiate the imas to compute
+i_temp = i_compute ('1' * param.num_ima)
 
+# Halt instruction in the end
+i_temp = i_halt ()
+dict_list.append (i_temp.copy())
+
+filename = temp_dir + 'tile_imem.npy'
+print (filename + ' generated')
+np.save(filename, dict_list)
+print ('Total no of instructions: ', len(dict_list))
+
+# Generate ima_imem0.npy for Tile 1 - (LD, MVM, ST) - compute 2 rows of output - MaxPool
+# Assumes depth-major data layout (dept -> row -> column)
+dict_temp = {}
+dict_list = []
+out_addr = 4*224*3
+datamem_off = param.num_xbar*param.xbar_size
+
+for h in range (num_rows-kernel+1):
+
+    # A set of convolution to produce first row of relu output, all output maps
+    # i corresponds to ith convolution
+    for i in range (num_in + 2*padding - kernel + 1):
+        # j correponds to the jth value fetched within 1 convolution
+        for j in range (kernel):
+            for k in range (in_channel*kernel): # kernel - kernel_size
+                addr = h*(in_channel*num_in) + (i*in_channel) + j*in_channel*num_in + k
+                d1 = j*in_channel*kernel + k
+                i_temp = i_load (d1, addr)
+                dict_list.append (i_temp.copy())
+
+        # MVM to compute in all 8 xbars
+        i_temp = i_mvm (8)
+        dict_list.append (i_temp.copy())
+
+        # Shift and add outputs of all crossbar to produce final output
+        for j in range (1, param.num_xbar):
+            for k in range (out_channel):
+                # For shift and add - add a third operand to ALU ??
+                i_temp = i_alu ('sna', k, k, j*param.xbar_size + k)
+                dict_list.append (i_temp.copy())
+
+        # Do Relu and store a row of output in datamemory
+        for j in range (out_channel):
+            i_temp = i_alu ('relu', datamem_off+j, j)
+            dict_list.append (i_temp.copy())
+
+        # For avery alternate column
+        if (i % mp == 1):
+            # Do a max (half-max) for adjacent convolution outputs (same output map)
+            for j in range (out_channel):
+                i_temp = i_alu ('max', j, j, datamem_off+j)
+                dict_list.append (i_temp.copy())
+
+            # Do a max with previous value row value for this channel (if applicable)
+            if (h % mp == 1):
+                for j in range (out_channel):
+                    addr = out_addr + (i/2)*out_channel + j
+                    i_temp = i_load (datamemoff+j, addr)
+                    dict_list.append (i_temp.copy())
+                    i_temp = i_alu ('max', datamemoff+j, j, datamem_off+j)
+                    dict_list.append (i_temp.copy())
+
+            # Store back the data (either half max, or full max)
+            for j in range (out_channel):
+                counter = 1
+                addr = out_addr + (i/2)*out_channel + j
+                i_temp = i_store (datamemoff_j, addr, counter)
+                dict_list.append (i_temp.copy())
+
+i_temp = i_halt ()
+dict_list.append (i_temp.copy())
+filename = temp_dir + '/ima_imem' + str(0) '.npy'
+print (filename + ' generated')
+np.save(filename, dict_list)
+print ('Total no of instructions: ', len(dict_list))
+
+# Generate all other ima_imem.npy with halts for Tile 0
+dict_temp = {}
+dict_list = []
+i_temp = i_halt ()
+dict_list.append (i_temp.copy())
+for i in range (1,param.num_ima):
+    filename = temp_dir + '/ima_imem' + str(i) '.npy'
+    print (filename + ' generated')
+    np.save(filename, dict_list)
+    print ('Total no of instructions: ', len(dict_list))

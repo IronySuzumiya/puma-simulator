@@ -241,7 +241,7 @@ class tile (object):
             if (self.tag_matched == 0):
                 neuron_id = self.instrn['neuron_id']
                 [tag_hit, data] = self.receive_buffer.read (neuron_id)
-                self.tag_matched = tag_hit
+                self.tag_matched = tag_hit if (neuron_id >= 0) else 1
                 self.received_data = data
 
             mem_addr = self.instrn['mem_addr']
@@ -258,7 +258,11 @@ class tile (object):
                     self.stage_cycle_sr = 0
                     # write data to edram and set valid &counter entries
                     temp_counter = self.instrn['r2']
-                    self.edram_controller.mem.write (mem_addr, self.received_data)
+                    if (self.instrn['neuron_id'] < 0): #adding support for zero receive
+                        temp_data = para.num_bits * '0'
+                        self.edram_controller.mem.write (mem_addr, temp_data)
+                    else:
+                        self.edram_controller.mem.write (mem_addr, self.received_data)
                     self.edram_controller.valid[mem_addr] = 1
                     self.edram_controller.counter[mem_addr] = temp_counter
                     # set other book-keeping flags

@@ -210,8 +210,20 @@ class ima (object):
 
             # instruction specific (for eg: ld_dec - load's decode stage)
             if (dec_op == 'ld'):
-                self.de_addr = self.fd_instrn['addr']
+                val1_addr = self.fd_instrn['r1']
+                self.de_val1 = self.fd_instrn['addr']
                 self.de_d1 = self.fd_instrn['d1']
+
+            elif (dec_op == 'cp'):
+                self.de_d1 = self.fd_instrn['d1']
+                # read the data from dataMem or xb_inMem depending on address
+                data_addr =  self.fd_instrn['r1'] # address of data in register
+                if (data_addr >= param.num_xbar * param.xbar_size):
+                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
+                else:
+                    xb_id = data_addr / param.xbar_size
+                    addr = data_addr % param.xbar_size
+                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
 
             elif (dec_op == 'st'):
                 self.de_addr = self.fd_instrn['addr']
@@ -269,6 +281,8 @@ class ima (object):
                 xb_nma = self.fd_instrn['xb_nma']
                 assert (0 <= xb_nma <= param.num_xbar), 'unsupported xbar configuration'
                 self.de_xb_nma = xb_nma
+                # adding a value for stride at the end of mvm processing (for input sharing across strides)
+                self.de_val1 = self.fd_instrn['r2']
 
 
         # State machine runs only if the stage is non-empty
@@ -323,6 +337,16 @@ class ima (object):
 
             elif (ex_op == 'st'): #nothing to be done by ima for st here
                 return 1
+
+            elif (ex_op == 'cp'):
+                data = self.de_val1
+                # based on the address write to dataMem or xb_inMem
+                if (self.de_d1 >= param.num_xbar * param.xbar_size):
+                    self.dataMem.write (self.de_d1, data)
+                else:
+                    xb_id = self.de_d1 / param.xbar_size
+                    addr = self.de_d1 % param.xbar_size
+                    self.xb_inMem_list[xb_id].write (addr, data)
 
             elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
                 # compute in ALU
@@ -387,6 +411,7 @@ class ima (object):
                             self.xb_outMem_list[i].write (out_sna)
 
                         self.xb_outMem_list[i].restart()
+                        self.xb_inMem_list[i].stride(self.de_val1)
 
             else: # for halt instruction
                 self.halt = 1
@@ -436,6 +461,10 @@ class ima (object):
                     elif (ex_op == 'st'):
                         ramstore = str(self.de_val2) + self.de_val1
                         self.mem_interface.wrRequest (self.de_addr, ramstore)
+
+                elif (ex_op == 'cp'):
+                    # cp instructions writes to xb_inmem or datamem
+                    self.stage_latency[sId] = self.xb_inMem_list[0].getLatency()
 
                 elif (ex_op == 'alu' or ex_op == 'alui'):
                     # ALU instructions access ALU and write to memory

@@ -77,7 +77,9 @@ class node (object):
                 target_addr = temp_queue_head['target_addr']
                 transfer_latency = self.noc.getLatency (target_addr) + \
                         self.tile_list[0].receive_buffer.getLatency()
-                if ((cycle - temp_queue_head['cycle']) >= transfer_latency-1):
+                [node_addr, tile_addr] = self.noc.propagate (target_addr)
+                if (((cycle - temp_queue_head['cycle']) >= transfer_latency-1) and \
+                        (not self.tile_list[tile_addr].receive_buffer.isfull)):
                     # remove from queue
                     self.tile_list[i].send_queue.get()
                     # write to destination's receive buffer

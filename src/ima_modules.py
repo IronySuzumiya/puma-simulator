@@ -246,8 +246,12 @@ class alu (object):
             out = a if (a > 0) else 0
             return out
 
+        # for max-pool layer
+        def max (a,b):
+            return max (a,b)
+
         self.options = {'add':add, 'sub':sub, 'sna':shift_add, 'mul':multiply,\
-                        'sig':sigmoid, 'tanh':tanh, 'relu':relu}
+                'sig':sigmoid, 'tanh':tanh, 'relu':relu, 'max': max}
 
     def getLatency (self):
         return self.latency
@@ -345,6 +349,15 @@ class xb_inMem (object):
     def reset (self):
         self.num_access += 1
         self.memfile = [''] * self.xbar_size
+
+    def stride (self, stride):
+        assert (type(stride) == int), 'Conv stide must be integer'
+        self.num_access += 1
+        if (stride > 0):
+            temp_memfile = [''] * self.xbar_size
+            for i in range (stride,self.xbar_size):
+                temp_memfile[i] = self.memfile[i-stride]
+            self.memfile = temp_memfile [:]
 
 
 # xbar output memory
