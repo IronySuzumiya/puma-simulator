@@ -4,12 +4,15 @@ import numpy as np
 import models
 import torch
 import math
-import constants as param
+
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
+import constants as param
 
 # import the data_convert module (float to fixed conversions)
 from data_convert import *
+from instrn_proto import *
+from tile_instrn_proto import *
 
 #*****************************************************************************************************************
 ## Rules to map a conv layer (for now!) - (**produces one output neuron of all outpur maps at once)
@@ -102,18 +105,44 @@ num_ima = 12'''
 
 #*****************************************************************************************************************
 instrnpath = '/home/ankitaay/dpe/test/testasm/vgg11'
+num_in = 3
+num_rows = 3
+num_out = 112 # after max-pool
+in_channel = 3
+out_channel = 64
+kernel = 3
+stride = 1
+padding = 0
+mp = 2
+
+
+if not os.path.exists(instrnpath):
+    os.makedirs(instrnpath)
+
+## Generate input data for Tile 0
+import random
+random.seed(1)
+inp_path = instrnpath + '/input.npy'
+num_inputs = num_in*in_channel*num_rows
+inp = {}
+data = np.random.randn(num_inputs)
+counter = np.ones (num_inputs)
+valid = np.ones (num_inputs)
+inp = {'data':data, 'counter': counter, 'valid':valid}
+np.save (inp_path, inp)
+
 
 ## Generate instruction for Tile 0 (dummy tile)
 temp_dir = instrnpath + '/tile0'
-if not os.path.exists(instrnpath):
-    os.makedirs(instrnpath)
+if not os.path.exists(temp_dir):
+    os.makedirs(temp_dir)
 
 # Generate tile.imem.npy
 dict_temp = {}
 dict_list = []
-num_in = 224
+# num_in = 224
 # Send 3*4*224 input data - 3 channel, 4 rows, each row width 224
-for i in range (3*4*224):
+for i in range (in_channel*num_rows*num_in):
     target_tileId = '001'
     i_temp = i_send (i, i, target_tileId)
     dict_list.append (i_temp.copy())
@@ -122,7 +151,7 @@ for i in range (3*4*224):
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
 
-filename = temp_dir + 'tile_imem.npy'
+filename = temp_dir + '/tile_imem.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))
@@ -130,10 +159,10 @@ print ('Total no of instructions: ', len(dict_list))
 # Generate all ima_imem.npy with halts for Tile 0
 dict_temp = {}
 dict_list = []
-i_temp = i_halt ()
+i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
 for i in range (param.num_ima):
-    filename = temp_dir + '/ima_imem' + str(i) '.npy'
+    filename = temp_dir + '/ima_imem' + str(i) + '.npy'
     print (filename + ' generated')
     np.save(filename, dict_list)
     print ('Total no of instructions: ', len(dict_list))
@@ -141,30 +170,21 @@ for i in range (param.num_ima):
 
 ## Generate instruction for Tile 1 (compute tile)
 temp_dir = instrnpath + '/tile1'
-if not os.path.exists(instrnpath):
-    os.makedirs(instrnpath)
+if not os.path.exists(temp_dir):
+    os.makedirs(temp_dir)
 
 # Generate tile.imem.npy - way how data read from edram is buffered into IMA and provided to xbar may enhance input
 # sharing  and lead to energy/performance improvements
 # Process convolution layer
 dict_temp = {}
 dict_list = []
-num_in = 224
-num_out = 112 # after max-pool
-in_channel = 3
-out_channel = 64
-kernel = 3
-stride = 1
-padding = 1
-mp = 2
 
 #Receive 3 intermediate rows (ignoring the first row - padding)
-num_rows = 4
 # Receive 3*2*226 (3 channels, 2 rows, 224 row size + 2 for padding (1,1)
 nId = 0 # neuronId
-counter = 3
+counter = 6
 for i in range (in_channel * num_rows * (num_in + 2*padding)):
-    if ((i % num_in) == 0 or (i % num_in) == num_in-1):
+    if (padding > 0 and (((i % num_in) == 0) or ((i % num_in) == num_in-1))):
         neuron_id = -1 # for padding pixels
         i_temp = i_receive (i, neuron_id, counter)
     else:
@@ -174,12 +194,13 @@ for i in range (in_channel * num_rows * (num_in + 2*padding)):
 
 # initiate the imas to compute
 i_temp = i_compute ('1' * param.num_ima)
+dict_list.append (i_temp.copy())
 
 # Halt instruction in the end
 i_temp = i_halt ()
 dict_list.append (i_temp.copy())
 
-filename = temp_dir + 'tile_imem.npy'
+filename = temp_dir + '/tile_imem.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))
@@ -188,75 +209,131 @@ print ('Total no of instructions: ', len(dict_list))
 # Assumes depth-major data layout (dept -> row -> column)
 dict_temp = {}
 dict_list = []
-out_addr = 4*224*3
+out_addr = num_rows * num_in * in_channel
 datamem_off = param.num_xbar*param.xbar_size
 
 for h in range (num_rows-kernel+1):
-
     # A set of convolution to produce first row of relu output, all output maps
     # i corresponds to ith convolution
     for i in range (num_in + 2*padding - kernel + 1):
         # j correponds to the jth value fetched within 1 convolution
         for j in range (kernel):
-            for k in range (in_channel*kernel): # kernel - kernel_size
-                addr = h*(in_channel*num_in) + (i*in_channel) + j*in_channel*num_in + k
-                d1 = j*in_channel*kernel + k
-                i_temp = i_load (d1, addr)
-                dict_list.append (i_temp.copy())
-
-        # MVM to compute in all 8 xbars
-        i_temp = i_mvm (8)
-        dict_list.append (i_temp.copy())
-
-        # Shift and add outputs of all crossbar to produce final output
-        for j in range (1, param.num_xbar):
-            for k in range (out_channel):
-                # For shift and add - add a third operand to ALU ??
-                i_temp = i_alu ('sna', k, k, j*param.xbar_size + k)
-                dict_list.append (i_temp.copy())
-
-        # Do Relu and store a row of output in datamemory
-        for j in range (out_channel):
-            i_temp = i_alu ('relu', datamem_off+j, j)
+            # set the load_offset
+            addr_off = int2bin(h*(in_channel*num_in) + (i*in_channel) + j*in_channel*num_in, 16)
+            i_temp = i_set (datamem_off, addr_off)
             dict_list.append (i_temp.copy())
 
-        # For avery alternate column
-        if (i % mp == 1):
+            # load 9 values
+            vw = in_channel * kernel
+            r1 = datamem_off
+            d1 = j*in_channel*kernel
+            i_temp = i_load (d1, r1, vw)
+            dict_list.append (i_temp.copy())
+
+        # copy the input values to all xbInmem
+        for j in range (1,param.num_xbar):
+            vw = in_channel * kernel * kernel
+            r1 = 0
+            d1 = j * param.xbar_size
+            i_temp = i_copy (d1, r1, vw)
+            dict_list.append (i_temp.copy())
+
+        # MVM to compute in all 8 xbars
+        #stride_val = in_channel * kernel * stride
+        stride_val1 = 3
+        stride_val2 = 9
+        i_temp = i_mvm (8, stride_val1, stride_val2)
+        dict_list.append (i_temp.copy())
+
+        '''# Shift and add outputs of all crossbar to produce final output
+        for j in range (1,param.num_xbar):
+            # For shift and add - add a third operand to ALU ??
+            vw = out_channel
+            d1 = datamem_off + 4 + (i % mp)*out_channel
+            r1 = 0
+            r2 = j*param.xbar_size
+            imm = j * param.xbar_bits
+            #i_temp = i_alu ('sna', d1, r1, r2, imm, vec = vw)
+            i_temp = i_alu ('add', d1, r1, r2, vec = vw)
+            dict_list.append (i_temp.copy())'''
+
+        # Do Relu and store a row of output in datamemory
+        vw = out_channel
+        r1 = 0
+        d1 = datamem_off + 4 + (i / mp)*out_channel + (i%mp)*out_channel
+        i_temp = i_alu ('relu', d1, r1, vec = vw)
+        dict_list.append (i_temp.copy())
+
+        # For every alternate column
+        '''if (i % mp == 1):
             # Do a max (half-max) for adjacent convolution outputs (same output map)
-            for j in range (out_channel):
-                i_temp = i_alu ('max', j, j, datamem_off+j)
-                dict_list.append (i_temp.copy())
+            vw = out_channel
+            r1 = datamem_off + 3 + (i / mp)*out_channel
+            r2 = datamem_off + 3 + (i / mp)*out_channel + out_channel
+            i_temp = i_alu ('max', r1, r1, r2, vec = vw)
+            dict_list.append (i_temp.copy())
+
+            # do a set - used by max and or st
+            addr_off = int2bin(out_addr + (h/mp)*num_out + (i/mp)*out_channel, 16)
+            i_temp = i_set (datamem_off+1, addr_off)
+            dict_list.append (i_temp.copy())
 
             # Do a max with previous value row value for this channel (if applicable)
             if (h % mp == 1):
-                for j in range (out_channel):
-                    addr = out_addr + (i/2)*out_channel + j
-                    i_temp = i_load (datamemoff+j, addr)
-                    dict_list.append (i_temp.copy())
-                    i_temp = i_alu ('max', datamemoff+j, j, datamem_off+j)
-                    dict_list.append (i_temp.copy())
-
-            # Store back the data (either half max, or full max)
-            for j in range (out_channel):
-                counter = 1
-                addr = out_addr + (i/2)*out_channel + j
-                i_temp = i_store (datamemoff_j, addr, counter)
+                i_temp = i_load (r2, datamem_off+1, vec=vw)
+                dict_list.append (i_temp.copy())
+                i_temp = i_alu ('max', r1, r1, r2, vec=vw)
                 dict_list.append (i_temp.copy())
 
-i_temp = i_halt ()
+            # Store back the data (either half max, or full max)
+            i_temp = i_store (datamem_off+1, r1, vec=vw)
+            dict_list.append (i_temp.copy())'''
+
+i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
-filename = temp_dir + '/ima_imem' + str(0) '.npy'
+filename = temp_dir + '/ima_imem' + str(0) + '.npy'
 print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))
 
-# Generate all other ima_imem.npy with halts for Tile 0
+# Generate all other ima_imem.npy with halts for Tile 1
 dict_temp = {}
 dict_list = []
-i_temp = i_halt ()
+i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
 for i in range (1,param.num_ima):
-    filename = temp_dir + '/ima_imem' + str(i) '.npy'
+    filename = temp_dir + '/ima_imem' + str(i) + '.npy'
     print (filename + ' generated')
     np.save(filename, dict_list)
     print ('Total no of instructions: ', len(dict_list))
+
+
+## Generate instruction for Tile 2 (dummy tile)
+temp_dir = instrnpath + '/tile2'
+if not os.path.exists(temp_dir):
+    os.makedirs(temp_dir)
+
+# Generate tile.imem.npy
+dict_temp = {}
+dict_list = []
+
+# Halt instruction in the end
+i_temp = i_halt ()
+dict_list.append (i_temp.copy())
+
+filename = temp_dir + '/tile_imem.npy'
+print (filename + ' generated')
+np.save(filename, dict_list)
+print ('Total no of instructions: ', len(dict_list))
+
+# Generate all ima_imem.npy with halts for Tile 2
+dict_temp = {}
+dict_list = []
+i_temp = i_hlt ()
+dict_list.append (i_temp.copy())
+for i in range (param.num_ima):
+    filename = temp_dir + '/ima_imem' + str(i) + '.npy'
+    print (filename + ' generated')
+    np.save(filename, dict_list)
+    print ('Total no of instructions: ', len(dict_list))
+

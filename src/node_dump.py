@@ -34,7 +34,7 @@ def node_dump (node, filepath = ''):
     assert (filepath != ''), 'Debug flag is set, filepath cannot be nil'
     for i in range(len(node.tile_list)):
         print ('Dumping tile num: ', i)
-        filename = filepath + 'tile' + str(i) + '/memsim.txt'
+        filename = filepath + 'tile' + str(i) + '/memsim1.txt'
         fid = open (filename, 'w')
 
         # dump the edram - one per tile
@@ -43,7 +43,7 @@ def node_dump (node, filepath = ''):
         # dump the memory components of IMA
         for j in range (len(node.tile_list[0].ima_list)):
             # dump the datamemory
-            fid.write ('IMA id: ' + str(i) + '\n')
+            fid.write ('IMA id: ' + str(j) + '\n')
             mem_dump (fid, node.tile_list[i].ima_list[j].dataMem.memfile, 'DataMemory')
 
             for k in range (len(node.tile_list[0].ima_list[0].xbar_list)):

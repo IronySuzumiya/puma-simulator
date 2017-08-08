@@ -225,6 +225,7 @@ class tile (object):
                     temp_dict = {'data':data, 'target_addr':target_addr, 'cycle':cycle, 'neuron_id':neuron_id}
                     self.send_queue.put (temp_dict)
                     # update the counter and valid flag (if req.) for edram
+                    # should add some sort of edram_propagate (this adds to energy as well) ???
                     self.edram_controller.counter[mem_addr] -= 1
                     if (self.edram_controller.counter[mem_addr] <= 0):
                         self.edram_controller.valid[mem_addr] = 0
@@ -239,10 +240,16 @@ class tile (object):
         elif (self.instrn['opcode'] == 'receive'):
             # check tag if only if not checked previously
             if (self.tag_matched == 0):
-                neuron_id = self.instrn['neuron_id']
-                [tag_hit, data] = self.receive_buffer.read (neuron_id)
-                self.tag_matched = tag_hit if (neuron_id >= 0) else 1
-                self.received_data = data
+                # receive_buffer operation in its last cycle
+                if ((self.stage_cycle_sr == 0 and self.receive_buffer.getLatency() == 0) or \
+                    (self.stage_cycle_sr == self.receive_buffer.getLatency())):
+                    self.stage_cycle_sr = 0
+                    neuron_id = self.instrn['neuron_id']
+                    [tag_hit, data] = self.receive_buffer.read (neuron_id)
+                    self.tag_matched = tag_hit if (neuron_id >= 0) else 1
+                    self.received_data = data
+                else:
+                    self.stage_cycle_sr += 1
 
             mem_addr = self.instrn['mem_addr']
             # if tag matches check if edram entry is empty/free (invalid)
@@ -259,10 +266,11 @@ class tile (object):
                     # write data to edram and set valid &counter entries
                     temp_counter = self.instrn['r2']
                     if (self.instrn['neuron_id'] < 0): #adding support for zero receive
-                        temp_data = para.num_bits * '0'
+                        temp_data = param.num_bits * '0'
                         self.edram_controller.mem.write (mem_addr, temp_data)
                     else:
                         self.edram_controller.mem.write (mem_addr, self.received_data)
+                    # should add some sort of edram_propagate (this adds to energy as well) ???
                     self.edram_controller.valid[mem_addr] = 1
                     self.edram_controller.counter[mem_addr] = temp_counter
                     # set other book-keeping flags
@@ -309,6 +317,7 @@ class tile (object):
 
         ## for DEBUG only
         if (param.debug and (not self.tile_halt)):
-            fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   ima_halt_list: ')
+            fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   \
+addr: ' + str(self.instrn['mem_addr']) + '   |   nuId: ' + str(self.instrn['neuron_id']) + '   |   ima_halt_list: ')
             json.dump (self.halt_list, fid)
             fid.write ('\n')

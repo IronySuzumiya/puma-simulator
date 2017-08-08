@@ -22,7 +22,7 @@ class xbar (object):
 
         # xbar_value is the weights meant for one crossbar
         self.xbar_size = xbar_size
-        self.xbar_value = np.ones((xbar_size, xbar_size), dtype=float)
+        self.xbar_value = np.random.randn(xbar_size, xbar_size)
         # unprogrammed xbar contains zeros
         if (xbar_value != 'nil'):
             self.xbar_value = xbar_value
@@ -247,11 +247,11 @@ class alu (object):
             return out
 
         # for max-pool layer
-        def max (a,b):
+        def max_val (a,b):
             return max (a,b)
 
         self.options = {'add':add, 'sub':sub, 'sna':shift_add, 'mul':multiply,\
-                'sig':sigmoid, 'tanh':tanh, 'relu':relu, 'max': max}
+                'sig':sigmoid, 'tanh':tanh, 'relu':relu, 'max': max_val}
 
     def getLatency (self):
         return self.latency
@@ -259,7 +259,9 @@ class alu (object):
     def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
         self.num_access += 1
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
-        assert (type(c) == int), 'ALU sna: only integral shifts allowed'
+        assert (type(c) == int or (type(c) == str and len(c) == constants.num_bits)), 'ALU sna: shift = int/ num_bit str'
+        if (type(c) == str):
+            c = bin2int (c, constants.num_bits)
         a = fixed2float (a, constants.int_bits, constants.frac_bits)
         if (b == ''):
             b = 0
@@ -271,6 +273,38 @@ class alu (object):
         # overflow needs to be detected while conversion
         ovf = 0
         out = float2fixed (out, constants.int_bits, constants.frac_bits)
+        return [out, ovf]
+
+
+# Integer ALU
+class alu_int (object):
+    def __init__ (self):
+        # define num_access
+        self.num_access = 0
+
+        # define latency
+        self.latency = constants.alu_lat
+
+        # Arithmetic operations
+        def add (a, b): return (a + b)
+        def sub (a, b): return (a - b)
+        def multiply (a, b): return (a * b)
+        def eq_chk (a,b): return (a == b)
+
+        self.options = {'add':add, 'sub':sub, 'mul':multiply, 'eq_chk':eq_chk}
+
+    def getLatency (self):
+        return self.latency
+
+    def propagate (self, a, b, aluop):
+        self.num_access += 1
+        assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
+        a = bin2int (a, constants.num_bits)
+        b = bin2int (b, constants.num_bits)
+        out = self.options[aluop] (a, b)
+        # overflow needs to be detected while conversion
+        ovf = 0
+        out = int2bin(out, constants.num_bits)
         return [out, ovf]
 
 
@@ -328,6 +362,10 @@ class xb_inMem (object):
     def getLatency (self):
         return self.latency
 
+    # reads an entry (typical memory read)
+    def read_n (self, addr):
+        return self.memfile[addr]
+
     # reads & shifts all entries in parallel
     def read (self, num_bits):
         self.num_access += 1
@@ -350,13 +388,17 @@ class xb_inMem (object):
         self.num_access += 1
         self.memfile = [''] * self.xbar_size
 
-    def stride (self, stride):
-        assert (type(stride) == int), 'Conv stide must be integer'
+    # Updated - (input arrangement - depth major -> row -> column)
+    # output computation - row wise
+    def stride (self, val1, val2): #val1 and val2 come from r1 and r2 and will bint by default
+        assert (type(val1) == int and type(val2) == int), 'stride: check data type of val1 and val2'
         self.num_access += 1
-        if (stride > 0):
+        if (val1 > 0 and val2 > 0): #val1 and  val2 both zero means hw support for stride in dpe isn't being used
             temp_memfile = [''] * self.xbar_size
-            for i in range (stride,self.xbar_size):
-                temp_memfile[i] = self.memfile[i-stride]
+            for i in range (int(math.ceil(self.xbar_size / val2))):
+                for j in range (val2-val1):
+                    temp_memfile[i*val2+j] = self.memfile[i*val2 + j+val1]
+                    print ('from src ', self.memfile[i*val2 + j+val1], 'to dest', temp_memfile[i*val2+j])
             self.memfile = temp_memfile [:]
 
 

@@ -62,6 +62,7 @@ class receive_buffer (object):
 
     # checks if buffer is full
     def isfull (self):
+        idx = 0
         for idx in range(len(self.buffer)):
             temp_dict = self.buffer[idx]
             if (not temp_dict['valid']):
@@ -143,6 +144,7 @@ class edram_controller (object):
             return 0
 
     def propagate (self, ren_list, wen_list, ramstore_list, addr_list):
+
         self.num_access += 1
         # check if any wen or ren siganl is active
         assert (any(ren_list) or any(wen_list)), 'atleast one memory access should be present'
@@ -176,6 +178,8 @@ class edram_controller (object):
                     self.valid[addr] = 0
             # read the data and send to ima - if found is 0, ramload is junk
             ramload = self.mem.read (addr_list[idx])
+            from data_convert import *
+            temp = fixed2float (ramload, param.int_bits, param.frac_bits)
             return [found, idx, ramload]
 
         else: # ST instruction

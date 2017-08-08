@@ -74,12 +74,13 @@ class node (object):
             # check entry at head of queue (if non-empty) for all tiles for noc latency
             if (not self.tile_list[i].send_queue.empty()):
                 temp_queue_head = self.tile_list[i].send_queue.queue[0]
+                #print ('Tile: ', i, 'send_queue_size: ', len(self.tile_list[i].send_queue.queue))
                 target_addr = temp_queue_head['target_addr']
                 transfer_latency = self.noc.getLatency (target_addr) + \
                         self.tile_list[0].receive_buffer.getLatency()
                 [node_addr, tile_addr] = self.noc.propagate (target_addr)
                 if (((cycle - temp_queue_head['cycle']) >= transfer_latency-1) and \
-                        (not self.tile_list[tile_addr].receive_buffer.isfull)):
+                        (not self.tile_list[tile_addr].receive_buffer.isfull()[0])):
                     # remove from queue
                     self.tile_list[i].send_queue.get()
                     # write to destination's receive buffer

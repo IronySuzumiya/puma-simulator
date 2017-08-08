@@ -6,8 +6,11 @@ sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 # import dependancy files
 import numpy as np
+import math
 import constants as param
 import ima_modules as imod
+
+from data_convert import *
 
 class ima (object):
 
@@ -76,6 +79,9 @@ class ima (object):
             temp_alu = imod.alu ()
             self.alu_list.append(temp_alu)
 
+        # Instantiate integger ALU
+        self.alu_int = imod.alu_int ()
+
         # Instantiate  data memory (stores data)
         self.dataMem = imod.memory (param.dataMem_size, param.num_xbar * param.xbar_size)
 
@@ -111,12 +117,16 @@ class ima (object):
         self.de_opcode = param.dummy_instrn['opcode']
         self.de_aluop = param.dummy_instrn['aluop']
         self.de_d1 = param.dummy_instrn['d1'] # target register addr for alu/alui/ld
-        self.de_addr = param.dummy_instrn['addr'] # edram addr for ld/st
         self.de_imm = param.dummy_instrn['imm'] # imm value for alui
         self.de_xb_nma = param.dummy_instrn['xb_nma'] # nma value for xbar execution
 
-        self.de_val1 = 0 # operand read from r1 address
-        self.de_val2 = 0 # operand read from r2 address
+        self.de_r1 = 0 # operand addr read from r1 address
+        self.de_r2 = 0 # operand addr read from r2 address
+        self.de_val1 = 0 # operand value
+        self.de_val2 = 0 # opearnd value
+        self.de_vec = 1 # vector width
+
+        self.ex_vec_count = 0
 
         ########################################################
         ## Define book-keeping variables for pipeline execution
@@ -206,87 +216,76 @@ class ima (object):
             self.stage_empty[sId+1] = 0
             self.stage_done[sId+1] = 0
 
-            self.de_instrn = self.fd_instrn # for DEBUG only
+            self.de_instrn = self.fd_instrn
 
             # instruction specific (for eg: ld_dec - load's decode stage)
             if (dec_op == 'ld'):
-                val1_addr = self.fd_instrn['r1']
-                self.de_val1 = self.fd_instrn['addr']
+                self.de_r1 = bin2int(self.dataMem.read(self.fd_instrn['r1']), param.num_bits) # absolute mem addr
                 self.de_d1 = self.fd_instrn['d1']
+                self.de_vec = self.fd_instrn['vec']
 
             elif (dec_op == 'cp'):
-                self.de_d1 = self.fd_instrn['d1']
-                # read the data from dataMem or xb_inMem depending on address
-                data_addr =  self.fd_instrn['r1'] # address of data in register
-                if (data_addr >= param.num_xbar * param.xbar_size):
-                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
-                else:
-                    xb_id = data_addr / param.xbar_size
-                    addr = data_addr % param.xbar_size
-                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
+                self.de_d1 = self.fd_instrn['d1'] # reg addr
+                self.de_r1 = self.fd_instrn['r1'] # reg addr
+                self.de_vec = self.fd_instrn['vec']
+                # source value will be read in execute stage
 
             elif (dec_op == 'st'):
-                self.de_addr = self.fd_instrn['addr']
-
-                # read the data from dataMem or xb_outMem depending on address
-                st_data_addr =  self.fd_instrn['r1'] # address of data in register
-                if (st_data_addr >= param.num_xbar * param.xbar_size):
-                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
-                else:
-                    xb_id = st_data_addr / param.xbar_size
-                    addr = st_data_addr % param.xbar_size
-                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
-
+                self.de_d1 = bin2int(self.dataMem.read(self.fd_instrn['d1']), param.num_bits) #absolute mem addr
+                self.de_r1 = self.fd_instrn['r1'] # reg addr
+                self.de_vec = self.fd_instrn['vec']
+                # source value will be read in execute stage
                 # NEW - added store counter (comes from r2 and stored in val2)
-                self.de_val2 = self.fd_instrn['r2']
+                self.de_val1 = self.fd_instrn['r2']
+
+            elif (dec_op == 'set'):
+                self.de_d1 = self.fd_instrn['d1'] # addr for rf
+                self.de_val1 = self.fd_instrn['imm'] #absolute value (shift)
+                self.de_vec = self.fd_instrn['vec']
 
             elif (dec_op == 'alu'):
                 self.de_aluop = self.fd_instrn['aluop']
-                self.de_d1 = self.fd_instrn['d1']
-                val1_addr = self.fd_instrn['r1']
-                val2_addr = self.fd_instrn['r2']
-
-                # read val 1 either from data memory or xbar_outmem
-                if (val1_addr >= param.num_xbar * param.xbar_size):
-                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
-                else:
-                    xb_id = val1_addr / param.xbar_size
-                    addr = val1_addr % param.xbar_size
-                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
-
-                # read val 2 either from data memory or xbar_outmem
-                if (val2_addr >= param.num_xbar * param.xbar_size):
-                    self.de_val2 = self.dataMem.read (self.fd_instrn['r2'])
-                else:
-                    xb_id = val2_addr / param.num_xbar
-                    addr = val2_addr % param.xbar_size
-                    self.de_val2 = self.xb_outMem_list[xb_id].read (addr)
+                self.de_d1 = self.fd_instrn['d1'] # addr for rf
+                self.de_r1 = self.fd_instrn['r1'] #addr for rf
+                self.de_r2 = self.fd_instrn['r2'] #addr for rf
+                self.de_val1 = self.fd_instrn['imm'] #absolute value (shift)
+                self.de_vec = self.fd_instrn['vec']
+                # source values (operands) will be read in execute stage
 
             elif (dec_op == 'alui'):
                 self.de_aluop = self.fd_instrn['aluop']
-                self.de_d1 = self.fd_instrn['d1']
-                val1_addr = self.fd_instrn['r1']
-
-                # read val 1 either from data memory or xbar_outmem
-                if (val1_addr >= param.num_xbar * param.xbar_size):
-                    self.de_val1 = self.dataMem.read (self.fd_instrn['r1'])
-                else:
-                    xb_id = val1_addr / param.num_xbar
-                    addr = val1_addr % param.xbar_size
-                    self.de_val1 = self.xb_outMem_list[xb_id].read (addr)
-
-                self.de_val2 = self.fd_instrn['imm']
+                self.de_d1 = self.fd_instrn['d1'] # addr for rf
+                self.de_r1 = self.fd_instrn['r1'] #addr for rf
+                self.de_val1 = self.fd_instrn['imm'] #absolute value (shift)
+                assert (len(self.de_val1) == param.num_bits), 'imm values must be datawidth bit strings'
+                self.de_vec = self.fd_instrn['vec']
+                # source value will be read in execute stage
 
             elif (dec_op == 'mvm'):
                 xb_nma = self.fd_instrn['xb_nma']
                 assert (0 <= xb_nma <= param.num_xbar), 'unsupported xbar configuration'
                 self.de_xb_nma = xb_nma
                 # adding a value for stride at the end of mvm processing (for input sharing across strides)
-                self.de_val1 = self.fd_instrn['r2']
+                self.de_val1 = self.fd_instrn['r1']
+                self.de_val2 = self.fd_instrn['r2']
+
+            elif (dec_op == 'beq'):
+                self.de_aluop = 'eq_chk' # equality check with integer ALU
+                self.de_val1 = self.dataMem.read(self.fd_instrn['r1'])
+                self.de_val2 = self.dataMem.read(self.fd_instrn['r2'])
+
+            elif (dec_op == 'alu_int'):
+                self.de_aluop = self.fd_instrn['aluop']
+                self.de_d1 = self.fd_instrn['d1'] # addr for rf
+                self.de_val1 = self.dataMem.read(self.fd_instrn['r1'])
+                self.de_val2 = self.dataMem.read(self.fd_instrn['r2'])
+
+            # do nothing for halt/jmp in decode (just propagate to ex when applicable)
 
 
         # State machine runs only if the stage is non-empty
         # Describe the functionality on a cycle basis
+        # Decode stage has a fixed latency always - datamem read latency
         if (self.stage_empty[sId] != 1):
             # First cycle - update the target latency
             if (self.stage_cycle[sId] == 0):
@@ -328,45 +327,97 @@ class ima (object):
                 self.ldAccess_done = 0
                 data = self.mem_interface.ramload
                 # based on the address write to dataMem or xb_inMem
-                if (self.de_d1 >= param.num_xbar * param.xbar_size):
-                    self.dataMem.write (self.de_d1, data)
+                data_addr = self.de_d1 + self.ex_vec_count
+                if (data_addr >= param.num_xbar * param.xbar_size):
+                    self.dataMem.write (data_addr, data)
                 else:
-                    xb_id = self.de_d1 / param.xbar_size
-                    addr = self.de_d1 % param.xbar_size
+                    xb_id = data_addr / param.xbar_size
+                    addr = data_addr % param.xbar_size
                     self.xb_inMem_list[xb_id].write (addr, data)
 
             elif (ex_op == 'st'): #nothing to be done by ima for st here
                 return 1
 
-            elif (ex_op == 'cp'):
-                data = self.de_val1
-                # based on the address write to dataMem or xb_inMem
-                if (self.de_d1 >= param.num_xbar * param.xbar_size):
-                    self.dataMem.write (self.de_d1, data)
-                else:
-                    xb_id = self.de_d1 / param.xbar_size
-                    addr = self.de_d1 % param.xbar_size
-                    self.xb_inMem_list[xb_id].write (addr, data)
+            elif (ex_op == 'set'):
+                for i in range (self.de_vec):
+                    # write to dataMem - check if addr is a valid datamem address
+                    dst_addr = self.de_d1 + i
+                    assert (dst_addr >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                    self.dataMem.write (dst_addr, self.de_val1)
 
-            elif (ex_op == 'alu'): #multiple ALUs in parallel will be used in ALUvec instrn
-                # compute in ALU
-                [out, ovf] = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-                if (ovf):
-                    fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
-                            self.de_aluop + ' allowed to run')
-                # write to dataMem - check if addr is a valid datamem address
-                assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
-                self.dataMem.write (self.de_d1, out)
+
+            elif (ex_op == 'cp'):
+                for i in range (self.de_vec):
+                    src_addr = self.de_r1 + i
+                    # based on address read from dataMem or xb_inMem
+                    if (src_addr >= param.num_xbar * param.xbar_size):
+                        ex_val1 = self.dataMem.read (src_addr)
+                    else:
+                        xb_id = src_addr / param.xbar_size
+                        addr = src_addr % param.xbar_size
+                        ex_val1 = self.xb_inMem_list[xb_id].read_n (addr) # non-shift copy
+
+                    dst_addr = self.de_d1 + i
+                    # based on the address write to dataMem or xb_inMem
+                    if (dst_addr >= param.num_xbar * param.xbar_size):
+                        self.dataMem.write (dst_addr, ex_val1)
+                    else:
+                        xb_id = dst_addr / param.xbar_size
+                        addr = dst_addr % param.xbar_size
+                        self.xb_inMem_list[xb_id].write (addr, ex_val1)
+
+            elif (ex_op == 'alu'):
+                for i in range (self.de_vec):
+                    # read val 1 either from data memory or xbar_outmem
+                    src_addr1 = self.de_r1 + i
+                    if (src_addr1 >= param.num_xbar * param.xbar_size):
+                        ex_val1 = self.dataMem.read (src_addr1)
+                    else:
+                        xb_id = src_addr1 / param.xbar_size
+                        addr = src_addr1 % param.xbar_size
+                        ex_val1 = self.xb_outMem_list[xb_id].read (addr)
+
+                    # read val 2 either from data memory or xbar_outmem
+                    src_addr2 = self.de_r2 + i
+                    if (src_addr2 >= param.num_xbar * param.xbar_size):
+                        ex_val2 = self.dataMem.read (src_addr2)
+                    else:
+                        xb_id = src_addr2 / param.xbar_size
+                        addr = src_addr2 % param.xbar_size
+                        ex_val2 = self.xb_outMem_list[xb_id].read (addr)
+
+                    # compute in ALU
+                    [out, ovf] = self.alu_list[0].propagate (ex_val1, ex_val2, self.de_aluop, self.de_val1) #self.de_val1 is the 3rd operand for lsh
+                    if (ovf):
+                        fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
+                                self.de_aluop + ' allowed to run')
+
+                    # write to dataMem - check if addr is a valid datamem address
+                    dst_addr = self.de_d1 + i
+                    assert (dst_addr >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                    self.dataMem.write (dst_addr, out)
 
             elif (ex_op == 'alui'):
-                # compute in ALU
-                [out, ovf] = self.alu_list[0].propagate (self.de_val1, self.de_val2, self.de_aluop)
-                if (ovf):
-                    fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
-                            self.de_aluop + ' allowed to run')
-                # write to dataMem
-                assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALUi instrn: datamemory write addrress is invalid'
-                self.dataMem.write (self.de_d1, out)
+                for i in range (self.de_vec):
+                    # read val 2 either from data memory or xbar_outmem
+                    src_addr2 = self.de_r1 + i
+                    if (src_addr2 >= param.num_xbar * param.xbar_size):
+                        ex_val2 = self.dataMem.read (src_addr2)
+                    else:
+                        xb_id = src_addr2 / param.xbar_size
+                        addr = src_addr2 % param.xbar_size
+                        ex_val2 = self.xb_outMem_list[xb_id].read (addr)
+
+                    # compute in ALU
+                    [out, ovf] = self.alu_list[0].propagate (self.de_val1, ex_val2, self.de_aluop)
+                    if (ovf):
+                        fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
+                                self.de_aluop + ' allowed to run')
+
+                    # write to dataMem - check if addr is a valid datamem address
+                    dst_addr = self.de_d1 + i
+                    assert (dst_addr >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                    self.dataMem.write (dst_addr, out)
 
             elif (ex_op == 'mvm'):
                 # traverse through the xbars - (nma is the number of crossbars which will evaluate)
@@ -411,10 +462,33 @@ class ima (object):
                             self.xb_outMem_list[i].write (out_sna)
 
                         self.xb_outMem_list[i].restart()
-                        self.xb_inMem_list[i].stride(self.de_val1)
+                    if (i == 0):
+                        print ('ima_id', self.ima_id)
+                        self.xb_inMem_list[i].stride(self.de_val1, self.de_val2)
 
-            else: # for halt instruction
+            elif (ex_op == 'jmp'):
+                self.fd_instrn['opcode'] = 'nop'
+                print ('jmp instrn in execute')
+                print ('check nop: ', self.fd_instrn)
+                self.pc = self.de_instrn['imm']
+
+            elif (ex_op == 'beq'):
+                [out, ovf] = self.alu_int.propagate (self.de_val1, self.de_val2, self.de_aluop) #self.de_val1 is the 3rd operand for lsh
+                out_int = bin2int(out, param.num_bits)
+                if (out_int == 1):
+                    # should add a mux unit (for realistic hw here to update pc & pipe registers)
+                    self.fd_instrn['opcode'] = 'nop'
+                    self.pc = self.de_instrn['imm']
+
+            elif (ex_op == 'alu_int'): # produces values used by load/st (mem addr read from dataMem), beq (operand reads)
+                [out, ovf] = self.alu_int.propagate (self.de_val1, self.de_val2, self.de_aluop) #self.de_val1 is the 3rd operand for lsh
+                # write to dataMem - check if addr is a valid datamem address
+                assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                self.dataMem.write (self.de_d1, out)
+
+            elif (ex_op == 'hlt'): # for halt instruction
                 self.halt = 1
+            # do nothing for nop instruction
 
 
         # Computes the latency for mvm instruction based on DPE configuration
@@ -438,9 +512,11 @@ class ima (object):
 
             latency_unit2 = latency_unit2 * np.ceil(float(self.de_xb_nma)/param.num_adc)
 
-            latency_unit = max (latency_unit1, latency_unit2)
+            # latency_unit = max (latency_unit1, latency_unit2)
+            latency_unit = 2*latency_unit1
             latency_out = (param.xbdata_width / param.dac_res + 1) * latency_unit #might need correction !!
 
+            print ('xbar ', latency_out)
             return latency_out
 
 
@@ -455,43 +531,97 @@ class ima (object):
 
                 # assign execution unit based stage latency
                 if (ex_op in ['ld', 'st']):
-                    self.stage_latency[sId] = self.mem_interface.getLatency() #mem_interface has infinite latency
                     if (ex_op == 'ld'):
-                        self.mem_interface.rdRequest (self.de_addr)
+                        self.stage_latency[sId] = self.mem_interface.getLatency() #mem_interface has infinite latency
+                        self.mem_interface.rdRequest (self.de_r1 + self.ex_vec_count)
                     elif (ex_op == 'st'):
-                        ramstore = str(self.de_val2) + self.de_val1
-                        self.mem_interface.wrRequest (self.de_addr, ramstore)
+                        self.stage_latency[sId] = self.dataMem.getLatency() #mem_interface has infinite latency
 
                 elif (ex_op == 'cp'):
-                    # cp instructions writes to xb_inmem or datamem
-                    self.stage_latency[sId] = self.xb_inMem_list[0].getLatency()
+                    # cp instructions reads from datamemory/xbinmem & writes to xb_inmem/datamem
+                    unit_lat = self.dataMem.getLatency() * 2
+                    self.stage_latency[sId] = self.de_vec * unit_lat
+
+                elif (ex_op == 'set'):
+                    # set writes to data memory
+                    unit_lat = self.dataMem.getLatency()
+                    self.stage_latency[sId] = self.de_vec * unit_lat
 
                 elif (ex_op == 'alu' or ex_op == 'alui'):
-                    # ALU instructions access ALU and write to memory
-                    self.stage_latency[sId] = self.alu_list[0].getLatency() +\
-                                              self.dataMem.getLatency()
+                    # ALU instructions read from memory, access ALU and write to memory
+                    unit_lat = self.dataMem.getLatency() + \
+                                self.alu_list[0].getLatency() + self.dataMem.getLatency()
+                    self.stage_latency[sId] = int (math.ceil(self.de_vec / param.num_ALU)) * unit_lat
+
                 elif (ex_op == 'mvm'):
                     self.stage_latency[sId] = xbComputeLatency (self)
-                else: # halt instruction
+
+                elif (ex_op in ['beq', 'alu_int']):
+                    self.stage_latency[sId] = self.alu_int.getLatency ()
+
+                else: # halt/jmp/nop instruction
                     self.stage_latency[sId] = 1
 
                 # Check if first = last cycle - NA for LD/ST
-                if (self.stage_latency[sId] == 1 and update_ready):
+                # (EDRAM + Controller always latency >= 2) - Follow this else deisgn breaks
+                if (ex_op == 'st' and self.stage_latency[sId] == 0):
+                    # read the data from dataMem or xb_outMem depending on address
+                    st_data_addr =  self.de_r1 + self.ex_vec_count # address of data in register
+                    if (st_data_addr >= param.num_xbar * param.xbar_size):
+                        ex_val1 = self.dataMem.read (st_data_addr)
+                    else:
+                        xb_id = st_data_addr / param.xbar_size
+                        addr = st_data_addr % param.xbar_size
+                        ex_val1 = self.xb_outMem_list[xb_id].read (addr)
+                    # combine counter and data
+                    ramstore = str(self.de_val1) + ex_val1
+                    self.mem_interface.wrRequest (self.de_d1 + self.ex_vec_count, ramstore)
+                    # to make sure st looks for memwait after datamem read
+                    self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
+                elif (ex_op != 'st' and self.stage_latency[sId] == 1 and update_ready): # NA for LD/ST
                     do_execute (self, ex_op, fid)
                     self.stage_done[sId] = 1
                     self.stage_cycle[sId] = 0
                     self.stage_empty[sId] = 1
+
                 else: # NA for LD/ST
                     self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
+            # Check whether datamem access for st has finished
+            elif (self.de_opcode == 'st' and self.stage_cycle[sId] == self.stage_latency[sId]):
+                # read the data from dataMem or xb_outMem depending on address
+                st_data_addr =  self.de_r1 + self.ex_vec_count # address of data in register
+                if (st_data_addr >= param.num_xbar * param.xbar_size):
+                    ex_val1 = self.dataMem.read (st_data_addr)
+                else:
+                    xb_id = st_data_addr / param.xbar_size
+                    addr = st_data_addr % param.xbar_size
+                    ex_val1 = self.xb_outMem_list[xb_id].read (addr)
+                # combine counter and data
+                ramstore = str(self.de_val1) + ex_val1
+                self.mem_interface.wrRequest (self.de_d1 + self.ex_vec_count, ramstore)
+                # to make sure st looks for memwait after datamem read
+                self.stage_cycle[sId] = self.stage_cycle[sId] + 1
+
             # Last cycle - update pipeline registers (if ??) & done flag - or condition is for LD/ST
-            elif ((self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready) or \
-                  (self.de_opcode == 'st' and self.mem_interface.wait == 0 and update_ready)): # ST finishes when mem access is done
+            elif (((not self.de_opcode in ['ld', 'st']) and self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready) or \
+                  (self.de_opcode == 'st' and self.mem_interface.wait == 0 and self.ex_vec_count == (self.de_vec-1) and update_ready) or \
+                  (self.de_opcode == 'ld' and self.stage_cycle[sId] >= self.stage_latency[sId]-1 and self.ex_vec_count == (self.de_vec-1) and update_ready)):
                 ex_op = self.de_opcode
                 do_execute (self, ex_op, fid)
                 self.stage_done[sId] = 1
                 self.stage_cycle[sId] = 0
                 self.stage_empty[sId] = 1
+                self.ex_vec_count = 0
+
+            # For LD and ST when all units until last vector
+            elif ((self.de_opcode == 'ld' and self.stage_cycle[sId] >= self.stage_latency[sId]-1) or \
+                    (self.de_opcode == 'st' and self.mem_interface.wait == 0)):
+                ex_op = self.de_opcode
+                do_execute (self, ex_op, fid)
+                self.stage_cycle[sId] = 0
+                self.ex_vec_count += 1
 
             # For all other cycles
             else:
@@ -567,6 +697,7 @@ class ima (object):
             sId = 2 # Execute
             fid.write('Exe | Inst: ')
             json.dump(self.de_instrn, fid)
+            fid.write ('curr_vec: ' + str (self.ex_vec_count))
             fid.write(' | Flags: empty ' + str(self.stage_empty[sId]) + ' done ' + str(self.stage_done[sId]) \
                     + ' cycles ' + str(self.stage_cycle[sId]) + '\n')
             fid.write('\n')

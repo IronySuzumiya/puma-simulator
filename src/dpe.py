@@ -22,7 +22,7 @@ import sys, getopt, os
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
 
-import torchfile as tf
+import torch as tf #using pytorch
 from data_convert import *
 from node_dump import *
 import numpy as np
@@ -38,7 +38,7 @@ import node
 
 ## Set the instruction & trace paths (create the folder hierarchy)
 # Assumption: All instructions for all TILEs and IMAs have already been generated
-net = 'LSTM2_new'
+net = 'vgg11'
 instrndir = '/home/ankitaay/dpe/test/testasm/' + net
 tracedir = '/home/ankitaay/dpe/test/traces/' + net
 
@@ -71,12 +71,11 @@ node_dut.node_init (instrnpath, tracepath)
 
 
 ## Read the input data (input.t7) into the input tile's edram(controller)
-inp_filename = instrnpath + 'input.t7'
+inp_filename = instrnpath + 'input.npy'
 inp_tileId = 0
-print (os.path.exists (inp_filename))
 assert (os.path.exists (inp_filename) == True), 'Input Error: Provide inputbefore running the DPE'
-inp = tf.load (inp_filename)
-for i in range (len(inp.data)):
+inp = np.load (inp_filename).item()
+for i in range (len(inp['data'])):
     data = float2fixed (inp['data'][i], param.int_bits, param.frac_bits)
     node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i] = data
     node_dut.tile_list[inp_tileId].edram_controller.counter[i]     = int(inp['counter'][i])
