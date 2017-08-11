@@ -21,6 +21,8 @@ def mem_dump (fid, memfile, name, node = '', tile_id = ''):
         # to print in float format
         if (memfile[addr] != ''):
             temp_val = fixed2float (memfile[addr], param.int_bits, param.frac_bits)
+            # use this for debugging/viewing addresses
+            #temp_val = bin2int (memfile[addr], param.num_bits)
         else:
             temp_val = 0.0
         if (name == 'EDRAM' and (node != '') and (tile_id != '')): # for EDRAM also show counter/valid

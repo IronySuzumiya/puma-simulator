@@ -1,1 +1,13 @@
-Tile ran for 0 cycles
+cycle: 0   |   instrn: send   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 1   |   instrn: send   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 2   |   instrn: send   |   addr: 4   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 3   |   instrn: send   |   addr: 4   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 4   |   instrn: send   |   addr: 8   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 5   |   instrn: send   |   addr: 8   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 6   |   instrn: send   |   addr: 12   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 7   |   instrn: send   |   addr: 12   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 8   |   instrn: send   |   addr: 16   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 9   |   instrn: send   |   addr: 16   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 10   |   instrn: send   |   addr: 20   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cycle: 11   |   instrn: send   |   addr: 20   |   vtileId: 0   |   ima_halt_list: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Tile ran for 12 cycles

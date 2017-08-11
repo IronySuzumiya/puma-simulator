@@ -289,9 +289,11 @@ class alu_int (object):
         def add (a, b): return (a + b)
         def sub (a, b): return (a - b)
         def multiply (a, b): return (a * b)
+        def divide (a, b): return int((a/b))
+        def mod (a, b): return int((a%b))
         def eq_chk (a,b): return (a == b)
 
-        self.options = {'add':add, 'sub':sub, 'mul':multiply, 'eq_chk':eq_chk}
+        self.options = {'add':add, 'sub':sub, 'mul':multiply, 'div':divide, 'mod':mod, 'eq_chk':eq_chk}
 
     def getLatency (self):
         return self.latency
@@ -331,6 +333,7 @@ class memory (object):
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         return self.memfile[addr - self.addr_start]
+
 
     def write (self, addr, data):
         self.num_access += 1
@@ -398,7 +401,7 @@ class xb_inMem (object):
             for i in range (int(math.ceil(self.xbar_size / val2))):
                 for j in range (val2-val1):
                     temp_memfile[i*val2+j] = self.memfile[i*val2 + j+val1]
-                    print ('from src ', self.memfile[i*val2 + j+val1], 'to dest', temp_memfile[i*val2+j])
+                    #print ('from src ', self.memfile[i*val2 + j+val1], 'to dest', temp_memfile[i*val2+j])
             self.memfile = temp_memfile [:]
 
 
@@ -454,9 +457,15 @@ class instrn_memory (memory):
         assert (type(addr) == int), 'addr type should be int'
         # assert (-1 < addr < self.size), 'addr exceeds the memory bounds'
         if (-1 < addr < self.size):
-            return self.memfile[addr]
+            if (type(self.memfile[addr]) == dict):
+                return self.memfile[addr].copy()
+            else:
+                return self.memfile[addr]
         else:
-            return self.memfile[len(memfile)]
+            if (type(self.memfile[len(memfile)]) == dict):
+                return self.memfile[len(memfile)].copy()
+            else:
+                return self.memfile[len(memfile)]
 
     def write (self, addr, data):
         self.num_access += 1

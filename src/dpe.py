@@ -76,11 +76,17 @@ inp_tileId = 0
 assert (os.path.exists (inp_filename) == True), 'Input Error: Provide inputbefore running the DPE'
 inp = np.load (inp_filename).item()
 for i in range (len(inp['data'])):
-    data = float2fixed (inp['data'][i], param.int_bits, param.frac_bits)
-    node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i] = data
-    node_dut.tile_list[inp_tileId].edram_controller.counter[i]     = int(inp['counter'][i])
-    node_dut.tile_list[inp_tileId].edram_controller.valid[i]       = int(inp['valid'][i])
-
+    if (i<24):
+        data = float2fixed (inp['data'][i], param.int_bits, param.frac_bits)
+        node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i] = data
+        node_dut.tile_list[inp_tileId].edram_controller.counter[i]     = int(inp['counter'][i])
+        node_dut.tile_list[inp_tileId].edram_controller.valid[i]       = int(inp['valid'][i])
+    else:
+        inp_tileId=2
+        data = float2fixed (inp['data'][i], param.int_bits, param.frac_bits)
+        node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i-24] = data
+        node_dut.tile_list[inp_tileId].edram_controller.counter[i-24]     = int(inp['counter'][i])
+        node_dut.tile_list[inp_tileId].edram_controller.valid[i-24]       = int(inp['valid'][i])
 
 ## Program DNN weights on the xbars
 # torch table in file - (tracepath/tile<>/weights/ima<>_xbar<>.t7)
@@ -178,4 +184,3 @@ for key, value in hw_comp.items():
     fid.write (str(value) + '\n')
 fid.close ()
 print 'Success: Hadrware results compiled!!'
-

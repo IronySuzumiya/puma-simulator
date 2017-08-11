@@ -1,5 +1,5 @@
 # Limits the number of cycles an IMA runs in case it doesn't halt
-cycles_max = 10000
+cycles_max = 200
 infinity = 100000
 debug = 1 #if 0, no traces or memsim will be generated for compute tiles
 
@@ -25,9 +25,11 @@ op_list_tile = ['send', 'receive', 'compute', 'halt']
 # Instruction format for Tile
 dummy_instrn_tile = {'opcode' : op_list_tile[0],
                      'mem_addr': 0,     # send/receive - edram_addr
+                     'r1': 0,     # send-send_width, receive-receive_width
                      'r2': 0,     # send-target_addr, receive-counter
-                     'neuron_id': 0, # send/receive-neuron_id
-                     'ima_nma': ''}      # compute - a bit for each ima
+                     'vtile_id': 0, # send/receive-neuron_id
+                     'ima_nma': '',      # compute - a bit for each ima
+                     'vec': 0} # vector width
 
 # List of supported opcodes/aluops for IMA - cp will copy data (from data memory of ima to xbarInmem)
 op_list = ['ld', 'cp', 'st', 'set', 'nop', 'alu', 'alui', 'mvm', 'hlt', 'jmp', 'beq', 'alu_int']
@@ -100,10 +102,11 @@ num_ima = 12
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 10000
-receive_buffer_size = 1 # size of receive buffer
+receive_buffer_depth = 16 # number of edram buffer entries (each entry maps to a virtual input tile)
+receive_buffer_width =  384/num_bits # size of receive buffeer entry (in terms of number of neurons)
 
 # Enter component latency
-tile_instrnMem_size = 100
+tile_instrnMem_size = 200
 edram_lat = 2
 receive_buffer_lat = 0
 

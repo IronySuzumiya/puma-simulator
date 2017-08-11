@@ -35,7 +35,8 @@ class receive_buffer (object):
         self.latency = param.receive_buffer_lat
 
         # Consists of a list of dictionaries (data, neuron_id)
-        temp_dict = {'data': '', 'neuron_id': 0, 'valid': 0}
+        temp_rb_list = [''] * param.receive_buffer_width
+        temp_dict = {'data': temp_rb_list[:], 'valid': 0}
         self.buffer = []
         for i in range (buff_size):
             self.buffer.append (temp_dict.copy())
@@ -53,40 +54,28 @@ class receive_buffer (object):
             temp_dict['valid'] = 0
 
     # checks if buffer is empty
-    def isempty (self):
-        for idx in range(len(self.buffer)):
-            temp_dict = self.buffer[idx]
-            if (temp_dict['valid']):
-                return 0
+    def isempty (self, vtile_id): # each entry in buffer serves a unique vtile
+        if (self.buffer[vtile_id]['valid']):
+            return 0
         return 1
 
-    # checks if buffer is full
-    def isfull (self):
-        idx = 0
-        for idx in range(len(self.buffer)):
-            temp_dict = self.buffer[idx]
-            if (not temp_dict['valid']):
-                return [0, idx]
-        return [1, idx]
-
     # write the data coming from router to buffer if non-full
-    def write (self, dict_entry):
-        self.num_access += 1
-        [full, idx] = self.isfull ()
-        assert (not full), 'Receive buffer full - fails to receive data'
-        self.buffer[idx]['data'] = dict_entry['data']
-        self.buffer[idx]['neuron_id'] = dict_entry['neuron_id']
-        self.buffer[idx]['valid'] = 1
+    def write (self, vtile_id, list_entry):
+        assert (vtile_id <= param.receive_buffer_depth), 'vtile_id must be less than #receive buffer depth'
+        assert (type(list_entry) == list), 'data written to receive buffer should be a list of neuron values'
+        if (self.isempty(vtile_id)): # check if receive buffer is empty
+            self.num_access += 1
+            self.buffer[vtile_id]['data'] = list_entry[:]
+            self.buffer[vtile_id]['valid'] = 1
+            return 1
+        return 0
 
     # read the value from buffer if tag matches - else stall receive instruction
-    def read (self, neuron_id):
+    def read (self, vtile_id):
         self.num_access += 1
-        if (not self.isempty()):
-            for idx in range(len(self.buffer)):
-                temp_dict = self.buffer[idx]
-                if (temp_dict['neuron_id'] == neuron_id and temp_dict['valid'] == 1):
-                    temp_dict['valid'] = 0
-                    return [1, temp_dict['data']]
+        if (not self.isempty(vtile_id)):
+            self.buffer[vtile_id]['valid'] = 0
+            return [1, self.buffer[vtile_id]['data'][:]]
         return [0, 0] # tag-hit, data
 
 # a memory instance for edram
@@ -178,8 +167,6 @@ class edram_controller (object):
                     self.valid[addr] = 0
             # read the data and send to ima - if found is 0, ramload is junk
             ramload = self.mem.read (addr_list[idx])
-            from data_convert import *
-            temp = fixed2float (ramload, param.int_bits, param.frac_bits)
             return [found, idx, ramload]
 
         else: # ST instruction

@@ -231,6 +231,8 @@ class ima (object):
                 # source value will be read in execute stage
 
             elif (dec_op == 'st'):
+                print (self.fd_instrn['d1'])
+                print (self.dataMem.read(self.fd_instrn['d1']))
                 self.de_d1 = bin2int(self.dataMem.read(self.fd_instrn['d1']), param.num_bits) #absolute mem addr
                 self.de_r1 = self.fd_instrn['r1'] # reg addr
                 self.de_vec = self.fd_instrn['vec']
@@ -462,14 +464,12 @@ class ima (object):
                             self.xb_outMem_list[i].write (out_sna)
 
                         self.xb_outMem_list[i].restart()
-                    if (i == 0):
-                        print ('ima_id', self.ima_id)
-                        self.xb_inMem_list[i].stride(self.de_val1, self.de_val2)
+                    #if (i == 0):
+                    #print ('ima_id', self.ima_id)
+                    self.xb_inMem_list[i].stride(self.de_val1, self.de_val2)
 
             elif (ex_op == 'jmp'):
                 self.fd_instrn['opcode'] = 'nop'
-                print ('jmp instrn in execute')
-                print ('check nop: ', self.fd_instrn)
                 self.pc = self.de_instrn['imm']
 
             elif (ex_op == 'beq'):
@@ -516,7 +516,6 @@ class ima (object):
             latency_unit = 2*latency_unit1
             latency_out = (param.xbdata_width / param.dac_res + 1) * latency_unit #might need correction !!
 
-            print ('xbar ', latency_out)
             return latency_out
 
 

@@ -245,7 +245,7 @@ for h in range (num_rows-kernel+1):
         i_temp = i_mvm (8, stride_val1, stride_val2)
         dict_list.append (i_temp.copy())
 
-        '''# Shift and add outputs of all crossbar to produce final output
+        # Shift and add outputs of all crossbar to produce final output
         for j in range (1,param.num_xbar):
             # For shift and add - add a third operand to ALU ??
             vw = out_channel
@@ -255,7 +255,7 @@ for h in range (num_rows-kernel+1):
             imm = j * param.xbar_bits
             #i_temp = i_alu ('sna', d1, r1, r2, imm, vec = vw)
             i_temp = i_alu ('add', d1, r1, r2, vec = vw)
-            dict_list.append (i_temp.copy())'''
+            dict_list.append (i_temp.copy())
 
         # Do Relu and store a row of output in datamemory
         vw = out_channel
@@ -265,7 +265,7 @@ for h in range (num_rows-kernel+1):
         dict_list.append (i_temp.copy())
 
         # For every alternate column
-        '''if (i % mp == 1):
+        if (i % mp == 1):
             # Do a max (half-max) for adjacent convolution outputs (same output map)
             vw = out_channel
             r1 = datamem_off + 3 + (i / mp)*out_channel
@@ -287,7 +287,7 @@ for h in range (num_rows-kernel+1):
 
             # Store back the data (either half max, or full max)
             i_temp = i_store (datamem_off+1, r1, vec=vw)
-            dict_list.append (i_temp.copy())'''
+            dict_list.append (i_temp.copy())
 
 i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
