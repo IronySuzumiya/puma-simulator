@@ -10,4 +10,5 @@
 ## master (everything until before - All previous branches merged to master)
 ### dpe_energyarea - dpe functionality verification with lstm2
 ### dpe_energyarea - dpe.py wrapper to run DPE on instructions with input data and dump output data
-
+### dpe_vgg - modified ISA (vector instructions for IMA, Tile, control flow instructions for IMA)
+### dpe_vgg - runs vgg11(layer1) on DPE and compares energy with Nvidia Quadro K5200
