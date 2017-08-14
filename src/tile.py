@@ -35,7 +35,7 @@ class tile (object):
         # intruction memory
         self.instrn_memory = tmod.instrn_memory (param.tile_instrnMem_size)
         # receive buffer
-        self.receive_buffer = tmod.receive_buffer (param.receive_buffer_size)
+        self.receive_buffer = tmod.receive_buffer (param.receive_buffer_depth)
         # program counter
         self.pc = 0
         # fetched instruction
@@ -48,7 +48,7 @@ class tile (object):
         self.stall = 0
         # latch tag_hit and data (prevents unnecessary repeated buff accesses)
         self.tag_matched = 0
-        self.received_data = '' * param.edram_buswidth
+        self.received_data = []
         # halt for tile
         self.tile_halt = 0
         # for imas
@@ -60,6 +60,7 @@ class tile (object):
         # For edram interface (send/receive generated edram accesses)
         self.latency_sr = 0
         self.stage_cycle_sr = 0
+        self.vec_count = 0
         # For edram controller (ima generated edram accesses)
         self.memstate = 'free' # can be free/busy
         self.latency = 0 # holds latency for memory access
@@ -90,6 +91,7 @@ class tile (object):
         self.receive_buffer.inv ()
         # Initialize the program counter
         self.pc = 0
+        self.vec_count = 0
         # Intialize tile
         self.tile_halt = 0
         # Initiaize the halt list & stall flag for tile
@@ -207,10 +209,13 @@ class tile (object):
         assert (self.instrn['opcode'] in param.op_list_tile), 'Tile: unsupported opcode'
         if (self.instrn['opcode'] == 'send'):
             # check if the mem_addr is valid
-            mem_addr = self.instrn['mem_addr']
-            if (self.edram_controller.valid[mem_addr]):
+            send_width = self.instrn['r1']
+            mem_addr = self.instrn['mem_addr'] + self.vec_count*send_width
+            assert (send_width <= param.receive_buffer_width), 'Send width must be sm/eq to rec_buff_width'
+            if (all (self.edram_controller.valid[mem_addr:mem_addr+send_width])): #check if all data (to be sent) is valid
                 # first but not last cycle of edram access
                 if (self.stage_cycle_sr == 0 and self.edram_controller.getLatency() != 1):
+                    # modify this based on edram bandwidth and send width ???
                     self.latency_sr = self.edram_controller.getLatency ()
                     self.stage_cycle_sr += 1
                     self.stall = 1
@@ -219,16 +224,27 @@ class tile (object):
                     # reset the stage_cycle
                     self.stage_cycle_sr = 0
                     # add the entry to send list (send_list is physically part of NOC and not tile)
-                    data = self.edram_controller.mem.read(mem_addr)
-                    target_addr = self.instrn['r2']
-                    neuron_id = self.instrn['neuron_id']
-                    temp_dict = {'data':data, 'target_addr':target_addr, 'cycle':cycle, 'neuron_id':neuron_id}
+                    vtile_id = self.instrn['vtile_id']
+                    target_addr = self.instrn['r2'] # (node_id+tile_id)
+                    data = [''] * send_width
+                    for i in range (send_width):
+                        temp_data = self.edram_controller.mem.read(mem_addr+i)
+                        data[i] = temp_data
+                    temp_dict = {'data':data[:], 'target_addr':target_addr, 'cycle':cycle, 'vtile_id':vtile_id}
                     self.send_queue.put (temp_dict)
                     # update the counter and valid flag (if req.) for edram
-                    self.edram_controller.counter[mem_addr] -= 1
-                    if (self.edram_controller.counter[mem_addr] <= 0):
-                        self.edram_controller.valid[mem_addr] = 0
-                    self.stall = 0
+                    # should add some sort of edram_propagate (this adds to energy as well) ???
+                    for i in range (send_width):
+                        self.edram_controller.counter[mem_addr+i] -= 1
+                        if (self.edram_controller.counter[mem_addr+i] <= 0):
+                            self.edram_controller.valid[mem_addr+i] = 0
+                    # send vector instruction completes
+                    if (self.vec_count == self.instrn['vec']-1):
+                        self.vec_count = 0
+                        self.stall = 0
+                    # a unit of vector send finishes
+                    else:
+                        self.vec_count += 1
                 # other cycles (not first or last)
                 else:
                     self.stage_cycle_sr += 1
@@ -237,16 +253,24 @@ class tile (object):
                 self.stall = 1
 
         elif (self.instrn['opcode'] == 'receive'):
-            # check tag if only if not checked previously
-            if (self.tag_matched == 0):
-                neuron_id = self.instrn['neuron_id']
-                [tag_hit, data] = self.receive_buffer.read (neuron_id)
-                self.tag_matched = tag_hit
-                self.received_data = data
+            # check hit if only if not checked previously
+            if (self.tag_matched == 0): # tag_matched - basically a read hit in receive_buffer
+                # receive_buffer operation in its last cycle
+                if ((self.stage_cycle_sr == 0 and self.receive_buffer.getLatency() == 0) or \
+                    (self.stage_cycle_sr == self.receive_buffer.getLatency())):
+                    self.stage_cycle_sr = 0
+                    vtile_id = self.instrn['vtile_id']
+                    [tag_hit, data] = self.receive_buffer.read (vtile_id)
+                    self.tag_matched = tag_hit if (vtile_id >= 0) else 1 # else case receive a dumy data (eg: padding data in conv)
+                    self.received_data = data
+                else:
+                    self.stage_cycle_sr += 1
 
-            mem_addr = self.instrn['mem_addr']
+            receive_width = self.instrn['r1']
+            mem_addr = self.instrn['mem_addr'] + self.vec_count * receive_width
             # if tag matches check if edram entry is empty/free (invalid)
-            if (self.tag_matched and (not self.edram_controller.valid[mem_addr])):
+            if (self.tag_matched and (not all(self.edram_controller.valid[mem_addr:mem_addr+receive_width]))):
+                assert (self.instrn['vtile_id'] >= 0 and receive_width == len(self.received_data)), 'receive_width & send widths mismatch'
                 # first but not last cycle of edram access
                 if (self.stage_cycle_sr == 0 and self.edram_controller.getLatency() != 1):
                     self.latency_sr = self.edram_controller.getLatency ()
@@ -257,13 +281,22 @@ class tile (object):
                     # reset the stage_cycle
                     self.stage_cycle_sr = 0
                     # write data to edram and set valid &counter entries
+                    if (self.instrn['vtile_id'] < 0): #adding support for zero receive
+                        self.received_data = [param.num_bits * '0'] * receive_width
                     temp_counter = self.instrn['r2']
-                    self.edram_controller.mem.write (mem_addr, self.received_data)
-                    self.edram_controller.valid[mem_addr] = 1
-                    self.edram_controller.counter[mem_addr] = temp_counter
+                    for i in range (receive_width):
+                        self.edram_controller.mem.write (mem_addr+i, self.received_data[i])
+                        # should add some sort of edram_propagate (this adds to energy as well) ???
+                        self.edram_controller.valid[mem_addr+i] = 1
+                        self.edram_controller.counter[mem_addr+i] = temp_counter
                     # set other book-keeping flags
-                    self.tag_matched = 0
-                    self.stall = 0
+                    if (self.vec_count == self.instrn['vec']-1):
+                        self.vec_count = 0
+                        self.tag_matched = 0
+                        self.stall = 0
+                    else:
+                        self.tag_matched = 0
+                        self.vec_count += 1
                 # other cycles (not first or last)
                 else:
                     self.stage_cycle_sr += 1
@@ -284,8 +317,8 @@ class tile (object):
                 if (not self.ima_nma_list[k]):
                     self.halt_list[k] = 1
 
-            # check if all imas halted
-            if (all(self.halt_list)):
+            # check if all imas halted and send_queue is empty
+            if (all(self.halt_list) and self.send_queue.empty()):
                 self.tile_halt = 1
 
                 # Close all ima the trace files
@@ -305,6 +338,7 @@ class tile (object):
 
         ## for DEBUG only
         if (param.debug and (not self.tile_halt)):
-            fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   ima_halt_list: ')
+            fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   \
+addr: ' + str(self.instrn['mem_addr']) + '   |   vtileId: ' + str(self.instrn['vtile_id']) + '   |   ima_halt_list: ')
             json.dump (self.halt_list, fid)
             fid.write ('\n')

@@ -29,15 +29,15 @@ dummy_instrn_tile = {'opcode' : op_list_tile[0],
                      'neuron_id': 0, # send/receive-neuron_id
                      'ima_nma': ''}      # compute - a bit for each ima
 
-# List of supported opcodes/aluops for IMA
-op_list = ['ld', 'st', 'alu', 'alui', 'mvm', 'hlt']
+# List of supported opcodes/aluops for IMA - cp will copy data (from data memory of ima to xbarInmem)
+op_list = ['ld', 'cp', 'st', 'alu', 'alui', 'mvm', 'hlt']
 aluop_list = ['add', 'sub', 'sna', 'mul', 'sigmoid'] # sna is also used by mvm isntruction
 
 # Instruction format for IMA
 dummy_instrn = {'opcode' : op_list[0],      # instrn op
                'aluop'  : aluop_list[0],   # alu function
                'd1'     : 0,               # destination
-               'r1'     : 0,               # operand1
+               'r1'     : 0,               # operand1 (stride for mvm)
                'r2'     : 0,               # operand2
                'addr'   : 0,               # ext_mem (edram) address
                'imm'    : 0,               # immediate (scalar) data
@@ -62,20 +62,20 @@ last_stage = 'ex'
 #################################################
 
 # Enter parameters here:
-num_xbar = 8
+num_xbar = 6
 xbar_bits = 2
-xbar_size = 128
+xbar_size = 4
 dac_res = 1
 adc_res = 16
 num_adc = 8
-num_ALU = num_xbar / 2
+num_ALU = 1
 dataMem_size = 16
 instrnMem_size = 80
 data_width = num_bits # (microarchitecture param)
 xbdata_width = data_width # (nn speciic for now)
 
-# Enter IMA component latency - 1 cycle - 1GHz
-xbar_lat = 100
+# Enter IMA component latency
+xbar_lat = 17
 dac_lat = 1
 adc_lat = 1
 snh_lat = 1
@@ -95,7 +95,7 @@ memInterface_lat = infinity # infinite latency
 #################################################
 
 # Enter parameters here:
-num_ima = 12
+num_ima = 2
 #edram_buswidth = 16
 edram_buswidth = data_width
 edram_size = 32
@@ -103,7 +103,7 @@ receive_buffer_size = 12 # size of receive buffer
 
 # Enter component latency
 tile_instrnMem_size = 20
-edram_lat = 1
+edram_lat = 4
 receive_buffer_lat = 1
 
 ################################################
@@ -117,7 +117,7 @@ receive_buffer_lat = 1
 ################################################
 
 # Enter parameters here:
-num_tile_compute = 1
+num_tile_compute = 2
 # cmesh topology
 n = 2
 k = 4

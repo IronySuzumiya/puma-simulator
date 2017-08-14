@@ -15,21 +15,25 @@ def i_compute (ima_nma = ima_nma_dummy):
     return i_temp
 
 # generate receive prototype
-def i_receive (mem_addr, neuron_id, counter):
+def i_receive (mem_addr, vtile_id, receive_width, counter, vec = 1):
     i_temp = param.dummy_instrn_tile.copy()
     i_temp['opcode'] = 'receive'
     i_temp['mem_addr'] = mem_addr
-    i_temp['neuron_id'] = neuron_id
+    i_temp['vtile_id'] =  vtile_id
+    i_temp['r1'] = receive_width
     i_temp['r2'] = counter
+    i_temp['vec'] = vec
     return i_temp
 
 # generate send prototype
-def i_send (mem_addr, neuron_id, target_addr):
+def i_send (mem_addr, vtile_id, send_width, target_addr, vec = 1):
     i_temp = param.dummy_instrn_tile.copy()
     i_temp['opcode'] = 'send'
     i_temp['mem_addr'] = mem_addr
-    i_temp['neuron_id'] = neuron_id
+    i_temp['vtile_id'] = vtile_id
+    i_temp['r1'] = send_width
     i_temp['r2'] = target_addr
+    i_temp['vec'] = vec
     return i_temp
 
 # generate halt prototype

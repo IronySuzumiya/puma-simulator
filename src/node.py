@@ -77,17 +77,17 @@ class node (object):
                 target_addr = temp_queue_head['target_addr']
                 transfer_latency = self.noc.getLatency (target_addr) + \
                         self.tile_list[0].receive_buffer.getLatency()
-                if ((cycle - temp_queue_head['cycle']) >= transfer_latency-1):
-                    # remove from queue
-                    self.tile_list[i].send_queue.get()
-                    # write to destination's receive buffer
+                if (((cycle - temp_queue_head['cycle']) >= transfer_latency-1)):
+                    # attempt to write to destination's receive buffer
                     [node_addr, tile_addr] = self.noc.propagate (target_addr)
                     # ignoring node_addr for now -- NEED TO FIX!!!
-                    temp_data = temp_queue_head['data']
-                    temp_neuron_id = temp_queue_head['neuron_id']
-                    temp_dict = {'data':temp_data, 'neuron_id':temp_neuron_id}
+                    temp_data = temp_queue_head['data'][:]
+                    temp_vtile_id = temp_queue_head['vtile_id']
                     #print (tile_addr)
-                    self.tile_list[tile_addr].receive_buffer.write (temp_dict)
+                    write_hit = self.tile_list[tile_addr].receive_buffer.write (temp_vtile_id, temp_data)
+                    # if write is success - remove from queue
+                    if (write_hit == 1):
+                        self.tile_list[i].send_queue.get()
 
         # For DEBUG
         print ('Cycle: ', cycle, 'Tile halt list', self.tile_halt_list)

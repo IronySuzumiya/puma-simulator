@@ -21,6 +21,8 @@ def mem_dump (fid, memfile, name, node = '', tile_id = ''):
         # to print in float format
         if (memfile[addr] != ''):
             temp_val = fixed2float (memfile[addr], param.int_bits, param.frac_bits)
+            # use this for debugging/viewing addresses
+            #temp_val = bin2int (memfile[addr], param.num_bits)
         else:
             temp_val = 0.0
         if (name == 'EDRAM' and (node != '') and (tile_id != '')): # for EDRAM also show counter/valid
@@ -34,7 +36,7 @@ def node_dump (node, filepath = ''):
     assert (filepath != ''), 'Debug flag is set, filepath cannot be nil'
     for i in range(len(node.tile_list)):
         print ('Dumping tile num: ', i)
-        filename = filepath + 'tile' + str(i) + '/memsim.txt'
+        filename = filepath + 'tile' + str(i) + '/memsim1.txt'
         fid = open (filename, 'w')
 
         # dump the edram - one per tile
@@ -43,7 +45,7 @@ def node_dump (node, filepath = ''):
         # dump the memory components of IMA
         for j in range (len(node.tile_list[0].ima_list)):
             # dump the datamemory
-            fid.write ('IMA id: ' + str(i) + '\n')
+            fid.write ('IMA id: ' + str(j) + '\n')
             mem_dump (fid, node.tile_list[i].ima_list[j].dataMem.memfile, 'DataMemory')
 
             for k in range (len(node.tile_list[0].ima_list[0].xbar_list)):
