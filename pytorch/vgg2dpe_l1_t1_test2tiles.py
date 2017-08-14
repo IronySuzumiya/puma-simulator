@@ -56,11 +56,11 @@ dict_temp = {}
 dict_list = []
 # num_in = 224
 # Send 3*4*224 input data - 3 channel, 4 rows, each row width 224
-for i in range (in_channel*num_rows*num_in / 8):
+for i in range (in_channel*num_rows*num_in / (2*4*3)):
     target_tileId = '001'
     vtile_id = 0
     send_width = 4
-    i_temp = i_send (i*4, vtile_id, send_width, target_tileId, vec = 1)
+    i_temp = i_send (i*4*3, vtile_id, send_width, target_tileId, vec = 3)
     dict_list.append (i_temp.copy())
 
 # Halt instruction in the end
@@ -98,14 +98,14 @@ dict_list = []
 #Receive 3 intermediate rows (ignoring the first row - padding)
 # Receive 3*2*226 (3 channels, 2 rows, 224 row size + 2 for padding (1,1)
 counter = 18
-for i in range (in_channel * num_rows * (num_in + 2*padding) / 4):
+for i in range (in_channel * num_rows * (num_in + 2*padding) / (4*3)):
     if (padding > 0 and (((i % num_in) == 0) or ((i % num_in) == num_in-1))):
         neuron_id = -1 # for padding pixels
         i_temp = i_receive (i, neuron_id, counter)
     else:
-        vtile_id = 0
+        vtile_id = 1 if (i < 6/3) else 0
         receive_width = 4
-        i_temp = i_receive (4*i, vtile_id, receive_width, counter)
+        i_temp = i_receive (4*3*i, vtile_id, receive_width, counter, vec = 3)
     dict_list.append (i_temp.copy())
 
 # Halt instruction in the end
@@ -146,7 +146,7 @@ dict_list = []
 # Send 3*4*224 input data - 3 channel, 4 rows, each row width 224
 for i in range (in_channel*num_rows*num_in / 8):
     target_tileId = '001'
-    vtile_id = 0
+    vtile_id = 1
     send_width = 4
     i_temp = i_send (i*4, vtile_id, send_width, target_tileId, vec = 1)
     dict_list.append (i_temp.copy())

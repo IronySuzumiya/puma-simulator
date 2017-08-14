@@ -60,6 +60,7 @@ class tile (object):
         # For edram interface (send/receive generated edram accesses)
         self.latency_sr = 0
         self.stage_cycle_sr = 0
+        self.vec_count = 0
         # For edram controller (ima generated edram accesses)
         self.memstate = 'free' # can be free/busy
         self.latency = 0 # holds latency for memory access
@@ -90,6 +91,7 @@ class tile (object):
         self.receive_buffer.inv ()
         # Initialize the program counter
         self.pc = 0
+        self.vec_count = 0
         # Intialize tile
         self.tile_halt = 0
         # Initiaize the halt list & stall flag for tile
@@ -207,8 +209,8 @@ class tile (object):
         assert (self.instrn['opcode'] in param.op_list_tile), 'Tile: unsupported opcode'
         if (self.instrn['opcode'] == 'send'):
             # check if the mem_addr is valid
-            mem_addr = self.instrn['mem_addr']
             send_width = self.instrn['r1']
+            mem_addr = self.instrn['mem_addr'] + self.vec_count*send_width
             assert (send_width <= param.receive_buffer_width), 'Send width must be sm/eq to rec_buff_width'
             if (all (self.edram_controller.valid[mem_addr:mem_addr+send_width])): #check if all data (to be sent) is valid
                 # first but not last cycle of edram access
@@ -236,7 +238,13 @@ class tile (object):
                         self.edram_controller.counter[mem_addr+i] -= 1
                         if (self.edram_controller.counter[mem_addr+i] <= 0):
                             self.edram_controller.valid[mem_addr+i] = 0
-                    self.stall = 0
+                    # send vector instruction completes
+                    if (self.vec_count == self.instrn['vec']-1):
+                        self.vec_count = 0
+                        self.stall = 0
+                    # a unit of vector send finishes
+                    else:
+                        self.vec_count += 1
                 # other cycles (not first or last)
                 else:
                     self.stage_cycle_sr += 1
@@ -258,8 +266,8 @@ class tile (object):
                 else:
                     self.stage_cycle_sr += 1
 
-            mem_addr = self.instrn['mem_addr']
             receive_width = self.instrn['r1']
+            mem_addr = self.instrn['mem_addr'] + self.vec_count * receive_width
             # if tag matches check if edram entry is empty/free (invalid)
             if (self.tag_matched and (not all(self.edram_controller.valid[mem_addr:mem_addr+receive_width]))):
                 assert (self.instrn['vtile_id'] >= 0 and receive_width == len(self.received_data)), 'receive_width & send widths mismatch'
@@ -282,8 +290,13 @@ class tile (object):
                         self.edram_controller.valid[mem_addr+i] = 1
                         self.edram_controller.counter[mem_addr+i] = temp_counter
                     # set other book-keeping flags
-                    self.tag_matched = 0
-                    self.stall = 0
+                    if (self.vec_count == self.instrn['vec']-1):
+                        self.vec_count = 0
+                        self.tag_matched = 0
+                        self.stall = 0
+                    else:
+                        self.tag_matched = 0
+                        self.vec_count += 1
                 # other cycles (not first or last)
                 else:
                     self.stage_cycle_sr += 1
@@ -304,8 +317,8 @@ class tile (object):
                 if (not self.ima_nma_list[k]):
                     self.halt_list[k] = 1
 
-            # check if all imas halted
-            if (all(self.halt_list)):
+            # check if all imas halted and send_queue is empty
+            if (all(self.halt_list) and self.send_queue.empty()):
                 self.tile_halt = 1
 
                 # Close all ima the trace files

@@ -56,9 +56,17 @@ dict_temp = {}
 dict_list = []
 # num_in = 224
 # Send 3*4*224 input data - 3 channel, 4 rows, each row width 224
-for i in range (in_channel*num_rows*num_in):
-    target_tileId = '001'
-    i_temp = i_send (i, i, target_tileId)
+#for i in range (in_channel*num_rows*num_in):
+#    target_tileId = '001'
+#    i_temp = i_send (i, i, target_tileId)
+#    dict_list.append (i_temp.copy())
+
+send_vw = num_rows*num_in
+send_width = in_channel
+vtile_id = 0
+target_tileId = '001'
+for i in range (in_channel*num_rows*num_in / (send_vw * send_width)):
+    i_temp = i_send (i*send_width*send_vw, vtile_id, send_width, target_tileId, vec = send_vw)
     dict_list.append (i_temp.copy())
 
 # Halt instruction in the end
@@ -97,13 +105,17 @@ dict_list = []
 # Receive 3*2*226 (3 channels, 2 rows, 224 row size + 2 for padding (1,1)
 nId = 0 # neuronId
 counter = 18
-for i in range (in_channel * num_rows * (num_in + 2*padding)):
+vtile_id = 0
+receive_width = in_channel
+receive_vw = num_rows*num_in
+for i in range (in_channel * num_rows * (num_in + 2*padding) / (receive_width * receive_vw)):
     if (padding > 0 and (((i % num_in) == 0) or ((i % num_in) == num_in-1))):
         neuron_id = -1 # for padding pixels
         i_temp = i_receive (i, neuron_id, counter)
     else:
-        i_temp = i_receive (i, nId, counter)
-        nId += 1
+        i_temp = i_receive (receive_width * receive_vw * i, vtile_id, receive_width, counter, vec = receive_vw)
+        #i_temp = i_receive (i, nId, counter)
+        #nId += 1
     dict_list.append (i_temp.copy())
 
 # initiate the imas to compute

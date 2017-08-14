@@ -1,5 +1,5 @@
 # Limits the number of cycles an IMA runs in case it doesn't halt
-cycles_max = 200
+cycles_max = 50000
 infinity = 100000
 debug = 1 #if 0, no traces or memsim will be generated for compute tiles
 
