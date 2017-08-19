@@ -3,25 +3,32 @@ import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 import numpy as np
+import config as cfg
 import constants as param
 
 # Define nstruction prototypes
 # generate load prototype - load data from edram to (datamem/xbinmem)
-def i_load (d1, r1, vec = 1):
+def i_load (d1, r1, load_width = 1, vec = 1):
+    assert (load_width <= (cfg.edram_buswidth/cfg.data_width)), 'Load width must be smaller than \
+    edram_buswidth/data_width'
     i_temp = param.dummy_instrn.copy ()
     i_temp['opcode'] = 'ld'
     i_temp['d1'] = d1 # rf addr
     i_temp['r1'] = r1 # mem addr
+    i_temp['imm'] = load_width
     i_temp['vec'] = vec
     return i_temp
 
 # generate store protoyype - store data from (datamem/sboutmem) to edram
-def i_store (d1, r1, counter = 1, vec = 1):
+def i_store (d1, r1, counter = 1, store_width = 1, vec = 1):
+    assert (store_width <= (cfg.edram_buswidth/cfg.data_width)), 'Load width must be smaller than \
+    edram_buswidth/data_width'
     i_temp = param.dummy_instrn.copy ()
     i_temp['opcode'] = 'st'
     i_temp['d1'] = d1 # mem addr
     i_temp['r1'] = r1 # rf addr
     i_temp['r2'] = counter
+    i_temp['imm'] = store_width
     i_temp['vec'] = vec
     return i_temp
 
@@ -67,7 +74,7 @@ def i_alui (aluop, d1, r1, imm, vec = 1):
     return i_temp
 
 # generate mvm prototype - xbar isntrn
-def i_mvm (xb_nma = param.num_xbar, r1=0, r2=0): # r1 is displacement, r2 is length of a continuum of data
+def i_mvm (xb_nma = cfg.num_xbar, r1=0, r2=0): # r1 is displacement, r2 is length of a continuum of data
     i_temp = param.dummy_instrn.copy()
     i_temp['opcode'] = 'mvm'
     i_temp['r1'] = r1

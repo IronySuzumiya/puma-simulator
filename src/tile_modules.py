@@ -4,6 +4,7 @@
 import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
+import config as cfg
 import constants as param
 import ima_modules
 from ima_modules import int2bin
@@ -35,7 +36,7 @@ class receive_buffer (object):
         self.latency = param.receive_buffer_lat
 
         # Consists of a list of dictionaries (data, neuron_id)
-        temp_rb_list = [''] * param.receive_buffer_width
+        temp_rb_list = [''] * cfg.receive_buffer_width
         temp_dict = {'data': temp_rb_list[:], 'valid': 0}
         self.buffer = []
         for i in range (buff_size):
@@ -61,7 +62,7 @@ class receive_buffer (object):
 
     # write the data coming from router to buffer if non-full
     def write (self, vtile_id, list_entry):
-        assert (vtile_id <= param.receive_buffer_depth), 'vtile_id must be less than #receive buffer depth'
+        assert (vtile_id <= cfg.receive_buffer_depth), 'vtile_id must be less than #receive buffer depth'
         assert (type(list_entry) == list), 'data written to receive buffer should be a list of neuron values'
         if (self.isempty(vtile_id)): # check if receive buffer is empty
             self.num_access += 1
@@ -78,20 +79,33 @@ class receive_buffer (object):
             return [1, self.buffer[vtile_id]['data'][:]]
         return [0, 0] # tag-hit, data
 
-# a memory instance for edram
+# a memory instance for edram - edram reads and writes multiple neuron values (based on memory bandwidth)
 class edram (ima_modules.memory):
 
     def getLatency (self):
         return param.edram_lat
 
-    # redefine the write assertion
-    def write (self, addr, data):
+    # redefine read - for multiple reads
+    def read (self, addr, width = 1): # read edram_buswidth/data_width of continuous reads from edram
         self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
-        assert ((type(data) ==  str) and (len(data) == param.edram_buswidth)), \
-                'data should be a string with edram_datawidth bits'
-        self.memfile[addr - self.addr_start] = data
+        # returns  a list of entries (list has one entry - Typical case)
+        return self.memfile[(addr - self.addr_start) : \
+                (addr - self.addr_start + width)]
+
+    # redefine the write assertion
+    def write (self, addr, data, width = 1): # write (edram_buswidth/data_width) to continuous writes to edram
+        self.num_access += 1
+        assert (type(addr) == int), 'addr type should be int'
+        assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
+        #assert ((type(data) ==  str) and (len(data) == cfg.edram_buswidth)), \
+        #        'data should be a string with edram_datawidth bits'
+        assert ((type(data) == list) and (len(data) == width)),\
+                'write data: wrong format - should be list with "num"'
+        # writes to more than one entires (1 entry - typical case)
+        for i in range (width):
+            self.memfile[addr + i - self.addr_start] = data[i]
 
 
 # edram controller includes edram too
@@ -101,9 +115,9 @@ class edram_controller (object):
         self.num_access = 0
 
         # Instantiate EDRAM, valid and counter fields
-        self.mem  = edram (param.edram_size)
-        self.valid = [0] * param.edram_size
-        self.counter = [0] * param.edram_size
+        self.mem  = edram (cfg.edram_size*1024/cfg.data_width) #edram_size is in KB
+        self.valid  = [0] * (cfg.edram_size*1024/cfg.data_width) #edram_size is in KB
+        self.counter  = [0] * (cfg.edram_size*1024/cfg.data_width) #edram_size is in KB
 
         # Define latency
         self.latency = param.edram_lat
@@ -132,7 +146,7 @@ class edram_controller (object):
         else: # for one IMA case only
             return 0
 
-    def propagate (self, ren_list, wen_list, ramstore_list, addr_list):
+    def propagate (self, ren_list, wen_list, rd_width_list, wr_width_list, ramstore_list, addr_list):
 
         self.num_access += 1
         # check if any wen or ren siganl is active
@@ -141,11 +155,11 @@ class edram_controller (object):
         # Traverse the WEN(s) and REN(s) to find the ima to be served
         found = 0
         count = 0
-        while (found == 0 and count < param.num_ima):
+        while (found == 0 and count < cfg.num_ima):
             count = count + 1
             # choose the ima to be served
             idx = self.find_next (ren_list, wen_list)
-            assert (idx < param.num_ima), 'Find Error: IMA Index not possible'
+            assert (idx < cfg.num_ima), 'Find Error: IMA Index not possible'
             self.lastIdx = idx # update last index
 
             # based on ren and wen perfrom the required action
@@ -161,20 +175,22 @@ class edram_controller (object):
         addr = addr_list[idx]
         if (ren_list[idx] == 1): # LD instrcution
             if (found): # change state only if an idx was found
-                # update the counter & valid flags accordingly
-                self.counter[addr] = self.counter[addr] - 1
-                if (self.counter[addr] <= 0): #modified
-                    self.valid[addr] = 0
+                for i in range (rd_width_list[idx]):
+                    # update the counter & valid flags accordingly
+                    self.counter[addr+i] = self.counter[addr+i] - 1
+                    if (self.counter[addr+i] <= 0): #modified
+                        self.valid[addr+i] = 0
             # read the data and send to ima - if found is 0, ramload is junk
-            ramload = self.mem.read (addr_list[idx])
+            ramload = self.mem.read (addr, rd_width_list[idx])
             return [found, idx, ramload]
 
         else: # ST instruction
             if (found): # change state only if an idx was found
-                data = ramstore_list[idx][-1*param.data_width:]
-                counter = ramstore_list[idx][0:-1*param.data_width]
-                self.mem.write (addr_list[idx], data)
-                self.valid[addr] = 1
-                self.counter[addr] = int(counter)
+                data = ramstore_list[idx][1][:] # 2nd element of list is data_list
+                counter = ramstore_list[idx][0]
+                self.mem.write (addr, data, wr_width_list[idx])
+                for i in range (wr_width_list[idx]):
+                    self.valid[addr+i] = 1
+                    self.counter[addr+i] = int(counter)
             return [found, idx, '']
 

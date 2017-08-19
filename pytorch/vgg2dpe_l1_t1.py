@@ -10,7 +10,7 @@ import math
 
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
-import constants as param
+import config as cfg
 
 # import the data_convert module (float to fixed conversions)
 from data_convert import *
@@ -64,7 +64,7 @@ dict_list = []
 send_vw = num_rows*num_in
 send_width = in_channel
 vtile_id = 0
-target_tileId = '001'
+target_tileId = 1
 for i in range (in_channel*num_rows*num_in / (send_vw * send_width)):
     i_temp = i_send (i*send_width*send_vw, vtile_id, send_width, target_tileId, vec = send_vw)
     dict_list.append (i_temp.copy())
@@ -83,7 +83,7 @@ dict_temp = {}
 dict_list = []
 i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
-for i in range (param.num_ima):
+for i in range (cfg.num_ima):
     filename = temp_dir + '/ima_imem' + str(i) + '.npy'
     print (filename + ' generated')
     np.save(filename, dict_list)
@@ -114,12 +114,10 @@ for i in range (in_channel * num_rows * (num_in + 2*padding) / (receive_width * 
         i_temp = i_receive (i, neuron_id, counter)
     else:
         i_temp = i_receive (receive_width * receive_vw * i, vtile_id, receive_width, counter, vec = receive_vw)
-        #i_temp = i_receive (i, nId, counter)
-        #nId += 1
     dict_list.append (i_temp.copy())
 
 # initiate the imas to compute
-i_temp = i_compute ('1' * param.num_ima)
+i_temp = i_compute ('1' * cfg.num_ima)
 dict_list.append (i_temp.copy())
 
 # Halt instruction in the end
@@ -136,7 +134,7 @@ print ('Total no of instructions: ', len(dict_list))
 dict_temp = {}
 dict_list = []
 out_addr = num_rows * num_in * in_channel
-datamem_off = param.num_xbar*param.xbar_size
+datamem_off = cfg.num_xbar*cfg.xbar_size
 
 ## Initialization
 # set row_max & col_max
@@ -209,15 +207,16 @@ i_temp = i_alu_int ('add', datamem_off+9, datamem_off+8, datamem_off+5) # third 
 dict_list.append (i_temp.copy())
 
 ## load the three rows (each load loads kernel*in_channel values)
-vw = kernel*in_channel
+width = kernel * in_channel
+vw = 1 # (need to lead in_channel*kernel which is less than edram_bussize/data_width)
 for j in range (kernel):
-    i_temp = i_load (j*in_channel*kernel, datamem_off+7+j, vw)
+    i_temp = i_load (j*in_channel*kernel, datamem_off+7+j, load_width = 9, vec = 1)
     dict_list.append (i_temp.copy())
 
 ## copy the values to all 8 xbars (input-sharing)
 vw = in_channel * kernel * kernel
-for j in range (1,param.num_xbar):
-    i_temp = i_copy (j*param.xbar_size, 0, vw)
+for j in range (1,cfg.num_xbar):
+    i_temp = i_copy (j*cfg.xbar_size, 0, vw)
     dict_list.append (i_temp.copy())
 
 ## mvm not using stride support in xbar_inmemstride_val1 = 3
@@ -231,27 +230,27 @@ dict_list.append (i_temp.copy())
 i_temp = i_alu_int ('mod', datamem_off+14, datamem_off+3, datamem_off+10) # check for odd col
 dict_list.append (i_temp.copy())
 
-l2_pc = len(dict_list) + param.num_xbar-1 + 3
+l2_pc = len(dict_list) + cfg.num_xbar-1 + 3
 i_temp = i_beq (datamem_off+14, datamem_off+11, l2_pc)
 dict_list.append (i_temp.copy())
 
 ## Compute output of conv (shift and add) and relu for even column
 vw = out_channel
-for j in range (1,param.num_xbar):
-    i_temp = i_alu ('sna', datamem_off+20, 0, j*param.xbar_size, j*param.xbar_bits, vec = vw)
+for j in range (1,cfg.num_xbar):
+    i_temp = i_alu ('sna', datamem_off+20, 0, j*cfg.xbar_size, j*cfg.xbar_bits, vec = vw)
     dict_list.append (i_temp.copy())
 
 i_temp = i_alu ('relu', datamem_off+20, datamem_off+20, vec = vw)
 dict_list.append (i_temp.copy())
 
-l3_pc = len(dict_list) + param.num_xbar-1 + 15
+l3_pc = len(dict_list) + cfg.num_xbar-1 + 15
 i_temp = i_jmp (l3_pc)
 dict_list.append (i_temp.copy())
 
 ## l2_pc - branch target - odd column - conv, relu, half-max
 vw = out_channel
-for j in range (1,param.num_xbar):
-    i_temp = i_alu ('sna', datamem_off+20+out_channel, 0, j*param.xbar_size, j*param.xbar_bits, vec = vw)
+for j in range (1,cfg.num_xbar):
+    i_temp = i_alu ('sna', datamem_off+20+out_channel, 0, j*cfg.xbar_size, j*cfg.xbar_bits, vec = vw)
     dict_list.append (i_temp.copy())
 
 i_temp = i_alu ('relu', datamem_off+20+out_channel, datamem_off+20+out_channel, vec = vw)
@@ -280,7 +279,7 @@ l4_pc = len(dict_list) + 3
 i_temp = i_beq (datamem_off+13, datamem_off+11, l4_pc)
 dict_list.append (i_temp.copy())
 
-i_temp = i_store (datamem_off+17, datamem_off+20, counter = 1, vec = out_channel) # even row
+i_temp = i_store (datamem_off+17, datamem_off+20, counter = 1, store_width = 16, vec = 4) # even row
 dict_list.append (i_temp.copy())
 
 l5_pc = len(dict_list) + 4
@@ -288,13 +287,13 @@ i_temp = i_jmp (l5_pc) # increment col_cur & row_cur
 dict_list.append (i_temp.copy())
 
 ## l4_pc - odd row - load prev row, do another halt-max (counter = 3, assuming conv with padding = kernel-1)
-i_temp = i_load (datamem_off+20+out_channel, datamem_off+17, vec= out_channel) # even row
+i_temp = i_load (datamem_off+20+out_channel, datamem_off+17, load_width = 16, vec= 4) # even row
 dict_list.append (i_temp.copy())
 
 i_temp = i_alu ('max', datamem_off+20, datamem_off+20, datamem_off+20+out_channel, vec = out_channel)
 dict_list.append (i_temp.copy())
 
-i_temp = i_store (datamem_off+17, datamem_off+20, counter = 3, vec = out_channel) # even row
+i_temp = i_store (datamem_off+17, datamem_off+20, counter = 3, store_width = 16, vec = 4) # even row
 dict_list.append (i_temp.copy())
 
 ## l3_pc - (came from a even col) increment col_curr by 1 and jmp to l1_pc
@@ -333,13 +332,12 @@ print (filename + ' generated')
 np.save(filename, dict_list)
 print ('Total no of instructions: ', len(dict_list))
 
-
 # Generate all other ima_imem.npy with halts for Tile 1
 dict_temp = {}
 dict_list = []
 i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
-for i in range (1,param.num_ima):
+for i in range (1, cfg.num_ima):
     filename = temp_dir + '/ima_imem' + str(i) + '.npy'
     print (filename + ' generated')
     np.save(filename, dict_list)
@@ -369,7 +367,7 @@ dict_temp = {}
 dict_list = []
 i_temp = i_hlt ()
 dict_list.append (i_temp.copy())
-for i in range (param.num_ima):
+for i in range (cfg.num_ima):
     filename = temp_dir + '/ima_imem' + str(i) + '.npy'
     print (filename + ' generated')
     np.save(filename, dict_list)

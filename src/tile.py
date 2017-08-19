@@ -6,6 +6,7 @@ sys.path.insert (0, '/home/ankitaay/dpe/include')
 import Queue
 
 import numpy as np
+import config as cfg
 import constants as param
 import ima as ima
 import tile_modules as tmod
@@ -27,15 +28,15 @@ class tile (object):
         ## Objects which correspond to a hardware component (at least NOW!)
         # ima_list
         self.ima_list = []
-        for i in range (param.num_ima):
+        for i in range (cfg.num_ima):
             temp_ima = ima.ima ()
             self.ima_list.append(temp_ima)
         # EDRAM controller (icnludes edram)
         self.edram_controller = tmod.edram_controller ()
         # intruction memory
-        self.instrn_memory = tmod.instrn_memory (param.tile_instrnMem_size)
+        self.instrn_memory = tmod.instrn_memory (cfg.tile_instrnMem_size)
         # receive buffer
-        self.receive_buffer = tmod.receive_buffer (param.receive_buffer_depth)
+        self.receive_buffer = tmod.receive_buffer (cfg.receive_buffer_depth)
         # program counter
         self.pc = 0
         # fetched instruction
@@ -75,7 +76,7 @@ class tile (object):
         self.instrn_memory.load (dict_list)
 
         # Initialize the IMAs and their trace file ids
-        for i in range (param.num_ima):
+        for i in range (cfg.num_ima):
             # tracefile is where stats are dumped
             tracefile = tracepath + 'ima_trace' + str(i) + '.txt'
             fid_temp = open (tracefile, 'w')
@@ -85,7 +86,7 @@ class tile (object):
             self.ima_list[i].pipe_init (instrnfile, self.fid_list[i])
 
         # Initialize the EDRAM - invalidate all entries (valid_list)
-        self.edram_controller.valid = [0] * param.edram_size
+        self.edram_controller.valid = [0] * (cfg.edram_size*1024/cfg.data_width)
 
         # Intiialize the receive buffer - invalidate
         self.receive_buffer.inv ()
@@ -95,8 +96,8 @@ class tile (object):
         # Intialize tile
         self.tile_halt = 0
         # Initiaize the halt list & stall flag for tile
-        self.halt_list = [0] * param.num_ima
-        self.ima_nma_list = [0] * param.num_ima
+        self.halt_list = [0] * cfg.num_ima
+        self.ima_nma_list = [0] * cfg.num_ima
         self.stall = 0
 
 
@@ -104,20 +105,24 @@ class tile (object):
     def tile_compute (self, cycle):
         ## Simulate a cycle if IMA(s) that haven't halted
         if (not all(self.halt_list)): # A tile halts whwn all IMAs (within the tile) halt
-            for i in range (param.num_ima):
+            for i in range (cfg.num_ima):
                 if ((not self.halt_list[i]) and self.ima_nma_list[i]):
                     self.ima_list[i].pipe_run (cycle, self.fid_list[i])
                     self.halt_list[i] = self.ima_list[i].halt # update halt
 
         ## Simulate a cycle of memory operation
         # Probe IMA mem_interface to find one/many pending memory requests
-        ren_list = [0] * param.num_ima
+        ren_list = [0] * cfg.num_ima
         wen_list = ren_list[:]
-        ramstore_list = [''] * param.num_ima
+        rd_width_list = ren_list[:]
+        wr_width_list = ren_list[:]
+        ramstore_list = [''] * cfg.num_ima
         addr_list = ren_list[:]
-        for i in range (param.num_ima):
+        for i in range (cfg.num_ima):
             ren_list[i] = self.ima_list[i].mem_interface.ren
             wen_list[i] = self.ima_list[i].mem_interface.wen
+            rd_width_list[i] = self.ima_list[i].mem_interface.rd_width
+            wr_width_list[i] = self.ima_list[i].mem_interface.wr_width
             addr_list[i] = self.ima_list[i].mem_interface.addr
             ramstore_list[i] = self.ima_list[i].mem_interface.ramstore
 
@@ -132,7 +137,7 @@ class tile (object):
             # check if the access lateny is 2 cycles - need to update ima mem_interface
             if (self.stage_cycle == self.latency - 1):
                 [found, idx, ramload] = self.edram_controller.propagate (ren_list, \
-                        wen_list, ramstore_list, addr_list)
+                        wen_list, rd_width_list, wr_width_list, ramstore_list, addr_list)
 
                 if (found): # edram controller returns after finisning the LD/ST
                     self.ima_list[idx].mem_interface.wait = 0
@@ -149,7 +154,7 @@ class tile (object):
 
                 # update memory interface of served ima
                 [found, idx, ramload] = self.edram_controller.propagate (ren_list, \
-                        wen_list, ramstore_list, addr_list)
+                        wen_list, rd_width_list, wr_width_list, ramstore_list, addr_list)
 
                 if (found): # edram controller returns after finisning the LD/ST
                     self.ima_list[idx].mem_interface.wait = 0
@@ -175,7 +180,7 @@ class tile (object):
             if (self.stage_cycle == self.latency - 2):
                 self.stage_cycle = self.stage_cycle + 1
                 [found, idx, ramload] = self.edram_controller.propagate (ren_list, \
-                        wen_list, ramstore_list, addr_list)
+                        wen_list, rd_width_list, wr_width_list, ramstore_list, addr_list)
 
                 if (found): # edram controller returns after finisning the LD/ST
                     self.ima_list[idx].mem_interface.wait = 0
@@ -211,7 +216,7 @@ class tile (object):
             # check if the mem_addr is valid
             send_width = self.instrn['r1']
             mem_addr = self.instrn['mem_addr'] + self.vec_count*send_width
-            assert (send_width <= param.receive_buffer_width), 'Send width must be sm/eq to rec_buff_width'
+            assert (send_width <= cfg.receive_buffer_width), 'Send width must be sm/eq to rec_buff_width'
             if (all (self.edram_controller.valid[mem_addr:mem_addr+send_width])): #check if all data (to be sent) is valid
                 # first but not last cycle of edram access
                 if (self.stage_cycle_sr == 0 and self.edram_controller.getLatency() != 1):
@@ -282,7 +287,7 @@ class tile (object):
                     self.stage_cycle_sr = 0
                     # write data to edram and set valid &counter entries
                     if (self.instrn['vtile_id'] < 0): #adding support for zero receive
-                        self.received_data = [param.num_bits * '0'] * receive_width
+                        self.received_data = [cfg.num_bits * '0'] * receive_width
                     temp_counter = self.instrn['r2']
                     for i in range (receive_width):
                         self.edram_controller.mem.write (mem_addr+i, self.received_data[i])
@@ -307,7 +312,7 @@ class tile (object):
             # mask tells which new ima(s) should start executing
             # note: some ima(s) could have already been running previously
             temp_ima_nma = self.instrn['ima_nma']  # this is a bit-string
-            for i in range (param.num_ima):
+            for i in range (cfg.num_ima):
                 self.ima_nma_list[i] = self.ima_nma_list[i] | int(temp_ima_nma[i])
 
         else: # halt instruction
@@ -327,7 +332,7 @@ class tile (object):
                     self.stall = 0 # Doesn't matter as this was the last cycle
 
                 # Update the tile trace
-                if (param.debug):
+                if (cfg.debug):
                     fid.write ('Tile ran for ' + str(cycle) + ' cycles')
             else:
                 # prevent new instructions to befetched
@@ -337,7 +342,7 @@ class tile (object):
         self.tile_compute (cycle)
 
         ## for DEBUG only
-        if (param.debug and (not self.tile_halt)):
+        if (cfg.debug and (not self.tile_halt)):
             fid.write ('cycle: ' + str(cycle) + '   |   instrn: ' + self.instrn['opcode'] + '   |   \
 addr: ' + str(self.instrn['mem_addr']) + '   |   vtileId: ' + str(self.instrn['vtile_id']) + '   |   ima_halt_list: ')
             json.dump (self.halt_list, fid)

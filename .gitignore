@@ -1,4 +1,8 @@
+*.pyc
 *.swp
+*.swc
+*.swd
+*.swe
 *.swf
 *.swg
 *.swo

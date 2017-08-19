@@ -7,7 +7,8 @@ import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 import numpy as np
-import constants
+import constants as param
+import config as cfg
 import math
 from data_convert import *
 
@@ -18,7 +19,7 @@ class xbar (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.xbar_lat
+        self.latency = param.xbar_lat
 
         # xbar_value is the weights meant for one crossbar
         self.xbar_size = xbar_size
@@ -30,7 +31,7 @@ class xbar (object):
     def program (self, xbar_value = ''):
         # programs the crossbar with given matrix values
         val_size = np.shape (xbar_value)
-        size_max = constants.xbar_size
+        size_max = cfg.xbar_size
         assert (val_size[0] <= size_max and val_size[1] <= size_max), \
                     'Xbar values format should be a numpy array of the xbar dimensions'
         self.xbar_value[0:val_size[0], 0:val_size[1]] = xbar_value.copy ()
@@ -54,14 +55,14 @@ class xbar (object):
         inp_float = [0.0] * self.xbar_size
         for i in range(len(inp)):
             # extend data to num_bits for computation (sign extended)
-            temp_inp = (constants.num_bits - constants.dac_res) * '0' + inp[i]
-            inp_float[i] = fixed2float(temp_inp, constants.int_bits, constants.frac_bits)
+            temp_inp = (cfg.num_bits - cfg.dac_res) * '0' + inp[i]
+            inp_float[i] = fixed2float(temp_inp, cfg.int_bits, cfg.frac_bits)
         inp_float = np.asarray (inp_float)
         out_float = np.dot(inp_float, self.xbar_value)
         # convert float back to fixed point binary
         out_fixed  = [''] * self.xbar_size
         for i in range(len(out_fixed)):
-            out_fixed[i] = float2fixed(out_float[i], constants.int_bits, constants.frac_bits)
+            out_fixed[i] = float2fixed(out_float[i], cfg.int_bits, cfg.frac_bits)
         return out_fixed
 
 
@@ -71,7 +72,7 @@ class dac (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.dac_lat
+        self.latency = param.dac_lat
 
         self.dac_res = dac_res
 
@@ -81,14 +82,14 @@ class dac (object):
     def bin2real (self, inp, num_bits):
         # gets a n-bit (n = dac_res) digital value & returns an analog voltage value
         inp_max = '1' * num_bits # string with all 1s
-        analog_max = constants.vdd
+        analog_max = param.vdd
         frac = int(inp, 2) / float(int(inp_max, 2))
         return analog_max * frac
 
     def propagate (self, inp):
         self.num_access += 1
         if (inp == ''):
-            inp = '0' * constants.dac_res
+            inp = '0' * cfg.dac_res
         assert ((type(inp) == str) and (len(inp) == self.dac_res)), 'dac input type/size (bits) mismatch (string expected)'
         num_bits = self.dac_res
         return self.bin2real (inp, num_bits)
@@ -98,7 +99,7 @@ class dac (object):
 class dac_array (object):
     def __init__ (self, xbar_size, dac_res):
         # define latency
-        self.latency = constants.dac_lat
+        self.latency = param.dac_lat
 
         # generate multiple dacs (one per xbar input)
         self.dac_list = []
@@ -140,7 +141,7 @@ class adc (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.adc_lat
+        self.latency = param.adc_lat
 
         self.adc_res = adc_res
 
@@ -149,8 +150,8 @@ class adc (object):
 
     def real2bin (self, inp, num_bits):
         num_levels = 2**num_bits
-        step = float((constants.xbar_out_max - constants.xbar_out_min)) / num_levels
-        int_value = int(np.ceil((inp - constants.xbar_out_min) / float(step)))
+        step = float((param.xbar_out_max - param.xbar_out_min)) / num_levels
+        int_value = int(np.ceil((inp - param.xbar_out_min) / float(step)))
         bin_value = bin(int_value - 1)[2:]
         return ('0'*(num_bits - len(bin_value)) + bin_value)
 
@@ -172,7 +173,7 @@ class sampleNhold (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.snh_lat
+        self.latency = param.snh_lat
 
         self.hold_latch = np.zeros(xbar_size)
 
@@ -189,7 +190,7 @@ class sampleNhold (object):
 
     def propagate_dummy (self, inp_list):
         self.num_access += 1
-        assert (len(inp_list) == constants.xbar_size), 'sample&hold input size mismatch'
+        assert (len(inp_list) == cfg.xbar_size), 'sample&hold input size mismatch'
         out_list = inp_list[:]
         return out_list
 
@@ -200,7 +201,7 @@ class mux (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.mux_lat
+        self.latency = param.mux_lat
 
         # num_in is the inputs for the multiplexer
         self.num_in = num_in
@@ -228,7 +229,7 @@ class alu (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.alu_lat
+        self.latency = param.alu_lat
 
         # Arithmetic operations
         def add (a, b): return (a + b)
@@ -259,20 +260,20 @@ class alu (object):
     def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
         self.num_access += 1
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
-        assert (type(c) == int or (type(c) == str and len(c) == constants.num_bits)), 'ALU sna: shift = int/ num_bit str'
+        assert (type(c) == int or (type(c) == str and len(c) == cfg.num_bits)), 'ALU sna: shift = int/ num_bit str'
         if (type(c) == str):
-            c = bin2int (c, constants.num_bits)
-        a = fixed2float (a, constants.int_bits, constants.frac_bits)
+            c = bin2int (c, cfg.num_bits)
+        a = fixed2float (a, cfg.int_bits, cfg.frac_bits)
         if (b == ''):
             b = 0
         else:
             if (aluop == 'sna'): # shift left in fixed point binary
                 b = b[c:] + '0' * c
-            b = fixed2float (b, constants.int_bits, constants.frac_bits)
+            b = fixed2float (b, cfg.int_bits, cfg.frac_bits)
         out = self.options[aluop] (a, b)
         # overflow needs to be detected while conversion
         ovf = 0
-        out = float2fixed (out, constants.int_bits, constants.frac_bits)
+        out = float2fixed (out, cfg.int_bits, cfg.frac_bits)
         return [out, ovf]
 
 
@@ -283,7 +284,7 @@ class alu_int (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.alu_lat
+        self.latency = param.alu_lat
 
         # Arithmetic operations
         def add (a, b): return (a + b)
@@ -301,12 +302,12 @@ class alu_int (object):
     def propagate (self, a, b, aluop):
         self.num_access += 1
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
-        a = bin2int (a, constants.num_bits)
-        b = bin2int (b, constants.num_bits)
+        a = bin2int (a, cfg.num_bits)
+        b = bin2int (b, cfg.num_bits)
         out = self.options[aluop] (a, b)
         # overflow needs to be detected while conversion
         ovf = 0
-        out = int2bin(out, constants.num_bits)
+        out = int2bin(out, cfg.num_bits)
         return [out, ovf]
 
 
@@ -317,7 +318,7 @@ class memory (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.mem_lat
+        self.latency = param.dataMem_lat
 
         # memfile will store half-word (16 bits digital data) length strings
         self.size = size
@@ -340,7 +341,7 @@ class memory (object):
         assert (type(addr) == int), 'addr type should be int'
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         #print 'length of data ' + str(len(data))
-        assert ((type(data) ==  str) and (len(data) == constants.data_width)), 'data should be a string with mem_width bits'
+        assert ((type(data) ==  str) and (len(data) == cfg.data_width)), 'data should be a string with mem_width bits'
         self.memfile[addr - self.addr_start] = data
 
     def reset (self):
@@ -356,7 +357,7 @@ class xb_inMem (object):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.mem_lat
+        self.latency = param.xbar_inMem_lat
 
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size
@@ -384,7 +385,7 @@ class xb_inMem (object):
         self.num_access += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
-        assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
+        assert ((type(data) ==  str) and (len(data) == cfg.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[addr] = data
 
     def reset (self):
@@ -412,11 +413,11 @@ class xb_outMem (xb_inMem):
         self.num_access = 0
 
         # define latency
-        self.latency = constants.mem_lat
+        self.latency = param.xbar_outMem_lat
 
         # size equals the xbar_size, each entry being to
         self.xbar_size = xbar_size
-        self.memfile = ['0' * constants.xbdata_width] * self.xbar_size
+        self.memfile = ['0' * cfg.xbdata_width] * self.xbar_size
         self.wr_pointer = 0
 
     def getLatency (self):
@@ -430,7 +431,7 @@ class xb_outMem (xb_inMem):
 
     def write (self, data):
         self.num_access += 1
-        assert ((type(data) ==  str) and (len(data) == constants.xbdata_width)), 'data should be a string with xbdata_width bits'
+        assert ((type(data) ==  str) and (len(data) == cfg.xbdata_width)), 'data should be a string with xbdata_width bits'
         self.memfile[self.wr_pointer] = data
         self.wr_pointer = self.wr_pointer + 1
 
@@ -440,12 +441,26 @@ class xb_outMem (xb_inMem):
 
     def reset (self):
         self.num_access += 1
-        self.memfile = ['0' * constants.xbdata_width] * self.xbar_size
+        self.memfile = ['0' * cfg.xbdata_width] * self.xbar_size
         self.wr_pointer = 0
 
 
 # Instruction memory stores dict unlike memory (string)
 class instrn_memory (memory):
+
+    def __init__ (self, size, addr_offset = 0):
+        # define num_access
+        self.num_access = 0
+
+        # define latency
+        self.latency = param.instrnMem_lat
+
+        # memfile will store half-word (16 bits digital data) length strings
+        self.size = size
+        self.memfile = [''] * size
+        self.addr_start = addr_offset
+        self.addr_end = self.addr_start + self.size -1
+
     # To initilzie the memory with instructions
     def load (self, dict_list):
         assert (len(dict_list) <= self.size), 'instructions exceed the instruction memory size'
@@ -480,29 +495,32 @@ class instrn_memory (memory):
 class mem_interface (object):
     def __init__ (self):
         # define latency
-        self.latency = constants.memInterface_lat
+        self.latency = param.memInterface_lat
 
         # in/out ports
         self.wait = 0  # wait signal from (EDRAM) controller to ima
         self.ren = 0  # ren = 1, for LD
         self.wen = 0  # wen = 1, for ST
+        self.wr_width = 0
+        self.rd_width = 0
         self.addr = 0 # add sent by ima to mem controller
         self.ramload = 0 # data (for LD) sent by edram to ima
         self.ramstore = 0 # data (for ST) sent by ima to men controller
 
         ## For DEBUG of IMA only - define a memory element and preload some values
-        #self.edram = memory (constants.dataMem_size, 0)
+        #self.edram = memory (cfg.dataMem_size, 0)
         #for i in range (len(self.edram.memfile)/2):
-        #    val = int2bin (i, constants.data_width)
+        #    val = int2bin (i, cfg.data_width)
         #    self.edram.memfile[i] = val
 
     def getLatency (self):
         return self.latency
 
-    def wrRequest (self, addr, ramstore):
-        assert (type(ramstore) == str), 'data type expected string'
+    def wrRequest (self, addr, ramstore, wr_width):
+        assert (type(ramstore[1][0]) == str), 'data type expected string'
         self.wen = 1
         self.ren = 0
+        self.wr_width = wr_width
         self.addr = addr
         self.ramstore = ramstore
         self.wait = 1
@@ -510,9 +528,10 @@ class mem_interface (object):
         ## For DEBUG of IMA only
         #self.edram.memfile[addr] = ramstore
 
-    def rdRequest (self, addr):
+    def rdRequest (self, addr, rd_width):
         self.ren = 1
         self.wen = 0
+        self.rd_width = rd_width
         self.addr = addr
         self.wait = 1
 

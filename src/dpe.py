@@ -28,7 +28,8 @@ from node_dump import *
 from hw_stats import *
 import numpy as np
 
-import constants as param
+import config as cfg
+import constants
 import ima_modules
 import ima
 import tile_modules
@@ -46,13 +47,13 @@ tracedir = '/home/ankitaay/dpe/test/traces/' + net
 assert (os.path.exists(instrndir) == 1), 'Instructions for net missing: generate intuctions (in folder hierarchy) hierarchy'
 '''if not os.path.exists(instrndir):
     os.makedirs(instrndir)
-    for i in range (param.num_tile):
+    for i in range (cfg.num_tile):
         temp_tiledir = instrndir + '/tile' + str(i)
         os.makedirs(temp_tiledir)'''
 
 if not os.path.exists(tracedir):
     os.makedirs(tracedir)
-    for i in range (param.num_tile):
+    for i in range (cfg.num_tile):
         temp_tiledir = tracedir + '/tile' + str(i)
         os.makedirs(temp_tiledir)
 
@@ -70,25 +71,24 @@ node_dut = node.node ()
 # tracepath is where all tile & ima traces will be stored
 node_dut.node_init (instrnpath, tracepath)
 
-
 ## Read the input data (input.t7) into the input tile's edram(controller)
 inp_filename = instrnpath + 'input.npy'
 inp_tileId = 0
 assert (os.path.exists (inp_filename) == True), 'Input Error: Provide inputbefore running the DPE'
 inp = np.load (inp_filename).item()
 for i in range (len(inp['data'])):
-    data = float2fixed (inp['data'][i], param.int_bits, param.frac_bits)
+    data = float2fixed (inp['data'][i], cfg.int_bits, cfg.frac_bits)
     node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i] = data
     node_dut.tile_list[inp_tileId].edram_controller.counter[i]     = int(inp['counter'][i])
     node_dut.tile_list[inp_tileId].edram_controller.valid[i]       = int(inp['valid'][i])
 
 ## Program DNN weights on the xbars
 # torch table in file - (tracepath/tile<>/weights/ima<>_xbar<>.t7)
-for i in range (1, param.num_tile-1):
+for i in range (1, cfg.num_tile-1):
     print ('Programming tile no: ', i)
-    for j in range (param.num_ima):
+    for j in range (cfg.num_ima):
         print ('Programming ima no: ', j)
-        for k in range (param.num_xbar):
+        for k in range (cfg.num_xbar):
             wt_filename = instrnpath + 'tile' + str(i) + '/weights/' + \
                         'ima' + str(j) + '_xbar' + str(k) + '.t7'
             if (os.path.exists(wt_filename)): # check if weights for the xbar exist
@@ -98,22 +98,22 @@ for i in range (1, param.num_tile-1):
 
 ## Run all the tiles
 cycle = 0
-while (not node_dut.node_halt and cycle < param.cycles_max):
+while (not node_dut.node_halt and cycle < cfg.cycles_max):
     node_dut.node_run (cycle)
     cycle = cycle + 1
-print 'Finally node halted' + ' | PS: max_cycles ' + str (param.cycles_max)
+print 'Finally node halted' + ' | PS: max_cycles ' + str (cfg.cycles_max)
 
 
 ## For DEBUG only - dump the contents of all tiles
 # NOTE: Output and input tiles are dummy tiles to enable self-contained simulation
-if (param.debug):
+if (cfg.debug):
     node_dump (node_dut, tracepath)
 
 
 ## Dump the contents of output tile (DNN output) to output file (output.txt)
 output_file = tracepath + 'output.txt'
 fid = open (output_file, 'w')
-tile_id  = param.num_tile - 1
+tile_id  = cfg.num_tile - 1
 mem_dump (fid, node_dut.tile_list[tile_id].edram_controller.mem.memfile, 'EDRAM')
 fid.close ()
 print 'Output Tile dump finished'

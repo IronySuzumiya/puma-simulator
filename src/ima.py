@@ -7,6 +7,7 @@ sys.path.insert (0, '/home/ankitaay/dpe/include')
 # import dependancy files
 import numpy as np
 import math
+import config as cfg
 import constants as param
 import ima_modules as imod
 
@@ -30,26 +31,26 @@ class ima (object):
         ######################################################################
         # Instantiate crossbars
         self.xbar_list = []
-        for i in xrange(param.num_xbar):
-            temp_xbar = imod.xbar (param.xbar_size)
+        for i in xrange(cfg.num_xbar):
+            temp_xbar = imod.xbar (cfg.xbar_size)
             self.xbar_list.append(temp_xbar)
 
         # Instantiate DACs
         self.dacArray_list = []
-        for i in xrange(param.num_xbar):
-            temp_dacArray = imod.dac_array (param.xbar_size, param.dac_res)
+        for i in xrange(cfg.num_xbar):
+            temp_dacArray = imod.dac_array (cfg.xbar_size, cfg.dac_res)
             self.dacArray_list.append(temp_dacArray)
 
         # Instatiate adcs
         self.adc_list = []
-        for i in xrange(param.num_adc):
-            temp_adc = imod.adc (param.adc_res)
+        for i in xrange(cfg.num_adc):
+            temp_adc = imod.adc (cfg.adc_res)
             self.adc_list.append(temp_adc)
 
         # Instantiate sample and hold
         self.snh_list = []
-        for i in xrange(param.num_xbar):
-            temp_snh = imod.sampleNhold (param.xbar_size)
+        for i in xrange(cfg.num_xbar):
+            temp_snh = imod.sampleNhold (cfg.xbar_size)
             self.snh_list.append(temp_snh)
 
         # Instatiate mux (num_mux depends on num_xbars and num_adcs)
@@ -62,20 +63,20 @@ class ima (object):
         # A mux with inp_size = 1 is basically a dammy mux (wire)
 
         self.mux1_list = [] # from xbar
-        inp1_size = param.xbar_size
-        for i in xrange(param.num_xbar):
+        inp1_size = cfg.xbar_size
+        for i in xrange(cfg.num_xbar):
             temp_mux = imod.mux (inp1_size)
             self.mux1_list.append(temp_mux)
 
         self.mux2_list = [] # to adc
-        inp2_size = param.num_xbar / param.num_adc
-        for i in xrange(param.num_adc):
+        inp2_size = cfg.num_xbar / cfg.num_adc
+        for i in xrange(cfg.num_adc):
             temp_mux = imod.mux (inp2_size)
             self.mux2_list.append(temp_mux)
 
         # Instantiate ALUs
         self.alu_list = []
-        for i in xrange(param.num_ALU):
+        for i in xrange(cfg.num_ALU):
             temp_alu = imod.alu ()
             self.alu_list.append(temp_alu)
 
@@ -83,22 +84,22 @@ class ima (object):
         self.alu_int = imod.alu_int ()
 
         # Instantiate  data memory (stores data)
-        self.dataMem = imod.memory (param.dataMem_size, param.num_xbar * param.xbar_size)
+        self.dataMem = imod.memory (cfg.dataMem_size, cfg.num_xbar * cfg.xbar_size)
 
         # Instantiate multiple xbar input memories (stores xbar input data)
         self.xb_inMem_list = []
-        for i in xrange (param.num_xbar):
-            temp_xb_inMem = imod.xb_inMem (param.xbar_size)
+        for i in xrange (cfg.num_xbar):
+            temp_xb_inMem = imod.xb_inMem (cfg.xbar_size)
             self.xb_inMem_list.append(temp_xb_inMem)
 
         # Instantiate multiple xbar output memories (stores xbar output data)
         self.xb_outMem_list = []
-        for i in xrange (param.num_xbar):
-            temp_xb_outMem = imod.xb_outMem (param.xbar_size)
+        for i in xrange (cfg.num_xbar):
+            temp_xb_outMem = imod.xb_outMem (cfg.xbar_size)
             self.xb_outMem_list.append(temp_xb_outMem)
 
         # Instantiate instruction memory (stores instruction)
-        self.instrnMem = imod.instrn_memory (param.instrnMem_size)
+        self.instrnMem = imod.instrn_memory (cfg.instrnMem_size)
 
         # Instantiate the memory interface (interface to edram controller)
         self.mem_interface = imod.mem_interface ()
@@ -220,8 +221,9 @@ class ima (object):
 
             # instruction specific (for eg: ld_dec - load's decode stage)
             if (dec_op == 'ld'):
-                self.de_r1 = bin2int(self.dataMem.read(self.fd_instrn['r1']), param.num_bits) # absolute mem addr
+                self.de_r1 = bin2int(self.dataMem.read(self.fd_instrn['r1']), cfg.num_bits) # absolute mem addr
                 self.de_d1 = self.fd_instrn['d1']
+                self.de_r2 = self.fd_instrn['imm'] # used for incrementing/decrementing counter for edram entries
                 self.de_vec = self.fd_instrn['vec']
 
             elif (dec_op == 'cp'):
@@ -231,14 +233,13 @@ class ima (object):
                 # source value will be read in execute stage
 
             elif (dec_op == 'st'):
-                print (self.fd_instrn['d1'])
-                print (self.dataMem.read(self.fd_instrn['d1']))
-                self.de_d1 = bin2int(self.dataMem.read(self.fd_instrn['d1']), param.num_bits) #absolute mem addr
+                self.de_d1 = bin2int(self.dataMem.read(self.fd_instrn['d1']), cfg.num_bits) #absolute mem addr
                 self.de_r1 = self.fd_instrn['r1'] # reg addr
                 self.de_vec = self.fd_instrn['vec']
                 # source value will be read in execute stage
                 # NEW - added store counter (comes from r2 and stored in val2)
                 self.de_val1 = self.fd_instrn['r2']
+                self.de_r2 = self.fd_instrn['imm'] # used for incrementing/decrementing counter for edram entries
 
             elif (dec_op == 'set'):
                 self.de_d1 = self.fd_instrn['d1'] # addr for rf
@@ -259,13 +260,13 @@ class ima (object):
                 self.de_d1 = self.fd_instrn['d1'] # addr for rf
                 self.de_r1 = self.fd_instrn['r1'] #addr for rf
                 self.de_val1 = self.fd_instrn['imm'] #absolute value (shift)
-                assert (len(self.de_val1) == param.num_bits), 'imm values must be datawidth bit strings'
+                assert (len(self.de_val1) == cfg.num_bits), 'imm values must be datawidth bit strings'
                 self.de_vec = self.fd_instrn['vec']
                 # source value will be read in execute stage
 
             elif (dec_op == 'mvm'):
                 xb_nma = self.fd_instrn['xb_nma']
-                assert (0 <= xb_nma <= param.num_xbar), 'unsupported xbar configuration'
+                assert (0 <= xb_nma <= cfg.num_xbar), 'unsupported xbar configuration'
                 self.de_xb_nma = xb_nma
                 # adding a value for stride at the end of mvm processing (for input sharing across strides)
                 self.de_val1 = self.fd_instrn['r1']
@@ -329,13 +330,14 @@ class ima (object):
                 self.ldAccess_done = 0
                 data = self.mem_interface.ramload
                 # based on the address write to dataMem or xb_inMem
-                data_addr = self.de_d1 + self.ex_vec_count
-                if (data_addr >= param.num_xbar * param.xbar_size):
-                    self.dataMem.write (data_addr, data)
-                else:
-                    xb_id = data_addr / param.xbar_size
-                    addr = data_addr % param.xbar_size
-                    self.xb_inMem_list[xb_id].write (addr, data)
+                data_addr = self.de_d1 + self.ex_vec_count * self.de_r2
+                for i in range (self.de_r2):
+                    if (data_addr+i >= cfg.num_xbar * cfg.xbar_size):
+                        self.dataMem.write (data_addr+i, data[i])
+                    else:
+                        xb_id = (data_addr+i) / cfg.xbar_size
+                        addr = (data_addr+i) % cfg.xbar_size
+                        self.xb_inMem_list[xb_id].write (addr, data[i])
 
             elif (ex_op == 'st'): #nothing to be done by ima for st here
                 return 1
@@ -344,7 +346,7 @@ class ima (object):
                 for i in range (self.de_vec):
                     # write to dataMem - check if addr is a valid datamem address
                     dst_addr = self.de_d1 + i
-                    assert (dst_addr >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                    assert (dst_addr >= cfg.num_xbar * cfg.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                     self.dataMem.write (dst_addr, self.de_val1)
 
 
@@ -352,40 +354,40 @@ class ima (object):
                 for i in range (self.de_vec):
                     src_addr = self.de_r1 + i
                     # based on address read from dataMem or xb_inMem
-                    if (src_addr >= param.num_xbar * param.xbar_size):
+                    if (src_addr >= cfg.num_xbar * cfg.xbar_size):
                         ex_val1 = self.dataMem.read (src_addr)
                     else:
-                        xb_id = src_addr / param.xbar_size
-                        addr = src_addr % param.xbar_size
+                        xb_id = src_addr / cfg.xbar_size
+                        addr = src_addr % cfg.xbar_size
                         ex_val1 = self.xb_inMem_list[xb_id].read_n (addr) # non-shift copy
 
                     dst_addr = self.de_d1 + i
                     # based on the address write to dataMem or xb_inMem
-                    if (dst_addr >= param.num_xbar * param.xbar_size):
+                    if (dst_addr >= cfg.num_xbar * cfg.xbar_size):
                         self.dataMem.write (dst_addr, ex_val1)
                     else:
-                        xb_id = dst_addr / param.xbar_size
-                        addr = dst_addr % param.xbar_size
+                        xb_id = dst_addr / cfg.xbar_size
+                        addr = dst_addr % cfg.xbar_size
                         self.xb_inMem_list[xb_id].write (addr, ex_val1)
 
             elif (ex_op == 'alu'):
                 for i in range (self.de_vec):
                     # read val 1 either from data memory or xbar_outmem
                     src_addr1 = self.de_r1 + i
-                    if (src_addr1 >= param.num_xbar * param.xbar_size):
+                    if (src_addr1 >= cfg.num_xbar * cfg.xbar_size):
                         ex_val1 = self.dataMem.read (src_addr1)
                     else:
-                        xb_id = src_addr1 / param.xbar_size
-                        addr = src_addr1 % param.xbar_size
+                        xb_id = src_addr1 / cfg.xbar_size
+                        addr = src_addr1 % cfg.xbar_size
                         ex_val1 = self.xb_outMem_list[xb_id].read (addr)
 
                     # read val 2 either from data memory or xbar_outmem
                     src_addr2 = self.de_r2 + i
-                    if (src_addr2 >= param.num_xbar * param.xbar_size):
+                    if (src_addr2 >= cfg.num_xbar * cfg.xbar_size):
                         ex_val2 = self.dataMem.read (src_addr2)
                     else:
-                        xb_id = src_addr2 / param.xbar_size
-                        addr = src_addr2 % param.xbar_size
+                        xb_id = src_addr2 / cfg.xbar_size
+                        addr = src_addr2 % cfg.xbar_size
                         ex_val2 = self.xb_outMem_list[xb_id].read (addr)
 
                     # compute in ALU
@@ -396,18 +398,18 @@ class ima (object):
 
                     # write to dataMem - check if addr is a valid datamem address
                     dst_addr = self.de_d1 + i
-                    assert (dst_addr >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                    assert (dst_addr >= cfg.num_xbar * cfg.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                     self.dataMem.write (dst_addr, out)
 
             elif (ex_op == 'alui'):
                 for i in range (self.de_vec):
                     # read val 2 either from data memory or xbar_outmem
                     src_addr2 = self.de_r1 + i
-                    if (src_addr2 >= param.num_xbar * param.xbar_size):
+                    if (src_addr2 >= cfg.num_xbar * cfg.xbar_size):
                         ex_val2 = self.dataMem.read (src_addr2)
                     else:
-                        xb_id = src_addr2 / param.xbar_size
-                        addr = src_addr2 % param.xbar_size
+                        xb_id = src_addr2 / cfg.xbar_size
+                        addr = src_addr2 % cfg.xbar_size
                         ex_val2 = self.xb_outMem_list[xb_id].read (addr)
 
                     # compute in ALU
@@ -418,7 +420,7 @@ class ima (object):
 
                     # write to dataMem - check if addr is a valid datamem address
                     dst_addr = self.de_d1 + i
-                    assert (dst_addr >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                    assert (dst_addr >= cfg.num_xbar * cfg.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                     self.dataMem.write (dst_addr, out)
 
             elif (ex_op == 'mvm'):
@@ -428,9 +430,9 @@ class ima (object):
                     self.xb_outMem_list[i].reset ()
 
                     ## Loop to cover all bits of inputs
-                    for k in xrange (param.xbdata_width / param.dac_res):
+                    for k in xrange (cfg.xbdata_width / cfg.dac_res):
                         # read the values from the xbar's input register
-                        out_xb_inMem = self.xb_inMem_list[i].read (param.dac_res)
+                        out_xb_inMem = self.xb_inMem_list[i].read (cfg.dac_res)
 
                         #*************************************** HACK *********************************************
                         ###### CAUTION: Not replicated exact "functional" circuit behaviour for analog parts
@@ -444,20 +446,20 @@ class ima (object):
                         # do sampling and hold
                         out_snh = self.snh_list[i].propagate_dummy (out_xbar)
 
-                        for j in xrange (param.xbar_size): # this 'for' across xbar outs to adc happens via mux
+                        for j in xrange (cfg.xbar_size): # this 'for' across xbar outs to adc happens via mux
                             # convert from analog to digital
-                            adc_id = i % param.num_adc
+                            adc_id = i % cfg.num_adc
                             out_mux1 = self.mux1_list[i].propagate_dummy (out_snh[j]) # i is the ith xbar
-                            out_mux2 = self.mux2_list[i % param.num_adc].propagate_dummy (out_mux1)
+                            out_mux2 = self.mux2_list[i % cfg.num_adc].propagate_dummy (out_mux1)
                             out_adc = self.adc_list[adc_id].propagate_dummy (out_mux2)
                             # read from xbar's output register
                             out_xb_outMem = self.xb_outMem_list[i].read (j)
                             # shift and add - make a dedicated sna unit -- PENDING
                             alu_op = 'sna'
                             # modify (len(out_adc) to adc_res) when ADC functionality is implemented
-                            out_adc = '0'*(param.xbdata_width - len(out_adc)) + out_adc
-                            [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * param.dac_res)
-                            if (param.debug and ovf):
+                            out_adc = '0'*(cfg.xbdata_width - len(out_adc)) + out_adc
+                            [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * cfg.dac_res)
+                            if (cfg.debug and ovf):
                                 fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
                                         self.de_aluop + ' allowed to run')
                             # store back to xbar's output register & restart it
@@ -474,7 +476,7 @@ class ima (object):
 
             elif (ex_op == 'beq'):
                 [out, ovf] = self.alu_int.propagate (self.de_val1, self.de_val2, self.de_aluop) #self.de_val1 is the 3rd operand for lsh
-                out_int = bin2int(out, param.num_bits)
+                out_int = bin2int(out, cfg.num_bits)
                 if (out_int == 1):
                     # should add a mux unit (for realistic hw here to update pc & pipe registers)
                     self.fd_instrn['opcode'] = 'nop'
@@ -483,7 +485,7 @@ class ima (object):
             elif (ex_op == 'alu_int'): # produces values used by load/st (mem addr read from dataMem), beq (operand reads)
                 [out, ovf] = self.alu_int.propagate (self.de_val1, self.de_val2, self.de_aluop) #self.de_val1 is the 3rd operand for lsh
                 # write to dataMem - check if addr is a valid datamem address
-                assert (self.de_d1 >= param.num_xbar * param.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
+                assert (self.de_d1 >= cfg.num_xbar * cfg.xbar_size), 'ALU instrn: datamemory write addrress is invalid'
                 self.dataMem.write (self.de_d1, out)
 
             elif (ex_op == 'hlt'): # for halt instruction
@@ -499,23 +501,33 @@ class ima (object):
             # assumption4: two stage pipeline - unit1 & unit2 as shown below
 
             # using '\' to continue on enxt line
-            latency_unit1 =  self.xb_inMem_list[0].getLatency() +\
-                            self.dacArray_list[0].getLatency() +\
-                            self.xbar_list[0].getLatency() +\
-                            self.snh_list[0].getLatency()
+            #latency_unit1 =  self.xb_inMem_list[0].getLatency() +\
+            #                self.dacArray_list[0].getLatency() +\
+            #                self.xbar_list[0].getLatency() +\
+            #                self.snh_list[0].getLatency()
 
-            latency_unit2 = param.xbar_size * (self.mux1_list[0].getLatency() +\
-                                               self.mux2_list[0].getLatency() +\
-                                               self.adc_list[0].getLatency() +\
-                                               self.alu_list[0].getLatency() +\
-                                               self.xb_outMem_list[0].getLatency())
+            #latency_unit2 = cfg.xbar_size * (self.mux1_list[0].getLatency() +\
+            #                                   self.mux2_list[0].getLatency() +\
+            #                                   self.adc_list[0].getLatency() +\
+            #                                   self.alu_list[0].getLatency() +\
+            #                                   self.xb_outMem_list[0].getLatency())
 
-            latency_unit2 = latency_unit2 * np.ceil(float(self.de_xb_nma)/param.num_adc)
+            #latency_unit2 = latency_unit2 * np.ceil(float(self.de_xb_nma)/cfg.num_adc)
 
-            # latency_unit = max (latency_unit1, latency_unit2)
-            latency_unit = 2*latency_unit1
-            latency_out = (param.xbdata_width / param.dac_res + 1) * latency_unit #might need correction !!
+            ## latency_unit = max (latency_unit1, latency_unit2)
+            #latency_unit = 2*latency_unit1
+            #latency_out = (cfg.xbdata_width / cfg.dac_res + 1) * latency_unit #might need correction !!
 
+            ## Updated - MVM goes through a 4 stage pipeline (each stage consumes 128 cycles - xbar aces latency)
+            # Cycle1 - xbar_inMem + DAC
+            # Cycle2 - Xbar
+            # Cycle3 - SnH + ADC
+            # Cycle4 - SnA + xbar_outMem
+            num_stage = 4
+            lat1 = self.xbar_list[0].getLatency() # due to xbar access
+            lat2 = lat1 * int(np.ceil(float(self.de_xb_nma)/cfg.num_adc)) * (cfg.xbar_size / 128) # due to adc sharing - \
+                    #(Assumption - 1ADC can process 128 xbar columns in xbar access time)
+            latency_out = max (lat1, lat2) * ((cfg.xbdata_width / cfg.dac_res) + num_stage - 1)
             return latency_out
 
 
@@ -532,14 +544,15 @@ class ima (object):
                 if (ex_op in ['ld', 'st']):
                     if (ex_op == 'ld'):
                         self.stage_latency[sId] = self.mem_interface.getLatency() #mem_interface has infinite latency
-                        self.mem_interface.rdRequest (self.de_r1 + self.ex_vec_count)
+                        self.mem_interface.rdRequest (self.de_r1 + self.ex_vec_count * self.de_r2, self.de_r2)
                     elif (ex_op == 'st'):
                         self.stage_latency[sId] = self.dataMem.getLatency() #mem_interface has infinite latency
 
                 elif (ex_op == 'cp'):
                     # cp instructions reads from datamemory/xbinmem & writes to xb_inmem/datamem
                     unit_lat = self.dataMem.getLatency() * 2
-                    self.stage_latency[sId] = self.de_vec * unit_lat
+                    #self.stage_latency[sId] = self.de_vec * unit_lat
+                    self.stage_latency[sId] = unit_lat # cp can just assign mux selectors for each xbar (which inmem feeds the xbar)
 
                 elif (ex_op == 'set'):
                     # set writes to data memory
@@ -550,7 +563,7 @@ class ima (object):
                     # ALU instructions read from memory, access ALU and write to memory
                     unit_lat = self.dataMem.getLatency() + \
                                 self.alu_list[0].getLatency() + self.dataMem.getLatency()
-                    self.stage_latency[sId] = int (math.ceil(self.de_vec / param.num_ALU)) * unit_lat
+                    self.stage_latency[sId] = int (math.ceil(self.de_vec / cfg.num_ALU)) * unit_lat
 
                 elif (ex_op == 'mvm'):
                     self.stage_latency[sId] = xbComputeLatency (self)
@@ -565,16 +578,20 @@ class ima (object):
                 # (EDRAM + Controller always latency >= 2) - Follow this else deisgn breaks
                 if (ex_op == 'st' and self.stage_latency[sId] == 0):
                     # read the data from dataMem or xb_outMem depending on address
-                    st_data_addr =  self.de_r1 + self.ex_vec_count # address of data in register
-                    if (st_data_addr >= param.num_xbar * param.xbar_size):
-                        ex_val1 = self.dataMem.read (st_data_addr)
+                    st_data_addr =  self.de_r1 + self.ex_vec_count * (cfg.edram_buswidth/cfg.data_width) # address of data in register
+                    ex_val1 = ['' for num in range (cfg.edram_buswidth/cfg.data_width)] # modified
+                    if (st_data_addr >= cfg.num_xbar * cfg.xbar_size):
+                        for num in range (self.de_r2): # modified
+                            ex_val1[num] = self.dataMem.read (st_data_addr+num) # modified
                     else:
-                        xb_id = st_data_addr / param.xbar_size
-                        addr = st_data_addr % param.xbar_size
-                        ex_val1 = self.xb_outMem_list[xb_id].read (addr)
+                        xb_id = st_data_addr / cfg.xbar_size
+                        addr = st_data_addr % cfg.xbar_size
+                        for num in range (self.de_r2): # modified
+                            ex_val1[num] = self.xb_outMem_list[xb_id].read (addr+num) # modified
                     # combine counter and data
-                    ramstore = str(self.de_val1) + ex_val1
-                    self.mem_interface.wrRequest (self.de_d1 + self.ex_vec_count, ramstore)
+                    ramstore = [str(self.de_val1), ex_val1[:]] # modified - 1st item in list: counter value, 2nd item: list of values to be written to edram
+                    self.mem_interface.wrRequest (self.de_d1 + \
+                            self.ex_vec_count * self.de_r2, ramstore, self.de_r2)
                     # to make sure st looks for memwait after datamem read
                     self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
@@ -590,16 +607,20 @@ class ima (object):
             # Check whether datamem access for st has finished
             elif (self.de_opcode == 'st' and self.stage_cycle[sId] == self.stage_latency[sId]):
                 # read the data from dataMem or xb_outMem depending on address
-                st_data_addr =  self.de_r1 + self.ex_vec_count # address of data in register
-                if (st_data_addr >= param.num_xbar * param.xbar_size):
-                    ex_val1 = self.dataMem.read (st_data_addr)
+                st_data_addr =  self.de_r1 + self.ex_vec_count * (cfg.edram_buswidth/cfg.data_width) # address of data in register
+                ex_val1 = ['' for num in range (cfg.edram_buswidth/cfg.data_width)] # modified
+                if (st_data_addr >= cfg.num_xbar * cfg.xbar_size):
+                    for num in range (cfg.edram_buswidth / cfg.data_width): # modified
+                        ex_val1[num] = self.dataMem.read (st_data_addr+num) # modified
                 else:
-                    xb_id = st_data_addr / param.xbar_size
-                    addr = st_data_addr % param.xbar_size
-                    ex_val1 = self.xb_outMem_list[xb_id].read (addr)
+                    xb_id = st_data_addr / cfg.xbar_size
+                    addr = st_data_addr % cfg.xbar_size
+                    for num in range (cfg.edram_buswidth / cfg.data_width): # modified
+                        ex_val1[num] = self.xb_outMem_list[xb_id].read (addr+num) # modified
                 # combine counter and data
-                ramstore = str(self.de_val1) + ex_val1
-                self.mem_interface.wrRequest (self.de_d1 + self.ex_vec_count, ramstore)
+                ramstore = [str(self.de_val1), ex_val1[:]] # modified - 1st item in list: counter value, 2nd item: list of values to be written to edram
+                self.mem_interface.wrRequest (self.de_d1 + \
+                        self.ex_vec_count * self.de_r2, ramstore, self.de_r2)
                 # to make sure st looks for memwait after datamem read
                 self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
@@ -638,7 +659,7 @@ class ima (object):
     def pipe_init (self, instrn_filepath, fid = ''):
         self.debug = 0
         # tracefile stores the debug trace in debug mode
-        if (param.debug and (fid != '')):
+        if (cfg.debug and (fid != '')):
             self.debug = 1
             fid.write ('Cycle information is printed is at the end of the clock cycle\n')
             fid.write ('Assumption: A clock cycle ends at the positive edge\n')

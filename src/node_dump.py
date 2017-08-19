@@ -10,7 +10,7 @@ import sys
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
 
 from data_convert import *
-import constants as param
+import config as cfg
 
 # define a dump function for a generic memory entity
 def mem_dump (fid, memfile, name, node = '', tile_id = ''):
@@ -20,9 +20,9 @@ def mem_dump (fid, memfile, name, node = '', tile_id = ''):
     for addr in range(len(memfile)):
         # to print in float format
         if (memfile[addr] != ''):
-            temp_val = fixed2float (memfile[addr], param.int_bits, param.frac_bits)
+            temp_val = fixed2float (memfile[addr], cfg.int_bits, cfg.frac_bits)
             # use this for debugging/viewing addresses
-            #temp_val = bin2int (memfile[addr], param.num_bits)
+            #temp_val = bin2int (memfile[addr], cfg.num_bits)
         else:
             temp_val = 0.0
         if (name == 'EDRAM' and (node != '') and (tile_id != '')): # for EDRAM also show counter/valid

@@ -3,11 +3,12 @@ import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 
 import numpy as np
+import config as cfg
 import constants as param
 
 # Define instruction prototypes
 # generate compute prototype
-ima_nma_dummy = '1' + (param.num_ima-1)*'0'
+ima_nma_dummy = '1' + (cfg.num_ima-1)*'0'
 def i_compute (ima_nma = ima_nma_dummy):
     i_temp = param.dummy_instrn_tile.copy()
     i_temp['opcode'] = 'compute'

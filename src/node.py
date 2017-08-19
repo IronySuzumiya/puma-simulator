@@ -4,6 +4,7 @@ sys.path.insert (0, '/home/ankitaay/dpe/include/')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
 
 import numpy as np
+import config as cfg
 import constants as param
 import ima_modules
 import ima
@@ -23,7 +24,7 @@ class node (object):
 
         # Instantiate the tile list
         self.tile_list = []
-        for i in range (param.num_tile): #first & last tiles - dummy, others - compute
+        for i in range (cfg.num_tile): #first & last tiles - dummy, others - compute
             temp_tile = tile.tile ()
             self.tile_list.append (temp_tile)
 
@@ -32,13 +33,13 @@ class node (object):
 
         # Some book-keeping variables (Can have harwdare correspondance)
         self.node_halt = 0
-        self.tile_halt_list = [0] * param.num_tile
+        self.tile_halt_list = [0] * cfg.num_tile
         self.tile_fid_list = []
 
 
     ### Initialize the tiles within node and open the trace file for each tile
     def node_init (self, instrnpath, tracepath):
-        for i in range (param.num_tile):
+        for i in range (cfg.num_tile):
             # open tracefile for tile - place where stats are dumped
             tracefile = tracepath + 'tile' + str(i) + '/tile_trace.txt'
             fid_temp = open (tracefile, 'w')
@@ -51,7 +52,7 @@ class node (object):
 
         # intialize the tile_halt_list and node_halt
         self.node_halt = 0
-        self.tile_halt_list = [0] * param.num_tile
+        self.tile_halt_list = [0] * cfg.num_tile
 
 
     ### Simulate a cycle of execution of a node
@@ -62,7 +63,7 @@ class node (object):
         #        self.tile_list[0].receive_buffer.getLatency()
 
         # A cyle execution of each tile and probe each tile's halt
-        for i in range (param.num_tile):
+        for i in range (cfg.num_tile):
             # run a tile only if has not halted
             if (not self.tile_list[i].tile_halt):
                 self.tile_list[i].tile_run (cycle, self.tile_fid_list[i])
@@ -70,7 +71,7 @@ class node (object):
 
         # A cycle execution of noc (data transfers between tiles)
         # If latency satisfies, write to destination tile's receive buffer
-        for i in range (param.num_tile):
+        for i in range (cfg.num_tile):
             # check entry at head of queue (if non-empty) for all tiles for noc latency
             if (not self.tile_list[i].send_queue.empty()):
                 temp_queue_head = self.tile_list[i].send_queue.queue[0]
@@ -79,8 +80,7 @@ class node (object):
                         self.tile_list[0].receive_buffer.getLatency()
                 if (((cycle - temp_queue_head['cycle']) >= transfer_latency-1)):
                     # attempt to write to destination's receive buffer
-                    [node_addr, tile_addr] = self.noc.propagate (target_addr)
-                    # ignoring node_addr for now -- NEED TO FIX!!!
+                    tile_addr = self.noc.propagate (target_addr)
                     temp_data = temp_queue_head['data'][:]
                     temp_vtile_id = temp_queue_head['vtile_id']
                     #print (tile_addr)
