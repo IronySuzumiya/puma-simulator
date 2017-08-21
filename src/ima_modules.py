@@ -226,29 +226,45 @@ class mux (object):
 class alu (object):
     def __init__ (self):
         # define num_access
-        self.num_access = 0
+        self.num_access_div = 0
+        self.num_access_mul = 0
+        self.num_access_act = 0
+        self.num_access_sna = 0
+        self.num_access_other = 0
 
         # define latency
         self.latency = param.alu_lat
 
         # Arithmetic operations
-        def add (a, b): return (a + b)
-        def sub (a, b): return (a - b)
-        def shift_add (a, b): return (a + b) # does add, b is already shifted
-        def multiply (a, b): return (a * b)
+        def add (a, b):
+            self.num_access_other += 1
+            return (a + b)
+        def sub (a, b):
+            self.num_access_other += 1
+            return (a - b)
+        def shift_add (a, b):
+            self.num_access_sna += 1
+            return (a + b) # does add, b is already shifted
+        def multiply (a, b):
+            self.num_access_mul += 1
+            return (a * b)
 
         # Neuronal operations - put here for simplicity (can be made a separate unit)
         # Using aluop (arith./neuronal) dependent power numbers (they will be separate units in harwdare)
         def sigmoid (a, b): # b is unused
+            self.num_access_act += 1
             return 1 / (1 + math.exp(-a))
         def tanh (a, b): # b is unused
+            self.num_access_act += 1
             return np.tanh(a)
         def relu (a, b): # b is unused
+            self.num_access_other += 1
             out = a if (a > 0) else 0
             return out
 
         # for max-pool layer
         def max_val (a,b):
+            self.num_access_other += 1
             return max (a,b)
 
         self.options = {'add':add, 'sub':sub, 'sna':shift_add, 'mul':multiply,\
@@ -258,7 +274,6 @@ class alu (object):
         return self.latency
 
     def propagate (self, a, b, aluop, c = 0): # c can be shift operand for sna operation (add others later)
-        self.num_access += 1
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
         assert (type(c) == int or (type(c) == str and len(c) == cfg.num_bits)), 'ALU sna: shift = int/ num_bit str'
         if (type(c) == str):
@@ -281,18 +296,32 @@ class alu (object):
 class alu_int (object):
     def __init__ (self):
         # define num_access
-        self.num_access = 0
+        self.num_access_div = 0
+        self.num_access_mul = 0
+        self.num_access_other = 0
 
         # define latency
         self.latency = param.alu_lat
 
         # Arithmetic operations
-        def add (a, b): return (a + b)
-        def sub (a, b): return (a - b)
-        def multiply (a, b): return (a * b)
-        def divide (a, b): return int((a/b))
-        def mod (a, b): return int((a%b))
-        def eq_chk (a,b): return (a == b)
+        def add (a, b):
+            self.num_access_other += 1
+            return (a + b)
+        def sub (a, b):
+            self.num_access_other += 1
+            return (a - b)
+        def multiply (a, b):
+            self.num_access_mul += 1
+            return (a * b)
+        def divide (a, b):
+            self.num_access_div += 1
+            return int((a/b))
+        def mod (a, b):
+            self.num_access_other += 1
+            return int((a%b))
+        def eq_chk (a,b):
+            self.num_access_other += 1
+            return (a == b)
 
         self.options = {'add':add, 'sub':sub, 'mul':multiply, 'div':divide, 'mod':mod, 'eq_chk':eq_chk}
 
@@ -300,7 +329,6 @@ class alu_int (object):
         return self.latency
 
     def propagate (self, a, b, aluop):
-        self.num_access += 1
         assert ((type(aluop) == str) and (aluop in self.options.keys())), 'Invalid alu_op'
         a = bin2int (a, cfg.num_bits)
         b = bin2int (b, cfg.num_bits)
@@ -396,8 +424,9 @@ class xb_inMem (object):
     # output computation - row wise
     def stride (self, val1, val2): #val1 and val2 come from r1 and r2 and will bint by default
         assert (type(val1) == int and type(val2) == int), 'stride: check data type of val1 and val2'
-        self.num_access += 1
         if (val1 > 0 and val2 > 0): #val1 and  val2 both zero means hw support for stride in dpe isn't being used
+            # Needs a separate access - stride is different than read/write
+            self.num_access += 1
             temp_memfile = [''] * self.xbar_size
             for i in range (int(math.ceil(self.xbar_size / val2))):
                 for j in range (val2-val1):
@@ -436,11 +465,11 @@ class xb_outMem (xb_inMem):
         self.wr_pointer = self.wr_pointer + 1
 
     def restart (self):
-        self.num_access += 1
+        # self.num_access += 1
         self.wr_pointer = 0
 
     def reset (self):
-        self.num_access += 1
+        # self.num_access += 1
         self.memfile = ['0' * cfg.xbdata_width] * self.xbar_size
         self.wr_pointer = 0
 

@@ -231,10 +231,11 @@ class tile (object):
                     # add the entry to send list (send_list is physically part of NOC and not tile)
                     vtile_id = self.instrn['vtile_id']
                     target_addr = self.instrn['r2'] # (node_id+tile_id)
-                    data = [''] * send_width
-                    for i in range (send_width):
-                        temp_data = self.edram_controller.mem.read(mem_addr+i)
-                        data[i] = temp_data
+                    #data = [''] * send_width
+                    #for i in range (send_width):
+                    #    temp_data = self.edram_controller.mem.read(mem_addr+i)
+                    #    data[i] = temp_data
+                    data = self.edram_controller.mem.read(mem_addr, send_width)
                     temp_dict = {'data':data[:], 'target_addr':target_addr, 'cycle':cycle, 'vtile_id':vtile_id}
                     self.send_queue.put (temp_dict)
                     # update the counter and valid flag (if req.) for edram
@@ -289,8 +290,9 @@ class tile (object):
                     if (self.instrn['vtile_id'] < 0): #adding support for zero receive
                         self.received_data = [cfg.num_bits * '0'] * receive_width
                     temp_counter = self.instrn['r2']
+                    self.edram_controller.mem.write (mem_addr, self.received_data, receive_width)
                     for i in range (receive_width):
-                        self.edram_controller.mem.write (mem_addr+i, self.received_data[i])
+                        #self.edram_controller.mem.write (mem_addr+i, self.received_data[i])
                         # should add some sort of edram_propagate (this adds to energy as well) ???
                         self.edram_controller.valid[mem_addr+i] = 1
                         self.edram_controller.counter[mem_addr+i] = temp_counter

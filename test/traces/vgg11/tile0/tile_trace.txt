@@ -44,4 +44,6 @@ cycle: 42   |   instrn: halt   |   addr: 0   |   vtileId: 0   |   ima_halt_list:
 cycle: 43   |   instrn: halt   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 cycle: 44   |   instrn: halt   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 cycle: 45   |   instrn: halt   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-Tile ran for 46 cycles
+cycle: 46   |   instrn: halt   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+cycle: 47   |   instrn: halt   |   addr: 0   |   vtileId: 0   |   ima_halt_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Tile ran for 48 cycles

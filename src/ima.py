@@ -186,7 +186,7 @@ class ima (object):
                 self.stage_latency[sId] = self.instrnMem.getLatency()
 
                 # Check if first = last cycle
-                if (self.stage_latency[sId] == 1 and update_ready):
+                if (self.stage_latency[sId] == 1 and update_ready and (not self.halt)):
                     do_fetch (self)
                     self.stage_done[sId] = 1
                     self.stage_cycle[sId] = 0
@@ -195,7 +195,7 @@ class ima (object):
                     self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
             # Last cycle - update pipeline registers & done flag
-            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
+            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready and (not self.halt)):
                 do_fetch (self)
                 self.stage_done[sId] = 1
                 self.stage_cycle[sId] = 0
@@ -299,7 +299,7 @@ class ima (object):
                 self.stage_latency[sId] = self.dataMem.getLatency()
 
                 # Check if first = last cycle
-                if (self.stage_latency[sId] == 1 and update_ready):
+                if (self.stage_latency[sId] == 1 and update_ready and (not self.halt)):
                     do_decode (self, dec_op)
                     self.stage_done[sId] = 1
                     self.stage_cycle[sId] = 0
@@ -308,7 +308,7 @@ class ima (object):
                     self.stage_cycle[sId] = self.stage_cycle[sId] + 1
 
             # Last cycle - update pipeline registers (if ??) & done flag
-            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready):
+            elif (self.stage_cycle[sId] >= self.stage_latency[sId]-1 and update_ready and (not self.halt)):
                 dec_op = self.fd_instrn['opcode']
                 do_decode (self, dec_op)
                 self.stage_done[sId] = 1

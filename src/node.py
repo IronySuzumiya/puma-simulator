@@ -36,6 +36,8 @@ class node (object):
         self.tile_halt_list = [0] * cfg.num_tile
         self.tile_fid_list = []
 
+        self.noc_start = 0
+
 
     ### Initialize the tiles within node and open the trace file for each tile
     def node_init (self, instrnpath, tracepath):
@@ -69,6 +71,25 @@ class node (object):
                 self.tile_list[i].tile_run (cycle, self.tile_fid_list[i])
                 self.tile_halt_list[i] = self.tile_list[i].tile_halt
 
+        # Start noc based on send_queue of all tiles - one non-empty
+        if (self.noc_start == 0):
+            for i in range (cfg.num_tile):
+                if (not self.tile_list[i].send_queue.empty()):
+                    self.noc_start = 1
+                    self.noc.start_noc (cycle)
+                    break
+
+        # Stop noc based on send_queue of all tiles -- all empty
+        if (self.noc_start == 1):
+            count = 0
+            for i in range (cfg.num_tile):
+                if (not self.tile_list[i].send_queue.empty()):
+                    count += 1
+                    break
+            if (count == 0):
+                self.noc.stop_noc (cycle)
+                self.noc_start = 0
+
         # A cycle execution of noc (data transfers between tiles)
         # If latency satisfies, write to destination tile's receive buffer
         for i in range (cfg.num_tile):
@@ -76,11 +97,11 @@ class node (object):
             if (not self.tile_list[i].send_queue.empty()):
                 temp_queue_head = self.tile_list[i].send_queue.queue[0]
                 target_addr = temp_queue_head['target_addr']
-                transfer_latency = self.noc.getLatency (target_addr) + \
+                transfer_latency = self.noc.getLatency (target_addr, i) + \
                         self.tile_list[0].receive_buffer.getLatency()
                 if (((cycle - temp_queue_head['cycle']) >= transfer_latency-1)):
                     # attempt to write to destination's receive buffer
-                    tile_addr = self.noc.propagate (target_addr)
+                    tile_addr = self.noc.propagate (target_addr, i)
                     temp_data = temp_queue_head['data'][:]
                     temp_vtile_id = temp_queue_head['vtile_id']
                     #print (tile_addr)

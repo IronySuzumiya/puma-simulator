@@ -2,27 +2,46 @@
 # Write to file
 import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
+sys.path.insert (0, '/home/ankitaay/dpe/src/')
 import config as cfg
+import constants as param
+import node_metrics
 
 ns = 10 ** (-9)
 mw = 10 ** (-3)
 nj = 10 ** (-9)
 
-hw_comp_energy = {'xbar':2.4/8*mw*ns,    'dac':4/8/128*mw*ns,    'snh':0,        'mux1':0,       'mux2':0,\
-        'adc':(16/8+0.2/4)*mw*ns,    'alu':1.5*mw*ns,     'imem':0.0017*nj,   'dmem':0.00104*nj,       'xbInmem':0.0037*nj,\
-        'xbOutmem':0.0003*nj, 'imem_t':0.0017*nj,  'rbuff':0.00104*nj,  'edram':(20.7*1.25+7)/16*mw*ns,      'edctrl':0.5*mw*ns, \
-       'noc_intra':0,           'noc_inter':0
-       }
+# Copied from /include/constants.py file
+# Enlists components at core, tile, and node levels
+hw_comp_energy = {'xbar':param.xbar_pow_dyn, 'dac':param.dac_pow_dyn, 'snh':param.snh_pow_dyn, \
+        'mux1':param.mux_pow_dyn, 'mux2':param.mux_pow_dyn, 'adc':param.adc_pow_dyn, \
+        'alu_div': param.alu_pow_div_dyn, 'alu_mul':param.alu_pow_mul_dyn, \
+        'alu_act': param.act_pow_dyn, 'alu_other':param.alu_pow_others_dyn, \
+        'alu_sna': param.sna_pow_dyn, \
+        'imem':param.instrnMem_pow_dyn, 'dmem':param.dataMem_pow_dyn, 'xbInmem':param.xbar_inMem_pow_dyn, \
+        'xbOutmem':param.xbar_outMem_pow_dyn, \
+        'imem_t':param.tile_instrnMem_pow_dyn, 'rbuff':param.receive_buffer_pow_dyn,\
+        'edram':param.edram_pow_dyn, 'edctrl':param.edram_ctrl_pow_dyn, \
+        'noc_intra':param.noc_intra_pow_dyn, 'noc_inter':param.noc_inter_pow_dyn \
+        }
 
-def get_hw_stats (fid, node_dut):
+# Used to calculate dynamic energy consumption and other metrics (area/time/total_power/peak_power)
+def get_hw_stats (fid, node_dut, cycle):
 
-    hw_comp_access = {'xbar':0,    'dac':0,    'snh':0,        'mux1':0,       'mux2':0,    'adc':0, \
-           'alu':0,     'imem':0,   'dmem':0,       'xbInmem':0,    'xbOutmem':0, \
-           'imem_t':0,  'rbuff':0,  'edram':0,      'edctrl':0, \
-           'noc_intra':0,           'noc_inter':0
-           }
+    # List of all components that dissipate power
+    hw_comp_access = {'xbar':0, 'dac':0, 'snh':0, \
+            'mux1':0, 'mux2':0, 'adc':0, \
+            'alu_div':0, 'alu_mul':0, \
+            'alu_act':0, 'alu_other':0, \
+            'alu_sna':0, \
+            'imem':0, 'dmem':0, 'xbInmem':0, \
+            'xbOutmem':0, \
+            'imem_t':0, 'rbuff':0, \
+            'edram':0, 'edctrl':0, \
+            'noc_intra':0, 'noc_inter':0 \
+            }
 
-    # traverse comp_accessonents to populate dict (hw_comp_access)
+    # traverse components to populate dict (hw_comp_access)
     hw_comp_access['noc_intra'] += node_dut.noc.num_access_intra
     hw_comp_access['noc_inter'] += node_dut.noc.num_access_inter
 
@@ -54,7 +73,18 @@ def get_hw_stats (fid, node_dut):
                 hw_comp_access['adc'] += node_dut.tile_list[i].ima_list[j].adc_list[k].num_access
 
             for k in range (cfg.num_ALU):
-                hw_comp_access['alu'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access
+                hw_comp_access['alu_div'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access_div + \
+                        node_dut.tile_list[i].ima_list[j].alu_int.num_access_div
+
+                hw_comp_access['alu_mul'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access_mul + \
+                        node_dut.tile_list[i].ima_list[j].alu_int.num_access_mul
+
+                hw_comp_access['alu_other'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access_other + \
+                        node_dut.tile_list[i].ima_list[j].alu_int.num_access_other
+
+                hw_comp_access['alu_act'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access_act
+
+                hw_comp_access['alu_sna'] += node_dut.tile_list[i].ima_list[j].alu_list[k].num_access_sna
 
             hw_comp_access['imem'] += node_dut.tile_list[i].ima_list[j].instrnMem.num_access
 
@@ -67,14 +97,44 @@ def get_hw_stats (fid, node_dut):
                 hw_comp_access['xbOutmem'] += node_dut.tile_list[i].ima_list[j].xb_outMem_list[k].num_access
 
     total_energy = 0
-    # Write the dict comp_accessonents to a file for visualization
+    # Compute the total dynamic energy consumption
     for key, value in hw_comp_access.items():
-        if (key != 'alu'):
-            total_energy += value * hw_comp_energy[key]
-        else:
-            total_energy += (value - hw_comp_access['adc']) * hw_comp_energy[key]
-        fid.write (key + ': ')
-        fid.write (str(value) + '\n')
-    return total_energy
+        total_energy += value * hw_comp_energy[key]
+
+    # Write the dict comp_access & energy proportion to a file for visualization
+    fid.write ('Access and energy distribution of dynamic energy: \n')
+    fid.write ('Component           num_access          percent\n')
+    for key, value in hw_comp_access.items():
+        fid.write (key + ' ' + str(value) + \
+                ' ' + (str(value*hw_comp_energy[key]/total_energy*100))[0:4] + ' %\n')
+
+    fid.write ('\n')
+
+    # Write the leakage energy(J), total_energy(J), average_power (mW), peak_power (mW),
+    # area (mm2), cycles and time (seconds) to a dict & file
+    metric_dict = {'leakage_energy':0.0,
+            'dynamic_energy':0.0,
+            'total_energy':0.0,
+            'average_power':0.0,
+            'peak_power':0.0,
+            'leakage_power':0.0,
+            'area':0.0,
+            'cycles':0,
+            'time':0.0}
+
+    metric_dict['leakage_power'] = node_metrics.compute_pow_leak () # in mW
+    metric_dict['peak_power'] = node_metrics.compute_pow_peak () # in mW
+    metric_dict['area'] = node_metrics.compute_area () # in mm2
+    metric_dict['cycles'] = cycle
+    metric_dict['time'] = cycle * param.cycle_time * (10**(-9)) # in sec
+    metric_dict['dynamic_energy'] = total_energy * ns * mw # in joule
+    metric_dict['leakage_enegy'] = metric_dict['leakage_power'] * mw * metric_dict['time'] # in joule
+    metric_dict['total_energy'] = metric_dict['dynamic_energy'] + metric_dict['leakage_energy']
+    metric_dict['average_power'] = metric_dict['total_energy'] / metric_dict['time'] * (10**(3)) # in mW
+
+    for key, value in metric_dict.items():
+        fid.write (key + ': ' + str (value) + '\n')
+
+    return metric_dict
 
 

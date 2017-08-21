@@ -8,6 +8,7 @@ infinity = 100000
 ## Technology/Other constants for all the modules
 #############################################################################################################
 # IMA - folliwng parameters are not used currently, will be used when analog functionality is implemented
+cycle_time = 1 # in nanoseconds (1ns)
 vdd = 0.9
 xbar_out_min = -10e-10
 xbar_out_max = 1 # think about this - ???
@@ -185,7 +186,7 @@ act_pow_leak = 0.026
 act_pow_dyn = 0.26 - act_pow_leak
 act_area = 0.0003 # check this ???
 
-# Multiplexer - Need to FIX this !!!!
+# Multiplexer - These should be analog muxes
 mux_lat = 0
 mux_pow_leak = 0
 mux_pow_dyn = 0
@@ -425,6 +426,17 @@ tile_instrnMem_pow_leak = tile_instrnMem_pow_leak_dict[str(cfg.tile_instrnMem_si
 ################################################
 
 # Enter component latency (Based on teh above NOC topological parameters)
-noc_latency_intranode = 1
-noc_latency_internode = 2
+# Inter-node Noc (router & channel)
+noc_intra_lat = 2
+noc_intra_pow_dyn = 0 # per router
+noc_intra_pow_leak = 0 # per router
+noc_intra_area = 0 # per router
+
+# Hypertransport network (HT)
+# Note HT is external to a node, but we consider all tiles in one
+# virtual node itself for simplicity
+noc_inter_lat = 0
+noc_inter_pow_dyn = 0
+noc_inter_pow_leak = 0
+noc_inter_area = 0
 

@@ -50,7 +50,7 @@ class receive_buffer (object):
 
     # invalidates all entries
     def inv (self):
-        self.num_access += 1
+        #self.num_access += 1
         for temp_dict in self.buffer:
             temp_dict['valid'] = 0
 
@@ -73,8 +73,8 @@ class receive_buffer (object):
 
     # read the value from buffer if tag matches - else stall receive instruction
     def read (self, vtile_id):
-        self.num_access += 1
         if (not self.isempty(vtile_id)):
+            self.num_access += 1
             self.buffer[vtile_id]['valid'] = 0
             return [1, self.buffer[vtile_id]['data'][:]]
         return [0, 0] # tag-hit, data
@@ -92,7 +92,7 @@ class edram (ima_modules.memory):
         assert (self.addr_start <= addr <= self.addr_end), 'addr exceeds the memory bounds'
         # returns  a list of entries (list has one entry - Typical case)
         return self.memfile[(addr - self.addr_start) : \
-                (addr - self.addr_start + width)]
+                (addr - self.addr_start + width)][:]
 
     # redefine the write assertion
     def write (self, addr, data, width = 1): # write (edram_buswidth/data_width) to continuous writes to edram

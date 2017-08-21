@@ -67,6 +67,7 @@ tile_instrnMem_size = 512 # in bytes
 
 # Fixed parameters
 # NOC topology: cmesh (n=2, k=4, c=4)
+cmesh_c = 4
 num_bits_tileId = 32
 
 # Change here - Specify the Node parameters here

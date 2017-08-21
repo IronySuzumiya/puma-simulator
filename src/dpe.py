@@ -36,6 +36,9 @@ import tile_modules
 import tile
 import node_modules
 import node
+import ima_metrics
+import tile_metrics
+import node_metrics
 
 
 ## Set the instruction & trace paths (create the folder hierarchy)
@@ -122,15 +125,21 @@ print 'Output Tile dump finished'
 ## Dump the harwdare access traces (For now - later upgrade to actual energy numbers)
 hwtrace_file = tracepath + 'harwdare_stats.txt'
 fid = open (hwtrace_file, 'w')
-tot_energy = get_hw_stats (fid, node_dut)
-dpe_energy_l1 = tot_energy * 64* 112 * 112
-print (str (dpe_energy_l1) + ' joules')
+metric_dict = get_hw_stats (fid, node_dut, cycle)
 fid.close ()
 print 'Success: Hadrware results compiled!!'
 
+## Compare with GPU results (dynamic energy only)
+dpe_energy_l1 = metric_dict['dynamic_energy'] * 64* 112 * 112
+print (str (dpe_energy_l1) + ' joules')
+
 gpu_leak = 16 #watt
-gpu_dyn = 40-16
-gpu_time = 2.438
-gpu_energy_l1 = (gpu_dyn-gpu_leak)*gpu_time
+gpu_tot = 42
+gpu_dyn = gpu_tot-16
+gpu_time_l1 = 2.438
+dpe_time_l1 = metric_dict['time'] * 64*112*112
+gpu_energy_l1 = (gpu_tot-gpu_leak)*gpu_time_l1
+# gpu_energy_l1 = (gpu_dyn)*gpu_time_l1
 
 print ('energyX', str (gpu_energy_l1/dpe_energy_l1))
+print ('timeX', str (gpu_time_l1/dpe_time_l1))
