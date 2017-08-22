@@ -37,7 +37,7 @@ class ima (object):
 
         # Instantiate DACs
         self.dacArray_list = []
-        for i in xrange(cfg.num_xbar):
+        for i in xrange(cfg.num_xbar/(cfg.data_width/cfg.xbar_bits)):
             temp_dacArray = imod.dac_array (cfg.xbar_size, cfg.dac_res)
             self.dacArray_list.append(temp_dacArray)
 
@@ -88,13 +88,13 @@ class ima (object):
 
         # Instantiate multiple xbar input memories (stores xbar input data)
         self.xb_inMem_list = []
-        for i in xrange (cfg.num_xbar):
+        for i in xrange (cfg.num_xbar/(cfg.data_width/cfg.xbar_bits)):
             temp_xb_inMem = imod.xb_inMem (cfg.xbar_size)
             self.xb_inMem_list.append(temp_xb_inMem)
 
         # Instantiate multiple xbar output memories (stores xbar output data)
         self.xb_outMem_list = []
-        for i in xrange (cfg.num_xbar):
+        for i in xrange (cfg.num_xbar/(cfg.data_width/cfg.xbar_bits)):
             temp_xb_outMem = imod.xb_outMem (cfg.xbar_size)
             self.xb_outMem_list.append(temp_xb_outMem)
 
@@ -428,7 +428,7 @@ class ima (object):
 
             elif (ex_op == 'mvm'):
                 # traverse through the xbars - (nma is the number of crossbars which will evaluate)
-                for i in xrange (self.de_xb_nma): # this 'for' across xbar outs to next mux can happen via mux
+                for i in xrange (self.de_xb_nma/(cfg.data_width/cfg.xbar_bits)): # this 'for' across xbar outs to next mux can happen via mux
                     # reset the xb out memory before starting to accumulate
                     self.xb_outMem_list[i].reset ()
 
@@ -444,24 +444,38 @@ class ima (object):
 
                         # convert digital values to analog
                         out_dac = self.dacArray_list[i].propagate_dummy (out_xb_inMem) #pass through
-                        # compute dot-product
-                        out_xbar = self.xbar_list[i].propagate_dummy (out_dac)
-                        # do sampling and hold
-                        out_snh = self.snh_list[i].propagate_dummy (out_xbar)
 
+                        # Do for (data_width/xbar_bits) xbars
+                        num_xb = cfg.data_width / cfg.xbar_bits
+                        out_xbar = [[] for x in range(num_xb)]
+                        out_snh = [[] for x in range(num_xb)]
+                        for m in range (num_xb):
+                            # compute dot-product
+                            out_xbar[m] = self.xbar_list[i*num_xb+m].propagate_dummy (out_dac)
+                            # do sampling and hold
+                            out_snh[m] = self.snh_list[i*num_xb+m].propagate_dummy (out_xbar[m])
+
+                        # each of the num_xb produce shifted bits of output (weight bits have been distributed)
                         for j in xrange (cfg.xbar_size): # this 'for' across xbar outs to adc happens via mux
-                            # convert from analog to digital
-                            adc_id = i % cfg.num_adc
-                            out_mux1 = self.mux1_list[i].propagate_dummy (out_snh[j]) # i is the ith xbar
-                            out_mux2 = self.mux2_list[i % cfg.num_adc].propagate_dummy (out_mux1)
-                            out_adc = self.adc_list[adc_id].propagate_dummy (out_mux2)
+                            out_sna = '0'*cfg.data_width # a zero for first sna
+                            for m in range (num_xb):
+                                # convert from analog to digital
+                                adc_id = (i*num_xb + m) % cfg.num_adc
+                                out_mux1 = self.mux1_list[i].propagate_dummy (out_snh[m][j]) # i is the ith xbar
+                                out_mux2 = self.mux2_list[i % cfg.num_adc].propagate_dummy (out_mux1)
+                                out_adc = self.adc_list[adc_id].propagate_dummy (out_mux2)
+
+                                # shift and add outputs from difefrent wt_bits
+                                alu_op = 'sna'
+                                [out_sna, ovf] = self.alu_list[0].propagate (out_sna, out_adc, alu_op, \
+                                        m * cfg.xbar_bits)
+
                             # read from xbar's output register
                             out_xb_outMem = self.xb_outMem_list[i].read (j)
                             # shift and add - make a dedicated sna unit -- PENDING
                             alu_op = 'sna'
                             # modify (len(out_adc) to adc_res) when ADC functionality is implemented
-                            out_adc = '0'*(cfg.xbdata_width - len(out_adc)) + out_adc
-                            [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_adc, alu_op, k * cfg.dac_res)
+                            [out_sna, ovf] = self.alu_list[0].propagate (out_xb_outMem, out_sna, alu_op, k * cfg.dac_res)
                             if (cfg.debug and ovf):
                                 fid.write ('IMA: ' + str(self.ima_id) + ' ALU Overflow Exception ' +\
                                         self.de_aluop + ' allowed to run')

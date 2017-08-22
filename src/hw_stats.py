@@ -72,7 +72,7 @@ def get_hw_stats (fid, node_dut, cycle):
             for k in range (cfg.num_xbar):
                 hw_comp_access['xbar'] += node_dut.tile_list[i].ima_list[j].xbar_list[k].num_access
 
-            for k in range (cfg.num_xbar):
+            for k in range (cfg.num_xbar/(cfg.data_width/cfg.xbar_bits)):
                 for l in range (cfg.xbar_size):
                     hw_comp_access['dac'] += node_dut.tile_list[i].ima_list[j].dacArray_list[k].dac_list[l].num_access
 
@@ -107,11 +107,11 @@ def get_hw_stats (fid, node_dut, cycle):
 
             hw_comp_access['dmem'] += node_dut.tile_list[i].ima_list[j].dataMem.num_access
 
-            for k in range (cfg.num_xbar):
+            for k in range (cfg.num_xbar/(cfg.data_width/cfg.xbar_bits)):
                 hw_comp_access['xbInmem_rd'] += node_dut.tile_list[i].ima_list[j].xb_inMem_list[k].num_access_read
                 hw_comp_access['xbInmem_wr'] += node_dut.tile_list[i].ima_list[j].xb_inMem_list[k].num_access_write
 
-            for k in range (cfg.num_xbar):
+            for k in range (cfg.num_xbar/(cfg.data_width/cfg.xbar_bits)):
                 hw_comp_access['xbOutmem'] += node_dut.tile_list[i].ima_list[j].xb_outMem_list[k].num_access
 
     total_energy = 0

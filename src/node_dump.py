@@ -48,7 +48,8 @@ def node_dump (node, filepath = ''):
             fid.write ('IMA id: ' + str(j) + '\n')
             mem_dump (fid, node.tile_list[i].ima_list[j].dataMem.memfile, 'DataMemory')
 
-            for k in range (len(node.tile_list[0].ima_list[0].xbar_list)):
+            for k in range (len(node.tile_list[0].ima_list[0].xb_inMem_list)):
+                print (k)
                 # dump the xbar input memory
                 mem_dump (fid, node.tile_list[i].ima_list[j].xb_inMem_list[k].memfile, 'Xbar Input Memory')
                 # dump the xbar output memory

@@ -213,12 +213,6 @@ for j in range (kernel):
     i_temp = i_load (j*in_channel*kernel, datamem_off+7+j, load_width = 9, vec = 1)
     dict_list.append (i_temp.copy())
 
-## copy the values to all 8 xbars (input-sharing)
-vw = in_channel * kernel * kernel
-for j in range (1,cfg.num_xbar):
-    i_temp = i_copy (j*cfg.xbar_size, 0, vw)
-    dict_list.append (i_temp.copy())
-
 ## mvm not using stride support in xbar_inmemstride_val1 = 3
 i_temp = i_mvm (8, 0, 0)
 dict_list.append (i_temp.copy())
@@ -230,30 +224,22 @@ dict_list.append (i_temp.copy())
 i_temp = i_alu_int ('mod', datamem_off+14, datamem_off+3, datamem_off+10) # check for odd col
 dict_list.append (i_temp.copy())
 
-l2_pc = len(dict_list) + cfg.num_xbar-1 + 3
+l2_pc = len(dict_list) + 3
 i_temp = i_beq (datamem_off+14, datamem_off+11, l2_pc)
 dict_list.append (i_temp.copy())
 
-## Compute output of conv (shift and add) and relu for even column
+## Compute output - relu for even column
 vw = out_channel
-for j in range (1,cfg.num_xbar):
-    i_temp = i_alu ('sna', datamem_off+20, 0, j*cfg.xbar_size, j*cfg.xbar_bits, vec = vw)
-    dict_list.append (i_temp.copy())
-
-i_temp = i_alu ('relu', datamem_off+20, datamem_off+20, vec = vw)
+i_temp = i_alu ('relu', datamem_off+20, 0, vec = vw)
 dict_list.append (i_temp.copy())
 
-l3_pc = len(dict_list) + cfg.num_xbar-1 + 15
+l3_pc = len(dict_list) + 15
 i_temp = i_jmp (l3_pc)
 dict_list.append (i_temp.copy())
 
 ## l2_pc - branch target - odd column - conv, relu, half-max
 vw = out_channel
-for j in range (1,cfg.num_xbar):
-    i_temp = i_alu ('sna', datamem_off+20+out_channel, 0, j*cfg.xbar_size, j*cfg.xbar_bits, vec = vw)
-    dict_list.append (i_temp.copy())
-
-i_temp = i_alu ('relu', datamem_off+20+out_channel, datamem_off+20+out_channel, vec = vw)
+i_temp = i_alu ('relu', datamem_off+20+out_channel, 0, vec = vw)
 dict_list.append (i_temp.copy())
 
 i_temp = i_alu ('max', datamem_off+20, datamem_off+20, datamem_off+20+out_channel, vec = vw)
