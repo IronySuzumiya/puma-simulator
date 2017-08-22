@@ -52,7 +52,7 @@ def compute_pow_leak ():
 # Peak dynamic power (assumes all components are being accessed in each cycle)
 def compute_pow_dyn ():
     dyn_pow = 0.0
-    dyn_pow += cfg.num_xbar * param.xbar_inMem_pow_dyn / cfg.xbar_size # xbar_inMem - num_xbar * dac_res bits will be
+    dyn_pow += cfg.num_xbar*param.xbar_inMem_pow_dyn_write + (cfg.num_xbar * param.xbar_inMem_pow_dyn_read / cfg.xbar_size) # xbar_inMem - num_xbar * dac_res bits will be
                     #   read from xb_inMem in an interval that equals xbar_access time
     # dyn_pow += cfg.num_xbar/2 * 1.2 # (adding dyn pow the way issac does for comparison)
     dyn_pow += (cfg.num_xbar * cfg.xbar_size) * param.dac_pow_dyn # dac

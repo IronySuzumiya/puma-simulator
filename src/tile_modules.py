@@ -33,7 +33,8 @@ class receive_buffer (object):
         self.num_access = 0
 
         # define latency
-        self.latency = param.receive_buffer_lat
+        #self.latency = param.receive_buffer_lat
+        self.latency = 0
 
         # Consists of a list of dictionaries (data, neuron_id)
         temp_rb_list = [''] * cfg.receive_buffer_width
@@ -113,6 +114,7 @@ class edram_controller (object):
     def __init__ (self):
         # define num_access
         self.num_access = 0
+        self.num_access_counter = 0
 
         # Instantiate EDRAM, valid and counter fields
         self.mem  = edram (cfg.edram_size*1024/cfg.data_width) #edram_size is in KB
@@ -175,6 +177,7 @@ class edram_controller (object):
         addr = addr_list[idx]
         if (ren_list[idx] == 1): # LD instrcution
             if (found): # change state only if an idx was found
+                self.num_access_counter += 1
                 for i in range (rd_width_list[idx]):
                     # update the counter & valid flags accordingly
                     self.counter[addr+i] = self.counter[addr+i] - 1
@@ -186,6 +189,7 @@ class edram_controller (object):
 
         else: # ST instruction
             if (found): # change state only if an idx was found
+                self.num_access_counter += 1
                 data = ramstore_list[idx][1][:] # 2nd element of list is data_list
                 counter = ramstore_list[idx][0]
                 self.mem.write (addr, data, wr_width_list[idx])

@@ -1,34 +1,36 @@
-Access and energy distribution of dynamic energy:
-Component           num_access          percent
-edram 40 0.24 %
-alu_sna 67328 2.18 %
-edctrl 24 0.00 %
-dac 65536 0.16 %
-noc_intra 48 0.0 %
-imem 200 0.06 %
-imem_t 3 0.00 %
-xbar 512 0.11 %
-alu_mul 12 0.00 %
-xbOutmem 134912 9.72 %
-snh 65536 0.00 %
-alu_div 4 0.00 %
-rbuff 32 0.10 %
-adc 65536 85.0 %
-xbInmem 1376 1.68 %
-noc_inter 0 0.0 %
-dmem 3269 0.56 %
-mux2 8192 0.0 %
-alu_other 491 0.09 %
-alu_act 0 0.0 %
-mux1 65536 0.0 %
+Access and energy distribution of dynamic energy: 
+Component                 num_access              percent
+edctrl                      24                    0.00 %
+xbOutmem                    134912                14.7 %
+edram_bus                   40                    0.01 %
+edram                       40                    0.23 %
+adc                         65536                 80.5 %
+imem_t                      3                     0.00 %
+noc_inter                   0                     0.0 %
+mux2                        8192                  0.0 %
+mux1                        65536                 0.0 %
+xbInmem_wr                  864                   0.09 %
+alu_sna                     67328                 2.06 %
+dac                         65536                 0.15 %
+noc_intra                   62                    0.68 %
+xbar                        512                   0.10 %
+alu_mul                     12                    0.00 %
+snh                         65536                 0.00 %
+dmem                        3269                  0.53 %
+imem                        200                   0.06 %
+alu_act                     0                     0.0 %
+edctrl_counter              24                    0.00 %
+xbInmem_rd                  512                   0.59 %
+alu_other                   491                   0.08 %
+alu_div                     4                     0.00 %
+rbuff                       32                    0.09 %
 
-leakage_power: 37.76791936
-cycles: 16726
-total_energy: 1.38726960307e-07
-average_power: 8.29409065569
-area: 0.482226096
-dynamic_energy: 1.38726960307e-07
-leakage_enegy: 6.31706219215e-07
-leakage_energy: 0.0
-time: 1.6726e-05
-peak_power: 337.1829936
+leakage_power: 37.87041936
+cycles: 12230
+total_energy: 1.97364048336e-07
+average_power: 16.1376981469
+area: 0.493976096
+dynamic_energy: 1.46522980307e-07
+leakage_energy: 5.08410680294e-08
+time: 1.223e-05
+peak_power: 358.1179936

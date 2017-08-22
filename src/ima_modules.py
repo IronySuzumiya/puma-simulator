@@ -382,7 +382,8 @@ class memory (object):
 class xb_inMem (object):
     def __init__ (self, xbar_size):
         # define num_access
-        self.num_access = 0
+        self.num_access_read = 0
+        self.num_access_write = 0
 
         # define latency
         self.latency = param.xbar_inMem_lat
@@ -400,7 +401,7 @@ class xb_inMem (object):
 
     # reads & shifts all entries in parallel
     def read (self, num_bits):
-        self.num_access += 1
+        self.num_access_read += 1
         out_list = []
         for i in xrange(self.xbar_size):
             value = self.memfile[i]
@@ -410,7 +411,7 @@ class xb_inMem (object):
         return out_list
 
     def write (self, addr, data):
-        self.num_access += 1
+        self.num_access_write += 1
         assert (type(addr) == int), 'addr type should be int'
         assert (-1 < addr < self.xbar_size), 'addr exceeds the memory bounds'
         assert ((type(data) ==  str) and (len(data) == cfg.xbdata_width)), 'data should be a string with xbdata_width bits'

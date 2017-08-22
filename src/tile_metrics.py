@@ -40,6 +40,18 @@ def compute_pow_leak ():
     #print ('Tile leak power: ' + str (leak_pow) + ' mW')
     return leak_pow
 
+# useful in computing tile leakage for ima-power-gating
+def compute_pow_leak_non_ima ():
+    leak_pow = 0.0
+    leak_pow += param.counter_buff_pow_leak
+    leak_pow += param.edram_bus_pow_leak
+    leak_pow += param.edram_ctrl_pow_leak
+    leak_pow += param.receive_buffer_pow_leak
+    leak_pow += param.tile_instrnMem_pow_leak
+    leak_pow += param.edram_pow_leak
+    #print ('Tile leak power: ' + str (leak_pow) + ' mW')
+    return leak_pow
+
 # Peak dynakic power (assumes all components are being accessed in each cycle)
 def compute_pow_dyn ():
     dyn_pow = 0.0

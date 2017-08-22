@@ -257,10 +257,15 @@ xbar_inMem_lat_dict = {'32'  : 1, # indexed with xbar size
                        '128' : 1,
                        '256' : 1}
 
-xbar_inMem_pow_dyn_dict = {'32'  : 0.3,
-                           '64'  : 0.7,
-                           '128' : 1.7,
-                           '256' : 4.7}
+xbar_inMem_pow_dyn_read_dict = {'32'  : 0.3,
+                                '64'  : 0.7,
+                                '128' : 1.7,
+                                '256' : 4.7}
+
+xbar_inMem_pow_dyn_write_dict = {'32'  : 0.1,
+                                 '64'  : 0.1,
+                                 '128' : 0.16,
+                                 '256' : 0.2}
 
 xbar_inMem_pow_leak_dict = {'32'  : 0.009,
                             '64'  : 0.02,
@@ -280,7 +285,7 @@ xbar_outMem_lat_dict = {'32'  : 1, # indexed with xbar size
 
 xbar_outMem_pow_dyn_dict = {'32'  : 0.1,
                            '64'   : 0.1,
-                           '128'  : 0.1,
+                           '128'  : 0.16,
                            '256'  : 0.2}
 
 xbar_outMem_pow_leak_dict = {'32'  : 0.009,
@@ -316,7 +321,8 @@ dataMem_area =  dataMem_area_dict[str(cfg.dataMem_size)]
 xbar_pow_dyn = xbar_pow_dict [str(cfg.xbar_bits)][str(cfg.xbar_size)]
 dac_pow_dyn = dac_pow_dyn_dict [str(cfg.dac_res)]
 adc_pow_dyn = adc_pow_dyn_dict [str(cfg.adc_res)]
-xbar_inMem_pow_dyn = xbar_inMem_pow_dyn_dict[str(cfg.xbar_size)]
+xbar_inMem_pow_dyn_read = xbar_inMem_pow_dyn_read_dict[str(cfg.xbar_size)]
+xbar_inMem_pow_dyn_write = xbar_inMem_pow_dyn_write_dict[str(cfg.xbar_size)]
 xbar_outMem_pow_dyn = xbar_outMem_pow_dyn_dict[str(cfg.xbar_size)]
 instrnMem_pow_dyn =  instrnMem_pow_dyn_dict[str(cfg.instrnMem_size)]
 dataMem_pow_dyn =  dataMem_pow_dyn_dict[str(cfg.dataMem_size)]
@@ -423,14 +429,38 @@ tile_instrnMem_pow_leak = tile_instrnMem_pow_leak_dict[str(cfg.tile_instrnMem_si
         # k = number of tiles in each dimension
         # c = concentartion (tiles/router)
         # average injection rate (0.25 - a tile injects a new packet for each destination in every four cycles)
-################################################
+#############################################################################################################
+
+# NOC latency dictionary (in terms of flit cycle)
+# Note - if inj_rate exceeds 0.025 - there's a problem, NoC needs to be redesigned else network latency will be killing!
+# Hence, not provided for
+noc_inj_rate_max = 0.025
+noc_lat_dict = {'0.001': 29,
+                '0.005': 31,
+                '0.01' : 34,
+                '0.02' : 54,
+                '0.025': 115}
+
+noc_area_dict = {'4': 0.047,
+                 '8': 0.116}
+
+# Router dynamic power - NOC will be used only if atleast oen of send_queue in node is non_empty
+noc_pow_dyn_dict = {'4': 16.13,
+                      '8': 51.48}
+
+# Router leakage power - NOC will be used only if atleast oen of send_queue in node is non_empty
+noc_pow_leak_dict = {'4': 0.41,
+                       '8': 1.04}
 
 # Enter component latency (Based on teh above NOC topological parameters)
 # Inter-node Noc (router & channel)
-noc_intra_lat = 2
-noc_intra_pow_dyn = 0 # per router
-noc_intra_pow_leak = 0 # per router
-noc_intra_area = 0 # per router
+assert (cfg.noc_inj_rate <= noc_inj_rate_max), 'Oops: reconsider NOC design and or DNN mapping, with this inj_rate, NOC data transfer throughput \
+will be terrible!'
+
+noc_intra_lat = noc_lat_dict[str(cfg.noc_inj_rate)]
+noc_intra_pow_dyn = noc_pow_dyn_dict[str(cfg.noc_num_port)] # per router
+noc_intra_pow_leak = noc_pow_leak_dict[str(cfg.noc_num_port)]# per router
+noc_intra_area = noc_area_dict[str(cfg.noc_num_port)] # per router
 
 # Hypertransport network (HT)
 # Note HT is external to a node, but we consider all tiles in one

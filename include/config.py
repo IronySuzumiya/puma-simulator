@@ -66,13 +66,17 @@ tile_instrnMem_size = 512 # in bytes
 # num_port: 4, 8
 
 # Fixed parameters
-# NOC topology: cmesh (n=2, k=4, c=4)
+# NOC topology: cmesh (n=2, k=4, c=4) - can fit k*n*c tiles
 cmesh_c = 4
 num_bits_tileId = 32
+flit_width = 32
+packet_width = edram_buswidth/data_width #in multiples of flits (data considered only - booksim consider address itself)
+# (b bit of address = logN, N is the number of nodes)
 
 # Change here - Specify the Node parameters here
 num_tile_compute = 1 # number of tiles per node
-inj_rate = 0.01
+noc_inj_rate = 0.005
+noc_num_port = 4
 
 ## Node parameters - Our way of simulation just assumes all tile in one actual node
 num_node = 1

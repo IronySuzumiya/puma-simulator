@@ -3,6 +3,8 @@ import sys
 sys.path.insert (0, '/home/ankitaay/dpe/include')
 sys.path.insert (0, '/home/ankitaay/dpe/src')
 
+import numpy as np
+
 # import dependency files
 import config as cfg
 import constants as param
@@ -14,7 +16,7 @@ import tile_metrics
 def compute_area (): #in mm2
     area = 0.0
     area += cfg.num_tile_compute * tile_metrics.compute_area ()
-    area += param.noc_intra_area * (cfg.num_node*cfg.num_tile_compute) / cfg.cmesh_c
+    area += param.noc_intra_area * (cfg.num_node*cfg.num_tile_compute) / float(cfg.cmesh_c)
     #print ('Node area excludes NOC: ', area)
     return area
 
@@ -22,7 +24,7 @@ def compute_area (): #in mm2
 def compute_pow_leak ():
     leak_pow = 0.0
     leak_pow += cfg.num_tile_compute * tile_metrics.compute_pow_leak ()
-    leak_pow += param.noc_intra_pow_leak * (cfg.num_node*cfg.num_tile_compute) / cfg.cmesh_c
+    leak_pow += param.noc_intra_pow_leak * (cfg.num_node*cfg.num_tile_compute) / float(cfg.cmesh_c)
     #print ('Node leakage power excludes NOC: ', leak_pow)
     return leak_pow
 
@@ -30,7 +32,7 @@ def compute_pow_leak ():
 def compute_pow_dyn ():
     dyn_pow = 0.0
     dyn_pow += cfg.num_tile_compute * tile_metrics.compute_pow_dyn ()
-    dyn_pow += param.noc_intra_pow_dyn * (cfg.num_node*cfg.num_tile_compute) / cfg.cmesh_c
+    dyn_pow += param.noc_intra_pow_dyn * (cfg.num_node*cfg.num_tile_compute) / float(cfg.cmesh_c)
     #print ('Node peak dynamic power excludes NOC: ', dyn_pow)
     return dyn_pow
 
@@ -40,7 +42,7 @@ def compute_pow_peak ():
     #print ('Node peak power excludes NOC: ', peak_pow)
     return peak_pow
 
-compute_area ()
-compute_pow_leak ()
-compute_pow_dyn ()
-compute_pow_peak ()
+#compute_area ()
+#compute_pow_leak ()
+#compute_pow_dyn ()
+#compute_pow_peak ()

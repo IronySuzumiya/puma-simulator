@@ -149,6 +149,9 @@ class ima (object):
         # Define a halt signal
         self.halt = 0
 
+        # Define a counter to compute leak_energy
+        self.cycle_count = 0 # (power-gated imas - before they start and after they halt)
+
 
     ############################################################
     ### Define what a pipeline stage does for each instruction
@@ -550,7 +553,7 @@ class ima (object):
 
                 elif (ex_op == 'cp'):
                     # cp instructions reads from datamemory/xbinmem & writes to xb_inmem/datamem
-                    unit_lat = self.dataMem.getLatency() * 2
+                    unit_lat = self.dataMem.getLatency()
                     #self.stage_latency[sId] = self.de_vec * unit_lat
                     self.stage_latency[sId] = unit_lat # cp can just assign mux selectors for each xbar (which inmem feeds the xbar)
 
@@ -561,8 +564,9 @@ class ima (object):
 
                 elif (ex_op == 'alu' or ex_op == 'alui'):
                     # ALU instructions read from memory, access ALU and write to memory
-                    unit_lat = self.dataMem.getLatency() + \
-                                self.alu_list[0].getLatency() + self.dataMem.getLatency()
+                    unit_lat = self.alu_list[0].getLatency ()
+                    #unit_lat = self.dataMem.getLatency() + \
+                    #            self.alu_list[0].getLatency() + self.dataMem.getLatency()
                     self.stage_latency[sId] = int (math.ceil(self.de_vec / cfg.num_ALU)) * unit_lat
 
                 elif (ex_op == 'mvm'):
@@ -679,9 +683,11 @@ class ima (object):
         self.instrnMem.load(dict_list)
 
         self.ldAccess_done = 0
+        self.cycle_count = 0
 
     # Mimics one cycle of ima pipeline execution
     def pipe_run (self, cycle, fid = ''): # fid is tracefile's id
+        self.cycle_count += 1
         # Run the pipeline for once cycle
         # Define a stage function
         stage_function = {0 : self.fetch,

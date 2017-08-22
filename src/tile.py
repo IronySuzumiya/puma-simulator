@@ -67,6 +67,9 @@ class tile (object):
         self.latency = 0 # holds latency for memory access
         self.stage_cycle = 0 # holds current cycle invested in memory access
 
+        # used to calculate leakage energy (power-gated tiles - before they start and after they halt)
+        self.cycle_count = 0
+
 
     ### Initialize the tile (all IMAs in the tile)
     def tile_init (self, instrnpath, tracepath):
@@ -99,6 +102,7 @@ class tile (object):
         self.halt_list = [0] * cfg.num_ima
         self.ima_nma_list = [0] * cfg.num_ima
         self.stall = 0
+        self.cycle_count = 0
 
 
     ### Simulate one cycle exectution of all IMAs (which have't halted) & their EDRAM interactions
@@ -203,6 +207,7 @@ class tile (object):
     # data addition to receive buffer happens by the higher level hierarchy
     # ?? - All memory access parts will be modified (based on changes in edram_controller)
     def tile_run (self, cycle, fid):
+        self.cycle_count += 1
         ## execute the current instruction in tile's instruction memory
         # Fetch a new instrn only after the previous instrn completes
         if (not self.stall and not self.tile_halt):
