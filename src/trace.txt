@@ -10424,46 +10424,10 @@
 cycle: 10409 Node Halted
 Finally node halted | PS: max_cycles 100000
 ('Dumping tile num: ', 0)
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
 ('Dumping tile num: ', 1)
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
 ('Dumping tile num: ', 2)
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
-0
 Output Tile dump finished
 Success: Hadrware results compiled!!
-0.128569343184 joules
-('energyX', '796.426251114')
+0.140777284406 joules
+('energyX', '727.361665143')
 ('timeX', '0.291720502142')

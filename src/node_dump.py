@@ -49,7 +49,6 @@ def node_dump (node, filepath = ''):
             mem_dump (fid, node.tile_list[i].ima_list[j].dataMem.memfile, 'DataMemory')
 
             for k in range (len(node.tile_list[0].ima_list[0].xb_inMem_list)):
-                print (k)
                 # dump the xbar input memory
                 mem_dump (fid, node.tile_list[i].ima_list[j].xb_inMem_list[k].memfile, 'Xbar Input Memory')
                 # dump the xbar output memory

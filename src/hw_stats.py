@@ -16,7 +16,7 @@ nj = 10 ** (-9)
 
 # Copied from /include/constants.py file
 # Enlists components at core, tile, and node levels
-hw_comp_energy = {'xbar':param.xbar_pow_dyn, 'dac':param.dac_pow_dyn, 'snh':param.snh_pow_dyn, \
+hw_comp_energy = {'xbar':param.xbar_pow_dyn*100, 'dac':param.dac_pow_dyn, 'snh':param.snh_pow_dyn, \
         'mux1':param.mux_pow_dyn, 'mux2':param.mux_pow_dyn, 'adc':param.adc_pow_dyn, \
         'alu_div': param.alu_pow_div_dyn, 'alu_mul':param.alu_pow_mul_dyn, \
         'alu_act': param.act_pow_dyn, 'alu_other':param.alu_pow_others_dyn, \
