@@ -1,0 +1,10277 @@
+EDRAM contents
+valid: 0 | counter: 0 | 1.03051757812
+valid: 0 | counter: 0 | -0.12841796875
+valid: 0 | counter: 0 | -0.425537109375
+valid: 0 | counter: 0 | 0.233642578125
+valid: 0 | counter: 0 | -0.4501953125
+valid: 0 | counter: 0 | -2.00830078125
+valid: 0 | counter: 0 | -1.34643554688
+valid: 0 | counter: 0 | 0.611572265625
+valid: 0 | counter: 0 | 1.46508789062
+valid: 0 | counter: 0 | 0.703369140625
+valid: 0 | counter: 0 | -0.279052734375
+valid: 0 | counter: 0 | 1.3798828125
+valid: 0 | counter: 0 | -1.37084960938
+valid: 0 | counter: 0 | 0.769775390625
+valid: 0 | counter: 0 | 0.066162109375
+valid: 0 | counter: 0 | 1.74267578125
+valid: 0 | counter: 0 | -2.3876953125
+valid: 0 | counter: 0 | 0.422607421875
+valid: 0 | counter: 0 | -0.7314453125
+valid: 0 | counter: 0 | -0.380615234375
+valid: 0 | counter: 0 | 1.62719726562
+valid: 0 | counter: 0 | -1.50805664062
+valid: 0 | counter: 0 | -1.404296875
+valid: 0 | counter: 0 | 0.314697265625
+valid: 0 | counter: 0 | -0.712158203125
+valid: 0 | counter: 0 | 0.173095703125
+valid: 0 | counter: 0 | -0.1025390625
+valid: 0 | counter: 0 | 0.2607421875
+valid: 0 | counter: 0 | 0.089111328125
+valid: 0 | counter: 0 | -1.10498046875
+valid: 0 | counter: 0 | 0.629150390625
+valid: 0 | counter: 0 | 0.117919921875
+valid: 0 | counter: 0 | 0.756591796875
+valid: 0 | counter: 0 | -0.28076171875
+valid: 0 | counter: 0 | -1.13403320312
+valid: 0 | counter: 0 | -0.460693359375
+valid: 0 | counter: 0 | -0.824462890625
+valid: 0 | counter: 0 | 1.82739257812
+valid: 0 | counter: 0 | 1.30126953125
+valid: 0 | counter: 0 | -0.98974609375
+valid: 0 | counter: 0 | 0.434326171875
+valid: 0 | counter: 0 | 0.233642578125
+valid: 0 | counter: 0 | 1.02709960938
+valid: 0 | counter: 0 | -1.7421875
+valid: 0 | counter: 0 | 0.1142578125
+valid: 0 | counter: 0 | -1.16137695312
+valid: 0 | counter: 0 | -1.21899414062
+valid: 0 | counter: 0 | 0.237548828125
+valid: 0 | counter: 0 | -0.28271484375
+valid: 0 | counter: 0 | 0.478759765625
+valid: 0 | counter: 0 | 0.56591796875
+valid: 0 | counter: 0 | -1.185546875
+valid: 0 | counter: 0 | 0.938720703125
+valid: 0 | counter: 0 | -1.0078125
+valid: 0 | counter: 0 | -0.05322265625
+valid: 0 | counter: 0 | -1.11083984375
+valid: 0 | counter: 0 | 1.64599609375
+valid: 0 | counter: 0 | 2.0341796875
+valid: 0 | counter: 0 | -0.795166015625
+valid: 0 | counter: 0 | 1.61791992188
+valid: 0 | counter: 0 | -1.30981445312
+valid: 0 | counter: 0 | 0.923583984375
+valid: 0 | counter: 0 | 0.000732421875
+valid: 0 | counter: 0 | -0.15966796875
+valid: 0 | counter: 0 | 2.37231445312
+valid: 0 | counter: 0 | -0.113525390625
+valid: 0 | counter: 0 | -1.35034179688
+valid: 0 | counter: 0 | 0.050537109375
+valid: 0 | counter: 0 | -0.4970703125
+valid: 0 | counter: 0 | 1.67407226562
+valid: 0 | counter: 0 | -2.25244140625
+valid: 0 | counter: 0 | -0.28662109375
+valid: 0 | counter: 0 | 1.41528320312
+valid: 0 | counter: 0 | -1.94750976562
+valid: 0 | counter: 0 | 2.58325195312
+valid: 0 | counter: 0 | 0.086669921875
+valid: 0 | counter: 0 | 1.36669921875
+valid: 0 | counter: 0 | -0.61572265625
+valid: 0 | counter: 0 | -0.36572265625
+valid: 0 | counter: 0 | 0.174560546875
+valid: 0 | counter: 0 | -0.177490234375
+valid: 0 | counter: 0 | -0.6171875
+valid: 0 | counter: 0 | 1.57788085938
+valid: 0 | counter: 0 | -0.2236328125
+valid: 0 | counter: 0 | 0.267333984375
+valid: 0 | counter: 0 | 0.031494140625
+valid: 0 | counter: 0 | 0.606201171875
+valid: 0 | counter: 0 | -0.572998046875
+valid: 0 | counter: 0 | 0.6884765625
+valid: 0 | counter: 0 | -0.513671875
+valid: 0 | counter: 0 | 0.040283203125
+valid: 0 | counter: 0 | -0.20361328125
+valid: 0 | counter: 0 | 0.482177734375
+valid: 0 | counter: 0 | -0.6923828125
+valid: 0 | counter: 0 | -1.115234375
+valid: 0 | counter: 0 | -0.843505859375
+valid: 0 | counter: 0 | -1.18383789062
+valid: 0 | counter: 0 | 1.107421875
+valid: 0 | counter: 0 | -0.3515625
+valid: 0 | counter: 0 | 0.57177734375
+valid: 0 | counter: 0 | -0.973388671875
+valid: 0 | counter: 0 | -0.601806640625
+valid: 0 | counter: 0 | 0.530029296875
+valid: 0 | counter: 0 | -1.62451171875
+valid: 0 | counter: 0 | 0.422607421875
+valid: 0 | counter: 0 | -0.8359375
+valid: 0 | counter: 0 | 0.7998046875
+valid: 0 | counter: 0 | -1.2685546875
+valid: 0 | counter: 0 | -1.59326171875
+valid: 0 | counter: 0 | -0.609130859375
+valid: 0 | counter: 0 | -1.10668945312
+valid: 0 | counter: 0 | -1.54638671875
+valid: 0 | counter: 0 | -1.70849609375
+valid: 0 | counter: 0 | -0.349853515625
+valid: 0 | counter: 0 | 0.853759765625
+valid: 0 | counter: 0 | -1.35205078125
+valid: 0 | counter: 0 | 0.124267578125
+valid: 0 | counter: 0 | 0.695068359375
+valid: 0 | counter: 0 | 0.563232421875
+valid: 0 | counter: 0 | 0.71142578125
+valid: 0 | counter: 0 | -0.1513671875
+valid: 0 | counter: 0 | 0.54296875
+valid: 0 | counter: 0 | -0.186279296875
+valid: 0 | counter: 0 | -0.53564453125
+valid: 0 | counter: 0 | -1.30053710938
+valid: 0 | counter: 0 | -1.03759765625
+valid: 0 | counter: 0 | 1.78442382812
+valid: 0 | counter: 0 | -0.886474609375
+valid: 0 | counter: 0 | -0.128173828125
+valid: 0 | counter: 0 | 1.2724609375
+valid: 0 | counter: 0 | -1.10961914062
+valid: 0 | counter: 0 | -1.38549804688
+valid: 0 | counter: 0 | 1.21606445312
+valid: 0 | counter: 0 | -1.96630859375
+valid: 0 | counter: 0 | 0.945556640625
+valid: 0 | counter: 0 | -1.20727539062
+valid: 0 | counter: 0 | 0.425537109375
+valid: 0 | counter: 0 | -0.4111328125
+valid: 0 | counter: 0 | 0.900146484375
+valid: 0 | counter: 0 | 0.14794921875
+valid: 0 | counter: 0 | -0.714599609375
+valid: 0 | counter: 0 | -1.65649414062
+valid: 0 | counter: 0 | -0.69482421875
+valid: 0 | counter: 0 | 0.912353515625
+valid: 0 | counter: 0 | 2.61938476562
+valid: 0 | counter: 0 | 0.331787109375
+valid: 0 | counter: 0 | 0.299560546875
+valid: 0 | counter: 0 | -0.643310546875
+valid: 0 | counter: 0 | 0.79443359375
+valid: 0 | counter: 0 | 1.1943359375
+valid: 0 | counter: 0 | 1.0986328125
+valid: 0 | counter: 0 | -0.068115234375
+valid: 0 | counter: 0 | 1.89965820312
+valid: 0 | counter: 0 | -0.287841796875
+valid: 0 | counter: 0 | 0.148193359375
+valid: 0 | counter: 0 | -0.158203125
+valid: 0 | counter: 0 | -1.16967773438
+valid: 0 | counter: 0 | 0.127197265625
+valid: 0 | counter: 0 | 1.25830078125
+valid: 0 | counter: 0 | -0.423828125
+valid: 0 | counter: 0 | 0.5068359375
+valid: 0 | counter: 0 | 0.982177734375
+valid: 0 | counter: 0 | -0.102783203125
+valid: 0 | counter: 0 | 0.15185546875
+valid: 0 | counter: 0 | -0.101318359375
+valid: 0 | counter: 0 | 0.582763671875
+valid: 0 | counter: 0 | 1.13134765625
+valid: 0 | counter: 0 | 1.513671875
+valid: 0 | counter: 0 | -1.17553710938
+valid: 0 | counter: 0 | 0.710205078125
+valid: 0 | counter: 0 | 0.864990234375
+valid: 0 | counter: 0 | 0.060302734375
+valid: 0 | counter: 0 | 1.38793945312
+valid: 0 | counter: 0 | -0.97314453125
+valid: 0 | counter: 0 | -0.58203125
+valid: 0 | counter: 0 | -0.6572265625
+valid: 0 | counter: 0 | -0.922607421875
+valid: 0 | counter: 0 | -0.782470703125
+valid: 0 | counter: 0 | 1.31420898438
+valid: 0 | counter: 0 | 1.96801757812
+valid: 0 | counter: 0 | -0.2919921875
+valid: 0 | counter: 0 | 1.62622070312
+valid: 0 | counter: 0 | -1.15283203125
+valid: 0 | counter: 0 | -1.05639648438
+valid: 0 | counter: 0 | -1.57373046875
+valid: 0 | counter: 0 | 0.3056640625
+valid: 0 | counter: 0 | -0.4541015625
+valid: 0 | counter: 0 | -0.64794921875
+valid: 0 | counter: 0 | -1.751953125
+valid: 0 | counter: 0 | -0.231689453125
+valid: 0 | counter: 0 | 0.04638671875
+valid: 0 | counter: 0 | -0.154052734375
+valid: 0 | counter: 0 | -0.843994140625
+valid: 0 | counter: 0 | 0.211181640625
+valid: 0 | counter: 0 | 0.421875
+valid: 0 | counter: 0 | 0.71923828125
+valid: 0 | counter: 0 | 0.63427734375
+valid: 0 | counter: 0 | -0.604248046875
+valid: 0 | counter: 0 | 0.536865234375
+valid: 0 | counter: 0 | -0.602294921875
+valid: 0 | counter: 0 | 0.06787109375
+valid: 0 | counter: 0 | 0.31787109375
+valid: 0 | counter: 0 | -0.175048828125
+valid: 0 | counter: 0 | -0.06103515625
+valid: 0 | counter: 0 | -0.156005859375
+valid: 0 | counter: 0 | 1.31616210938
+valid: 0 | counter: 0 | 0.701171875
+valid: 0 | counter: 0 | 0.40625
+valid: 0 | counter: 0 | -0.20556640625
+valid: 0 | counter: 0 | -0.32861328125
+valid: 0 | counter: 0 | -0.353271484375
+valid: 0 | counter: 0 | 0.226806640625
+valid: 0 | counter: 0 | 0.71337890625
+valid: 0 | counter: 0 | -0.7998046875
+valid: 0 | counter: 0 | -1.70776367188
+valid: 0 | counter: 0 | 2.48168945312
+valid: 0 | counter: 0 | 1.36791992188
+valid: 0 | counter: 0 | 0.010498046875
+valid: 0 | counter: 0 | -1.04174804688
+valid: 0 | counter: 0 | -0.1181640625
+valid: 0 | counter: 0 | 1.83447265625
+valid: 0 | counter: 0 | -0.982421875
+valid: 0 | counter: 0 | -0.05615234375
+valid: 0 | counter: 0 | -0.983154296875
+valid: 0 | counter: 0 | 1.40087890625
+valid: 0 | counter: 0 | 0.758544921875
+valid: 0 | counter: 0 | -0.97802734375
+valid: 0 | counter: 0 | 0.3603515625
+valid: 0 | counter: 0 | 0.832275390625
+valid: 0 | counter: 0 | 0.84033203125
+valid: 0 | counter: 0 | -1.54565429688
+valid: 0 | counter: 0 | 1.95434570312
+valid: 0 | counter: 0 | 0.905517578125
+valid: 0 | counter: 0 | -0.726318359375
+valid: 0 | counter: 0 | -0.708984375
+valid: 0 | counter: 0 | 0.14111328125
+valid: 0 | counter: 0 | -0.160888671875
+valid: 0 | counter: 0 | 0.741943359375
+valid: 0 | counter: 0 | 0.0322265625
+valid: 0 | counter: 0 | -0.343505859375
+valid: 0 | counter: 0 | 0.88525390625
+valid: 0 | counter: 0 | -1.27563476562
+valid: 0 | counter: 0 | -1.14575195312
+valid: 0 | counter: 0 | -0.091796875
+valid: 0 | counter: 0 | 0.393310546875
+valid: 0 | counter: 0 | 1.16064453125
+valid: 0 | counter: 0 | -0.126220703125
+valid: 0 | counter: 0 | 0.19580078125
+valid: 0 | counter: 0 | 0.486328125
+valid: 0 | counter: 0 | 2.23388671875
+valid: 0 | counter: 0 | -0.47900390625
+valid: 0 | counter: 0 | 0.30517578125
+valid: 0 | counter: 0 | -0.166748046875
+valid: 0 | counter: 0 | 0.10888671875
+valid: 0 | counter: 0 | 0.728759765625
+valid: 0 | counter: 0 | 0.2431640625
+valid: 0 | counter: 0 | -1.59545898438
+valid: 0 | counter: 0 | -0.034423828125
+valid: 0 | counter: 0 | -1.15844726562
+valid: 0 | counter: 0 | 0.0751953125
+valid: 0 | counter: 0 | -1.74926757812
+valid: 0 | counter: 0 | -0.013916015625
+valid: 0 | counter: 0 | 1.37963867188
+valid: 0 | counter: 0 | 0.80322265625
+valid: 0 | counter: 0 | -0.4150390625
+valid: 0 | counter: 0 | 1.83374023438
+valid: 0 | counter: 0 | -1.44140625
+valid: 0 | counter: 0 | 1.681640625
+valid: 0 | counter: 0 | -0.5712890625
+valid: 0 | counter: 0 | -1.01879882812
+valid: 0 | counter: 0 | -0.020751953125
+valid: 0 | counter: 0 | 1.03271484375
+valid: 0 | counter: 0 | 0.437255859375
+valid: 0 | counter: 0 | 1.59790039062
+valid: 0 | counter: 0 | 0.267578125
+valid: 0 | counter: 0 | -0.407470703125
+valid: 0 | counter: 0 | -0.16748046875
+valid: 0 | counter: 0 | -1.06494140625
+valid: 0 | counter: 0 | -1.06103515625
+valid: 0 | counter: 0 | -2.52368164062
+valid: 0 | counter: 0 | -1.72729492188
+valid: 0 | counter: 0 | 0.6611328125
+valid: 0 | counter: 0 | -0.82861328125
+valid: 0 | counter: 0 | 0.323486328125
+valid: 0 | counter: 0 | -0.7109375
+valid: 0 | counter: 0 | -0.180419921875
+valid: 0 | counter: 0 | -0.41064453125
+valid: 0 | counter: 0 | -0.0458984375
+valid: 0 | counter: 0 | 0.186279296875
+valid: 0 | counter: 0 | -0.747802734375
+valid: 0 | counter: 0 | -1.109375
+valid: 0 | counter: 0 | 0.595458984375
+valid: 0 | counter: 0 | 1.40405273438
+valid: 0 | counter: 0 | -1.06518554688
+valid: 0 | counter: 0 | 1.4169921875
+valid: 0 | counter: 0 | 0.580322265625
+valid: 0 | counter: 0 | 0.1533203125
+valid: 0 | counter: 0 | -0.713134765625
+valid: 0 | counter: 0 | -1.4833984375
+valid: 0 | counter: 0 | 0.5
+valid: 0 | counter: 0 | -0.03662109375
+valid: 0 | counter: 0 | 0.483154296875
+valid: 0 | counter: 0 | 0.37939453125
+valid: 0 | counter: 0 | 1.44409179688
+valid: 0 | counter: 0 | -0.010986328125
+valid: 0 | counter: 0 | -0.697509765625
+valid: 0 | counter: 0 | -0.333984375
+valid: 0 | counter: 0 | -1.3505859375
+valid: 0 | counter: 0 | -1.76513671875
+valid: 0 | counter: 0 | -0.504150390625
+valid: 0 | counter: 0 | 1.35278320312
+valid: 0 | counter: 0 | 1.13720703125
+valid: 0 | counter: 0 | -0.8681640625
+valid: 0 | counter: 0 | -1.2724609375
+valid: 0 | counter: 0 | -1.83056640625
+valid: 0 | counter: 0 | 0.62841796875
+valid: 0 | counter: 0 | 1.36938476562
+valid: 0 | counter: 0 | -2.24072265625
+valid: 0 | counter: 0 | 1.4619140625
+valid: 0 | counter: 0 | -0.84228515625
+valid: 0 | counter: 0 | 0.550537109375
+valid: 0 | counter: 0 | 1.15869140625
+valid: 0 | counter: 0 | 1.04125976562
+valid: 0 | counter: 0 | -0.01025390625
+valid: 0 | counter: 0 | 0.512451171875
+valid: 0 | counter: 0 | 1.220703125
+valid: 0 | counter: 0 | 0.19140625
+valid: 0 | counter: 0 | 0.987060546875
+valid: 0 | counter: 0 | -1.02465820312
+valid: 0 | counter: 0 | 0.120849609375
+valid: 0 | counter: 0 | 0.294677734375
+valid: 0 | counter: 0 | -2.02490234375
+valid: 0 | counter: 0 | -0.59375
+valid: 0 | counter: 0 | -1.11694335938
+valid: 0 | counter: 0 | 0.996826171875
+valid: 0 | counter: 0 | -0.648681640625
+valid: 0 | counter: 0 | 0.125
+valid: 0 | counter: 0 | 2.11889648438
+valid: 0 | counter: 0 | 1.08862304688
+valid: 0 | counter: 0 | 0.700439453125
+valid: 0 | counter: 0 | -0.7177734375
+valid: 0 | counter: 0 | 0.98046875
+valid: 0 | counter: 0 | 0.52880859375
+valid: 0 | counter: 0 | -0.367919921875
+valid: 0 | counter: 0 | -0.2900390625
+valid: 0 | counter: 0 | -0.93798828125
+valid: 0 | counter: 0 | 0.256591796875
+valid: 0 | counter: 0 | -1.25219726562
+valid: 0 | counter: 0 | -0.798583984375
+valid: 0 | counter: 0 | 0.5224609375
+valid: 0 | counter: 0 | 1.48388671875
+valid: 0 | counter: 0 | 1.3916015625
+valid: 0 | counter: 0 | 0.303466796875
+valid: 0 | counter: 0 | -0.632080078125
+valid: 0 | counter: 0 | -0.02978515625
+valid: 0 | counter: 0 | -0.878173828125
+valid: 0 | counter: 0 | 0.73974609375
+valid: 0 | counter: 0 | -0.01904296875
+valid: 0 | counter: 0 | -1.59375
+valid: 0 | counter: 0 | 0.1884765625
+valid: 0 | counter: 0 | 0.30712890625
+valid: 0 | counter: 0 | 0.89892578125
+valid: 0 | counter: 0 | -0.49072265625
+valid: 0 | counter: 0 | -0.603759765625
+valid: 0 | counter: 0 | 0.308349609375
+valid: 0 | counter: 0 | -2.33984375
+valid: 0 | counter: 0 | -0.5234375
+valid: 0 | counter: 0 | -0.834716796875
+valid: 0 | counter: 0 | -0.01416015625
+valid: 0 | counter: 0 | -0.212646484375
+valid: 0 | counter: 0 | 1.2998046875
+valid: 0 | counter: 0 | -0.627685546875
+valid: 0 | counter: 0 | 1.65893554688
+valid: 0 | counter: 0 | -0.8955078125
+valid: 0 | counter: 0 | 1.19702148438
+valid: 0 | counter: 0 | -0.97021484375
+valid: 0 | counter: 0 | 0.2958984375
+valid: 0 | counter: 0 | -1.185546875
+valid: 0 | counter: 0 | 2.134765625
+valid: 0 | counter: 0 | -1.2421875
+valid: 0 | counter: 0 | -0.106689453125
+valid: 0 | counter: 0 | -2.34887695312
+valid: 0 | counter: 0 | -0.61474609375
+valid: 0 | counter: 0 | -0.59130859375
+valid: 0 | counter: 0 | -0.496337890625
+valid: 0 | counter: 0 | -0.92333984375
+valid: 0 | counter: 0 | 1.5078125
+valid: 0 | counter: 0 | 0.311767578125
+valid: 0 | counter: 0 | -1.4853515625
+valid: 0 | counter: 0 | 0.347412109375
+valid: 0 | counter: 0 | 0.626220703125
+valid: 0 | counter: 0 | -0.212646484375
+valid: 0 | counter: 0 | 0.222412109375
+valid: 0 | counter: 0 | 0.81298828125
+valid: 0 | counter: 0 | 2.22314453125
+valid: 0 | counter: 0 | 0.354248046875
+valid: 0 | counter: 0 | -0.1845703125
+valid: 0 | counter: 0 | -1.33764648438
+valid: 0 | counter: 0 | 0.62939453125
+valid: 0 | counter: 0 | 1.19604492188
+valid: 0 | counter: 0 | 1.92749023438
+valid: 0 | counter: 0 | 0.906494140625
+valid: 0 | counter: 0 | 1.29174804688
+valid: 0 | counter: 0 | -0.330322265625
+valid: 0 | counter: 0 | -0.1884765625
+valid: 0 | counter: 0 | 0.197998046875
+valid: 0 | counter: 0 | 0.2880859375
+valid: 0 | counter: 0 | -1.55053710938
+valid: 0 | counter: 0 | -0.881591796875
+valid: 0 | counter: 0 | 0.64990234375
+valid: 0 | counter: 0 | 0.827880859375
+valid: 0 | counter: 0 | -0.54248046875
+valid: 0 | counter: 0 | -0.08740234375
+valid: 0 | counter: 0 | 2.400390625
+valid: 0 | counter: 0 | -0.22314453125
+valid: 0 | counter: 0 | -0.599365234375
+valid: 0 | counter: 0 | 0.362060546875
+valid: 0 | counter: 0 | -0.705078125
+valid: 0 | counter: 0 | -0.07666015625
+valid: 0 | counter: 0 | -1.57543945312
+valid: 0 | counter: 0 | -0.260986328125
+valid: 0 | counter: 0 | 0.5615234375
+valid: 0 | counter: 0 | -0.5771484375
+valid: 0 | counter: 0 | 0.590576171875
+valid: 0 | counter: 0 | -1.30126953125
+valid: 0 | counter: 0 | -0.045654296875
+valid: 0 | counter: 0 | -1.91064453125
+valid: 0 | counter: 0 | 2.30737304688
+valid: 0 | counter: 0 | 1.14965820312
+valid: 0 | counter: 0 | 0.6611328125
+valid: 0 | counter: 0 | -1.46630859375
+valid: 0 | counter: 0 | 1.8828125
+valid: 0 | counter: 0 | -0.500732421875
+valid: 0 | counter: 0 | 0.24853515625
+valid: 0 | counter: 0 | -0.931884765625
+valid: 0 | counter: 0 | 0.27783203125
+valid: 0 | counter: 0 | -0.98779296875
+valid: 0 | counter: 0 | -0.1484375
+valid: 0 | counter: 0 | -0.45166015625
+valid: 0 | counter: 0 | -1.37841796875
+valid: 0 | counter: 0 | 0.719482421875
+valid: 0 | counter: 0 | 2.38256835938
+valid: 0 | counter: 0 | 1.6630859375
+valid: 0 | counter: 0 | -0.17041015625
+valid: 0 | counter: 0 | -0.495849609375
+valid: 0 | counter: 0 | 0.900634765625
+valid: 0 | counter: 0 | -1.39501953125
+valid: 0 | counter: 0 | -0.56787109375
+valid: 0 | counter: 0 | 0.14306640625
+valid: 0 | counter: 0 | -2.2216796875
+valid: 0 | counter: 0 | 0.285400390625
+valid: 0 | counter: 0 | -0.70361328125
+valid: 0 | counter: 0 | -0.05126953125
+valid: 0 | counter: 0 | -1.7978515625
+valid: 0 | counter: 0 | 0.4716796875
+valid: 0 | counter: 0 | -0.414306640625
+valid: 0 | counter: 0 | -0.850341796875
+valid: 0 | counter: 0 | -0.624755859375
+valid: 0 | counter: 0 | -0.599853515625
+valid: 0 | counter: 0 | 2.61254882812
+valid: 0 | counter: 0 | 0.96435546875
+valid: 0 | counter: 0 | -1.90844726562
+valid: 0 | counter: 0 | -1.09423828125
+valid: 0 | counter: 0 | 0.481201171875
+valid: 0 | counter: 0 | 0.561767578125
+valid: 0 | counter: 0 | -0.24267578125
+valid: 0 | counter: 0 | -0.682861328125
+valid: 0 | counter: 0 | 0.4423828125
+valid: 0 | counter: 0 | -0.537353515625
+valid: 0 | counter: 0 | 0.48486328125
+valid: 0 | counter: 0 | -0.5361328125
+valid: 0 | counter: 0 | 0.911376953125
+valid: 0 | counter: 0 | -0.6005859375
+valid: 0 | counter: 0 | -1.28564453125
+valid: 0 | counter: 0 | -1.16259765625
+valid: 0 | counter: 0 | 0.2705078125
+valid: 0 | counter: 0 | -0.92529296875
+valid: 0 | counter: 0 | -0.342529296875
+valid: 0 | counter: 0 | 0.050048828125
+valid: 0 | counter: 0 | -0.59228515625
+valid: 0 | counter: 0 | 1.74584960938
+valid: 0 | counter: 0 | -0.852294921875
+valid: 0 | counter: 0 | -1.67749023438
+valid: 0 | counter: 0 | -0.329833984375
+valid: 0 | counter: 0 | -0.75048828125
+valid: 0 | counter: 0 | 1.06958007812
+valid: 0 | counter: 0 | 0.685791015625
+valid: 0 | counter: 0 | 0.5
+valid: 0 | counter: 0 | 1.18774414062
+valid: 0 | counter: 0 | -0.162841796875
+valid: 0 | counter: 0 | -0.26123046875
+valid: 0 | counter: 0 | 0.30615234375
+valid: 0 | counter: 0 | 0.603271484375
+valid: 0 | counter: 0 | -0.3740234375
+valid: 0 | counter: 0 | -0.355712890625
+valid: 0 | counter: 0 | 0.476318359375
+valid: 0 | counter: 0 | -0.7724609375
+valid: 0 | counter: 0 | -0.471435546875
+valid: 0 | counter: 0 | 1.32958984375
+valid: 0 | counter: 0 | -1.5263671875
+valid: 0 | counter: 0 | -0.31201171875
+valid: 0 | counter: 0 | -0.05712890625
+valid: 0 | counter: 0 | -0.11767578125
+valid: 0 | counter: 0 | 1.64965820312
+valid: 0 | counter: 0 | 0.3505859375
+valid: 0 | counter: 0 | 0.50048828125
+valid: 0 | counter: 0 | -1.50439453125
+valid: 0 | counter: 0 | 1.03149414062
+valid: 0 | counter: 0 | -0.006591796875
+valid: 0 | counter: 0 | -1.31274414062
+valid: 0 | counter: 0 | 0.440185546875
+valid: 0 | counter: 0 | -0.91943359375
+valid: 0 | counter: 0 | 1.14770507812
+valid: 0 | counter: 0 | -0.46533203125
+valid: 0 | counter: 0 | -0.01220703125
+valid: 0 | counter: 0 | -0.35400390625
+valid: 0 | counter: 0 | -0.904052734375
+valid: 0 | counter: 0 | 2.65869140625
+valid: 0 | counter: 0 | -2.0126953125
+valid: 0 | counter: 0 | -1.38232421875
+valid: 0 | counter: 0 | 0.239013671875
+valid: 0 | counter: 0 | -2.93798828125
+valid: 0 | counter: 0 | -0.126953125
+valid: 0 | counter: 0 | -0.27880859375
+valid: 0 | counter: 0 | -1.01635742188
+valid: 0 | counter: 0 | -0.1982421875
+valid: 0 | counter: 0 | -0.757568359375
+valid: 0 | counter: 0 | -0.536865234375
+valid: 0 | counter: 0 | -0.48388671875
+valid: 0 | counter: 0 | 2.26098632812
+valid: 0 | counter: 0 | 1.26049804688
+valid: 0 | counter: 0 | 0.361328125
+valid: 0 | counter: 0 | -1.4892578125
+valid: 0 | counter: 0 | -0.598876953125
+valid: 0 | counter: 0 | -0.78466796875
+valid: 0 | counter: 0 | 1.21435546875
+valid: 0 | counter: 0 | 0.475341796875
+valid: 0 | counter: 0 | 0.463623046875
+valid: 0 | counter: 0 | 1.07690429688
+valid: 0 | counter: 0 | -0.643310546875
+valid: 0 | counter: 0 | 0.240478515625
+valid: 0 | counter: 0 | -2.0986328125
+valid: 0 | counter: 0 | -0.171142578125
+valid: 0 | counter: 0 | 0.490234375
+valid: 0 | counter: 0 | 0.68017578125
+valid: 0 | counter: 0 | 0.491943359375
+valid: 0 | counter: 0 | 0.929931640625
+valid: 0 | counter: 0 | -1.44873046875
+valid: 0 | counter: 0 | 0.80419921875
+valid: 0 | counter: 0 | 1.56225585938
+valid: 0 | counter: 0 | 0.312255859375
+valid: 0 | counter: 0 | 1.56713867188
+valid: 0 | counter: 0 | 1.126953125
+valid: 0 | counter: 0 | 0.54833984375
+valid: 0 | counter: 0 | 0.361328125
+valid: 0 | counter: 0 | 1.72875976562
+valid: 0 | counter: 0 | -1.22729492188
+valid: 0 | counter: 0 | -0.71044921875
+valid: 0 | counter: 0 | 2.06909179688
+valid: 0 | counter: 0 | -0.824462890625
+valid: 0 | counter: 0 | -1.11547851562
+valid: 0 | counter: 0 | -0.6357421875
+valid: 0 | counter: 0 | 0.74609375
+valid: 0 | counter: 0 | 1.2216796875
+valid: 0 | counter: 0 | 0.504150390625
+valid: 0 | counter: 0 | 0.140869140625
+valid: 0 | counter: 0 | -0.69775390625
+valid: 0 | counter: 0 | 0.960693359375
+valid: 0 | counter: 0 | 0.359375
+valid: 0 | counter: 0 | -1.42065429688
+valid: 0 | counter: 0 | -0.849365234375
+valid: 0 | counter: 0 | -0.1298828125
+valid: 0 | counter: 0 | 0.8330078125
+valid: 0 | counter: 0 | 2.25903320312
+valid: 0 | counter: 0 | 0.272705078125
+valid: 0 | counter: 0 | 0.524169921875
+valid: 0 | counter: 0 | -0.495849609375
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+valid: 0 | counter: 0 | 0.0
+IMA id: 0
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+IMA id: 1
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+IMA id: 2
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+IMA id: 3
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+IMA id: 4
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+IMA id: 5
+DataMemory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Input Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+Xbar Output Memory contents
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0

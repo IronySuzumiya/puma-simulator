@@ -43,7 +43,7 @@ import node_metrics
 
 ## Set the instruction & trace paths (create the folder hierarchy)
 # Assumption: All instructions for all TILEs and IMAs have already been generated
-net = 'vgg11'
+net = 'char_rnn'
 instrndir = '/home/ankitaay/dpe/test/testasm/' + net
 tracedir = '/home/ankitaay/dpe/test/traces/' + net
 
@@ -56,8 +56,9 @@ assert (os.path.exists(instrndir) == 1), 'Instructions for net missing: generate
 
 if not os.path.exists(tracedir):
     os.makedirs(tracedir)
-    for i in range (cfg.num_tile):
-        temp_tiledir = tracedir + '/tile' + str(i)
+for i in range (cfg.num_tile):
+    temp_tiledir = tracedir + '/tile' + str(i)
+    if not os.path.exists(temp_tiledir):
         os.makedirs(temp_tiledir)
 
 instrnpath = instrndir + '/'
@@ -130,14 +131,14 @@ fid.close ()
 print 'Success: Hadrware results compiled!!'
 
 ## Compare with GPU results (dynamic energy only)
-dpe_energy_l1 = metric_dict['total_energy'] * 64* 112 * 112
-print (str (dpe_energy_l1) + ' joules')
-
-gpu_leak = 16 #watt
-gpu_tot = 42
-gpu_time_l1 = 2.438
-dpe_time_l1 = metric_dict['time'] * 64*112*112
-gpu_energy_l1 = (gpu_tot)*gpu_time_l1
-
-print ('energyX', str (gpu_energy_l1/dpe_energy_l1))
-print ('timeX', str (gpu_time_l1/dpe_time_l1))
+#dpe_energy_l1 = metric_dict['total_energy'] * 64* 112 * 112
+#print (str (dpe_energy_l1) + ' joules')
+#
+#gpu_leak = 16 #watt
+#gpu_tot = 42
+#gpu_time_l1 = 2.438
+#dpe_time_l1 = metric_dict['time'] * 64*112*112
+#gpu_energy_l1 = (gpu_tot)*gpu_time_l1
+#
+#print ('energyX', str (gpu_energy_l1/dpe_energy_l1))
+#print ('timeX', str (gpu_time_l1/dpe_time_l1))
