@@ -16,3 +16,6 @@
 ### ima_optim2 - upadted MVM pipeline - 1DAC_array, 1xbInMem, 8xbars
 
 ### dpe_charRNN - char-rnn (Karpathy) implemented on DPE
+### dpe_ds - master merged with dpe_charRNN
+
+#*Use dpe_des branch for all designs hereon*
