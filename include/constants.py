@@ -432,7 +432,7 @@ tile_instrnMem_pow_leak = tile_instrnMem_pow_leak_dict[str(cfg.tile_instrnMem_si
 #############################################################################################################
 
 # NOC latency dictionary (in terms of flit cycle)
-# Note - if inj_rate exceeds 0.025 - there's a problem, NoC needs to be redesigned else network latency will be killing!
+# Note - if inj_rate (packet injection -1 packet - 16 neurons) exceeds 0.025 - there's a problem, NoC needs to be redesigned else network latency will be killing!
 # Hence, not provided for
 noc_inj_rate_max = 0.025
 noc_lat_dict = {'0.001': 29,

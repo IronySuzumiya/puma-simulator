@@ -2,7 +2,7 @@
 ## All user specified parameters are provided by this file only
 
 ## Debug - 0 (1): dpe simulation will (won't) produce ima/tile traces while simulating
-cycles_max = 100000 # Put both these to very large numbers (when design is bug-free)!
+cycles_max = 10000 # Put both these to very large numbers (when design is bug-free)!
 debug = 1
 
 ## Operand precision (fixed point allowed only): num_bits = int_bits + frac_bits
@@ -29,7 +29,7 @@ instrn_width = 48 # (in bits)
 
 # Change here - Specify the IMA parameters here
 xbar_bits = 2
-num_xbar = 8
+num_xbar = 16
 xbar_size = 128
 dac_res = 1
 adc_res = 8
@@ -55,7 +55,7 @@ receive_buffer_depth = 16
 receive_buffer_width =  edram_buswidth / num_bits # size of receive buffeer entry (in terms of number of neurons)
 
 # Change here - Specify the Tile parameters here
-num_ima = 12
+num_ima = 6
 edram_size = 64 # in Kilobytes (64 KB - same as issac)
 tile_instrnMem_size = 512 # in bytes
 
@@ -74,7 +74,7 @@ packet_width = edram_buswidth/data_width #in multiples of flits (data considered
 # (b bit of address = logN, N is the number of nodes)
 
 # Change here - Specify the Node parameters here
-num_tile_compute = 1 # number of tiles per node
+num_tile_compute = 2 # number of tiles per node
 noc_inj_rate = 0.005
 noc_num_port = 4
 

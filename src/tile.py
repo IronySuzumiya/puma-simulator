@@ -280,7 +280,14 @@ class tile (object):
             receive_width = self.instrn['r1']
             mem_addr = self.instrn['mem_addr'] + self.vec_count * receive_width
             # if tag matches check if edram entry is empty/free (invalid)
-            if (self.tag_matched and (not all(self.edram_controller.valid[mem_addr:mem_addr+receive_width]))):
+            empty = 1
+            # check if all mem_addr entries are invalid/empty
+            for i in range (receive_width):
+                if (self.edram_controller.valid[mem_addr+i] == 1):
+                    empty = 0
+                    break
+            #if (self.tag_matched and (not all(self.edram_controller.valid[mem_addr:mem_addr+receive_width]))):
+            if (self.tag_matched and empty):
                 assert (self.instrn['vtile_id'] >= 0 and receive_width == len(self.received_data)), 'receive_width & send widths mismatch'
                 # first but not last cycle of edram access
                 if (self.stage_cycle_sr == 0 and self.edram_controller.getLatency() != 1):

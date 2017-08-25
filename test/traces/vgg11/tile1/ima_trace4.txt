@@ -10,9 +10,3 @@ Fet | PC 1 | Flags: empty 0 done 1 cycles 0
 Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
 Exe | Inst: {"aluop": "add", "r1": 0, "r2": 0, "r3": 0, "imm": 0, "opcode": "hlt", "vec": 0, "xb_nma": 0, "d1": 0}curr_vec: 0 | Flags: empty 0 done 0 cycles 0
 
-Cycle 66
-Fet | PC 1 | Flags: empty 0 done 1 cycles 1
-Dec | Inst: "" | Flags: empty 1 done 1 cycles 0
-Exe | Inst: {"aluop": "add", "r1": 0, "r2": 0, "r3": 0, "imm": 0, "opcode": "hlt", "vec": 0, "xb_nma": 0, "d1": 0}curr_vec: 0 | Flags: empty 1 done 1 cycles 0
-
-IMA halted at 66 cycles
