@@ -1,3 +1,5 @@
+#Use dpe_des branch for all designs hereon
+
 # dpe_emulate
 
 ## master (designs enlisted in order): (All previous branches present on remote)
@@ -18,4 +20,3 @@
 ### dpe_charRNN - char-rnn (Karpathy) implemented on DPE
 ### dpe_ds - master merged with dpe_charRNN
 
-#*Use dpe_des branch for all designs hereon*
