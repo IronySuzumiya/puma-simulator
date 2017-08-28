@@ -1,3 +1,5 @@
+# Use dpe_des branch for all designs hereon
+
 # dpe_emulate
 
 ## master (designs enlisted in order): (All previous branches present on remote)
@@ -14,3 +16,7 @@
 ### dpe_vgg - runs vgg11(layer1) on DPE and compares energy with Nvidia Quadro K5200
 ### ima_optim - upadted noc metrics, updated leakage power, debugged metric computation from dpesim
 ### ima_optim2 - upadted MVM pipeline - 1DAC_array, 1xbInMem, 8xbars
+
+### dpe_charRNN - char-rnn (Karpathy) implemented on DPE
+### dpe_ds - master merged with dpe_charRNN
+

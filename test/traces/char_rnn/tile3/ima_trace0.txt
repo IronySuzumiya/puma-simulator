@@ -1,0 +1,2 @@
+Cycle information is printed is at the end of the clock cycle
+Assumption: A clock cycle ends at the positive edge
