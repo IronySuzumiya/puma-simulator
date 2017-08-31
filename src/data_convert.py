@@ -28,7 +28,8 @@ def fixed2float (binary_string, int_bits, frac_bits):
 def float2fixed_2d (float_data_arr, int_bits, frac_bits):
     (num_row, num_col) = np.shape(float_data_arr)
     # input type - array, outpt type = 2d list
-    out_list = [['']*num_col] * num_row
+    #out_list = [['']*num_col] * num_row
+    out_list = [['' for i in range(num_col)] for j in range(num_row)]
     for i in range (num_row):
         for j in range (num_col):
             float_data = float_data_arr[i,j]

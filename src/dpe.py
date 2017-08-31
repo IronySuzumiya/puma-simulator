@@ -22,9 +22,11 @@ import sys, getopt, os
 sys.path.insert (0, '/home/ankitaay/dpe/include/')
 sys.path.insert (0, '/home/ankitaay/dpe/src/')
 
-import torch as tf #using pytorch
+# import torch as tf # if using pytorch (for wt storage)
+import torchfile as tf # if using torch (for wt storage)
 from data_convert import *
 from node_dump import *
+from record_xbar import *
 from hw_stats import *
 import numpy as np
 
@@ -80,12 +82,14 @@ inp_filename = instrnpath + 'input.npy'
 inp_tileId = 0
 assert (os.path.exists (inp_filename) == True), 'Input Error: Provide inputbefore running the DPE'
 inp = np.load (inp_filename).item()
+print (len(inp['data']))
 for i in range (len(inp['data'])):
     data = float2fixed (inp['data'][i], cfg.int_bits, cfg.frac_bits)
     node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i] = data
     node_dut.tile_list[inp_tileId].edram_controller.counter[i]     = int(inp['counter'][i])
     node_dut.tile_list[inp_tileId].edram_controller.valid[i]       = int(inp['valid'][i])
 
+'''
 ## Program DNN weights on the xbars
 # torch table in file - (tracepath/tile<>/weights/ima<>_xbar<>.t7)
 for i in range (1, cfg.num_tile-1):
@@ -94,11 +98,15 @@ for i in range (1, cfg.num_tile-1):
         print ('Programming ima no: ', j)
         for k in range (cfg.num_xbar):
             wt_filename = instrnpath + 'tile' + str(i) + '/weights/' + \
-                        'ima' + str(j) + '_xbar' + str(k) + '.t7'
+                        'ima' + str(j) + '_xbar' + str(k) + '.npy'
+                        #'ima' + str(j) + '_xbar' + str(k) + '.t7'
             if (os.path.exists(wt_filename)): # check if weights for the xbar exist
-                wt_temp = tf.load (wt_filename)
+                print ('wtfile exits: ' + 'tile ' + str(i) + 'ima ' + str(j) + 'xbar ' + str(k))
+                #wt_temp = tf.load (wt_filename)
+                wt_temp = np.load (wt_filename)
                 node_dut.tile_list[i].ima_list[j].xbar_list[k].program (wt_temp)
-
+'''
+#raw_input ('Press Enter')
 
 ## Run all the tiles
 cycle = 0
@@ -107,7 +115,7 @@ while (not node_dut.node_halt and cycle < cfg.cycles_max):
     cycle = cycle + 1
 print 'Finally node halted' + ' | PS: max_cycles ' + str (cfg.cycles_max)
 
-
+'''
 ## For DEBUG only - dump the contents of all tiles
 # NOTE: Output and input tiles are dummy tiles to enable self-contained simulation
 if (cfg.debug):
@@ -142,3 +150,8 @@ gpu_energy_l1 = (gpu_tot)*gpu_time_l1
 
 print ('energyX', str (gpu_energy_l1/dpe_energy_l1))
 print ('timeX', str (gpu_time_l1/dpe_time_l1))
+'''
+
+## Analyze the recorder xbar currents
+print ('Analyzing recorded xbar currents')
+record_xbar (node_dut)

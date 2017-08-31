@@ -28,6 +28,13 @@ class xbar (object):
         if (xbar_value != 'nil'):
             self.xbar_value = xbar_value
 
+        # xbar output currents are recorded fro analysis of applicable
+        self.xb_record = []
+
+    # Records the xbar currents
+    def record (self, xb_out):
+        self.xb_record.append(xb_out)
+
     def program (self, xbar_value = ''):
         # programs the crossbar with given matrix values
         val_size = np.shape (xbar_value)
@@ -59,6 +66,11 @@ class xbar (object):
             inp_float[i] = fixed2float(temp_inp, cfg.int_bits, cfg.frac_bits)
         inp_float = np.asarray (inp_float)
         out_float = np.dot(inp_float, self.xbar_value)
+
+        # record xbar_i if applicable
+        if (cfg.xbar_record):
+            self.record(out_float)
+
         # convert float back to fixed point binary
         out_fixed  = [''] * self.xbar_size
         for i in range(len(out_fixed)):

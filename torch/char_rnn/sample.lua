@@ -3,7 +3,7 @@
 
 This file samples characters from a trained model
 
-Code is based on implementation in 
+Code is based on implementation in
 https://github.com/oxford-cs-ml-2015/practical6
 
 ]]--
@@ -133,6 +133,12 @@ else
     if opt.gpuid >= 0 and opt.opencl == 1 then prediction = prediction:cl() end
 end
 
+-- modification (Aayush) - record inputs to rnn at eahc forward (for dpe
+-- xbar current evaluation)
+in_file = {}
+inp_size = 65
+x_dummy = torch.zeros(inp_size)
+
 -- start sampling/argmaxing
 for i=1, opt.length do
 
@@ -149,6 +155,15 @@ for i=1, opt.length do
         prev_char = torch.multinomial(probs:float(), 1):resize(1):float()
     end
 
+    -- modification (Aayush)
+    inp_curr = {}
+    -- get one-hot encoding for prev_char
+    inp_curr['x'] = x_dummy:clone()
+    inp_curr['x'][prev_char[1]] = 1
+    inp_curr['h_prev_l1'] = current_state[2]
+    inp_curr['h_prev_l2'] = current_state[4]
+    in_file[#in_file+1] = inp_curr
+
     -- forward the rnn for next character
     local lst = protos.rnn:forward{prev_char, unpack(current_state)}
     current_state = {}
@@ -158,4 +173,7 @@ for i=1, opt.length do
     io.write(ivocab[prev_char[1]])
 end
 io.write('\n') io.flush()
+
+-- Record the sample input for each new text generated
+torch.save ('in_rnn.t7', in_file)
 

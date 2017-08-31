@@ -4,6 +4,7 @@
 ## Debug - 0 (1): dpe simulation will (won't) produce ima/tile traces while simulating
 cycles_max = 10000 # Put both these to very large numbers (when design is bug-free)!
 debug = 1
+xbar_record = 1
 
 ## Operand precision (fixed point allowed only): num_bits = int_bits + frac_bits
 num_bits = 16

@@ -17,6 +17,9 @@ from data_convert import *
 from instrn_proto import *
 from tile_instrn_proto import *
 
+# import torchfile (if weights have been generated in lua-torch)
+import torchfile as tf
+
 #*******************************************Declare network constants*********************************************
 instrnpath = '/home/ankitaay/dpe/test/testasm/char_rnn'
 if not os.path.exists(instrnpath):
@@ -28,19 +31,130 @@ rnn_size = 128
 out_size = 65
 datamem_off = cfg.num_xbar*cfg.xbar_size
 
-#********************************************************Tile0****************************************************
+#*********************************************generate xbar wt files**********************************************
+'''wt_path = '/home/ankitaay/dpe/torch/char_rnn/wt_rnn.t7'
+wt_file = tf.load (wt_path)
+
+i2h_l1 = np.transpose (wt_file[0])
+h2h_l1 = np.transpose (wt_file[1])
+i2h_l2 = np.transpose (wt_file[2])
+h2h_l2 = np.transpose (wt_file[3])
+dec_l3 = np.transpose (wt_file[4])
+
+## map layer1
+wt_path = '/home/ankitaay/dpe/test/testasm/char_rnn/tile1/weights/'
+num_ima = 4
+if not os.path.exists(wt_path):
+    os.makedirs(wt_path)
+# within layer1, map i2h_l1 onto tile1 (first 8 xbars in first 4 imas)
+for i in range (num_ima):
+    temp_i2h_l1 = i2h_l1[0:in_size, i*rnn_size:(i+1)*rnn_size]
+    temp_i2h_l1_fixed = float2fixed_2d (temp_i2h_l1, cfg.int_bits, cfg.frac_bits)
+    for j in range (cfg.num_bits/cfg.xbar_bits):
+        wt_filename = wt_path + 'ima' + str(i) + '_xbar' + str((cfg.num_xbar/2-1)-j) + '.npy'
+        print (wt_filename)
+        # traverse the 2d array extract next set of xbar_bits
+        temp = [['' for num_col in range(rnn_size)] for num_row in range(in_size)]
+        for x in range (in_size):
+            for y in range (rnn_size):
+                temp[x][y] = (cfg.num_bits-cfg.xbar_bits)*'0' + temp_i2h_l1_fixed[x][y][j*cfg.xbar_bits:(j+1)*cfg.xbar_bits]
+        # Convert to float
+        temp_fl = fixed2float_2d (temp, cfg.int_bits, cfg.frac_bits)
+        np.save (wt_filename, temp_fl)
+
+# within layer1, map h2h_l1 onto tile1 (second 8 xbars in first 4 imas)
+for i in range (num_ima):
+    temp_h2h_l1 = h2h_l1[0:rnn_size, i*rnn_size:(i+1)*rnn_size]
+    temp_h2h_l1_fixed = float2fixed_2d (temp_h2h_l1, cfg.int_bits, cfg.frac_bits)
+    for j in range (cfg.num_bits/cfg.xbar_bits):
+        wt_filename = wt_path + 'ima' + str(i) + '_xbar' + str((cfg.num_xbar-1)-j) + '.npy'
+        print (wt_filename)
+        # traverse the 2d array extract next set of xbar_bits
+        temp = [['' for num_col in range(rnn_size)] for num_row in range(rnn_size)]
+        for x in range (rnn_size):
+            for y in range (rnn_size):
+                temp[x][y] = (cfg.num_bits-cfg.xbar_bits)*'0' + temp_h2h_l1_fixed[x][y][j*cfg.xbar_bits:(j+1)*cfg.xbar_bits]
+        # Convert to float
+        temp_fl = fixed2float_2d (temp, cfg.int_bits, cfg.frac_bits)
+        np.save (wt_filename, temp_fl)
+
+## map layer2
+wt_path = '/home/ankitaay/dpe/test/testasm/char_rnn/tile2/weights/'
+num_ima = 4
+if not os.path.exists(wt_path):
+    os.makedirs(wt_path)
+# within layer2, map i2h_l2 onto tile2 (first 8 xbars in first 4 imas)
+for i in range (num_ima):
+    temp_i2h_l2 = i2h_l2[0:rnn_size, i*rnn_size:(i+1)*rnn_size]
+    temp_i2h_l2_fixed = float2fixed_2d (temp_i2h_l2, cfg.int_bits, cfg.frac_bits)
+    for j in range (cfg.num_bits/cfg.xbar_bits):
+        wt_filename = wt_path + 'ima' + str(i) + '_xbar' + str((cfg.num_xbar/2-1)-j) + '.npy'
+        print (wt_filename)
+        # traverse the 2d array extract next set of xbar_bits
+        temp = [['' for num_col in range(rnn_size)] for num_row in range(rnn_size)]
+        for x in range (rnn_size):
+            for y in range (rnn_size):
+                temp[x][y] = (cfg.num_bits-cfg.xbar_bits)*'0' + temp_i2h_l2_fixed[x][y][j*cfg.xbar_bits:(j+1)*cfg.xbar_bits]
+        # Convert to float
+        temp_fl = fixed2float_2d (temp, cfg.int_bits, cfg.frac_bits)
+        np.save (wt_filename, temp_fl)
+
+# within layer2, map h2h_l2 onto tile2 (second 8 xbars in first 4 imas)
+for i in range (num_ima):
+    temp_h2h_l2 = h2h_l1[0:rnn_size, i*rnn_size:(i+1)*rnn_size]
+    temp_h2h_l2_fixed = float2fixed_2d (temp_h2h_l2, cfg.int_bits, cfg.frac_bits)
+    for j in range (cfg.num_bits/cfg.xbar_bits):
+        wt_filename = wt_path + 'ima' + str(i) + '_xbar' + str((cfg.num_xbar-1)-j) + '.npy'
+        print (wt_filename)
+        # traverse the 2d array extract next set of xbar_bits
+        temp = [['' for num_col in range(rnn_size)] for num_row in range(rnn_size)]
+        for x in range (rnn_size):
+            for y in range (rnn_size):
+                temp[x][y] = (cfg.num_bits-cfg.xbar_bits)*'0' + temp_h2h_l2_fixed[x][y][j*cfg.xbar_bits:(j+1)*cfg.xbar_bits]
+        # Convert to float
+        temp_fl = fixed2float_2d (temp, cfg.int_bits, cfg.frac_bits)
+        np.save (wt_filename, temp_fl)
+
+# map layer3 (decoder layer)
+temp_dec_l3 = dec_l3[0:rnn_size, 0:in_size]
+temp_dec_l3_fixed = float2fixed_2d (temp_dec_l3, cfg.int_bits, cfg.frac_bits)
+for j in range (cfg.num_bits/cfg.xbar_bits):
+    wt_filename = wt_path + 'ima4' + '_xbar' + str((cfg.num_xbar/2-1)-j) + '.npy'
+    print (wt_filename)
+    # traverse the 2d array extract next set of xbar_bits
+    temp = [['' for num_col in range(in_size)] for num_row in range(rnn_size)]
+    for x in range (rnn_size):
+        for y in range (in_size):
+            temp[x][y] = (cfg.num_bits-cfg.xbar_bits)*'0' + temp_dec_l3_fixed[x][y][j*cfg.xbar_bits:(j+1)*cfg.xbar_bits]
+    # Convert to float
+    temp_fl = fixed2float_2d (temp, cfg.int_bits, cfg.frac_bits)
+    np.save (wt_filename, temp_fl)
+'''
+
+#**************************************************Input**********************************************************
 ## Generate input data for Tile 0
 import random
 random.seed(1)
 inp_path = instrnpath + '/input.npy'
-num_inputs = in_size + 4*rnn_size
+num_inputs = in_size + 4*rnn_size # [data arrangement - x, h_l1, h_l2, c_l1, c_l2]
 inp = {}
-data = np.random.randn(num_inputs)
+
+# Read input from torch file
+idx = 1000
+inp_arr = tf.load ('/home/ankitaay/dpe/torch/char_rnn/in_rnn.t7')
+data1 = np.concatenate ((inp_arr[idx]['x'].reshape(in_size), inp_arr[idx]['h_prev_l1'].reshape(rnn_size), \
+        inp_arr[idx]['h_prev_l2'].reshape(rnn_size)), axis=0)
+
+data2 = np.random.randn(2*rnn_size)
+data = np.concatenate ((data1, data2), axis=0)
 counter = np.ones (num_inputs)
 valid = np.ones (num_inputs)
 inp = {'data':data, 'counter': counter, 'valid':valid}
 np.save (inp_path, inp)
 
+'''
+#*************************************************Instructions****************************************************
+#****************************************************Tile0********************************************************
 ## Generate instruction for Tile 0 (dummy tile)
 temp_dir = instrnpath + '/tile0'
 if not os.path.exists(temp_dir):
@@ -61,13 +175,13 @@ send_vw = 8
 send_width = rnn_size/send_vw
 i_temp = i_send (mem_addr=in_size, vtile_id=0, send_width=send_width, target_addr=1, vec=send_vw)
 dict_list.append (i_temp.copy())
-i_temp = i_send (mem_addr=in_size+rnn_size, vtile_id=0, send_width=send_width, target_addr=1, vec=send_vw)
+i_temp = i_send (mem_addr=in_size+2*rnn_size, vtile_id=0, send_width=send_width, target_addr=1, vec=send_vw)
 dict_list.append (i_temp.copy())
 
 # Send instruction to prev_h & prev_c to tile_compute_2 (layer2)
 send_vw = 8
 send_width = rnn_size/send_vw
-i_temp = i_send (mem_addr=in_size+2*rnn_size, vtile_id=0, send_width=send_width, target_addr=2, vec=send_vw)
+i_temp = i_send (mem_addr=in_size+rnn_size, vtile_id=0, send_width=send_width, target_addr=2, vec=send_vw)
 dict_list.append (i_temp.copy())
 i_temp = i_send (mem_addr=in_size+3*rnn_size, vtile_id=0, send_width=send_width, target_addr=2, vec=send_vw)
 dict_list.append (i_temp.copy())
@@ -784,3 +898,4 @@ for i in range (cfg.num_ima):
     print (filename + ' generated')
     np.save(filename, dict_list)
     print ('Total no of instructions: ', len(dict_list))
+'''
