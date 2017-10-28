@@ -1,8 +1,4 @@
 ## API to dump recorded xbar currents (data-gating analysis)
-
-import sys
-sys.path.insert (0, '/home/ankitaay/dpe/src/')
-
 from data_convert import *
 import config as cfg
 import numpy as np

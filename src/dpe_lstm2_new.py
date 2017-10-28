@@ -19,8 +19,8 @@
 
 ## Import constituent modeles/dependencies
 import sys, getopt, os
-sys.path.insert (0, '/home/ankitaay/dpe/include/')
-sys.path.insert (0, '/home/ankitaay/dpe/src/')
+sys.path.insert (0, '/home/aa/dpe_emulate/include/')
+sys.path.insert (0, '/home/aa/dpe_emulate/src/')
 
 import torchfile as tf
 from data_convert import *
@@ -39,8 +39,8 @@ import node
 ## Set the instruction & trace paths (create the folder hierarchy)
 # Assumption: All instructions for all TILEs and IMAs have already been generated
 net = 'LSTM2_new'
-instrndir = '/home/ankitaay/dpe/test/testasm/' + net
-tracedir = '/home/ankitaay/dpe/test/traces/' + net
+instrndir = '/home/aa/dpe_emulate/test/testasm/' + net
+tracedir = '/home/aa/dpe_emulate/test/traces/' + net
 
 assert (os.path.exists(instrndir) == 1), 'Instructions for net missing: generate intuctions (in folder hierarchy) hierarchy'
 '''if not os.path.exists(instrndir):

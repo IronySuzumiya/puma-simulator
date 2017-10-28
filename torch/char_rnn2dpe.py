@@ -8,8 +8,8 @@ import sys, os
 import numpy as np
 import math
 
-sys.path.insert (0, '/home/ankitaay/dpe/include/')
-sys.path.insert (0, '/home/ankitaay/dpe/src/')
+sys.path.insert (0, '/home/aa/dpe_emulate/include/')
+sys.path.insert (0, '/home/aa/dpe_emulate/src/')
 import config as cfg
 
 # import the data_convert module (float to fixed conversions)
@@ -21,7 +21,7 @@ from tile_instrn_proto import *
 import torchfile as tf
 
 #*******************************************Declare network constants*********************************************
-instrnpath = '/home/ankitaay/dpe/test/testasm/char_rnn'
+instrnpath = '/home/aa/dpe_emulate/test/testasm/char_rnn'
 if not os.path.exists(instrnpath):
     os.makedirs(instrnpath)
 
@@ -32,7 +32,7 @@ out_size = 65
 datamem_off = cfg.num_xbar*cfg.xbar_size
 
 #*********************************************generate xbar wt files**********************************************
-'''wt_path = '/home/ankitaay/dpe/torch/char_rnn/wt_rnn.t7'
+'''wt_path = '/home/aa/dpe_emulate/torch/char_rnn/wt_rnn.t7'
 wt_file = tf.load (wt_path)
 
 i2h_l1 = np.transpose (wt_file[0])
@@ -42,7 +42,7 @@ h2h_l2 = np.transpose (wt_file[3])
 dec_l3 = np.transpose (wt_file[4])
 
 ## map layer1
-wt_path = '/home/ankitaay/dpe/test/testasm/char_rnn/tile1/weights/'
+wt_path = '/home/aa/dpe_emulate/test/testasm/char_rnn/tile1/weights/'
 num_ima = 4
 if not os.path.exists(wt_path):
     os.makedirs(wt_path)
@@ -79,7 +79,7 @@ for i in range (num_ima):
         np.save (wt_filename, temp_fl)
 
 ## map layer2
-wt_path = '/home/ankitaay/dpe/test/testasm/char_rnn/tile2/weights/'
+wt_path = '/home/aa/dpe_emulate/test/testasm/char_rnn/tile2/weights/'
 num_ima = 4
 if not os.path.exists(wt_path):
     os.makedirs(wt_path)
@@ -141,7 +141,7 @@ inp = {}
 
 # Read input from torch file
 idx = 1000
-inp_arr = tf.load ('/home/ankitaay/dpe/torch/char_rnn/in_rnn.t7')
+inp_arr = tf.load ('/home/aa/dpe_emulate/torch/char_rnn/in_rnn.t7')
 data1 = np.concatenate ((inp_arr[idx]['x'].reshape(in_size), inp_arr[idx]['h_prev_l1'].reshape(rnn_size), \
         inp_arr[idx]['h_prev_l2'].reshape(rnn_size)), axis=0)
 

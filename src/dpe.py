@@ -19,8 +19,8 @@
 
 ## Import constituent modeles/dependencies
 import sys, getopt, os
-sys.path.insert (0, '/home/ankitaay/dpe/include/')
-sys.path.insert (0, '/home/ankitaay/dpe/src/')
+sys.path.insert (0, '/home/aa/dpe_emulate/include/')
+sys.path.insert (0, '/home/aa/dpe_emulate/src/')
 
 # import torch as tf # if using pytorch (for wt storage)
 import torchfile as tf # if using torch (for wt storage)
@@ -46,8 +46,8 @@ import node_metrics
 ## Set the instruction & trace paths (create the folder hierarchy)
 # Assumption: All instructions for all TILEs and IMAs have already been generated
 net = 'char_rnn'
-instrndir = '/home/ankitaay/dpe/test/testasm/' + net
-tracedir = '/home/ankitaay/dpe/test/traces/' + net
+instrndir = '/home/aa/dpe_emulate/test/testasm/' + net
+tracedir = '/home/aa/dpe_emulate/test/traces/' + net
 
 assert (os.path.exists(instrndir) == 1), 'Instructions for net missing: generate intuctions (in folder hierarchy) hierarchy'
 '''if not os.path.exists(instrndir):
@@ -89,7 +89,7 @@ for i in range (len(inp['data'])):
     node_dut.tile_list[inp_tileId].edram_controller.counter[i]     = int(inp['counter'][i])
     node_dut.tile_list[inp_tileId].edram_controller.valid[i]       = int(inp['valid'][i])
 
-'''
+
 ## Program DNN weights on the xbars
 # torch table in file - (tracepath/tile<>/weights/ima<>_xbar<>.t7)
 for i in range (1, cfg.num_tile-1):
@@ -105,7 +105,7 @@ for i in range (1, cfg.num_tile-1):
                 #wt_temp = tf.load (wt_filename)
                 wt_temp = np.load (wt_filename)
                 node_dut.tile_list[i].ima_list[j].xbar_list[k].program (wt_temp)
-'''
+
 #raw_input ('Press Enter')
 
 ## Run all the tiles
@@ -115,7 +115,7 @@ while (not node_dut.node_halt and cycle < cfg.cycles_max):
     cycle = cycle + 1
 print 'Finally node halted' + ' | PS: max_cycles ' + str (cfg.cycles_max)
 
-'''
+
 ## For DEBUG only - dump the contents of all tiles
 # NOTE: Output and input tiles are dummy tiles to enable self-contained simulation
 if (cfg.debug):
@@ -138,7 +138,7 @@ metric_dict = get_hw_stats (fid, node_dut, cycle)
 fid.close ()
 print 'Success: Hadrware results compiled!!'
 
-# Compare with GPU results (dynamic energy only)
+'''# Compare with GPU results (dynamic energy only)
 dpe_energy_l1 = metric_dict['total_energy']
 print (str (dpe_energy_l1) + ' joules')
 
@@ -149,9 +149,9 @@ dpe_time_l1 = metric_dict['time']
 gpu_energy_l1 = (gpu_tot)*gpu_time_l1
 
 print ('energyX', str (gpu_energy_l1/dpe_energy_l1))
-print ('timeX', str (gpu_time_l1/dpe_time_l1))
-'''
+print ('timeX', str (gpu_time_l1/dpe_time_l1))'''
+
 
 ## Analyze the recorder xbar currents
-print ('Analyzing recorded xbar currents')
-record_xbar (node_dut)
+#print ('Analyzing recorded xbar currents')
+#record_xbar (node_dut)

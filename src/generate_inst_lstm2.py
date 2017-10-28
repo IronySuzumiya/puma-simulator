@@ -1,13 +1,13 @@
 # Generates instructions that are used by ima
 # add the folder location for include files
 import sys
-sys.path.insert (0, '/home/ankitaay/dpe/include')
+sys.path.insert (0, '/home/aa/dpe_emulate/include')
 
 import numpy as np
 import constants as param
 from instrn_proto import *
 
-instrnpath = '/home/ankitaay/dpe/test/testasm/LSTM2_new/tile3/'
+instrnpath = '/home/aa/dpe_emulate/test/testasm/LSTM2_new/tile3/'
 num_inst = 0 # global variable keeps track of num instructions generated
 
 # Generate actual instructions

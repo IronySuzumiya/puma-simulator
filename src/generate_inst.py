@@ -1,7 +1,7 @@
 # Generates instructions that are used by ima
 # add the folder location for include files
 import sys
-sys.path.insert (0, '/home/ankitaay/dpe/include')
+sys.path.insert (0, '/home/aa/dpe_emulate/include')
 
 import numpy as np
 import constants as param

@@ -4,7 +4,7 @@
 # 'Update' - (NOT BEING USED CURRENTLY!) is the flip fop evaluation (for clocked elements of the circuit only)
 
 import sys
-sys.path.insert (0, '/home/ankitaay/dpe/include')
+sys.path.insert (0, '/home/aa/dpe_emulate/include')
 
 import numpy as np
 import constants as param
