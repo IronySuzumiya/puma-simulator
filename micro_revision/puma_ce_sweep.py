@@ -20,13 +20,22 @@ import config as cfg
 log2phy_xbfactor = cfg.data_width / cfg.xbar_bits # logical xbar count
 
 # Sweep Parameters considered:
-xbar_size_list = [64, 128, 256]
-num_mvmu_list = [2, 16, 32]
+#xbar_size_list = [64, 128, 256]
+#num_mvmu_list = [1, 4, 16, 64]
+#num_vfu_list = [1, 4, 16, 64]
+#num_core_list = [1, 4, 8, 16]
+#regfile_size_list = [0.25, 1, 4, 16]
+
+## single sweeps (sweet spot S128-X16-V4-C8, 772.13)
+xbar_size_list = [128]
+num_mvmu_list = [16]
+num_vfu_list = [4]
+num_core_list = [8]
+regfile_size_list = [0.25, 1, 4, 16]
+
 num_xbar_list = [] # [xbar_size (DACs,SnH), 1 ADC, 1 SnA per xbar]
 for i in range(len(num_mvmu_list)):
     num_xbar_list.append (num_mvmu_list[i]*log2phy_xbfactor)
-num_vfu_list = [1, 8, 64]
-num_core_list = [4, 8, 16]
 
 time_step_dict = {'64':60, '128':100, '256':400}
 
@@ -49,7 +58,7 @@ dac_area = 1.67 * 10**(-7)
 adc_area = 0.0012
 snh_area = 0.00004/8/128
 sna_area = 0.00006
-alu_area = 0.00567 * 32.0/45.0 * 1.5
+alu_area = 0.00567 * 32.0/45.0
 dataMem128_2_area = 0.00192 # datamem area for xbar_size 128 and num_xbar 16
 instrnMem_area = 0.00108 * math.sqrt(8) #512 entries
 xbar_inMem128_area = 0.00078
@@ -67,7 +76,7 @@ router_area = 0.047/cfg.cmesh_c
 
 
 # Function to measure tile are for given parameters # in mm2
-def get_tile_area (xbar_size, num_xbar, num_vfu, num_core):
+def get_tile_area (xbar_size, num_xbar, num_vfu, num_core, regfile_size):
     core_area = 0.0
     # assumption xbar area scales quadratically with xbar_size (Confirm with JPS)
     core_area += num_xbar * ((xbar_size/128.0)**2) * xbar128_area
@@ -82,7 +91,7 @@ def get_tile_area (xbar_size, num_xbar, num_vfu, num_core):
     core_area += num_xbar * sna_area
     core_area += num_vfu * alu_area
     # memory units grow as square root w.r.t. number of entries
-    core_area += math.sqrt((xbar_size/128.0) * (num_xbar/16.0)) * dataMem128_2_area
+    core_area += math.sqrt((xbar_size/128.0) * (num_xbar/16.0)) * dataMem128_2_area * regfile_size
     # instrn mem area is dependent on num_xbars (num_mvms a core can do)
     # memory units grow as square root w.r.t. number of entries
     core_area += math.sqrt(num_xbar/16.0) * instrnMem_area
@@ -130,7 +139,9 @@ def get_time (xbar_size, num_xbar, num_vfu, num_core):
     #time_step_new = time_step * (xbar_size/128.0)
     time_step_new = time_step_dict[str(xbar_size)]
     ld_time = num_core * (num_xbar/log2phy_xbfactor) * (xbar_size/16) #1 edram read is 16 entries 1ns
-    mvm_time = (16+1) * time_step_new
+    mvm_time = (16+2) * time_step_new
+    # vfu and lut can clocked at a frequency at higher power (same energy), so that they finish xbar_width number of
+    # operation in time_step of crossbars
     vfu_time = time_step_new * math.ceil((num_xbar/log2phy_xbfactor)/num_vfu)
     lut_time = time_step_new * (num_xbar/log2phy_xbfactor)
     st_time = (num_xbar/log2phy_xbfactor) * (xbar_size/16)
@@ -157,20 +168,23 @@ for xbar_size in xbar_size_list:
             ce_list.append(0)
             name_list.append(' ')
             for num_core in num_core_list:
-                tile_area = get_tile_area (xbar_size, num_xbar, num_vfu, num_core)
-                num_comp_total = get_num_comp (xbar_size, num_xbar, num_vfu, num_core)
-                time = get_time (xbar_size, num_xbar, num_vfu, num_core)
-                ce = num_comp_total / tile_area / time / (10**9) #in GigaOps
-                name = 'S'+str(xbar_size)+'-V'+str(num_vfu)+'-X'+str(num_xbar/log2phy_xbfactor)+'-C'+str(num_core)
-                #ce_dict[name] = ce
-                ce_list.append(ce)
-                name_list.append(name)
+                for regfile_size in regfile_size_list:
+                    tile_area = get_tile_area (xbar_size, num_xbar, num_vfu, num_core, regfile_size)
+                    num_comp_total = get_num_comp (xbar_size, num_xbar, num_vfu, num_core)
+                    time = get_time (xbar_size, num_xbar, num_vfu, num_core)
+                    ce = num_comp_total / tile_area / time / (10**9) #in GigaOps
+                    name = 'S'+str(xbar_size)+'-V'+str(num_vfu)+'-X'+str(num_xbar/log2phy_xbfactor)+'-C'+str(num_core)
+                    ce_list.append(ce)
+                    name_list.append(name)
 
 # Plot the sweep
 #plt.bar(range(len(ce_dict)), ce_dict.values(), align='center')
 #plt.xticks(range(len(ce_dict)), ce_dict.keys())
 
+# Print max and corresponding numbers
 print (max(ce_list))
+idx = ce_list.index (max(ce_list))
+print (name_list[idx])
 
 plt.bar(range(len(ce_list)), ce_list, align='center')
 plt.xticks(range(len(name_list)), name_list)
