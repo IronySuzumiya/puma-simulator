@@ -65,7 +65,7 @@ def wt_bitSlice2 (wt):
     wt_ = wt
     wt_sliced = []
     for i in range (num_bits):
-        wt_sliced.append(wt % (1<<xbar_bits) + zero_offset)
+        wt_sliced.append(wt_ % (1<<xbar_bits) + zero_offset)
         wt_ = wt_ >> xbar_bits
     return wt_sliced
 
@@ -157,14 +157,14 @@ def eval (in1, in2, wt):
 in1 = 1645
 in2 = 232
 wt = 2406 # this will always be positive (weight on crossbar is represneted as an unsigned number with zero_offset column)
-# eval (in1, in2, wt)
+eval (in1, in2, wt)
 
 # Case 2: evaluate for negative integers (num_bits = 16, int_bits = 16)
 # this will always be positive (weight on crossbar is represneted as an unsigned number with zero_offset stored seperately)
 in1 = -214
 in2 = 178
 wt = 50000
-# eval (in1, in2, wt)
+eval (in1, in2, wt)
 
 # Case 3: evaluate for negative integers (num_bits = 16, int_bits = 16)
 # this will always be positive (weight on crossbar is represneted as an unsigned number with zero_offset stored seperately)
