@@ -24,3 +24,4 @@ traces/
 /test/coreOther_test/*.npy
 /test/coreOther_test/*.txt
 
+.env/

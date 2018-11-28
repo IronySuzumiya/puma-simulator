@@ -1,6 +1,6 @@
 import math
 import sys
-sys.path.insert (0, '/home/aa/dpe_emulate/include')
+sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/include')
 import matplotlib.pyplot as plt
 from collections import OrderedDict
 
@@ -184,7 +184,7 @@ plt.xticks(range(len(name_list)), name_list)
 plt.xticks(fontsize=6, rotation=70)
 #plt.autoscale(tight=True)
 plt.show()
-#plt.savefig('/home/aa/dpe_emulate/isca_results/puma_ce_sweep')
+#plt.savefig('/home/fernandofelix/Workspace/dpe/training/dpe_emulate/isca_results/puma_ce_sweep')
 
 
 

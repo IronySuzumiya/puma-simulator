@@ -8,8 +8,8 @@ import models
 import torch
 import math
 
-sys.path.insert (0, '/home/ankitaay/dpe/include/')
-sys.path.insert (0, '/home/ankitaay/dpe/src/')
+sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/include/')
+sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/src/')
 import constants as param
 
 # import the data_convert module (float to fixed conversions)
@@ -19,7 +19,7 @@ from tile_instrn_proto import *
 
 
 #*****************************************************************************************************************
-instrnpath = '/home/ankitaay/dpe/test/testasm/vgg11'
+instrnpath = '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/test/testasm/vgg11'
 num_in = 4
 num_rows = num_in
 mp = 2
