@@ -421,16 +421,8 @@ class ima (object):
             # find xbar_type
             temp_val = (data_addr % (cfg.num_matrix*3*cfg.xbar_size))
             temp_val1 = temp_val % (3*cfg.xbar_size)
-            if (temp_val1 < cfg.xbar_size):
-                xbar_type = 'f'
-            elif (temp_val1 < 2*cfg.xbar_size):
-                xbar_type = 'b'
-            elif (temp_val1 < 3*cfg.xbar_size):
-                xbar_type = 'd'
-            else:
-                assert (1==0), "xbar memory addressing failed"
 
-            return [num_matrix, xbar_type, mem_addr, xbar_addr]
+            return [num_matrix, 'f', mem_addr, xbar_addr]
 
         # write to the xbar memory (in/out) space depending on the address
         def writeToXbarMem (self, data_addr, data):

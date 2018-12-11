@@ -41,7 +41,8 @@ dataMem_size = 2048 # 2048 is larger than num_matrix*(6*xbar_size)
 instrnMem_size = 512 #in entries
 
 # This depends on above parameters
-datamem_off = xbar_size * (num_matrix*6) # each matrix has 6 memory spaces (1 for f/b, 2 for d)
+#datamem_off = xbar_size * (num_matrix*6) # each matrix has 6 memory spaces (1 for f/b, 2 for d)
+datamem_off = num_matrix * xbar_size
 phy2log_ratio = num_bits / xbar_bits # ratio of physical to logical xbar
 lr = 0.25 # learning rate for updates to d-xbar
 
@@ -82,7 +83,7 @@ packet_width = edram_buswidth/data_width #in multiples of flits (data considered
 # (b bit of address = logN, N is the number of nodes)
 
 # Change here - Specify the Node parameters here
-num_tile_compute = 2 # number of tiles mapped by dnn (leaving input and output tiles)
+num_tile_compute = 1 # number of tiles mapped by dnn (leaving input and output tiles)
 num_tile_max = 168.0 # maximum number of tiles per node
 num_inj_max = num_tile_max # [conservative] max number of packet injections that can occur in a cycle (each tile injects a packet into NOC each cycle)
 noc_inj_rate = 0.005
