@@ -56,7 +56,7 @@ import tile_metrics
 import node_metrics
 
 compiler_path = "/home/aankit/isca-2019-exps/dpe/test/panther_benchmarks/"
-trace_path = "/home/aankit/dpe_emulate/test/traces/"
+trace_path = "/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/test/traces/"
 
 class DPE:
 
