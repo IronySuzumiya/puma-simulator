@@ -2,7 +2,7 @@
 
 # add the folder location for include files
 import sys, json
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/')
 
 # import dependancy files
 import numpy as np

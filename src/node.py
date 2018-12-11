@@ -1,7 +1,7 @@
 # Defines a configurable node with its methods
 import sys, getopt
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/include/')
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/src/')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/include/')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/src/')
 
 import numpy as np
 import config as cfg

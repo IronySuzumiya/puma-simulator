@@ -7,7 +7,7 @@
 #   4. IMA's xbar output memory
 
 import sys
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/src/')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/src/')
 
 from data_convert import *
 import config as cfg

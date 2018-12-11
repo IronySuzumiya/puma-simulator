@@ -5,7 +5,7 @@ require 'paths'
 
 -- path where all traces (inputs, internal states and weights are dumped from
 -- torch for testing with harwdare purposes)
-tracepath = '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/test/testasm/LSTM2_new/'
+tracepath = '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/test/testasm/LSTM2_new/'
 
 -- fix seed (for experiment reproducibility)
 torch.manualSeed(1)

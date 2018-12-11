@@ -2,8 +2,8 @@
 # IMA, EDRAM, EDRAM controller
 
 import sys
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/include')
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/src')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/include')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/src')
 import config as cfg
 import constants as param
 import ima_modules

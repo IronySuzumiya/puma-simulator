@@ -5,8 +5,8 @@ import models
 import torch
 import math
 
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/include/')
-sys.path.insert (0, '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/src/')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/include/')
+sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/src/')
 import constants as param
 
 # import the data_convert module (float to fixed conversions)
@@ -104,7 +104,7 @@ num_xbar = 8
 num_ima = 12'''
 
 #*****************************************************************************************************************
-instrnpath = '/home/fernandofelix/Workspace/dpe/training/dpe_emulate/test/testasm/vgg11'
+instrnpath = '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/test/testasm/vgg11'
 num_in = 4
 num_rows = 4
 num_out = 112 # after max-pool
