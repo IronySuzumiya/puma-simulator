@@ -3,11 +3,9 @@ import sys
 sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/')
 
 import numpy as np
-from src.data_convert import *
-import include.config as cfg
-import include.constants as param
-
-from src.data_convert import *
+from data_convert import *
+import config as cfg
+import constants as param
 
 # Define nstruction prototypes
 # generate load prototype - load data from edram to (datamem/xbinmem)
@@ -93,8 +91,9 @@ def i_alui (aluop, d1, r1, imm, vec = 1):
 #    return i_temp
 
 ## Added for COMPILER - i_train, mask as integer
-def i_train (xb_nma = cfg.num_matrix*['000'], r1=0, r2=0): # r1 is displacement, r2 is length of a continuum of data
-    xb_nma_str = xb_nma[0]
+def i_mvm (xb_nma = cfg.num_matrix*['000'], r1=0, r2=0): # r1 is displacement, r2 is length of a continuum of data
+    #xb_nma_str = xb_nma[0]
+    xb_nma_str = xb_nma
     xb_nma_list = [xb_nma_str[i*3:(i+1)*3] for i in range(len(xb_nma_str)/3)] # split into list of 3-bit masks
     assert (len(xb_nma_list) == cfg.num_matrix) # each matrix in a core has a 3-bit mask
     i_temp = param.dummy_instrn.copy()

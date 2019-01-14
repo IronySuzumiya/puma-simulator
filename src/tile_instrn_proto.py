@@ -3,8 +3,8 @@ import sys
 sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/include')
 
 import numpy as np
-import include.config as cfg
-import include.constants as param
+import config as cfg
+import constants as param
 
 # Define instruction prototypes
 # generate receive prototype
