@@ -2,8 +2,8 @@
 import sys, os
 import numpy as np
 import math
-sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/include/')
-sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/src/')
+sys.path.insert (0, '/home/glau/puma/training-emul-comp/dpe_emulate/include/')
+sys.path.insert (0, '/home/glau/puma/training-emul-comp/dpe_emulate/src/')
 from data_convert import *
 from instrn_proto import *
 from tile_instrn_proto import *
@@ -13,7 +13,7 @@ i_temp = i_set(d1=257, imm=0, vec=1)
 dict_list.append(i_temp.copy())
 i_temp = i_load(d1=0, r1=257, load_width=5, vec=1)
 dict_list.append(i_temp.copy())
-i_temp = i_mvm(['100001'])
+i_temp = i_mvm('100001')
 dict_list.append(i_temp.copy())
 i_temp = i_set(d1=257, imm=5, vec=1)
 dict_list.append(i_temp.copy())

@@ -2,8 +2,8 @@
 import sys, os
 import numpy as np
 import math
-sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/include/')
-sys.path.insert (0, '/home/fernando/Workspace/virtus/hp/dpe/dpe_emulate/src/')
+sys.path.insert (0, '/home/glau/puma/training-emul-comp/dpe_emulate/include/')
+sys.path.insert (0, '/home/glau/puma/training-emul-comp/dpe_emulate/src/')
 from data_convert import *
 from instrn_proto import *
 from tile_instrn_proto import *
