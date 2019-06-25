@@ -59,7 +59,7 @@ lr = 0.25 # learning rate for updates to d-xbar
 instrn_width = 48 # bits (op-2, vtile_id-6, send/receive_width-8, target_addr/counter-16, vw-8, mem_addr-16)
 edram_buswidth = 256 # in bits
 #receive_buffer_depth = 16
-receive_buffer_depth = 150 #set equal to num_tile_max
+receive_buffer_depth = 512 #set equal to num_tile_max
 receive_buffer_width =  edram_buswidth / num_bits # size of receive buffeer entry (in terms of number of neurons)
 
 # Change here - Specify the Tile parameters here
@@ -94,10 +94,10 @@ num_tile_output = (output_size__ - 1) / edram_size_in_entries + 1
 
 # Change here - Specify the Node parameters here
 num_tile_compute = num_tile - num_tile_input - num_tile_output # number of tiles mapped by dnn (leaving input and output tiles)
-num_tile_max = 168.0 # maximum number of tiles per node
+num_tile_max = 512 # maximum number of tiles per node
 num_inj_max = num_tile_max # [conservative] max number of packet injections that can occur in a cycle (each tile injects a packet into NOC each cycle)
 noc_inj_rate = 0.005
 noc_num_port = 4
 
 ## Node parameters - Our way of simulation just assumes all tile in one actual node
-num_node = 1
+num_node = (num_tile - 1) / num_tile_max + 1
