@@ -38,7 +38,7 @@ num_adc = 2 * num_matrix
 num_ALU = num_matrix*2
 #dataMem_size = num_matrix*(6*xbar_size) # 4 for 4 input spaces within matrix (1 for f/b each, 2 for d)
 dataMem_size = 2048 # 2048 is larger than num_matrix*(6*xbar_size)
-instrnMem_size = 512 #in entries
+instrnMem_size = 1024 #in entries
 
 # This depends on above parameters
 datamem_off = xbar_size * (num_matrix*6) # each matrix has 6 memory spaces (1 for f/b, 2 for d)
