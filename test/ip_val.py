@@ -116,7 +116,7 @@ ima.pipe_init(inst_file, fid)
 
 # program the xbars for matrix0_fw xbar (for functionality check of mvm, using just one matrix is fine)
 for i in range (phy2log_ratio):
-    wt_temp = np.load(wt_path+'phy_xbar'+str(i)+'.npy')
+    wt_temp = np.load(wt_path+'phy_xbar'+str(i)+'.npy', allow_pickle=True)
     ima.matrix_list[0]['f'][i].program(wt_temp)
 
 cycle = 0
@@ -131,7 +131,7 @@ dump (ima, dump_file)
 
 ## Testcases for Functionality Debug of MVM (1,2,3,4)
 # 1. compare golden output to ima output
-wt_gold = np.load(wt_path+'log_xbar.npy')
+wt_gold = np.load(wt_path+'log_xbar.npy', allow_pickle=True)
 out_gold = np.dot (ima.dataMem.memfile_float, wt_gold)
 
 out_exp = ['']*cfg.xbar_size
@@ -147,14 +147,14 @@ print ("error has mean " + str(np.average(err)) + " and stdev " + \
         str(np.std(err)))
 
 ## 2. individual xbar MVM check (no shift-and-add) - PASSED
-#wt_gold = np.load (wt_path+'phy_xbar4.npy')
+#wt_gold = np.load (wt_path+'phy_xbar4.npy', allow_pickle=True)
 #in_gold = ['']*cfg.xbar_size
 #for i in range (cfg.xbar_size):
 #    in_gold[i] = fixed2float (15*'0' + ima.dataMem.memfile[i][-1], cfg.int_bits, cfg.frac_bits)
 #out_gold = np.dot (in_gold, wt_gold)
 
 ## 3. inter-xbar shift-and-add - PASSED
-#wt_gold = np.load(wt_path+'log_xbar.npy')
+#wt_gold = np.load(wt_path+'log_xbar.npy', allow_pickle=True)
 #in_gold = ['']*cfg.xbar_size
 #for i in range (cfg.xbar_size):
 #    in_gold[i] = fixed2float (15*'0' + ima.dataMem.memfile[i][-1], cfg.int_bits, cfg.frac_bits)

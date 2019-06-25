@@ -253,19 +253,35 @@ dataMem_area_dict = {'256' : 0.00056,
 # Instruction Memory value dictionary
 instrnMem_lat_dict = {'512' : 1,
                       '1024': 1,
-                      '2048': 1}
+                      '2048': 1,
+                      '4096': 1,
+                      '8192': 1,
+                      '16384': 1,
+                      '32768': 1}
 
 instrnMem_pow_dyn_dict = {'512' : 0.46,
                           '1024': 0.53,
-                          '2048': 0.65}
+                          '2048': 0.65,
+                          '4096': 0.92,
+                          '8192': 1.29,
+                          '16384': 1.6,
+                          '32768': 1.9} # place-holder
 
 instrnMem_pow_leak_dict = {'512' : 0.078,
                            '1024': 0.147,
-                           '2048': 0.33}
+                           '2048': 0.33,
+                           '4096': 0.66,
+                           '8192': 1.32,
+                           '16384': 2.64,
+                           '32768': 5.28} # place-holder
 
 instrnMem_area_dict = {'512' : 0.00108,
                        '1024': 0.00192,
-                       '2048': 0.0041}
+                       '2048': 0.0041,
+                       '4096': 0.0058,
+                       '8192': 0.0082,
+                       '16384': 0.012,
+                       '32768': 0.016} # place-holder
 
 # Xbar_inMem value dictionary (1 access means reading (dac_res) bits for each xbar row)
 # for computing average power of ima - scale dyn_pow down by xbar_size
@@ -382,36 +398,56 @@ memInterface_lat = infinity # infinite latency
 # EDRAM value dictionary (counter storage is not coounted)
 edram_lat_dict = {'8'  :2,
                   '64' : 2, #edram access width is constant = 256 bits
-                  '128': 2}
+                  '128': 2,
+                  '10000': 2} # place-holder
 
 edram_pow_dyn_dict = {'8' : 17.2/2,
                       '64' : 17.2/2, # (0.0172 nJ with 2 cycles access latency)
-                      '128': 25.35/2}
+                      '128': 25.35/2,
+                      '10000': 800/2} # place-holder
 
 edram_pow_leak_dict = {'8' : 0.46,
                        '64' : 0.46,
-                       '128': 0.77}
+                       '128': 0.77,
+                       '10000': 20} # place-holder
 
 edram_area_dict = {'8' : 0.086,
                    '64' : 0.086,
-                   '128': 0.121}
+                   '128': 0.121,
+                   '10000': 3.2} # place-holder
 
 # Tile Instruction Memory value dictionary
 tile_instrnMem_lat_dict = {'512' : 1,
                           '1024': 1,
-                          '2048': 1}
+                          '2048': 1,
+                          '4096': 1,
+                          '8192': 1,
+                          '16384': 1,
+                          '32768': 1} # place-holder
 
 tile_instrnMem_pow_dyn_dict = {'512' : 0.46,
                                '1024': 0.53,
-                               '2048': 0.65}
+                               '2048': 0.65,
+                               '4096': 0.92,
+                               '8192': 1.29,
+                               '16384': 1.6,
+                               '32768': 1.9} # place-holder
 
 tile_instrnMem_pow_leak_dict = {'512' : 0.078,
                                 '1024': 0.147,
-                                '2048': 0.33}
+                                '2048': 0.33,
+                                '4096': 0.66,
+                                '8192': 1.32,
+                                '16384': 2.64,
+                                '32768': 5.28} # place-holder
 
 tile_instrnMem_area_dict = {'512' : 0.00108,
                             '1024': 0.00192,
-                            '2048': 0.0041}
+                            '2048': 0.0041,
+                            '4096': 0.0058,
+                            '8192': 0.0082,
+                            '16384': 0.012,
+                            '32768': 0.016} # place-holder
 
 # counter storage (2048 Byte Scratch RAM - 1 counter entry shared by 256 bits of data (16 neurons))
 # area scaling (X8)

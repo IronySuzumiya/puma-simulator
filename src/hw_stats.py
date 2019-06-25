@@ -198,7 +198,18 @@ def get_hw_stats (fid, node_dut, cycle):
 
     packet_inj_rate = node_dut.noc.num_access_intra/ (metric_dict['cycles'] * cfg.num_inj_max)
     fid.write ('network packet injection rate: ' + str(packet_inj_rate) + '\n')
-    fid.write ('number of tiles mapped: ' + str(cfg.num_tile_compute))
+    fid.write ('number of tiles mapped: ' + str(cfg.num_tile_compute) + '\n')
+
+    fid.write('\n\n')
+    for i in range(2, cfg.num_tile):
+        fid.write('tile' + str(i) + ':\n')
+        for j in range (cfg.num_ima):
+            fid.write('core' + str(j) + ':')
+            fid.write('\n  mvm begin cycle: ' + str(node_dut.tile_list[i].ima_list[j].mvm_begin_cycle))
+            fid.write('\n  mvm finish cycle: ' + str(node_dut.tile_list[i].ima_list[j].mvm_finish_cycle))
+            fid.write('\n  total cycle count: ' + str(node_dut.tile_list[i].ima_list[j].cycle_count))
+            fid.write('\n')
+
 
     return metric_dict
 

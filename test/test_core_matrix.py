@@ -142,7 +142,7 @@ ima.pipe_init(inst_file, fid)
 
 # program the xbars for matrix0_fw xbar (for functionality check of mvm, using just one matrix is fine)
 for i in range (phy2log_ratio):
-    wt_temp = np.load(wt_path+'phy_xbar'+str(i)+'.npy')
+    wt_temp = np.load(wt_path+'phy_xbar'+str(i)+'.npy', allow_pickle=True)
     ima.matrix_list[0]['f'][i].program(wt_temp)
     ima.matrix_list[0]['b'][i].program(wt_temp)
 
@@ -160,7 +160,7 @@ dump (ima, dump_file)
 ## compare golden output to ima output
 
 # 1. MVM instruction - inner-product (fw, bw xbars) -keep upto MVM ('110') instrn
-wt_gold = np.load(wt_path+'log_xbar.npy')
+wt_gold = np.load(wt_path+'log_xbar.npy', allow_pickle=True)
 out_gold = np.dot (ima.dataMem.memfile_float, wt_gold)
 
 out_expF = ['']*cfg.xbar_size

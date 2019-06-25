@@ -81,8 +81,19 @@ flit_width = 32
 packet_width = edram_buswidth/data_width #in multiples of flits (data considered only - booksim consider address itself)
 # (b bit of address = logN, N is the number of nodes)
 
+edram_size_in_entries = edram_size * 1024 / 2
+
+input_size__ = 50176 #183808
+output_size__ = 100352 #34280
+
+# Do not change this - total number of tiles
+num_tile = 273 # +1 for first tile (I/O tile) - dummy, others - compute
+
+num_tile_input = (input_size__ - 1) / edram_size_in_entries + 1
+num_tile_output = (output_size__ - 1) / edram_size_in_entries + 1
+
 # Change here - Specify the Node parameters here
-num_tile_compute = 2 # number of tiles mapped by dnn (leaving input and output tiles)
+num_tile_compute = num_tile - num_tile_input - num_tile_output # number of tiles mapped by dnn (leaving input and output tiles)
 num_tile_max = 168.0 # maximum number of tiles per node
 num_inj_max = num_tile_max # [conservative] max number of packet injections that can occur in a cycle (each tile injects a packet into NOC each cycle)
 noc_inj_rate = 0.005
@@ -90,7 +101,3 @@ noc_num_port = 4
 
 ## Node parameters - Our way of simulation just assumes all tile in one actual node
 num_node = 1
-
-# Do not change this - total number of tiles
-num_tile = num_node * num_tile_compute + 2 # +1 for first tile (I/O tile) - dummy, others - compute
-

@@ -896,11 +896,16 @@ class ima (object):
         self.stage_done = one_list[:]
 
         #Initialize the instruction memory
-        dict_list = np.load(instrn_filepath)
+        dict_list = np.load(instrn_filepath, allow_pickle=True)
         self.instrnMem.load(dict_list)
 
         self.ldAccess_done = 0
         self.cycle_count = 0
+
+        self.mvm_begin_cycle = 0
+        self.mvm_finish_cycle = 0
+        self.mvm_flag = False
+        self.mvm_once_flag = False
 
     # Mimics one cycle of ima pipeline execution
     def pipe_run (self, cycle, fid = ''): # fid is tracefile's id
@@ -921,6 +926,16 @@ class ima (object):
 
             # run the stage based on its update_ready argument
             stage_function[i] (update_ready, fid)
+
+        if not self.mvm_flag and self.de_opcode == 'mvm':
+            assert(not self.mvm_once_flag)
+            self.mvm_begin_cycle = self.cycle_count
+            self.mvm_flag = True
+
+        if self.mvm_flag and not self.de_opcode == 'mvm':
+            self.mvm_finish_cycle = self.cycle_count
+            self.mvm_flag = False
+
 
         # If specified, print thetrace (pipeline stage information)
         if (self.debug):

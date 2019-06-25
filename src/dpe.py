@@ -100,18 +100,19 @@ class DPE:
         inp_tileId = 0
         assert (os.path.exists(inp_filename)
                 ), 'Input Error: Provide input before running the DPE'
-        inp = np.load(inp_filename).item()
+        inp = np.load(inp_filename, allow_pickle=True).item()
         print ('length of input data:', len(inp['data']))
         for i in range(len(inp['data'])):
+            inp_tileId = i / cfg.edram_size_in_entries
             data = float2fixed(inp['data'][i], cfg.int_bits, cfg.frac_bits)
-            node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i] = data
-            node_dut.tile_list[inp_tileId].edram_controller.counter[i] = int(
+            node_dut.tile_list[inp_tileId].edram_controller.mem.memfile[i % cfg.edram_size_in_entries] = data
+            node_dut.tile_list[inp_tileId].edram_controller.counter[i % cfg.edram_size_in_entries] = int(
                 inp['counter'][i])
-            node_dut.tile_list[inp_tileId].edram_controller.valid[i] = int(
+            node_dut.tile_list[inp_tileId].edram_controller.valid[i % cfg.edram_size_in_entries] = int(
                 inp['valid'][i])
 
         ## Program DNN weights on the xbars
-        for i in range(1, cfg.num_tile):
+        for i in range(cfg.num_tile_input + cfg.num_tile_output, cfg.num_tile):
             print ('Programming weights of tile no: ', i)
             for j in range(cfg.num_ima):
                 print ('Programming ima no: ', j)
@@ -122,7 +123,7 @@ class DPE:
                         if (os.path.exists(wt_filename)):  # check if weights for the xbar exist
                             print ('wtfile exits: ' + 'tile ' + str(i) +
                                    'ima ' + str(j) + 'matrix ' + str(k) + 'xbar' + str(l))
-                            wt_temp = np.load(wt_filename)
+                            wt_temp = np.load(wt_filename, allow_pickle=True)
                             node_dut.tile_list[i].ima_list[j].matrix_list[k]['f'][l].program(wt_temp)
                             node_dut.tile_list[i].ima_list[j].matrix_list[k]['b'][l].program(wt_temp)
 
@@ -146,9 +147,10 @@ class DPE:
         # Dump the contents of output tile (DNN output) to output file (output.txt)
         output_file = self.tracepath + 'output.txt'
         fid = open(output_file, 'w')
-        tile_id = cfg.num_tile - 1
-        mem_dump(
-            fid, node_dut.tile_list[tile_id].edram_controller.mem.memfile, 'EDRAM')
+        tile_id = cfg.num_tile_input
+        for i in range(cfg.num_tile_output):
+            mem_dump(
+                fid, node_dut.tile_list[tile_id + i].edram_controller.mem.memfile, 'tile' + str(tile_id + i) + ' eDRAM')
         fid.close()
         print('Output Tile dump finished')
 
